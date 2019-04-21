@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ManageDapps = () => (
+const Manage = () => (
   <h1>Manage your dapps</h1>
 );
 
-export default ManageDapps;
+export default Manage;

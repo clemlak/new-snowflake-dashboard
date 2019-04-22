@@ -43,7 +43,7 @@ const App = () => (
               <Route exact path="/contact" component={Contact} />
               <Route exact path="/identity" component={identity} />
               <Route exact path="/about" component={About} />
-              <Route exact path="/manageDapps" component={Manage} />
+              <Route exact path="/manage" component={Manage} />
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/terms" component={Terms} />
               <Route exact path="/wallet" component={Wallet} />

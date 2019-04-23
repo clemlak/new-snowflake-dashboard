@@ -9,7 +9,9 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import { useWeb3Context } from 'web3-react';
+import {
+  useWeb3Context,
+} from 'web3-react';
 
 import Header from '../header';
 import Footer from '../footer';
@@ -29,6 +31,8 @@ import Submit from '../submit';
 
 const App = () => {
   const web3 = useWeb3Context();
+
+  console.log(web3);
 
   if (!web3.error && !web3.active) {
     console.log('Activating MetaMask...');

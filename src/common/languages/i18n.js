@@ -10,6 +10,7 @@ i18n
       en: {
         translations: {
           hello: 'Hello',
+          faqBody: 'Welcome to the faq',
         },
       },
       fr: {

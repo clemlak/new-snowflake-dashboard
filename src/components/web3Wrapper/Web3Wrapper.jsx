@@ -2,12 +2,14 @@ import React from 'react';
 import Web3Provider from 'web3-react';
 import connectors from './connectors';
 
+import App from '../app/App';
+
 const Web3Wrapper = () => (
   <Web3Provider
     connectors={connectors}
     libraryName="web3.js"
   >
-    <h1>Hello</h1>
+    <App />
   </Web3Provider>
 );
 

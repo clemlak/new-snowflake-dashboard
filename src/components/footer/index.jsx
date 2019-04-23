@@ -11,11 +11,13 @@ import {
   NavLink as RouterNavLink,
 } from 'react-router-dom';
 
+import footerLogo from '../../common/img/footerLogo.png';
+
 const Footer = () => (
   <Container fluid className="py-3">
     <Row>
       <Col xs="12" sm="3" className="text-left">
-        Powered by Hydro
+        <img src={footerLogo} alt="Powered by Hydro" />
       </Col>
       <Col xs="12" sm="6" className="text-center">
         <Nav fill>

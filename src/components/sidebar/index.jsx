@@ -11,16 +11,28 @@ import {
 import CategoriesMenu from './categoriesMenu';
 
 const Sidebar = () => (
-  <div>
-    <Nav vertical>
-      <NavItem>
-        <NavLink tag={RouterNavLink} exact to="/wallet" activeClassName="active">dApp Store Wallet</NavLink>
-        <NavLink tag={RouterNavLink} exact to="/manage" activeClassName="active">dapps You Added</NavLink>
-        <NavLink tag={RouterNavLink} exact to="/identity" activeClassName="active">Manage Your Identity (EIN)</NavLink>
-        <NavLink tag={RouterNavLink} exact to="/submit" activeClassName="active">Submit your dApp</NavLink>
-      </NavItem>
-    </Nav>
-    <CategoriesMenu />
+  <div className="sidebar">
+    <div className="py-5">
+      <Nav vertical>
+        <NavItem>
+          <NavLink tag={RouterNavLink} exact to="/wallet" className="sidebar__link" activeClassName="sidebar__link--active">
+            dApp Store Wallet
+          </NavLink>
+          <NavLink tag={RouterNavLink} exact to="/manage" className="sidebar__link" activeClassName="sidebar__link--active">
+            dapps You Added
+          </NavLink>
+          <NavLink tag={RouterNavLink} exact to="/identity" className="sidebar__link" activeClassName="sidebar__link--active">
+            Manage Your Identity (EIN)
+          </NavLink>
+          <NavLink tag={RouterNavLink} exact to="/submit" className="sidebar__link" activeClassName="sidebar__link--active">
+            Submit your dApp
+          </NavLink>
+        </NavItem>
+      </Nav>
+    </div>
+    <div className="py-5">
+      <CategoriesMenu />
+    </div>
   </div>
 );
 

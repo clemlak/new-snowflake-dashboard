@@ -13,10 +13,10 @@ const CategoriesMenu = () => (
     <p>Categories</p>
     <Nav vertical>
       <NavItem>
-        <NavLink tag={RouterNavLink} exact to="/categories/all" activeClassName="active">
+        <NavLink tag={RouterNavLink} exact to="/categories/all" activeClassName="sidebar__link--active">
           All Categories
         </NavLink>
-        <NavLink tag={RouterNavLink} exact to="/categories/entertainment" activeClassName="active">
+        <NavLink tag={RouterNavLink} exact to="/categories/entertainment" activeClassName="sidebar__link--active">
           Entertainment
         </NavLink>
       </NavItem>

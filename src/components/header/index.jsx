@@ -8,6 +8,17 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+import {
+  NavLink as RouterNavLink,
+} from 'react-router-dom';
+import {
+  IoMdStats,
+  IoMdHelpCircle,
+} from 'react-icons/io';
+
+import HeaderAccount from './headerAccount';
+
+import logo from '../../common/img/logo.png';
 
 class Header extends React.Component {
   constructor(props) {
@@ -37,17 +48,24 @@ class Header extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">
-            Snowflake
+          <NavbarBrand tag={RouterNavLink} exact to="/">
+            <img src={logo} alt="logo" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink tag={RouterNavLink} exact to="/stats" activeClassName="active">
+                  <IoMdStats />
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                <NavLink tag={RouterNavLink} exact to="/help" activeClassName="active">
+                  <IoMdHelpCircle />
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <HeaderAccount />
               </NavItem>
             </Nav>
           </Collapse>

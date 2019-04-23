@@ -10,12 +10,14 @@ i18n
       en: {
         translations: {
           hello: 'Hello',
+          createAccount: 'Create Account',
           faqBody: 'Welcome to the faq',
         },
       },
       fr: {
         translations: {
           hello: 'Bonjour',
+          createAccount: 'Créer un compte',
         },
       },
     },

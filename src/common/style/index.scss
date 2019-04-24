@@ -29,3 +29,40 @@
 .sidebar__link--active:hover {
   color: $snow-white;
 }
+
+.transaction {
+  background-color: $snow-light-gray;
+  border: none;
+}
+
+.callToAction {
+  background-color: $snow-light-blue;
+}
+
+/**
+ * Components
+ */
+.btn-white {
+  color: #395fff;
+  background-color: $snow-white;
+  border-color: $snow-white;
+}
+
+/**
+ * Common
+ */
+.blue-card {
+  background-color: #395fff;
+  border: none;
+  color: $snow-white;
+}
+
+.grey-card {
+  background-color: $snow-light-gray;
+  border: none;
+  color: $snow-white;
+}
+
+.bg-white {
+  background-color: $snow-white;
+}

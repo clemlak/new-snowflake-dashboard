@@ -47,7 +47,7 @@ class Header extends React.Component {
 
     return (
       <div>
-        <Navbar color="light" light expand="md">
+        <Navbar color="light" light expand="md" className="bg-white">
           <NavbarBrand tag={RouterNavLink} exact to="/">
             <img src={logo} alt="logo" />
           </NavbarBrand>

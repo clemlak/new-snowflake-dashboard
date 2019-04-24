@@ -1,14 +1,14 @@
 import React from 'react';
 import {
-  Button,
   NavLink,
+  Button,
 } from 'reactstrap';
 import {
   NavLink as RouterNavLink,
 } from 'react-router-dom';
 
 const HeaderAccount = () => {
-  const hasAccount = true;
+  const hasAccount = false;
 
   if (hasAccount) {
     return (
@@ -20,9 +20,9 @@ const HeaderAccount = () => {
   }
 
   return (
-    <NavLink tag={RouterNavLink} exact to="/identity" className="btn btn-primary">
+    <Button color="primary" tag={RouterNavLink} exact to="/identity">
       Create Account
-    </NavLink>
+    </Button>
   );
 };
 

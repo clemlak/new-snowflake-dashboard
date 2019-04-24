@@ -2,9 +2,15 @@
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 
 /**
+ * Header
+ */
+.header__icon {
+  font-size: 1.75rem;
+}
+
+/**
  * Sidebar
  */
-
 .sidebar {
   background-color: $snow-light-gray;
 }

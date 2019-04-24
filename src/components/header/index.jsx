@@ -53,15 +53,15 @@ class Header extends React.Component {
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className="ml-auto align-items-center" navbar>
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/stats" activeClassName="active">
-                  <IoMdStats />
+                  <IoMdStats className="header__icon" />
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/help" activeClassName="active">
-                  <IoMdHelpCircle />
+                  <IoMdHelpCircle className="header__icon" />
                 </NavLink>
               </NavItem>
               <NavItem>

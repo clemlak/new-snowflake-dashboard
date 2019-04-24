@@ -32,8 +32,6 @@ import Submit from '../submit';
 const App = () => {
   const web3 = useWeb3Context();
 
-  console.log(web3);
-
   if (!web3.error && !web3.active) {
     console.log('Activating MetaMask...');
     web3.setConnector('MetaMask');

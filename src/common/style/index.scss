@@ -30,22 +30,51 @@
   color: $snow-white;
 }
 
+/**
+ * Transaction
+ */
 .transaction {
   background-color: $snow-light-gray;
   border: none;
 }
 
+/**
+ * Call to action
+ */
 .callToAction {
   background-color: $snow-light-blue;
 }
 
 /**
- * Components
+ * Buttons
  */
 .btn-white {
   color: #395fff;
   background-color: $snow-white;
   border-color: $snow-white;
+}
+
+.btn-outlined {
+  color: #395fff;
+  background: none;
+  border-color: #395fff;
+}
+
+.btn-outlined:hover {
+  color: $snow-white;
+  background-color: #395fff;;
+  border-color: #395fff;
+}
+
+/**
+ * Footer
+ */
+.footer__link {
+  color: $snow-footer-grey;
+}
+
+.footer__menu {
+  display: -webkit-inline-box;
 }
 
 /**

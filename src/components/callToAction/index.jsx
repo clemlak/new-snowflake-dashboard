@@ -15,7 +15,7 @@ const CallToAction = () => (
           Are you a developer? Do you have a dApp idea?
           Would you like to patner with us?
         </p>
-        <Button color="primary">
+        <Button className="btn-outlined">
           Let Us Know
         </Button>
       </Col>

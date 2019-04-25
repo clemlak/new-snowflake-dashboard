@@ -1,6 +1,8 @@
 import hydro from './contracts/hydro';
 import identityRegistry from './contracts/identityRegistry';
 import clientRaindrop from './contracts/clientRaindrop';
+import oldClientRaindrop from './contracts/oldClientRaindrop';
+import snowflake from './contracts/snowflake';
 
 function getAccountEthBalance(lib, address) {
   return lib.eth.getBalance(address)
@@ -46,9 +48,41 @@ function getAccountDetails(lib, ein) {
     .catch(err => err);
 }
 
+function isHydroIdAvailable(lib, hydroId) {
+  const clientRaindropContract = new lib.eth.Contract(
+    clientRaindrop.abi,
+    clientRaindrop.address,
+  );
+
+  return clientRaindropContract.methods.hydroIDAvailable(hydroId).call()
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function isHydroIdReserved(lib, hydroId) {
+  const oldClientRaindropContract = new lib.eth.Contract(
+    oldClientRaindrop.abi,
+    oldClientRaindrop.address,
+  );
+
+  return oldClientRaindropContract.methods.hydroIDAvailable(hydroId).call()
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 export {
   getAccountEthBalance,
   getAccountHydroBalance,
   getAccountEin,
   getAccountDetails,
+  isHydroIdAvailable,
+  isHydroIdReserved,
 };

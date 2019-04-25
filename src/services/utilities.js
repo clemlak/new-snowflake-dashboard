@@ -25,6 +25,7 @@ function getAccountEin(lib, address) {
   return identityRegistryContract.methods.getEIN(address).call()
     .then((ein) => {
       if (ein === '3963877391197344453575983046348115674221700746820753546331534351508065746944') {
+        /* TODO: Return an error if no ein is found */
         // throw new Error('No ein');
         return '';
       }

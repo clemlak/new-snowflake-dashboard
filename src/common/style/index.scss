@@ -9,6 +9,39 @@
 }
 
 /**
+ * Modals
+ */
+.modal-dialog {
+
+}
+
+.modal-content {
+  border: none;
+  background-color: #2269f6;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-body {
+  border: none;
+}
+
+.modal-footer {
+  border: none;
+}
+
+.modal__close-button {
+  color: $snow-white;
+  font-size: 1.5rem;
+}
+
+.modal-footer__link {
+  color: #8caffb;
+}
+
+/**
  * Sidebar
  */
 .sidebar {

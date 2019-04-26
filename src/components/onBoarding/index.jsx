@@ -15,6 +15,7 @@ import { IoIosCloseCircle } from 'react-icons/io';
 
 import ProviderStep from './providerStep';
 import WelcomeStep from './welcomeStep';
+import HydroIdStep from './hydroIdStep';
 
 class OnBoarding extends Component {
   constructor(props) {
@@ -28,6 +29,18 @@ class OnBoarding extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
+  componentDidUpdate() {
+    const {
+      isOpen,
+    } = this.state;
+
+    if (this.props.isOpen !== isOpen) {
+      this.setState({
+        isOpen: this.props.isOpen,
+      });
+    }
+  }
+
   toggle() {
     const {
       isOpen,
@@ -35,6 +48,12 @@ class OnBoarding extends Component {
 
     this.setState({
       isOpen: !isOpen,
+    });
+  }
+
+  close() {
+    this.setState({
+      isOpen: false,
     });
   }
 
@@ -50,12 +69,14 @@ class OnBoarding extends Component {
       content = <ProviderStep />;
     } else if (step === 'welcome') {
       content = <WelcomeStep />;
+    } else if (step === 'hydroId') {
+      content = <HydroIdStep />;
     }
 
     return (
       <div>
-        <Modal isOpen={isOpen} size="lg" toggle={this.toggle}>
-          <ModalHeader close={<IoIosCloseCircle className="modal__close-button" onClick={this.toggle} />} />
+        <Modal isOpen={isOpen} size="lg" toggle={this.props.toggle}>
+          <ModalHeader close={<IoIosCloseCircle className="modal__close-button" onClick={this.props.toggle} />} />
           <ModalBody className="align-content-center">
             {content}
           </ModalBody>
@@ -63,22 +84,17 @@ class OnBoarding extends Component {
             <Nav className="footer__menu">
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/privacy" className="modal-footer__link">
-                  Privacy
+                  Privacy Terms
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/terms" className="modal-footer__link">
-                  Terms
+                  Terms of Use
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={RouterNavLink} exact to="/about" className="modal-footer__link">
-                  About
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={RouterNavLink} exact to="/contact" className="modal-footer__link">
-                  Contact
+                <NavLink tag={RouterNavLink} exact to="/faq" className="modal-footer__link">
+                  FAQs
                 </NavLink>
               </NavItem>
             </Nav>

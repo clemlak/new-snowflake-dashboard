@@ -55,12 +55,8 @@ function isHydroIdAvailable(lib, hydroId) {
   );
 
   return clientRaindropContract.methods.hydroIDAvailable(hydroId).call()
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(result => result)
+    .catch(err => err);
 }
 
 function isHydroIdReserved(lib, hydroId) {

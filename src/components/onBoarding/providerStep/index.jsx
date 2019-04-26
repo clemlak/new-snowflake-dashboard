@@ -24,9 +24,9 @@ function ProviderStep() {
       </Row>
       <Row className="justify-content-center">
         <Col xs="12" sm="10" className="text-center">
-          <Button className="btn-white">
-            Install MetaMask
-          </Button>
+          <a href="https://metamask.io" target="_blank" rel="noopener noreferrer" className="btn btn-white">
+            Let's get started
+          </a>
         </Col>
       </Row>
     </div>

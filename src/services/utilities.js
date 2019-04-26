@@ -69,6 +69,7 @@ function isHydroIdReserved(lib, hydroId) {
     oldClientRaindrop.address,
   );
 
+  /* TODO: This function must use getUserByName instead of hydroIDAvailable */
   return oldClientRaindropContract.methods.hydroIDAvailable(hydroId).call()
     .then((result) => {
       console.log(result);
@@ -78,6 +79,71 @@ function isHydroIdReserved(lib, hydroId) {
     });
 }
 
+function createSignedMessage(lib, address, timestamp) {
+  const signature = lib.utils.soliditySha3(
+    '0x19', '0x00', identityRegistry.address,
+    'I authorize the creation of an Identity on my behalf.',
+    address,
+    address, {
+      t: 'address[]',
+      v: [snowflake.address],
+    }, {
+      t: 'address[]',
+      v: [],
+    },
+    timestamp,
+  );
+
+  return signature;
+}
+
+function signPersonal(lib, address, message) {
+  return new Promise((resolve, reject) => {
+    lib.currentProvider.sendAsync({
+      method: 'personal_sign',
+      params: [
+        address,
+        message,
+      ],
+      address,
+    },
+    (err, result) => {
+      if (err) {
+        return reject(err);
+      }
+
+      const signature = result.result.substring(2);
+      const r = "0x" + signature.substring(0, 64);
+      const s = "0x" + signature.substring(64, 128);
+      const v = parseInt(signature.substring(128, 130), 16);
+
+      const signatureObject = {};
+
+      signatureObject.r = r;
+      signatureObject.s = s;
+      signatureObject.v = v;
+      signatureObject.from = address;
+
+      return resolve(signatureObject);
+    });
+  });
+}
+
+function createIdentity(lib, hydroId, timestamp, signature) {
+  const snowflakeContract = new lib.eth.Contract(
+    snowflake.abi,
+    snowflake.address,
+  );
+
+  return snowflakeContract.methods.createIdentityDelegated(
+    signature.from, signature.from, [], hydroId, signature.v, signature.r, signature.s, timestamp,
+  ).send({
+    from: signature.from,
+  })
+    .then(result => result)
+    .catch(err => err);
+}
+
 export {
   getAccountEthBalance,
   getAccountHydroBalance,
@@ -85,4 +151,7 @@ export {
   getAccountDetails,
   isHydroIdAvailable,
   isHydroIdReserved,
+  createSignedMessage,
+  signPersonal,
+  createIdentity,
 };

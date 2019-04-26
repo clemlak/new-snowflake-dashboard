@@ -3,25 +3,34 @@ import {
   Button,
 } from 'reactstrap';
 import {
-  NavLink as RouterNavLink,
-} from 'react-router-dom';
-import {
   useWeb3Context,
 } from 'web3-react';
+
+import OnBoarding from '../../onBoarding';
 
 import {
   getAccountEin,
   getAccountDetails,
+  isHydroIdAvailable,
+  createSignedMessage,
+  signPersonal,
+  createIdentity,
 } from '../../../services/utilities';
 
 function HeaderAccount() {
   const [hasEin, setHasEin] = useState(false);
   const [ein, setEin] = useState('');
   const [hydroId, setHydroId] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hasProvider, setHasProvider] = useState(false);
 
   const web3 = useWeb3Context();
 
   if (web3.active) {
+    if (!hasProvider) {
+      setHasProvider(true);
+    }
+
     if (!hasEin) {
       getAccountEin(web3.library, web3.account)
         .then((res) => {
@@ -44,23 +53,56 @@ function HeaderAccount() {
           console.log(err);
         });
     }
+
+/*
+    const newHydroId = 'hellopickle';
+
+    isHydroIdAvailable(web3.library, 'picklE');
+
+    const timestamp = Math.round(new Date() / 1000) - 120;
+
+    const signedMessage = createSignedMessage(web3.library, web3.account, timestamp);
+
+    signPersonal(web3.library, web3.account, signedMessage)
+      .then((signature) => {
+        console.log(signature);
+
+        return createIdentity(web3.library, newHydroId, timestamp, signature);
+      })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+      */
   }
 
   if (hasEin) {
     return (
       <div>
-        <p>
+        <p className="mb-0">
           {`Welcome ${hydroId}`}
-          Ein is: {ein}
+        </p>
+        <p className="small">
+          {`Ein: ${ein}`}
         </p>
       </div>
     );
   }
 
   return (
-    <Button color="primary" tag={RouterNavLink} exact to="/identity">
-      Create Account
-    </Button>
+    <div>
+      <OnBoarding
+        step={hasProvider ? 'provider' : 'hydroId'}
+        isOpen={isModalOpen}
+        toggle={() => setIsModalOpen(false)}
+      />
+      <Button color="primary" onClick={() => setIsModalOpen(!isModalOpen)}>
+        Create Account
+      </Button>
+    </div>
   );
 }
 

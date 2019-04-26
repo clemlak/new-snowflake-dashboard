@@ -25,15 +25,22 @@ function WelcomeStep() {
       <Row className="justify-content-center py-3">
         <Col xs="12" sm="8" className="text-center">
           <p className="text-white">
-            To interact with Snowflake and the Hydro dApp store you must install MetaMask (a wallet for your browser) and have a balance of Ethereum in it. Once you install it this message will go away and you can proceed.
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
           </p>
         </Col>
       </Row>
-      <Row className="justify-content-center">
+      <Row className="justify-content-center py-3">
         <Col xs="12" sm="10" className="text-center">
           <Button className="btn-white">
             Let's get started
           </Button>
+        </Col>
+      </Row>
+      <Row className="justify-content-center py-3">
+        <Col xs="12" sm="10" className="text-center">
+          <p className="text-white">
+            Already have an existing EIN? Link it to your address
+          </p>
         </Col>
       </Row>
     </div>

@@ -7,7 +7,11 @@ import {
 
 import imgPlaceholder from '../../common/img/subway_surfers_logo.png';
 
-function DappDetails() {
+function DappDetails({
+  match,
+}) {
+  const { id } = match.params;
+
   return (
     <div>
       <Row>

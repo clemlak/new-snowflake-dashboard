@@ -5,9 +5,13 @@ import {
   Nav,
   NavItem,
   NavLink,
+  CardDeck,
 } from 'reactstrap';
 
 import Featured from '../featured';
+
+import resolversJson from '../../legacy/resolvers.json';
+import DappPreview from '../dappPreview';
 
 function Home() {
   const [tab, setTab] = useState('home');
@@ -17,6 +21,7 @@ function Home() {
       <Nav tabs>
         <NavItem>
           <NavLink
+            className="dappNavigation__filter__button"
             onClick={() => setTab('home')}
           >
             Home
@@ -46,9 +51,15 @@ function Home() {
       </Nav>
       <TabContent activeTab={tab}>
         <TabPane tabId="home">
-          <p>
-            Home
-          </p>
+          <CardDeck>
+            {Object.keys(resolversJson).map(resolver => (
+              <DappPreview
+                key={resolver}
+                id={resolver}
+                legacy
+              />
+            ))}
+          </CardDeck>
         </TabPane>
         <TabPane tabId="featured">
           <Featured />

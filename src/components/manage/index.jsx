@@ -1,3 +1,7 @@
+/**
+ * Displays the dapps added by the current user
+ */
+
 import React, { useState, useEffect } from 'react';
 import {
   Row,

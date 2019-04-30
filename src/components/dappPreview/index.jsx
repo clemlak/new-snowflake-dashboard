@@ -15,9 +15,15 @@ import imgPlaceholder from '../../common/img/placeholders/dapp.gif';
 
 function DappPreview(props) {
   const {
-    title,
-    subtitle,
+    id,
   } = props;
+
+  const details = {
+    title: 'Title',
+    subtitle: 'Subtitle',
+  };
+
+  console.log(`Displaying dapp ${id}`);
 
   return (
     <div>
@@ -25,10 +31,10 @@ function DappPreview(props) {
         <CardImg top width="100%" src={imgPlaceholder} alt="Dapp preview" />
         <CardBody>
           <CardTitle>
-            {title}
+            {details.title}
           </CardTitle>
           <CardSubtitle>
-            {subtitle}
+            {details.subtitle}
           </CardSubtitle>
           <Row>
             <Col>
@@ -56,6 +62,5 @@ function DappPreview(props) {
 export default DappPreview;
 
 DappPreview.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
+  id: PropTypes.string,
 };

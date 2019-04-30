@@ -18,13 +18,13 @@ import {
 } from '../../../services/utilities';
 
 function HeaderAccount() {
+  const web3 = useWeb3Context();
+
   const [hasEin, setHasEin] = useState(false);
   const [ein, setEin] = useState('');
   const [hydroId, setHydroId] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasProvider, setHasProvider] = useState(false);
-
-  const web3 = useWeb3Context();
 
   if (web3.active) {
     if (!hasProvider) {

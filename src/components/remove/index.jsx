@@ -13,9 +13,19 @@ import {
   ModalHeader,
   ModalBody,
 } from 'reactstrap';
+import {
+  useWeb3Context,
+} from 'web3-react';
+
+import {
+  removeResolver,
+} from '../../services/utilities';
 
 function Remove(props) {
+  const web3 = useWeb3Context();
+
   const {
+    id,
     isOpen,
     title,
     toggle,
@@ -47,7 +57,16 @@ function Remove(props) {
         </Row>
         <Row>
           <Col>
-            <Button color="danger" block>
+            <Button
+              color="danger"
+              block
+              onClick={() => removeResolver(
+                web3.library,
+                web3.account,
+                id,
+                '1',
+              )}
+            >
               Remove
             </Button>
           </Col>
@@ -58,6 +77,7 @@ function Remove(props) {
 }
 
 Remove.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,

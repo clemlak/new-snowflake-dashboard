@@ -28,6 +28,9 @@ import Privacy from '../privacy';
 import Terms from '../terms';
 import Wallet from '../wallet';
 import Submit from '../submit';
+import Category from '../category';
+
+import DappDetails from '../dappDetails';
 
 const App = () => {
   const web3 = useWeb3Context();
@@ -58,7 +61,10 @@ const App = () => {
                 <Route exact path="/terms" component={Terms} />
                 <Route exact path="/wallet" component={Wallet} />
                 <Route exact path="/submit" component={Submit} />
-                <Route component={NoMatch} />
+                <Route path="/dapp/:id" component={DappDetails} />
+                <Route path="/category/:name" component={Category} />
+
+                <Route component={Home} />
               </Switch>
             </Col>
           </Row>

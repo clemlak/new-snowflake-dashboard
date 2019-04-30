@@ -11,10 +11,16 @@ import {
   Button,
 } from 'reactstrap';
 
+import Purchase from '../purchase';
+import Remove from '../remove';
+
 import imgPlaceholder from '../../common/img/placeholders/dapp.gif';
 import resolversJson from '../../legacy/resolvers.json';
 
 function DappPreview(props) {
+  const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
+  const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
+
   const {
     id,
     legacy,
@@ -35,6 +41,17 @@ function DappPreview(props) {
 
   return (
     <div>
+      <Purchase
+        title={details.title}
+        price={0}
+        isOpen={isPurchaseModalOpen}
+        toggle={() => setIsPurchaseModalOpen(false)}
+      />
+      <Remove
+        title={details.title}
+        isOpen={isRemoveModalOpen}
+        toggle={() => setIsRemoveModalOpen(false)}
+      />
       <Card>
         <CardImg top width="200px" src={details.logo} alt="Dapp preview" />
         <CardBody>
@@ -52,11 +69,16 @@ function DappPreview(props) {
           <Row className="justify-content-center align-items-center">
             <Col className="text-center">
               {added ? (
-                <Button color="success" size="sm">
-                  Open
-                </Button>
+                <div>
+                  <Button color="success" size="sm">
+                    Open
+                  </Button>
+                  <Button color="danger" size="sm" onClick={() => setIsRemoveModalOpen(true)}>
+                    Remove
+                  </Button>
+                </div>
               ) : (
-                <Button color="primary" size="sm">
+                <Button color="primary" size="sm" onClick={() => setIsPurchaseModalOpen(true)}>
                   Get
                 </Button>
               )}
@@ -76,7 +98,7 @@ function DappPreview(props) {
 export default DappPreview;
 
 DappPreview.propTypes = {
-  id: PropTypes.string,
-  legacy: PropTypes.bool,
-  added: PropTypes.bool,
+  id: PropTypes.string.isRequired,
+  legacy: PropTypes.bool.isRequired,
+  added: PropTypes.bool.isRequired,
 };

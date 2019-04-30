@@ -1,3 +1,10 @@
+/**
+ * Displays a preview of a dapp.
+ * This component can be used for any situation: buy / open / remove.
+ * In Legacy, this component fetches the data from an imported JSON file,
+ * but in V2, it will fetch data from an external API.
+ */
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -42,12 +49,14 @@ function DappPreview(props) {
   return (
     <div>
       <Purchase
+        id={id}
         title={details.title}
         price={0}
         isOpen={isPurchaseModalOpen}
         toggle={() => setIsPurchaseModalOpen(false)}
       />
       <Remove
+        id={id}
         title={details.title}
         isOpen={isRemoveModalOpen}
         toggle={() => setIsRemoveModalOpen(false)}

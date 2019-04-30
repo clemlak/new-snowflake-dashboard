@@ -48,12 +48,15 @@ function Manage() {
           <CardDeck>
             {resolvers.length > 0 ? (
               <div>
-                {resolvers.map(resolver => (
+                {resolvers.filter(resolver => resolver !== '0x387Ce3020e13B0a334Bb3EB25DdCb73c133f1D7A').map(resolver => (
                   <DappPreview
                     key={resolver}
                     id={resolver}
+                    legacy
+                    added
                   />
-                ))}
+                ))
+              }
               </div>
             ) : (
               <p>No dapps yet! :( </p>

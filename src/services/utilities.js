@@ -1,3 +1,8 @@
+import {
+  useState,
+  useEffect,
+} from 'react';
+
 import hydro from './contracts/hydro';
 import identityRegistry from './contracts/identityRegistry';
 import clientRaindrop from './contracts/clientRaindrop';
@@ -34,6 +39,17 @@ function getAccountEin(lib, address) {
 
       return ein;
     })
+    .catch(err => err);
+}
+
+function getIdentity(lib, account) {
+  const identityRegistryContract = new lib.eth.Contract(
+    identityRegistry.abi,
+    identityRegistry.address,
+  );
+
+  return getAccountEin(lib, account)
+    .then(ein => identityRegistryContract.methods.getIdentity(ein).call())
     .catch(err => err);
 }
 
@@ -140,6 +156,92 @@ function createIdentity(lib, hydroId, timestamp, signature) {
     .catch(err => err);
 }
 
+function getHydroTestTokens(lib, account) {
+  const hydroContract = new lib.eth.Contract(
+    hydro.abi,
+    hydro.address,
+  );
+
+  return hydroContract.methods.getMoreTokens().send({
+    from: account,
+  });
+}
+
+function getHydroBalance(lib, account) {
+  const hydroContract = new lib.eth.Contract(
+    hydro.abi,
+    hydro.address,
+  );
+
+  return hydroContract.methods.balanceOf(account).call();
+}
+
+function getSnowflakeBalance(lib, account) {
+  const snowflakeContract = new lib.eth.Contract(
+    snowflake.abi,
+    snowflake.address,
+  );
+
+  return getAccountEin(lib, account)
+    .then(ein => snowflakeContract.methods.deposits(ein).call())
+    .catch(err => err);
+}
+
+function withdrawSnowflakeBalance(lib, account, amount) {
+  const snowflakeContract = new lib.eth.Contract(
+    snowflake.abi,
+    snowflake.address,
+  );
+
+  return snowflakeContract.methods.withdrawSnowflakeBalance(
+    account,
+    lib.utils.toWei(amount),
+  ).send({
+    from: account,
+  });
+}
+
+function depositTokens(lib, account, amount) {
+  const hydroContract = new lib.eth.Contract(
+    hydro.abi,
+    hydro.address,
+  );
+
+  return hydroContract.methods.approveAndCall(
+    snowflake.address,
+    lib.utils.toWei(amount),
+    '0x00',
+  ).send({
+    from: account,
+  });
+}
+
+function getDapps(lib, account) {
+  const [dapps, setDapps] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const identityRegistryContract = new lib.eth.Contract(
+    identityRegistry.abi,
+    identityRegistry.address,
+  );
+
+  async function fetch() {
+    const ein = await getAccountEin(lib, account);
+    const identity = await identityRegistryContract.methods.getIdentity(ein).call();
+
+    setDapps(identity.resolvers);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    if (lib.active) {
+      fetch(lib, account);
+    }
+  }, []);
+
+  return [dapps, loading];
+}
+
 export {
   getAccountEthBalance,
   getAccountHydroBalance,
@@ -150,4 +252,11 @@ export {
   createSignedMessage,
   signPersonal,
   createIdentity,
+  getHydroTestTokens,
+  getHydroBalance,
+  getSnowflakeBalance,
+  withdrawSnowflakeBalance,
+  depositTokens,
+  getIdentity,
+  getDapps,
 };

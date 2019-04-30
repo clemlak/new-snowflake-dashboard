@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -12,29 +12,37 @@ import {
 } from 'reactstrap';
 
 import imgPlaceholder from '../../common/img/placeholders/dapp.gif';
+import resolversJson from '../../legacy/resolvers.json';
 
 function DappPreview(props) {
   const {
     id,
+    legacy,
+    added,
   } = props;
 
   const details = {
     title: 'Title',
-    subtitle: 'Subtitle',
+    category: 'Category',
+    logo: imgPlaceholder,
   };
 
-  console.log(`Displaying dapp ${id}`);
+  if (legacy) {
+    details.title = resolversJson[id].title;
+    details.category = resolversJson[id].category;
+    details.logo = `${process.env.PUBLIC_URL}/legacy/${id}/logo.png`;
+  }
 
   return (
     <div>
       <Card>
-        <CardImg top width="100%" src={imgPlaceholder} alt="Dapp preview" />
+        <CardImg top width="200px" src={details.logo} alt="Dapp preview" />
         <CardBody>
           <CardTitle>
             {details.title}
           </CardTitle>
           <CardSubtitle>
-            {details.subtitle}
+            {details.category}
           </CardSubtitle>
           <Row>
             <Col>
@@ -43,9 +51,15 @@ function DappPreview(props) {
           </Row>
           <Row className="justify-content-center align-items-center">
             <Col className="text-center">
-              <Button color="primary" size="sm">
-                Get
-              </Button>
+              {added ? (
+                <Button color="success" size="sm">
+                  Open
+                </Button>
+              ) : (
+                <Button color="primary" size="sm">
+                  Get
+                </Button>
+              )}
             </Col>
             <Col>
               <small className="text-muted">
@@ -63,4 +77,6 @@ export default DappPreview;
 
 DappPreview.propTypes = {
   id: PropTypes.string,
+  legacy: PropTypes.bool,
+  added: PropTypes.bool,
 };

@@ -24,11 +24,13 @@ function Manage() {
   const [resolvers, setResolvers] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const raindropContractAddress = '0x387Ce3020e13B0a334Bb3EB25DdCb73c133f1D7A';
+
   useEffect(() => {
     if (web3.active && loading) {
       getIdentity(web3.library, web3.account)
         .then((identity) => {
-          setResolvers(identity.resolvers);
+          setResolvers(identity.resolvers.filter(resolver => resolver !== raindropContractAddress));
           setLoading(false);
         })
         .catch((err) => { console.log(err); });
@@ -52,7 +54,7 @@ function Manage() {
           <CardDeck>
             {resolvers.length > 0 ? (
               <div>
-                {resolvers.filter(resolver => resolver !== '0x387Ce3020e13B0a334Bb3EB25DdCb73c133f1D7A').map(resolver => (
+                {resolvers.map(resolver => (
                   <DappPreview
                     key={resolver}
                     id={resolver}

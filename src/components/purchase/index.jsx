@@ -13,9 +13,19 @@ import {
   ModalHeader,
   ModalBody,
 } from 'reactstrap';
+import {
+  useWeb3Context,
+} from 'web3-react';
+
+import {
+  addResolver,
+} from '../../services/utilities';
 
 function Purchase(props) {
+  const web3 = useWeb3Context();
+
   const {
+    id,
     isOpen,
     title,
     price,
@@ -49,7 +59,16 @@ function Purchase(props) {
         </Row>
         <Row>
           <Col>
-            <Button color="primary" block>
+            <Button
+              color="primary"
+              block
+              onClick={() => addResolver(
+                web3.library,
+                web3.account,
+                id,
+                '1',
+              )}
+            >
               Purchase
             </Button>
           </Col>
@@ -60,6 +79,7 @@ function Purchase(props) {
 }
 
 Purchase.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   isOpen: PropTypes.bool.isRequired,

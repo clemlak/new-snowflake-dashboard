@@ -1,8 +1,3 @@
-import {
-  useState,
-  useEffect,
-} from 'react';
-
 import hydro from './contracts/hydro';
 import identityRegistry from './contracts/identityRegistry';
 import clientRaindrop from './contracts/clientRaindrop';
@@ -216,30 +211,35 @@ function depositTokens(lib, account, amount) {
   });
 }
 
-function getDapps(lib, account) {
-  const [dapps, setDapps] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const identityRegistryContract = new lib.eth.Contract(
-    identityRegistry.abi,
-    identityRegistry.address,
+function addResolver(lib, account, resolver, amount) {
+  const snowflakeContract = new lib.eth.Contract(
+    snowflake.abi,
+    snowflake.address,
   );
 
-  async function fetch() {
-    const ein = await getAccountEin(lib, account);
-    const identity = await identityRegistryContract.methods.getIdentity(ein).call();
+  return snowflakeContract.methods.addResolver(
+    resolver,
+    true,
+    lib.utils.toWei(amount),
+    '0x00',
+  ).send({
+    from: account,
+  });
+}
 
-    setDapps(identity.resolvers);
-    setLoading(false);
-  }
+function removeResolver(lib, account, resolver) {
+  const snowflakeContract = new lib.eth.Contract(
+    snowflake.abi,
+    snowflake.address,
+  );
 
-  useEffect(() => {
-    if (lib.active) {
-      fetch(lib, account);
-    }
-  }, []);
-
-  return [dapps, loading];
+  return snowflakeContract.methods.removeResolver(
+    resolver,
+    true,
+    '0x00',
+  ).send({
+    from: account,
+  });
 }
 
 export {
@@ -258,5 +258,6 @@ export {
   withdrawSnowflakeBalance,
   depositTokens,
   getIdentity,
-  getDapps,
+  addResolver,
+  removeResolver,
 };

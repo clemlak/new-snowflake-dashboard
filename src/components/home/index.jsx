@@ -9,9 +9,9 @@ import {
 } from 'reactstrap';
 
 import Featured from '../featured';
+import DappPreview from '../dappPreview';
 
 import resolversJson from '../../legacy/resolvers.json';
-import DappPreview from '../dappPreview';
 
 function Home() {
   const [tab, setTab] = useState('home');
@@ -56,6 +56,7 @@ function Home() {
               <DappPreview
                 key={resolver}
                 id={resolver}
+                added={false}
                 legacy
               />
             ))}

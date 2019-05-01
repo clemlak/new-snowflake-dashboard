@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { TextField, Typography, Button } from '@material-ui/core'
 
 import { useWeb3Context } from 'web3-react'
-import { useGenericContract, useNamedContract, useAccountEffect } from 'common/hooks'
-import TransactionButton from 'components/common/TransactionButton'
+import { useGenericContract, useNamedContract, useAccountEffect } from '../../common/hooks'
+import TransactionButton from '../../common/TransactionButton'
 
 import { ABI } from './index'
 
-export default function Status ({ ein }) {
+export default function Status ( props ) {
   const context = useWeb3Context()
   const [currentStatus, setCurrentStatus]  = useState('')
   const [newStatus, setNewStatus]  = useState('')
@@ -18,7 +18,7 @@ export default function Status ({ ein }) {
   const clientRaindropContract = useNamedContract('clientRaindrop')
   const statusContract = useGenericContract('0x16fD6e2E1C4afB9C4e7B901141706596317e4ceB', ABI)
   useAccountEffect(() => {
-    statusContract.methods.getStatus(ein).call().then(status => setCurrentStatus(status))
+    statusContract.methods.getStatus(props.ein).call().then(status => setCurrentStatus(status))
   })
 
   function checkStatus () {
@@ -52,7 +52,7 @@ return (
       <TransactionButton
         readyText='Set Status'
         method={() => statusContract.methods.setStatus(newStatus)}
-        onConfirmation={context.forceAccountReRender}
+        
       />
 
       <hr style={{marginTop: 30, marginBottom: 30}} />

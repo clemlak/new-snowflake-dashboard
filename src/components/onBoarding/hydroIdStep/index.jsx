@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   Row,
   Col,
@@ -15,30 +16,31 @@ import {
 
 import hydroIdImg from '../../../common/img/steps/hydroId.png';
 
-function HydroIdStep() {
+function HydroIdStep(props) {
+  const {
+    setNextStep,
+    setPreviousStep,
+  } = props;
+
   const [hydroId, setHydroId] = useState('');
-  const [validatedHydroId, setValidatedHydroId] = useState('');
   const [isHydroIdValidated, setIsHydroIdValidated] = useState(false);
 
   const web3 = useWeb3Context();
 
-  useEffect(() => {
-    if (hydroId !== '' && hydroId !== validatedHydroId) {
-      isHydroIdAvailable(web3.library, hydroId)
-        .then((result) => {
-          if (result) {
-            setValidatedHydroId(hydroId);
-            setIsHydroIdValidated(true);
-          } else {
-            setValidatedHydroId('');
-            setIsHydroIdValidated(false);
-          }
+  function updateAndCheck(idToCheck) {
+    setHydroId(idToCheck);
+    setIsHydroIdValidated(false);
+
+    if (idToCheck !== '') {
+      isHydroIdAvailable(web3.library, idToCheck)
+        .then((isAvailable) => {
+          setIsHydroIdValidated(isAvailable);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  });
+  }
 
   return (
     <div>
@@ -65,14 +67,18 @@ function HydroIdStep() {
         <Col xs="12" sm="10" className="text-center">
           <Input
             value={hydroId}
-            onChange={e => setHydroId(e.target.value)}
+            onChange={e => updateAndCheck(e.target.value)}
             placeholder="Your Hydro ID"
             type="text"
             required
             valid={isHydroIdValidated}
             invalid={!isHydroIdValidated}
           />
-          <Button className="btn-white">
+          <Button
+            className="btn-white"
+            onClick={setNextStep}
+            disabled={!isHydroIdValidated}
+          >
             Continue
           </Button>
           {hydroId !== '' && (
@@ -80,10 +86,18 @@ function HydroIdStep() {
               {isHydroIdValidated ? 'Hydro is valid' : 'Hydro is not valid'}
             </div>
           )}
+          <Button color="link" onClick={setPreviousStep}>
+            Back
+          </Button>
         </Col>
       </Row>
     </div>
   );
 }
+
+HydroIdStep.propTypes = {
+  setNextStep: PropTypes.func.isRequired,
+  setPreviousStep: PropTypes.func.isRequired,
+};
 
 export default HydroIdStep;

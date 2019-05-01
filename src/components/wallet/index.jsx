@@ -14,6 +14,7 @@ import {
 } from 'web3-react';
 
 import Transactions from './transactions';
+import TransactionButton from '../transactionButton';
 
 import {
   getHydroTestTokens,
@@ -23,7 +24,7 @@ import {
   withdrawSnowflakeBalance,
 } from '../../services/utilities';
 
-const Wallet = () => {
+function Wallet() {
   const [snowflakeBalance, setSnowflakeBalance] = useState('0');
 
   const web3 = useWeb3Context();
@@ -36,6 +37,14 @@ const Wallet = () => {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  function getHydroTestTokensButton() {
+    getHydroTestTokens(web3.library, web3.account);
+  }
+
+  function testFunc() {
+    console.log('It works!');
   }
 
   return (
@@ -105,9 +114,10 @@ const Wallet = () => {
             </Row>
             <Row className="justify-content-center py-5">
               <Col className="text-center">
-                <Button color="primary" onClick={() => getHydroTestTokens(web3.library, web3.account)}>
-                  Buy Hydro
-                </Button>
+                <TransactionButton
+                  text="Get Hydro tokens"
+                  send={() => getHydroTestTokens(web3.library, web3.account)}
+                />
               </Col>
             </Row>
           </Card>

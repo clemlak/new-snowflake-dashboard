@@ -20,6 +20,7 @@ import {
 
 import Purchase from '../purchase';
 import Remove from '../remove';
+import LegacyDapp from '../legacyDapp';
 
 import imgPlaceholder from '../../common/img/placeholders/dapp.gif';
 import resolversJson from '../../legacy/resolvers.json';
@@ -27,6 +28,7 @@ import resolversJson from '../../legacy/resolvers.json';
 function DappPreview(props) {
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
+  const [isDappModalOpen, setIsDappModalOpen] = useState(false);
 
   const {
     id,
@@ -48,6 +50,12 @@ function DappPreview(props) {
 
   return (
     <div>
+      <LegacyDapp
+        id={id}
+        title={details.title}
+        isOpen={isDappModalOpen}
+        toggle={() => setIsDappModalOpen(false)}
+      />
       <Purchase
         id={id}
         title={details.title}
@@ -79,7 +87,7 @@ function DappPreview(props) {
             <Col className="text-center">
               {added ? (
                 <div>
-                  <Button color="success" size="sm">
+                  <Button color="success" size="sm" onClick={() => setIsDappModalOpen(true)}>
                     Open
                   </Button>
                   <Button color="danger" size="sm" onClick={() => setIsRemoveModalOpen(true)}>

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   Modal,
   ModalHeader,
@@ -17,92 +18,75 @@ import ProviderStep from './providerStep';
 import WelcomeStep from './welcomeStep';
 import HydroIdStep from './hydroIdStep';
 
-class OnBoarding extends Component {
-  constructor(props) {
-    super(props);
+function Onboarding(props) {
+  const {
+    isOpen,
+    toggle,
+    hasProvider,
+  } = props;
 
-    this.state = {
-      isOpen: props.isOpen,
-      step: props.step,
-    };
+  const [currentStep, setCurrentStep] = useState('welcome');
 
-    this.toggle = this.toggle.bind(this);
-  }
-
-  componentDidUpdate() {
-    const {
-      isOpen,
-    } = this.state;
-
-    if (this.props.isOpen !== isOpen) {
-      this.setState({
-        isOpen: this.props.isOpen,
-      });
+  function displayStep() {
+    if (!hasProvider) {
+      return <ProviderStep />;
     }
-  }
 
-  toggle() {
-    const {
-      isOpen,
-    } = this.state;
-
-    this.setState({
-      isOpen: !isOpen,
-    });
-  }
-
-  close() {
-    this.setState({
-      isOpen: false,
-    });
-  }
-
-  render() {
-    const {
-      isOpen,
-      step,
-    } = this.state;
-
-    let content;
-
-    if (step === 'provider') {
-      content = <ProviderStep />;
-    } else if (step === 'welcome') {
-      content = <WelcomeStep />;
-    } else if (step === 'hydroId') {
-      content = <HydroIdStep />;
+    if (currentStep === 'hydroId') {
+      return (
+        <HydroIdStep
+          setPreviousStep={() => setCurrentStep('welcome')}
+          setNextStep={() => setCurrentStep('welcome')}
+        />
+      );
     }
 
     return (
-      <div>
-        <Modal isOpen={isOpen} size="lg" toggle={this.props.toggle}>
-          <ModalHeader close={<IoIosCloseCircle className="modal__close-button" onClick={this.props.toggle} />} />
-          <ModalBody className="align-content-center">
-            {content}
-          </ModalBody>
-          <ModalFooter>
-            <Nav className="footer__menu">
-              <NavItem>
-                <NavLink tag={RouterNavLink} exact to="/privacy" className="modal-footer__link">
-                  Privacy Terms
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={RouterNavLink} exact to="/terms" className="modal-footer__link">
-                  Terms of Use
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={RouterNavLink} exact to="/faq" className="modal-footer__link">
-                  FAQs
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </ModalFooter>
-        </Modal>
-      </div>
+      <WelcomeStep
+        setPreviousStep={() => setCurrentStep('welcome')}
+        setNextStep={() => setCurrentStep('hydroId')}
+      />
     );
   }
+
+  return (
+    <div>
+      <Modal isOpen={isOpen} size="lg" toggle={toggle}>
+        <ModalHeader
+          close={<IoIosCloseCircle className="modal__close-button " onClick={toggle} />}
+          className="onboarding__modal"
+        />
+        <ModalBody className="align-content-center onboarding__modal">
+          {displayStep()}
+        </ModalBody>
+        <ModalFooter className="onboarding__modal">
+          <Nav className="footer__menu">
+            <NavItem>
+              <NavLink tag={RouterNavLink} exact to="/privacy" className="modal-footer__link">
+                Privacy Terms
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={RouterNavLink} exact to="/terms" className="modal-footer__link">
+                Terms of Use
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={RouterNavLink} exact to="/faq" className="modal-footer__link">
+                FAQs
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </ModalFooter>
+      </Modal>
+    </div>
+  );
 }
 
-export default OnBoarding;
+Onboarding.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
+  hasProvider: PropTypes.bool.isRequired,
+};
+
+export default Onboarding;

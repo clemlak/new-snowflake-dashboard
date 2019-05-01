@@ -6,7 +6,7 @@ import {
   useWeb3Context,
 } from 'web3-react';
 
-import OnBoarding from '../../onBoarding';
+import Onboarding from '../../onboarding';
 
 import {
   getAccountEin,
@@ -79,6 +79,10 @@ function HeaderAccount() {
       */
   }
 
+  function toggle() {
+    setIsModalOpen(!isModalOpen);
+  }
+
   if (hasEin) {
     return (
       <div>
@@ -94,12 +98,12 @@ function HeaderAccount() {
 
   return (
     <div>
-      <OnBoarding
-        step={hasProvider ? 'provider' : 'hydroId'}
+      <Onboarding
+        hasProvider={hasProvider}
         isOpen={isModalOpen}
-        toggle={() => setIsModalOpen(false)}
+        toggle={() => toggle()}
       />
-      <Button color="primary" onClick={() => setIsModalOpen(!isModalOpen)}>
+      <Button color="primary" onClick={() => toggle()}>
         Create Account
       </Button>
     </div>

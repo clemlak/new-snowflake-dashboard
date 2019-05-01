@@ -12,7 +12,7 @@ import {
   useWeb3Context,
 } from 'web3-react';
 
-import OnBoarding from '../onBoarding';
+import Onboarding from '../onboarding';
 import CategoriesMenu from './categoriesMenu';
 
 import {
@@ -68,7 +68,7 @@ function Sidebar() {
             </div>
           ) : (
             <div>
-              <OnBoarding
+              <Onboarding
                 step={hasProvider ? 'provider' : 'hydroId'}
                 isOpen={isModalOpen}
                 toggle={() => setIsModalOpen(false)}

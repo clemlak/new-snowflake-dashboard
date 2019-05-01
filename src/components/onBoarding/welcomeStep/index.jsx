@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Row,
   Col,
@@ -7,7 +8,11 @@ import {
 
 import Welcome from '../../../common/img/steps/welcome.png';
 
-function WelcomeStep() {
+function WelcomeStep(props) {
+  const {
+    setNextStep,
+  } = props;
+
   return (
     <div>
       <Row className="justify-content-center">
@@ -31,7 +36,7 @@ function WelcomeStep() {
       </Row>
       <Row className="justify-content-center py-3">
         <Col xs="12" sm="10" className="text-center">
-          <Button className="btn-white">
+          <Button className="btn-white" onClick={setNextStep}>
             Let's get started
           </Button>
         </Col>
@@ -46,5 +51,9 @@ function WelcomeStep() {
     </div>
   );
 }
+
+WelcomeStep.propTypes = {
+  setNextStep: PropTypes.func.isRequired,
+};
 
 export default WelcomeStep;

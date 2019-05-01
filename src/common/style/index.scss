@@ -1,6 +1,9 @@
 @import './variables.scss';
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 
+@import './filters.scss';
+@import './onboarding.scss';
+
 /**
  * Header
  */
@@ -17,7 +20,6 @@
 
 .modal-content {
   border: none;
-  background-color: #2269f6;
 }
 
 .modal-header {
@@ -101,7 +103,7 @@
 
 .btn-outlined:hover {
   color: $snow-white;
-  background-color: #395fff;;
+  background-color: #395fff;
   border-color: #395fff;
 }
 

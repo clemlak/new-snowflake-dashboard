@@ -9,6 +9,7 @@ function TransactionButton(props) {
   const {
     text,
     send,
+    finalAction,
   } = props;
 
   const [status, setStatus] = useState('');
@@ -60,7 +61,12 @@ function TransactionButton(props) {
   return (
     <Button
       color="primary"
-      onClick={() => sendTransaction()}
+      onClick={
+        status === 'confirmed' ? (
+          () => finalAction()
+        ) : (
+          () => sendTransaction()
+        )}
     >
       {showContent()}
     </Button>
@@ -70,6 +76,13 @@ function TransactionButton(props) {
 TransactionButton.propTypes = {
   text: PropTypes.string.isRequired,
   send: PropTypes.func.isRequired,
+  finalAction: PropTypes.func,
+};
+
+TransactionButton.defaultProps = {
+  finalAction: () => {
+    console.log('Done');
+  },
 };
 
 export default TransactionButton;

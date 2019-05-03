@@ -1,0 +1,74 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import {
+  Row,
+  Col,
+  Button,
+} from 'reactstrap';
+import {
+  useWeb3Context,
+} from 'web3-react';
+
+import SignatureButton from '../../signatureButton';
+
+import {
+  createSignedMessage,
+  signPersonal,
+} from '../../../services/utilities';
+
+import permissionImg from '../../../common/img/steps/permission.png';
+
+function PermissionStep(props) {
+  const {
+    setNextStep,
+  } = props;
+
+  const web3 = useWeb3Context();
+
+  const timestamp = Math.round(new Date() / 1000) - 120;
+  const signedMessage = createSignedMessage(
+    web3.library,
+    web3.account,
+    timestamp,
+  )
+
+  return (
+    <div>
+      <Row className="justify-content-center">
+        <Col xs="12" sm="6" className="text-center">
+          <img src={permissionImg} alt="welcome" className="img-fluid" />
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col xs="12" sm="6" className="text-center">
+          <h1 className="text-white">
+            Permission
+          </h1>
+        </Col>
+      </Row>
+      <Row className="justify-content-center py-3">
+        <Col xs="12" sm="8" className="text-center">
+          <p className="text-white">
+            The next step is for you to give us permission to create your account on the blockchain. This requires your signature of a hashed permission string. Simply click Accept below and be sure to check MetaMask for the prompt and confirm.
+          </p>
+        </Col>
+      </Row>
+      <Row className="justify-content-center py-3">
+        <Col xs="12" sm="10" className="text-center">
+          <Button
+            className="btn-white"
+            onClick={setNextStep}
+          >
+            Accept
+          </Button>
+        </Col>
+      </Row>
+    </div>
+  );
+}
+
+PermissionStep.propTypes = {
+  setNextStep: PropTypes.func.isRequired,
+};
+
+export default PermissionStep;

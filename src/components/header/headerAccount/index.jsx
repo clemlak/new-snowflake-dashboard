@@ -1,3 +1,7 @@
+/**
+ *
+ */
+
 import React, { useState } from 'react';
 import {
   Button,
@@ -11,10 +15,6 @@ import Onboarding from '../../onboarding';
 import {
   getAccountEin,
   getAccountDetails,
-  isHydroIdAvailable,
-  createSignedMessage,
-  signPersonal,
-  createIdentity,
 } from '../../../services/utilities';
 
 function HeaderAccount() {
@@ -53,30 +53,6 @@ function HeaderAccount() {
           console.log(err);
         });
     }
-
-/*
-    const newHydroId = 'hellopickle';
-
-    isHydroIdAvailable(web3.library, 'picklE');
-
-    const timestamp = Math.round(new Date() / 1000) - 120;
-
-    const signedMessage = createSignedMessage(web3.library, web3.account, timestamp);
-
-    signPersonal(web3.library, web3.account, signedMessage)
-      .then((signature) => {
-        console.log(signature);
-
-        return createIdentity(web3.library, newHydroId, timestamp, signature);
-      })
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-      */
   }
 
   function toggle() {

@@ -8,19 +8,20 @@ import {
 function SignatureButton(props) {
   const {
     text,
-    timestamp,
-    sign,
+    initialAction,
+    callbackAction,
+    finalAction,
   } = props;
 
   const [status, setStatus] = useState('');
 
-  function thisSign() {
+  function sign() {
     setStatus('waiting');
 
-    sign()
+    initialAction()
       .then((signature) => {
         setStatus('confirmed');
-        console.log(signature);
+        callbackAction(signature);
       })
       .catch((err) => {
         console.log(err);
@@ -53,7 +54,12 @@ function SignatureButton(props) {
   return (
     <Button
       color="primary"
-      onClick={() => thisSign()}
+      onClick={
+        status === 'confirmed' ? (
+          () => finalAction()
+        ) : (
+          () => sign()
+        )}
     >
       {showContent()}
     </Button>
@@ -62,7 +68,9 @@ function SignatureButton(props) {
 
 SignatureButton.propTypes = {
   text: PropTypes.string.isRequired,
-  sign: PropTypes.func.isRequired,
+  initialAction: PropTypes.func.isRequired,
+  callbackAction: PropTypes.func.isRequired,
+  finalAction: PropTypes.func.isRequired,
 };
 
 export default SignatureButton;

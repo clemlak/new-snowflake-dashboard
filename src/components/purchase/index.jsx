@@ -1,5 +1,6 @@
 /**
  * Adds the dapp to the providers of the current user
+ * TODO: Use the TransactionButton component
  */
 
 import React from 'react';

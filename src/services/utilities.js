@@ -115,7 +115,7 @@ function signPersonal(lib, address, message) {
       address,
     },
     (err, result) => {
-      if (err) {
+      if (result.err) {
         return reject(err);
       }
 
@@ -146,9 +146,7 @@ function createIdentity(lib, hydroId, timestamp, signature) {
     signature.from, signature.from, [], hydroId, signature.v, signature.r, signature.s, timestamp,
   ).send({
     from: signature.from,
-  })
-    .then(result => result)
-    .catch(err => err);
+  });
 }
 
 function getHydroTestTokens(lib, account) {

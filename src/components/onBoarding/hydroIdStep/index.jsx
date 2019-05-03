@@ -19,15 +19,16 @@ import hydroIdImg from '../../../common/img/steps/hydroId.png';
 function HydroIdStep(props) {
   const {
     setNextStep,
+    setHydroId,
   } = props;
 
-  const [hydroId, setHydroId] = useState('');
+  const [thisHydroId, setThisHydroId] = useState('');
   const [isHydroIdValidated, setIsHydroIdValidated] = useState(false);
 
   const web3 = useWeb3Context();
 
   function updateAndCheck(idToCheck) {
-    setHydroId(idToCheck);
+    setThisHydroId(idToCheck);
     setIsHydroIdValidated(false);
 
     if (idToCheck !== '') {
@@ -39,6 +40,11 @@ function HydroIdStep(props) {
           console.log(err);
         });
     }
+  }
+
+  function confirm() {
+    setHydroId(thisHydroId);
+    setNextStep();
   }
 
   return (
@@ -65,7 +71,7 @@ function HydroIdStep(props) {
       <Row className="justify-content-center py-3">
         <Col xs="12" sm="10" className="text-center">
           <Input
-            value={hydroId}
+            value={thisHydroId}
             onChange={e => updateAndCheck(e.target.value)}
             placeholder="Your Hydro ID"
             type="text"
@@ -75,12 +81,12 @@ function HydroIdStep(props) {
           />
           <Button
             className="btn-white"
-            onClick={setNextStep}
+            onClick={confirm}
             disabled={!isHydroIdValidated}
           >
             Continue
           </Button>
-          {hydroId !== '' && (
+          {thisHydroId !== '' && (
             <div>
               {isHydroIdValidated ? 'Hydro is valid' : 'Hydro is not valid'}
             </div>
@@ -93,6 +99,7 @@ function HydroIdStep(props) {
 
 HydroIdStep.propTypes = {
   setNextStep: PropTypes.func.isRequired,
+  setHydroId: PropTypes.func.isRequired,
 };
 
 export default HydroIdStep;

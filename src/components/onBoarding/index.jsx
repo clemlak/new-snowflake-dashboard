@@ -19,6 +19,7 @@ import ProviderStep from './providerStep';
 import WelcomeStep from './welcomeStep';
 import HydroIdStep from './hydroIdStep';
 import PermissionStep from './permissionStep';
+import ClaimStep from './claimStep';
 
 function Onboarding(props) {
   const {
@@ -28,8 +29,9 @@ function Onboarding(props) {
   } = props;
 
   const [currentStep, setCurrentStep] = useState(1);
-  const [timestamp, setTimestamp] = useState(0);
   const [signature, setSignature] = useState('');
+  const [hydroId, setHydroId] = useState('');
+  const [timestamp, setTimestamp] = useState(Math.round(new Date() / 1000) - 120);
 
   function displayStep() {
     if (!hasProvider) {
@@ -40,6 +42,7 @@ function Onboarding(props) {
       return (
         <HydroIdStep
           setNextStep={() => setCurrentStep(3)}
+          setHydroId={newHydroId => setHydroId(newHydroId)}
         />
       );
     }
@@ -48,8 +51,19 @@ function Onboarding(props) {
       return (
         <PermissionStep
           setNextStep={() => setCurrentStep(4)}
-          setTimestamp={newTimestamp => setTimestamp(newTimestamp)}
+          timestamp={timestamp}
           setSignature={newSignature => setSignature(newSignature)}
+        />
+      );
+    }
+
+    if (currentStep === 4) {
+      return (
+        <ClaimStep
+          signature={signature}
+          hydroId={hydroId}
+          timestamp={timestamp}
+          toggle={toggle}
         />
       );
     }

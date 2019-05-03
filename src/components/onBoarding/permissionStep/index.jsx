@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
   Col,
-  Button,
 } from 'reactstrap';
 import {
   useWeb3Context,
@@ -21,16 +20,19 @@ import permissionImg from '../../../common/img/steps/permission.png';
 function PermissionStep(props) {
   const {
     setNextStep,
+    setSignature,
+    timestamp,
   } = props;
 
   const web3 = useWeb3Context();
 
-  const timestamp = Math.round(new Date() / 1000) - 120;
+  console.log(timestamp);
+
   const signedMessage = createSignedMessage(
     web3.library,
     web3.account,
     timestamp,
-  )
+  );
 
   return (
     <div>
@@ -55,12 +57,12 @@ function PermissionStep(props) {
       </Row>
       <Row className="justify-content-center py-3">
         <Col xs="12" sm="10" className="text-center">
-          <Button
-            className="btn-white"
-            onClick={setNextStep}
-          >
-            Accept
-          </Button>
+          <SignatureButton
+            text="Accept"
+            initialAction={() => signPersonal(web3.library, web3.account, signedMessage)}
+            callbackAction={setSignature}
+            finalAction={setNextStep}
+          />
         </Col>
       </Row>
     </div>
@@ -69,6 +71,8 @@ function PermissionStep(props) {
 
 PermissionStep.propTypes = {
   setNextStep: PropTypes.func.isRequired,
+  timestamp: PropTypes.number.isRequired,
+  setSignature: PropTypes.func.isRequired,
 };
 
 export default PermissionStep;

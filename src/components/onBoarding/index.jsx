@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Modal,
@@ -8,6 +8,7 @@ import {
   Nav,
   NavItem,
   NavLink,
+  Button,
 } from 'reactstrap';
 import {
   NavLink as RouterNavLink,
@@ -17,6 +18,7 @@ import { IoIosCloseCircle } from 'react-icons/io';
 import ProviderStep from './providerStep';
 import WelcomeStep from './welcomeStep';
 import HydroIdStep from './hydroIdStep';
+import PermissionStep from './permissionStep';
 
 function Onboarding(props) {
   const {
@@ -25,28 +27,44 @@ function Onboarding(props) {
     hasProvider,
   } = props;
 
-  const [currentStep, setCurrentStep] = useState('welcome');
+  const [currentStep, setCurrentStep] = useState(1);
+  const [timestamp, setTimestamp] = useState(0);
+  const [signature, setSignature] = useState('');
 
   function displayStep() {
     if (!hasProvider) {
       return <ProviderStep />;
     }
 
-    if (currentStep === 'hydroId') {
+    if (currentStep === 2) {
       return (
         <HydroIdStep
-          setPreviousStep={() => setCurrentStep('welcome')}
-          setNextStep={() => setCurrentStep('welcome')}
+          setNextStep={() => setCurrentStep(3)}
+        />
+      );
+    }
+
+    if (currentStep === 3) {
+      return (
+        <PermissionStep
+          setNextStep={() => setCurrentStep(4)}
+          setTimestamp={newTimestamp => setTimestamp(newTimestamp)}
+          setSignature={newSignature => setSignature(newSignature)}
         />
       );
     }
 
     return (
       <WelcomeStep
-        setPreviousStep={() => setCurrentStep('welcome')}
-        setNextStep={() => setCurrentStep('hydroId')}
+        setNextStep={() => setCurrentStep(2)}
       />
     );
+  }
+
+  function setPreviousStep() {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
   }
 
   return (
@@ -55,7 +73,13 @@ function Onboarding(props) {
         <ModalHeader
           close={<IoIosCloseCircle className="modal__close-button " onClick={toggle} />}
           className="onboarding__modal"
-        />
+        >
+          {currentStep > 1 && (
+            <Button color="secondary" onClick={() => setPreviousStep()}>
+              Back
+            </Button>
+          )}
+        </ModalHeader>
         <ModalBody className="align-content-center onboarding__modal">
           {displayStep()}
         </ModalBody>

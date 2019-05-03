@@ -19,7 +19,6 @@ import hydroIdImg from '../../../common/img/steps/hydroId.png';
 function HydroIdStep(props) {
   const {
     setNextStep,
-    setPreviousStep,
   } = props;
 
   const [hydroId, setHydroId] = useState('');
@@ -86,9 +85,6 @@ function HydroIdStep(props) {
               {isHydroIdValidated ? 'Hydro is valid' : 'Hydro is not valid'}
             </div>
           )}
-          <Button color="link" onClick={setPreviousStep}>
-            Back
-          </Button>
         </Col>
       </Row>
     </div>
@@ -97,7 +93,6 @@ function HydroIdStep(props) {
 
 HydroIdStep.propTypes = {
   setNextStep: PropTypes.func.isRequired,
-  setPreviousStep: PropTypes.func.isRequired,
 };
 
 export default HydroIdStep;

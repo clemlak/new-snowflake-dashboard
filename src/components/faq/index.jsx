@@ -29,6 +29,7 @@ const Faq = () => {
           <div className="accordion">
             {faqJson.map(qa => (
               <QA
+                key={qa.question}
                 question={qa.question}
                 answer={qa.answer}
               />

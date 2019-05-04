@@ -1,3 +1,7 @@
+/**
+ *
+ */
+
 import React from 'react';
 import {
   Collapse,
@@ -54,7 +58,7 @@ class Header extends React.Component {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto align-items-center" navbar>
               <NavItem>
-                <NavLink tag={RouterNavLink} exact to="/help" activeClassName="active">
+                <NavLink tag={RouterNavLink} exact to="/faq" activeClassName="active">
                   <IoMdHelpCircle className="header__icon" />
                 </NavLink>
               </NavItem>

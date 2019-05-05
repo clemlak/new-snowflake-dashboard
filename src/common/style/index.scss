@@ -1,8 +1,19 @@
+/**
+ * Our main stylesheet
+ */
+
 @import './variables.scss';
 @import '../../../node_modules/bootstrap/scss/bootstrap';
 
+// All the stylesheets of our components
+@import './fonts.scss';
 @import './filters.scss';
 @import './onboarding.scss';
+@import './header.scss';
+
+body {
+  font-family: 'Open Sans';
+}
 
 /**
  * Header

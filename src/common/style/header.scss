@@ -1,0 +1,46 @@
+.navbar {
+  padding: 0px;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  padding: 10px 0 0 20px;
+  margin: 0;
+  height: 85px;
+  width: 100%;
+}
+
+.header__title {
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: -8px;
+}
+
+.header__subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8c8c8c;
+  padding: 5px 0 0 27px;
+}
+
+.header__hydro {
+  color: #1d4cff;
+}
+
+.header__account {
+  text-align: right;
+  margin-right: 30px;
+}
+
+.header__welcome {
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.header__ein {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8c8c8c;
+  text-transform: uppercase;
+}

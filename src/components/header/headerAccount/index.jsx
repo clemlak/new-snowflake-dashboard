@@ -61,11 +61,11 @@ function HeaderAccount() {
 
   if (hasEin) {
     return (
-      <div>
-        <p className="mb-0">
+      <div className="header__account">
+        <p className="header__welcome">
           {`Welcome ${hydroId}`}
         </p>
-        <p className="small">
+        <p className="header__ein">
           {`Ein: ${ein}`}
         </p>
       </div>

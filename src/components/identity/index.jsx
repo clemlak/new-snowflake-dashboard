@@ -66,10 +66,12 @@ const Identity = () => {
       </Row>
       <Row>
         <Col>
-          <Card className="blue-card">
+          <Card className="identity">
             <Row className="p-3">
               <Col>
-                <p>Your Snowflake (EIN)</p>
+                <p className="identity__title">
+                  Your Snowflake (EIN)
+                </p>
               </Col>
               <Col className="text-right">
                 <IoMdHelpCircleOutline />
@@ -78,16 +80,37 @@ const Identity = () => {
             <Row>
               <Col className="text-center">
                 <ul>
-                  <li>
+                  <li className="identity__hydro-id">
                     Hydro ID: {hydroId}
                   </li>
-                  <li>
+                  <li className="identity__ein">
                     EIN: {ein}
                   </li>
-                  <li>
+                  <li className="identity__linked-wallets">
                     Linked Wallet(s): 1
                   </li>
                 </ul>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div className="status">
+                  <Row>
+                    <Col>
+                      <p className="status__title">
+                        My Status
+                      </p>
+                    </Col>
+                    <Col>
+                      <Button className="status__edit">
+                        Edit
+                      </Button>
+                    </Col>
+                  </Row>
+                  <p className="status__current">
+                    I'm having a great day!
+                  </p>
+                </div>
               </Col>
             </Row>
           </Card>

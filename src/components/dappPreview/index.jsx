@@ -11,10 +11,7 @@ import {
   Row,
   Col,
   Card,
-  CardImg,
   CardBody,
-  CardTitle,
-  CardSubtitle,
   Button,
 } from 'reactstrap';
 
@@ -69,22 +66,17 @@ function DappPreview(props) {
         isOpen={isRemoveModalOpen}
         toggle={() => setIsRemoveModalOpen(false)}
       />
-      <Card>
-        <CardImg top width="200px" src={details.logo} alt="Dapp preview" />
-        <CardBody>
+      <Card className="dapp-preview">
+        <img src={details.logo} alt="Dapp Preview Logo" className="dapp-preview__image" />
+        <CardBody className="dapp-preview__body">
           <h4 className="dapp-preview__title">
             {details.title}
           </h4>
           <h5 className="dapp-preview__category">
             {details.category}
           </h5>
-          <Row>
-            <Col>
-              Rating
-            </Col>
-          </Row>
           <Row className="justify-content-center align-items-center">
-            <Col className="text-center">
+            <Col>
               {added ? (
                 <div>
                   <Button color="success" size="sm" onClick={() => setIsDappModalOpen(true)}>
@@ -100,10 +92,8 @@ function DappPreview(props) {
                 </Button>
               )}
             </Col>
-            <Col>
-              <small className="text-muted">
-                In-dApp Purchases
-              </small>
+            <Col className="dapp-preview__purchases">
+              In-dApp Purchases
             </Col>
           </Row>
         </CardBody>

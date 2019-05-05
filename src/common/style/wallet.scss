@@ -1,0 +1,26 @@
+.wallet {
+  background-color: #395fff;
+  border: none;
+  color: $snow-white;
+  padding: 15px;
+}
+
+.wallet__title {
+  font-size: 19px;
+  font-weight: 100;
+  margin-left: -20px;
+  opacity: 0.72;
+}
+
+.wallet__balance {
+  font-size: 55px;
+}
+
+.wallet__hydro {
+  opacity: 0.72;
+  font-size: 19px;
+}
+
+.wallet__usd {
+  opacity: 0.72;
+}

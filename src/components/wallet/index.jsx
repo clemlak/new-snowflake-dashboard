@@ -39,42 +39,35 @@ function Wallet() {
       });
   }
 
-  function getHydroTestTokensButton() {
-    getHydroTestTokens(web3.library, web3.account);
-  }
-
-  function testFunc() {
-    console.log('It works!');
-  }
-
   return (
     <Container>
       <Row>
         <Col>
-          <Card className="blue-card">
+          <Card className="wallet">
             <Row className="p-3">
               <Col>
-                <p>Your dApp Store Wallet</p>
+                <p className="wallet__title">
+                  Your dApp Store Wallet
+                </p>
               </Col>
-              <Col className="text-right">
+              <Col sm="2" className="text-right">
                 <IoMdHelpCircleOutline />
               </Col>
             </Row>
             <Row>
               <Col className="text-center">
-                <p className="small mb-0 text-muted">
-                  <span className="h1 text-white">
-                    {snowflakeBalance}
+                <p className="wallet__balance mb-0">
+                  {snowflakeBalance.substring(0, 5)}
+                  <span className="wallet__hydro">
+                    Hydro
                   </span>
-                  {' '}
-                  Hydro
                 </p>
-                <p className="small text-muted">
+                <p className="wallet__usd small">
                   USD $340.00
                 </p>
               </Col>
             </Row>
-            <Row className="justify-content-center py-5">
+            <Row className="justify-content-center align-items-center py-5">
               <Col className="text-right">
                 <Button className="btn-white" onClick={() => depositTokens(web3.library, web3.account, '10')}>
                   Deposit

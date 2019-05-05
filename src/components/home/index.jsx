@@ -18,11 +18,15 @@ function Home() {
 
   return (
     <div>
-      <Nav tabs>
+      <Nav className="filters">
         <NavItem>
           <NavLink
-            className="dappNavigation__filter__button"
             onClick={() => setTab('home')}
+            className={tab === 'home' ? (
+              'filters__link-active'
+            ) : (
+              'filters__link'
+            )}
           >
             Home
           </NavLink>
@@ -30,6 +34,11 @@ function Home() {
         <NavItem>
           <NavLink
             onClick={() => setTab('featured')}
+            className={tab === 'featured' ? (
+              'filters__link-active'
+            ) : (
+              'filters__link'
+            )}
           >
             Featured
           </NavLink>
@@ -37,6 +46,11 @@ function Home() {
         <NavItem>
           <NavLink
             onClick={() => setTab('popular')}
+            className={tab === 'popular' ? (
+              'filters__link-active'
+            ) : (
+              'filters__link'
+            )}
           >
             Most popular
           </NavLink>
@@ -44,6 +58,11 @@ function Home() {
         <NavItem>
           <NavLink
             onClick={() => setTab('last')}
+            className={tab === 'last' ? (
+              'filters__link-active'
+            ) : (
+              'filters__link'
+            )}
           >
             Last Releases
           </NavLink>

@@ -1,6 +1,15 @@
-import { useState, useEffect, useReducer, useMemo, useRef } from 'react'
-import { useWeb3Context, isValidWeb3ContextInterface } from 'web3-react'
-import contracts from './contracts'
+import {
+  useState,
+  useEffect,
+  useReducer,
+  useMemo,
+  useRef,
+} from 'react';
+import {
+  useWeb3Context,
+  isValidWeb3ContextInterface,
+} from 'web3-react';
+import contracts from './contracts';
 import {
   GENERIC_SNOWFLAKE_RESOLVER_ABI,
   TRANSACTION_ERROR_CODES,
@@ -10,43 +19,43 @@ import {
   getERC20Balance,
   signPersonal,
   sendTransaction,
-  toDecimal
+  toDecimal,
 } from './utilities';
 
-import { default as defaultLogo } from './defaultLogo.png'
+import { default as defaultLogo } from './defaultLogo.png';
 
-export function useNetworkName (networkId) {
+function useNetworkName (networkId) {
   const context = useWeb3Context()
-  return useMemo(() => getNetworkName(networkId || context.networkId), [networkId, context.networkId])
+  return useMemo(() => getNetworkName(networkId || context.networkId), [networkId, context.networkId]);
 }
 
-export function useAccountEffect(effect, depends = []) {
+function useAccountEffect(effect, depends = []) {
   const context = useWeb3Context()
-  useEffect(effect, [...depends, context.networkId, context.account])
+  useEffect(effect, [...depends, context.networkId, context.account]);
 }
 
-export function useAccountBalance (address, {numberOfDigits = 3, format} = {}) {
-  const context = useWeb3Context()
-  const [ balance, setBalance ] = useState(undefined)
+function useAccountBalance (address, {numberOfDigits = 3, format} = {}) {
+  const context = useWeb3Context();
+  const [ balance, setBalance ] = useState(undefined);
 
   useAccountEffect(() => {
     getAccountBalance(context.library, address || context.account, format)
       .then(balance =>
         setBalance(Number(balance).toLocaleString(undefined, { maximumFractionDigits: numberOfDigits }))
       )
-  })
+  });
 
-  return balance
+  return balance;
 }
 
-export function useEtherscanLink (type, data, networkId) {
+function useEtherscanLink (type, data, networkId) {
   const context = useWeb3Context()
   return useMemo(
     () => getEtherscanLink(networkId || context.networkId, type, data), [networkId, context.networkId, type, data]
-  )
+  );
 }
 
-export function useERC20Balance (ERC20Address, address, numberOfDigits = 3) {
+function useERC20Balance (ERC20Address, address, numberOfDigits = 3) {
   const context = useWeb3Context()
   const [ ERC20Balance, setERC20Balance ] = useState(undefined)
 
@@ -87,7 +96,7 @@ function signatureReducer (state, action) {
   }
 }
 
-export function useSignPersonalManager (message, { handlers = {} } = {}) {
+function useSignPersonalManager (message, { handlers = {} } = {}) {
   const context = useWeb3Context()
 
   const [signature, dispatch] = useReducer(signatureReducer, initialSignature)
@@ -118,19 +127,19 @@ export function useSignPersonalManager (message, { handlers = {} } = {}) {
 }
 
 // Gets selected contract data.
-export function useNamedContract(name) {
+function useNamedContract(name) {
   const networkName = useNetworkName()
   const contractVariables = contracts[networkName][name]
   return useGenericContract(contractVariables.address, contractVariables.ABI)
 }
 
-export function useGenericContract(address, ABI) {
+function useGenericContract(address, ABI) {
   const context = useWeb3Context()
   return useMemo(() => new context.library.eth.Contract(ABI, address), [address, ABI])
 }
 
 // Gets the users EIN.
-export function useEIN (address) {
+function useEIN (address) {
   const context = useWeb3Context()
   const _1484Contract = useNamedContract('1484')
   const [ein, setEIN] = useState()
@@ -149,7 +158,7 @@ export function useEIN (address) {
 }
 
 // Gets the users HydroId.
-export function useHydroId () {
+function useHydroId () {
   const clientRaindropContract = useNamedContract('clientRaindrop')
   const ein = useEIN()
   const [hydroId, setHydroId] = useState({hydroId: undefined, hydroIdAddress: undefined})
@@ -169,7 +178,7 @@ export function useHydroId () {
 }
 
 // Use the users Hydro balance.
-export function useHydroBalance () {
+function useHydroBalance () {
   const context = useWeb3Context()
   const networkName = useNetworkName()
 
@@ -177,7 +186,7 @@ export function useHydroBalance () {
 }
 
 // Use the users Snowflake balance.
-export function useSnowflakeBalance (ein, unconverted = false) {
+function useSnowflakeBalance (ein, unconverted = false) {
   const snowflakeContract = useNamedContract('snowflake')
   const [snowflakeBalance, setSnowflakeBalance] = useState()
 
@@ -194,7 +203,7 @@ export function useSnowflakeBalance (ein, unconverted = false) {
 }
 
 // Use get the identity of the selected Snowflke user and set their details.
-export function useEINDetails (ein) {
+function useEINDetails (ein) {
   const _1484Contract = useNamedContract('1484')
   const [einDetails, setEINDetails] = useState()
 
@@ -211,7 +220,7 @@ export function useEINDetails (ein) {
 }
 
 // The resolver (dApp) has an allowance of Hydro it can use. The allowance gets set here.
-export function useResolverAllowances (resolvers = []) {
+function useResolverAllowances (resolvers = []) {
   const ein = useEIN()
   const snowflakeContract = useNamedContract('snowflake')
   const [allowances, setAllowances] = useState()
@@ -229,19 +238,55 @@ export function useResolverAllowances (resolvers = []) {
   return ein === null ? null : allowances
 }
 
+// Gets the details of the resolver (dApp) - Properties like its name and description are defined here.
+async function getResolverDetails(web3js, snowflakeContract, networkName, resolver) {
+  const genericContract = new web3js.eth.Contract(GENERIC_SNOWFLAKE_RESOLVER_ABI, resolver)
+
+  const name = () => genericContract.methods.snowflakeName().call()
+  const description = () => genericContract.methods.snowflakeDescription().call()
+
+  const chainDetails = await Promise.all([name(), description()])
+    .then(([name, description]) => ({
+        name:        name,
+        description: description
+    }))
+    .catch(() => ({
+      name:        null,
+      description: null
+    }))
+}
+
+// Get the seleced resolvers (dApps) details.
+function useResolverDetails (resolvers = []) {
+  const context = useWeb3Context()
+  const networkName = useNetworkName()
+  const snowflakeContract = useNamedContract('snowflake')
+  const [resolverDetails, setResolverDetails] = useState()
+
+  useAccountEffect(() => {
+    if (resolvers.length > 0)
+      Promise.all(resolvers.map(resolver =>
+        getResolverDetails(context.library, snowflakeContract, networkName, resolver)
+      ))
+        .then(results => setResolverDetails(results))
+  }, [JSON.stringify(resolvers)])
+
+  return resolverDetails;
+}
+
 // Not entirely sure what this is doing, but a debounce limits the amount of times a function can fire.
-export function useDebounce (value, delay) {
+function useDebounce (value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
     const handler = setTimeout(() => setDebouncedValue(value), delay)
     return () => clearTimeout(handler)
-  }, [value, delay])
+  }, [value, delay]);
 
-  return debouncedValue
+  return debouncedValue;
 }
 
-export function useSessionStorageState(defaultValue, key) {
+function useSessionStorageState(defaultValue, key) {
   const firstRender = useRef(true)
 
   useEffect(() => {
@@ -272,35 +317,35 @@ export function useSessionStorageState(defaultValue, key) {
 const initialTransaction = {
   state: 'ready',
   data: {
-    transactionHash:          undefined,
-    transactionReceipt:       undefined,
+    transactionHash: undefined,
+    transactionReceipt: undefined,
     transactionConfirmations: undefined,
-    transactionError:         undefined,
-    transactionErrorCode:     undefined
-  }
-}
+    transactionError: undefined,
+    transactionErrorCode: undefined,
+  },
+};
 
-function transactionReducer (state, action) {
+function transactionReducer(state, action) {
   switch (action.type) {
     case 'READY':
-      return initialTransaction
+      return initialTransaction;
     case 'SENDING':
-      return { state: 'sending', data: initialTransaction.data }
+      return { state: 'sending', data: initialTransaction.data };
     case 'PENDING':
-      return { state: 'pending', data: { ...state.data, ...action.data } }
+      return { state: 'pending', data: { ...state.data, ...action.data } };
     case 'SUCCESS':
-      return { state: 'success', data: { ...state.data, ...action.data } }
+      return { state: 'success', data: { ...state.data, ...action.data } };
     case 'ERROR':
-      return { state: 'error',   data: { ...state.data, ...action.data } }
+      return { state: 'error', data: { ...state.data, ...action.data } };
     default:
-      throw Error('No default case.')
+      throw Error('No default case.');
   }
 }
 
-export function useTransactionManager (method, { handlers = {}, transactionOptions = {}, maximumConfirmations } = {} ) {
+function useTransactionManager(method, { handlers = {}, transactionOptions = {}, maximumConfirmations } = {}) {
   const context = useWeb3Context()
 
-  const [transaction, dispatch] = useReducer(transactionReducer, initialTransaction)
+  const [transaction, dispatch] = useReducer(transactionReducer, initialTransaction);
 
   const wrappedHandlers = {
     transactionHash: (transactionHash) => {
@@ -322,9 +367,7 @@ export function useTransactionManager (method, { handlers = {}, transactionOptio
     }
   }
 
-  function _sendTransaction () {
-    if (!isValidWeb3ContextInterface(context))
-      throw Error('No library in context. Ensure your connector is configured correctly.')
+  function _sendTransaction() {
 
     if (context.account === null)
       throw Error('No account in context. Ensure your connector is configured correctly.')
@@ -333,6 +376,8 @@ export function useTransactionManager (method, { handlers = {}, transactionOptio
 
     sendTransaction(context.library, context.account, method, wrappedHandlers, transactionOptions)
       .catch((error) => {
+        console.log(error);
+
         const transactionErrorCode = error.code ?
           (TRANSACTION_ERROR_CODES.includes(error.code) ? error.code : undefined) :
           undefined
@@ -343,5 +388,28 @@ export function useTransactionManager (method, { handlers = {}, transactionOptio
 
   function resetTransaction () { dispatch({ type: 'READY' }) }
 
-  return [transaction.state, transaction.data, _sendTransaction, resetTransaction, TRANSACTION_ERROR_CODES]
+  return [transaction.state, transaction.data, _sendTransaction, resetTransaction, TRANSACTION_ERROR_CODES];
 }
+
+export {
+  initialTransaction,
+  useNetworkName,
+  useAccountEffect,
+  useAccountBalance,
+  useEtherscanLink,
+  useERC20Balance,
+  useSignPersonalManager,
+  useNamedContract,
+  useGenericContract,
+  useEIN,
+  useHydroId,
+  useHydroBalance,
+  useSnowflakeBalance,
+  useEINDetails,
+  useResolverAllowances,
+  useResolverDetails,
+  useDebounce,
+  useSessionStorageState,
+  useTransactionManager,
+  sendTransaction,
+};

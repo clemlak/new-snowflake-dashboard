@@ -1,33 +1,35 @@
-.dappNavigation__filter__button {
-  list-style-type: none;
-  display: inline-block;
+.filters {
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.filters__link {
   padding: 5px 30px;
   color: #8c8c8c;
   cursor: pointer;
 }
 
-.dappNavigation__filter__button:hover {
+.filters__link {
+  padding: 5px 30px;
+  color: #8c8c8c;
+  cursor: pointer;
+}
+
+.filters__link:hover {
   background-color: #959595;
-  color: #fff;
+  color: #ffffff !important;
   border-radius: 20px;
-  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 }
 
-.dappNavigation__filter__button:active {
+.filters__link-active {
   background-color: #1d4cff;
   border-radius: 30px;
   padding: 5px 30px;
-  color: #fff;
-  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  color: #ffffff !important;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 }
 
-.dappNavigation__filter__button:active:hover {
+.filters__link-active:hover {
   background-color: #1739bb;
-  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 }

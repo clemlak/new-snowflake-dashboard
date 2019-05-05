@@ -72,12 +72,12 @@ function DappPreview(props) {
       <Card>
         <CardImg top width="200px" src={details.logo} alt="Dapp preview" />
         <CardBody>
-          <CardTitle>
+          <h4 className="dapp-preview__title">
             {details.title}
-          </CardTitle>
-          <CardSubtitle>
+          </h4>
+          <h5 className="dapp-preview__category">
             {details.category}
-          </CardSubtitle>
+          </h5>
           <Row>
             <Col>
               Rating

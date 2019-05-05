@@ -21,8 +21,6 @@ import {
 
 import HeaderAccount from './headerAccount';
 
-import logo from '../../common/img/logo.png';
-
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -52,7 +50,16 @@ class Header extends React.Component {
       <div>
         <Navbar color="light" light expand="md" className="bg-white">
           <NavbarBrand tag={RouterNavLink} exact to="/">
-            <img src={logo} alt="logo" />
+            <h2 className="header__title">
+              Snowflake
+            </h2>
+            <p className="header__subtitle">
+              powered by
+              {' '}
+              <span className="header__hydro">
+                Hydro
+              </span>
+            </p>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>

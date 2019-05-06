@@ -30,8 +30,10 @@ const CategoriesMenu = () => {
   }
 
   return (
-    <div>
-      <p>Categories</p>
+    <div className="categories-menu">
+      <h2 className="categories-menu__title">
+        Categories
+      </h2>
       <Nav vertical>
         {categoriesLinks}
       </Nav>

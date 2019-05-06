@@ -5,6 +5,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import {
+  Container,
   Row,
   Col,
 } from 'reactstrap';
@@ -42,29 +43,31 @@ const App = () => {
     <BrowserRouter>
       <div>
         <Header />
-        <Row className="">
-          <Col xs="12" sm="3">
-            <Sidebar />
-          </Col>
-          <Col xs="12" sm="9" className="app__content">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/faq" component={Faq} />
-              <Route exact path="/contact" component={Contact} />
-              <Route exact path="/identity" component={identity} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/manage" component={Manage} />
-              <Route exact path="/privacy" component={Privacy} />
-              <Route exact path="/terms" component={Terms} />
-              <Route exact path="/wallet" component={Wallet} />
-              <Route exact path="/submit" component={Submit} />
-              <Route path="/dapp/:id" component={DappDetails} />
-              <Route path="/category/:name" component={Category} />
+        <Container fluid className="app">
+          <Row>
+            <Col xs="12" sm="3">
+              <Sidebar />
+            </Col>
+            <Col xs="12" sm="9" className="app__content">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/faq" component={Faq} />
+                <Route exact path="/contact" component={Contact} />
+                <Route exact path="/identity" component={identity} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/manage" component={Manage} />
+                <Route exact path="/privacy" component={Privacy} />
+                <Route exact path="/terms" component={Terms} />
+                <Route exact path="/wallet" component={Wallet} />
+                <Route exact path="/submit" component={Submit} />
+                <Route path="/dapp/:id" component={DappDetails} />
+                <Route path="/category/:name" component={Category} />
 
-              <Route component={Home} />
-            </Switch>
-          </Col>
-        </Row>
+                <Route component={Home} />
+              </Switch>
+            </Col>
+          </Row>
+        </Container>
         <Footer />
       </div>
     </BrowserRouter>

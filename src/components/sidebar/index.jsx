@@ -46,7 +46,7 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <div className="py-5">
+      <div className="py-4">
         <Nav vertical>
           {hasEin ? (
             <div>
@@ -85,7 +85,7 @@ function Sidebar() {
           </NavItem>
         </Nav>
       </div>
-      <div className="py-5">
+      <div className="py-4">
         <CategoriesMenu />
       </div>
     </div>

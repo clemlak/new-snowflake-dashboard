@@ -1,28 +1,89 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Row,
   Col,
   Alert,
 } from 'reactstrap';
+import {
+  IoIosAdd,
+  IoIosArrowRoundBack,
+  IoIosArrowRoundForward,
+} from 'react-icons/io';
 
-const Transaction = () => (
-  <Alert className="transaction">
-    <Row className="align-items-center">
-      <Col>
-        <p className="mb-0">
-          Depositing Hydro
+function Transaction(props) {
+  const {
+    type,
+    date,
+    amount,
+  } = props;
+
+  function displayTransactionType() {
+    if (type === 'deposit') {
+      return (
+        <div className="transaction__header">
+          <IoIosArrowRoundForward
+            className="transaction__icon"
+          />
+          <p className="transaction__type">
+            Deposited Hydro
+          </p>
+        </div>
+      );
+    }
+
+    if (type === 'withdraw') {
+      return (
+        <div className="transaction__header">
+          <IoIosArrowRoundForward
+            className="transaction__icon"
+          />
+          <p className="transaction__type">
+            Withdrew Hydro
+          </p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="transaction__header">
+        <IoIosArrowRoundForward
+          className="transaction__icon"
+        />
+        <p className="transaction__type">
+          Purchased Hydro
         </p>
-        <p className="small mb-0">
-          Feb 12, 2019 at 6:34pm
-        </p>
-      </Col>
-      <Col className="text-right">
-        <p className="mb-0 text-primary">
-          + 3,225
-        </p>
-      </Col>
-    </Row>
-  </Alert>
-);
+      </div>
+    );
+  }
+
+  return (
+    <Alert className="transaction">
+      <Row className="align-items-center">
+        <Col>
+          <p className="mb-0">
+            {displayTransactionType()}
+          </p>
+          <p className="transaction__date">
+            {date}
+          </p>
+        </Col>
+        <Col>
+          <p className="transaction__amount">
+            {type === 'withdraw' ? ('-') : ('+')}
+            {' '}
+            {amount}
+          </p>
+        </Col>
+      </Row>
+    </Alert>
+  );
+}
+
+Transaction.propTypes = {
+  type: PropTypes.string.isRequired,
+  date: PropTypes.number.isRequired,
+  amount: PropTypes.string.isRequired,
+};
 
 export default Transaction;

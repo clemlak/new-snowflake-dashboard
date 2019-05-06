@@ -20,9 +20,14 @@
 @import './call-to-action.scss';
 @import './qa.scss';
 @import './faq.scss';
+@import './transaction.scss';
 
 body {
   font-family: 'Open Sans';
+}
+
+.navbar {
+  z-index: 100000;
 }
 
 .title {

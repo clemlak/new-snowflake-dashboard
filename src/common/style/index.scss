@@ -13,9 +13,28 @@
 @import './dapp-preview.scss';
 @import './identity.scss';
 @import './wallet.scss';
+@import './buy.scss';
+@import './sidebar.scss';
+@import './categories-menu.scss';
 
 body {
   font-family: 'Open Sans';
+}
+
+.title {
+  margin-bottom: 0;
+  text-align: left;
+  font-size: 35px;
+  font-weight: 300;
+}
+
+.subtitle {
+  margin-bottom: 0;
+  text-align: left;
+  font-weight: 200;
+  font-size: 14px;
+  padding-top: 4px;
+  color: #9c9c9c;
 }
 
 /**
@@ -55,34 +74,6 @@ body {
 
 .modal-footer__link {
   color: #8caffb;
-}
-
-/**
- * Sidebar
- */
-.sidebar {
-  background-color: $snow-light-gray;
-}
-
-.sidebar__link {
-  color: $snow-light-dark;
-}
-
-.sidebar__link--active {
-  background-color: $snow-classic-blue;
-  color: $snow-white;
-  // box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
-  list-style-type: none;
-  padding: 10px 0 10px 30px;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-  margin-bottom: 10px;
-  margin-left: -2px;
-  font-size: 17px;
-}
-
-.sidebar__link--active:hover {
-  color: $snow-white;
 }
 
 /**

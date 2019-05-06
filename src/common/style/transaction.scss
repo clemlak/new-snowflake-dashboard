@@ -1,0 +1,25 @@
+.transaction__header {
+  display: -webkit-box;
+}
+
+.transaction__type {
+  padding-left: 10px;
+  margin: 0;
+}
+
+.transaction__icon {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.transaction__date {
+  opacity: 0.7;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.transaction__amount {
+  margin: 0;
+  color: $snow-classic-blue;
+  text-align: right;
+}

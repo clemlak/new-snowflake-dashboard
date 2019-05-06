@@ -18,6 +18,8 @@ function Transaction(props) {
     amount,
   } = props;
 
+  const formattedDate = new Date(date);
+
   function displayTransactionType() {
     if (type === 'deposit') {
       return (
@@ -35,7 +37,7 @@ function Transaction(props) {
     if (type === 'withdraw') {
       return (
         <div className="transaction__header">
-          <IoIosArrowRoundForward
+          <IoIosArrowRoundBack
             className="transaction__icon"
           />
           <p className="transaction__type">
@@ -47,7 +49,7 @@ function Transaction(props) {
 
     return (
       <div className="transaction__header">
-        <IoIosArrowRoundForward
+        <IoIosAdd
           className="transaction__icon"
         />
         <p className="transaction__type">
@@ -65,7 +67,13 @@ function Transaction(props) {
             {displayTransactionType()}
           </p>
           <p className="transaction__date">
-            {date}
+            {formattedDate.toLocaleString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+              hour: 'numeric',
+              minute: '2-digit',
+            })}
           </p>
         </Col>
         <Col>

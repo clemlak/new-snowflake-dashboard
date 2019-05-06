@@ -1,48 +1,57 @@
+/**
+ * Displays the FAQ page
+ * QA are taken from the faq.json file located in the config folder
+ */
+
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import {
   Row,
   Col,
+  Button,
 } from 'reactstrap';
 
 import QA from './qa';
 
 import faqJson from '../../common/config/faq.json';
 
-const Faq = () => {
-  const {
-    t,
-  } = useTranslation();
+const Faq = () => (
+  <div>
+    <Row className="pb-4">
+      <Col>
+        <h3>FAQ</h3>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <div className="accordion">
+          {faqJson.map(qa => (
+            <QA
+              key={qa.question}
+              question={qa.question}
+              answer={qa.answer}
+            />
+          ))}
 
-  return (
-    <div>
-      <Row>
-        <Col>
-          <h1>Faq</h1>
-          <p>
-            {t('faqBody')}
-          </p>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <div className="accordion">
-            {faqJson.map(qa => (
-              <QA
-                key={qa.question}
-                question={qa.question}
-                answer={qa.answer}
-              />
-            ))}
+        </div>
 
-          </div>
-
-        </Col>
-      </Row>
-
-    </div>
-  );
-};
-
+      </Col>
+    </Row>
+    <Row className="mt-5">
+      <Col>
+        <Row className="additional-help align-items-center">
+          <Col>
+            <h4 className="additional-help__title">Need Additional Help?</h4>
+            <p className="additional-help__subtitle">Send us a message via projecthydro.org</p>
+          </Col>
+          <Col sm="4" className="text-right">
+            <Button className="btn-outlined">
+              Get Assistance
+            </Button>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
+  </div>
+);
 
 export default Faq;

@@ -1,3 +1,7 @@
+/**
+ * Displays a QA
+ */
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -7,6 +11,10 @@ import {
   CardHeader,
   Card,
 } from 'reactstrap';
+import {
+  IoIosArrowForward,
+  IoIosArrowDown,
+} from 'react-icons/io';
 
 function QA(props) {
   const {
@@ -17,10 +25,15 @@ function QA(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
+    <div className="qa">
       <Card>
-        <CardHeader>
-          <Button color="link" onClick={() => setIsOpen(!isOpen)}>
+        <CardHeader className="qa__header">
+          {isOpen ? (
+            <IoIosArrowDown />
+          ) : (
+            <IoIosArrowForward />
+          )}
+          <Button color="link qa__question" onClick={() => setIsOpen(!isOpen)}>
             {question}
           </Button>
         </CardHeader>

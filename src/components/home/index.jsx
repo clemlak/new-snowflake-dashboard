@@ -19,7 +19,7 @@ function Home() {
   return (
     <div>
       <Nav className="filters">
-        <NavItem>
+        <NavItem className="filters__nav-tem">
           <NavLink
             onClick={() => setTab('home')}
             className={tab === 'home' ? (
@@ -31,7 +31,7 @@ function Home() {
             Home
           </NavLink>
         </NavItem>
-        <NavItem>
+        <NavItem className="filters__nav-tem">
           <NavLink
             onClick={() => setTab('featured')}
             className={tab === 'featured' ? (
@@ -43,7 +43,7 @@ function Home() {
             Featured
           </NavLink>
         </NavItem>
-        <NavItem>
+        <NavItem className="filters__nav-tem">
           <NavLink
             onClick={() => setTab('popular')}
             className={tab === 'popular' ? (
@@ -55,7 +55,7 @@ function Home() {
             Most popular
           </NavLink>
         </NavItem>
-        <NavItem>
+        <NavItem className="filters__nav-tem">
           <NavLink
             onClick={() => setTab('last')}
             className={tab === 'last' ? (

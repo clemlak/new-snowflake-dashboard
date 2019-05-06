@@ -41,12 +41,14 @@ function Manage() {
     <div>
       <Row>
         <Col>
-          <h1>
+          <h2 className="title">
             dApps You Added
             {' '}
             {resolvers.length}
-          </h1>
-          <p>View dApp Detail Page To Remove</p>
+          </h2>
+          <h4 className="subtitle">
+            View dApp Detail Page To Remove
+          </h4>
         </Col>
       </Row>
       <Row>

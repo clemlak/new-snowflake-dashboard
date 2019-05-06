@@ -7,7 +7,7 @@ import {
   Card,
 } from 'reactstrap';
 import {
-  IoMdHelpCircleOutline,
+  IoIosHelpCircleOutline,
 } from 'react-icons/io';
 import {
   useWeb3Context,
@@ -18,7 +18,6 @@ import TransactionButton from '../transactionButton';
 
 import {
   getHydroTestTokens,
-  getHydroBalance,
   getSnowflakeBalance,
   depositTokens,
   withdrawSnowflakeBalance,
@@ -51,7 +50,9 @@ function Wallet() {
                 </p>
               </Col>
               <Col sm="2" className="text-right">
-                <IoMdHelpCircleOutline />
+                <IoIosHelpCircleOutline
+                  className="wallet__help"
+                />
               </Col>
             </Row>
             <Row>
@@ -68,12 +69,12 @@ function Wallet() {
               </Col>
             </Row>
             <Row className="justify-content-center align-items-center py-5">
-              <Col className="text-right">
+              <Col className="text-right" sm="6" xs="12">
                 <Button className="btn-white" onClick={() => depositTokens(web3.library, web3.account, '10')}>
                   Deposit
                 </Button>
               </Col>
-              <Col className="text-left">
+              <Col className="text-left" sm="6" xs="12">
                 <Button color="success" onClick={() => withdrawSnowflakeBalance(web3.library, web3.account, '10')}>
                   Withdraw
                 </Button>
@@ -82,26 +83,26 @@ function Wallet() {
           </Card>
         </Col>
         <Col>
-          <Card className="grey-card">
+          <Card className="buy">
             <Row className="p-3">
               <Col>
-                <p>Buy deposit to dApp wallet</p>
+                <p className="buy__title">
+                  Buy and Deposit to dApp wallet
+                </p>
               </Col>
-              <Col className="text-right">
-                <IoMdHelpCircleOutline />
+              <Col sm="2" className="text-right">
+                <IoIosHelpCircleOutline
+                  className="buy__help"
+                />
               </Col>
             </Row>
             <Row>
               <Col className="text-center">
-                <p className="small mb-0 text-muted">
-                  <span className="h1 text-white">
-                    0
+                <p className="buy__amount">
+                  10 000
+                  <span className="buy__hydro">
+                    Hydro
                   </span>
-                  {' '}
-                  Hydro
-                </p>
-                <p className="small text-muted">
-                  USD $340.00
                 </p>
               </Col>
             </Row>

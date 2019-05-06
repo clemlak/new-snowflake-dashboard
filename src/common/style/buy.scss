@@ -1,9 +1,25 @@
 .buy {
   background-color: $snow-light-gray;
+  color: #3C3C3C;
   border: none;
-  color: $snow-white;
 }
 
-.buy-amount {
-  
+.buy__title {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.buy__help {
+  font-size: 2rem;
+  opacity: 0.72;
+  color: #395fff;
+}
+
+.buy__amount {
+  font-size: 55px;
+}
+
+.buy__hydro {
+  opacity: 0.5;
+  font-size: 0.7rem;
 }

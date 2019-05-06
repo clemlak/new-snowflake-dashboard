@@ -2,13 +2,16 @@
   background-color: #395fff;
   border: none;
   color: $snow-white;
-  padding: 15px;
 }
 
 .wallet__title {
-  font-size: 19px;
+  font-size: 1rem;
   font-weight: 100;
-  margin-left: -20px;
+  opacity: 0.72;
+}
+
+.wallet__help {
+  font-size: 2rem;
   opacity: 0.72;
 }
 
@@ -17,10 +20,10 @@
 }
 
 .wallet__hydro {
-  opacity: 0.72;
-  font-size: 19px;
+  opacity: 0.5;
+  font-size: 0.7rem;
 }
 
 .wallet__usd {
-  opacity: 0.72;
+  opacity: 0.5;
 }

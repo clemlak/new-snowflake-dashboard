@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   Nav,
   NavItem,
@@ -9,107 +9,87 @@ import {
   TabPane,
 } from 'reactstrap';
 
-import {
-  IoIosRefresh,
-} from 'react-icons/io';
-
 import Transaction from './transaction';
 
-class Transactions extends Component {
-  constructor(props) {
-    super(props);
+function Transactions() {
+  const [tab, setTab] = useState('all');
 
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      activeTab: 'All',
-    };
-  }
-
-  toggle(tab) {
-    const {
-      activeTab,
-    } = this.state;
-
-    if (activeTab !== tab) {
-      this.setState({
-        activeTab: tab,
-      });
-    }
-  }
-
-  render() {
-    const {
-      activeTab,
-    } = this.state;
-
-    return (
-      <div>
-        <Row className="py-5 align-items-center">
-          <Col sm="10">
-            <Nav pills>
-              <NavItem>
-                <NavLink
-                  className={
-                    activeTab === 'All' ? 'active' : ''
-                  }
-                  onClick={() => this.toggle('All')}
-                >
-                  All
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  className={
-                    activeTab === 'Deposits' ? 'active' : ''
-                  }
-                  onClick={() => this.toggle('Deposits')}
-                >
-                  Deposits
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  className={
-                    activeTab === 'Withdraws' ? 'active' : ''
-                  }
-                  onClick={() => this.toggle('Withdraws')}
-                >
-                  Withdraws
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink
-                  className={
-                    activeTab === 'Purchases' ? 'active' : ''
-                  }
-                  onClick={() => this.toggle('Purchases')}
-                >
-                  Purchases
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </Col>
-          <Col sm="2" className="text-right">
-            <IoIosRefresh />
-          </Col>
-        </Row>
-        <TabContent activeTab={activeTab}>
-          <TabPane tabId="All">
-            <Transaction />
-          </TabPane>
-          <TabPane tabId="Deposits">
-            Deposits
-          </TabPane>
-          <TabPane tabId="Withdraws">
-            Withdraws
-          </TabPane>
-          <TabPane tabId="Purchases">
-            Purchases
-          </TabPane>
-        </TabContent>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Row className="py-5">
+        <Col>
+          <Nav className="filters">
+            <NavItem className="filters__nav-item">
+              <NavLink
+                onClick={() => setTab('all')}
+                className={tab === 'all' ? (
+                  'filters__link--active'
+                ) : (
+                  'filters__link'
+                )}
+              >
+                All
+              </NavLink>
+            </NavItem>
+            <NavItem className="filters__nav-item">
+              <NavLink
+                onClick={() => setTab('deposits')}
+                className={tab === 'deposits' ? (
+                  'filters__link--active'
+                ) : (
+                  'filters__link'
+                )}
+              >
+                Deposits
+              </NavLink>
+            </NavItem>
+            <NavItem className="filters__nav-item">
+              <NavLink
+                onClick={() => setTab('withdraws')}
+                className={tab === 'withdraws' ? (
+                  'filters__link--active'
+                ) : (
+                  'filters__link'
+                )}
+              >
+                Withdraws
+              </NavLink>
+            </NavItem>
+            <NavItem className="filters__nav-item">
+              <NavLink
+                onClick={() => setTab('purchases')}
+                className={tab === 'purchases' ? (
+                  'filters__link--active'
+                ) : (
+                  'filters__link'
+                )}
+              >
+                Purchases
+              </NavLink>
+            </NavItem>
+          </Nav>
+          <TabContent activeTab={tab}>
+            <TabPane tabId="all">
+              <Transaction
+                type="withdraw"
+                date="123"
+                amount="4200"
+              />
+            </TabPane>
+            <TabPane tabId="deposits">
+              Deposits
+            </TabPane>
+            <TabPane tabId="withdraws">
+              Withdraws
+            </TabPane>
+            <TabPane tabId="purchases">
+              Purchases
+            </TabPane>
+          </TabContent>
+        </Col>
+      </Row>
+    </div>
+  );
 }
 
 export default Transactions;

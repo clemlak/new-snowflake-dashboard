@@ -17,6 +17,7 @@
 @import './sidebar.scss';
 @import './categories-menu.scss';
 @import './app.scss';
+@import './call-to-action.scss';
 
 body {
   font-family: 'Open Sans';
@@ -83,13 +84,6 @@ body {
 .transaction {
   background-color: $snow-light-gray;
   border: none;
-}
-
-/**
- * Call to action
- */
-.callToAction {
-  background-color: $snow-light-blue;
 }
 
 /**

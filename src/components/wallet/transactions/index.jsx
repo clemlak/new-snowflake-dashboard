@@ -72,7 +72,7 @@ function Transactions() {
             <TabPane tabId="all">
               <Transaction
                 type="withdraw"
-                date="123"
+                date={Date.now()}
                 amount="4200"
               />
             </TabPane>

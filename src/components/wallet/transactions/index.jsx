@@ -1,3 +1,8 @@
+/**
+ * Displays the transactions linked to the current account
+ * TODO: Fetch the transactions
+ */
+
 import React, { useState } from 'react';
 import {
   Nav,
@@ -8,11 +13,21 @@ import {
   TabContent,
   TabPane,
 } from 'reactstrap';
+import {
+  useWeb3Context,
+} from 'web3-react';
+
+import {
+  getPastDeposits,
+  getPastPurchases,
+} from '../../../services/utilities';
 
 import Transaction from './transaction';
 
 function Transactions() {
   const [tab, setTab] = useState('all');
+  const [deposits, setDeposits] = useState([]);
+  const [purchases, setPurchases] = useState([]);
 
   return (
     <div>

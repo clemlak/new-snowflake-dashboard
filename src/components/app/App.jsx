@@ -5,7 +5,6 @@ import {
   Switch,
 } from 'react-router-dom';
 import {
-  Container,
   Row,
   Col,
 } from 'reactstrap';
@@ -43,11 +42,11 @@ const App = () => {
     <BrowserRouter>
       <div>
         <Header />
-        <Row className="no-gutters">
+        <Row className="">
           <Col xs="12" sm="3">
             <Sidebar />
           </Col>
-          <Col xs="12" sm="9">
+          <Col xs="12" sm="9" className="app__content">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/faq" component={Faq} />

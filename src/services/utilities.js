@@ -240,6 +240,82 @@ function removeResolver(lib, account, resolver) {
   });
 }
 
+function getPastDeposits(lib, account) {
+  const snowflakeContract = new lib.eth.Contract(
+    snowflake.abi,
+    snowflake.address,
+  );
+
+  const deposits = [];
+
+  return snowflakeContract.getPastEvents(
+    'SnowflakeDeposit', {
+      filter: {
+        from: account,
+      },
+      fromBlock: 0,
+      toBlock: 'latest',
+    },
+  )
+    .then((events) => {
+      for (let i = 0; i < events.length; i += 1) {
+        const deposit = {
+          amount: events[i].returnValues.amount,
+          blocknumber: events[i].blockNumber,
+          txHash: events[i].transactionHash,
+          event: events[i].event,
+        };
+
+        deposits.push(deposit);
+      }
+
+      return deposits;
+    })
+    .catch(err => err);
+}
+
+function getPastPurchases(lib, account) {
+  const snowflakeContract = new lib.eth.Contract(
+    snowflake.abi,
+    snowflake.address,
+  );
+
+  const purchases = [];
+
+  return getAccountEin(lib, account)
+    .then(ein => snowflakeContract.getPastEvents(
+      'SnowflakeResolverAdded', {
+        filter: {
+          ein,
+        },
+        fromBlock: 0,
+        toBlock: 'latest',
+      },
+    ))
+    .then((events) => {
+      for (let i = 0; i < events.length; i += 1) {
+        const deposit = {
+          resolver: events[i].returnValues.resolver,
+          withdrawAllowance: events[i].returnValues.withdrawAllowance,
+          blocknumber: events[i].blockNumber,
+          txHash: events[i].transactionHash,
+          event: events[i].event,
+        };
+
+        purchases.push(deposit);
+      }
+
+      return purchases;
+    })
+    .catch(err => err);
+}
+
+function getBlockTimestamp(lib, blocknumber) {
+  return lib.eth.getBlock(blocknumber)
+    .then(res => res.timestamp)
+    .catch(err => err);
+}
+
 export {
   getAccountEthBalance,
   getAccountHydroBalance,
@@ -258,4 +334,7 @@ export {
   getIdentity,
   addResolver,
   removeResolver,
+  getPastDeposits,
+  getBlockTimestamp,
+  getPastPurchases,
 };

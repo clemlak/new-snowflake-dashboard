@@ -1,3 +1,8 @@
+/**
+ * Displays the details of a specific dApp
+ * WARNING: Currently not used (WIP)
+ */
+
 import React from 'react';
 import {
   Row,

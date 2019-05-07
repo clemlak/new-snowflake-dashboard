@@ -15,18 +15,28 @@ const LinkedAddress = (props) => {
     address,
   } = props;
 
+  const formattedDate = new Date(Date.now());
+
   return (
-    <Alert>
+    <Alert className="linked-address">
       <Row className="align-items-center">
         <Col sm="1">
-          <IoIosCheckmarkCircleOutline />
+          <IoIosCheckmarkCircleOutline
+            className="linked-address__icon"
+          />
         </Col>
         <Col>
           <p className="mb-0">
             {address}
           </p>
-          <p className="small mb-0">
-            Feb 12, 2019 at 6:34pm
+          <p className="linked-address__date">
+            {formattedDate.toLocaleString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+              hour: 'numeric',
+              minute: '2-digit',
+            })}
           </p>
         </Col>
         <Col className="text-right">

@@ -38,7 +38,7 @@ function Transaction(props) {
       );
     }
 
-    if (type === 'withdraw') {
+    if (type === 'withdrawal') {
       return (
         <div className="transaction__header">
           <IoIosArrowRoundBack
@@ -67,9 +67,7 @@ function Transaction(props) {
     <Alert className="transaction">
       <Row className="align-items-center">
         <Col>
-          <p className="mb-0">
-            {displayTransactionType()}
-          </p>
+          {displayTransactionType()}
           <p className="transaction__date">
             {formattedDate.toLocaleString('en-US', {
               year: 'numeric',

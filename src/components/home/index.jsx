@@ -35,7 +35,7 @@ function Home() {
           <NavLink
             onClick={() => setTab('featured')}
             className={tab === 'featured' ? (
-              'filters__link-active'
+              'filters__link--active'
             ) : (
               'filters__link'
             )}
@@ -47,7 +47,7 @@ function Home() {
           <NavLink
             onClick={() => setTab('popular')}
             className={tab === 'popular' ? (
-              'filters__link-active'
+              'filters__link--active'
             ) : (
               'filters__link'
             )}
@@ -59,7 +59,7 @@ function Home() {
           <NavLink
             onClick={() => setTab('last')}
             className={tab === 'last' ? (
-              'filters__link-active'
+              'filters__link--active'
             ) : (
               'filters__link'
             )}

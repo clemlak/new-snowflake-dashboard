@@ -1,3 +1,7 @@
+/**
+ * Displays the card with the Deposit and Withdraw components
+ */
+
 import React, { useState } from 'react';
 import {
   Row,
@@ -14,13 +18,15 @@ import {
 
 import {
   getSnowflakeBalance,
-  withdrawSnowflakeBalance,
+  getAccountHydroBalance,
 } from '../../../services/utilities';
 
 import Deposit from './deposit';
+import Withdraw from './withdraw';
 
 function DepositWithdraw() {
   const [snowflakeBalance, setSnowflakeBalance] = useState('0');
+  const [hydroBalance, setHydroBalance] = useState('0');
   const [tab, setTab] = useState('none');
 
   const web3 = useWeb3Context();
@@ -29,6 +35,11 @@ function DepositWithdraw() {
     getSnowflakeBalance(web3.library, web3.account)
       .then((res) => {
         setSnowflakeBalance(web3.library.utils.fromWei(res));
+
+        return getAccountHydroBalance(web3.library, web3.account);
+      })
+      .then((res) => {
+        setHydroBalance(res);
       })
       .catch((err) => {
         console.log(err);
@@ -37,7 +48,24 @@ function DepositWithdraw() {
 
   function displayTab() {
     if (tab === 'deposit') {
-      return <Deposit balance={snowflakeBalance} cancel={() => setTab('none')} />;
+      return (
+        <Deposit
+          balance={snowflakeBalance}
+          cancel={() => setTab('none')}
+          user={web3.account}
+        />
+      );
+    }
+
+    if (tab === 'withdraw') {
+      return (
+        <Withdraw
+          snowflakeBalance={snowflakeBalance}
+          hydroBalance={hydroBalance}
+          cancel={() => setTab('none')}
+          user={web3.account}
+        />
+      );
     }
 
     return (
@@ -62,7 +90,7 @@ function DepositWithdraw() {
             </Button>
           </Col>
           <Col className="text-left" sm="6" xs="12">
-            <Button color="success" onClick={() => withdrawSnowflakeBalance(web3.library, web3.account, '10')}>
+            <Button color="success" onClick={() => setTab('withdraw')}>
               Withdraw
             </Button>
           </Col>

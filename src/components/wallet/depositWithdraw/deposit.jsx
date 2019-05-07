@@ -1,3 +1,7 @@
+/**
+ * Displays a form to deposit tokens to the current Snowflake balance
+ */
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -19,48 +23,46 @@ import {
   depositTokens,
 } from '../../../services/utilities';
 
+import TransactionButton from '../../transactionButton';
+
 function Deposit(props) {
   const {
+    user,
     balance,
     cancel,
   } = props;
 
   const [amount, setAmount] = useState(0);
-  const [user, setUser] = useState('');
 
   const web3 = useWeb3Context();
-
-  if (web3.active && user === '') {
-    setUser(web3.account);
-  }
 
   return (
     <div>
       <Row className="mx-4 justify-content-center align-items-center no-gutters">
         <Col sm="5">
-          <p className="deposit__subtitle">
+          <p className="dw__subtitle">
             From
           </p>
         </Col>
         <Col sm="2" />
         <Col sm="5">
-          <p className="deposit__subtitle">
+          <p className="dw__subtitle">
             To
           </p>
         </Col>
       </Row>
       <Row className="mx-4 justify-content-center align-items-center no-gutters">
         <Col sm="5">
-          <div className="deposit__from">
-            <FormGroup className="deposit__form-group">
+          <div className="dw__from">
+            <FormGroup className="dw__form-group">
               <Input
                 type="number"
-                className="deposit__input"
+                className="dw__input"
                 placeholder="0"
                 onChange={e => setAmount(e.target.value)}
               />
               <FormText
-                className="deposit__form-text"
+                className="dw__form-text"
               >
                 {user}
               </FormText>
@@ -68,14 +70,14 @@ function Deposit(props) {
           </div>
         </Col>
         <Col sm="2" className="text-center">
-          <IoIosArrowRoundForward className="deposit__arrow" />
+          <IoIosArrowRoundForward className="dw__arrow" />
         </Col>
         <Col sm="5">
-          <div className="deposit__to">
-            <p className="deposit__balance">
+          <div className="dw__to">
+            <p className="dw__balance">
               {balance.substring(0, 5)}
             </p>
-            <p className="deposit__snowflake-wallet">
+            <p className="dw__to-small-text">
               dApp Store Wallet
             </p>
           </div>
@@ -88,12 +90,12 @@ function Deposit(props) {
           </Button>
         </Col>
         <Col className="text-right">
-          <Button
+          <TransactionButton
             color="success"
-            onClick={() => depositTokens(web3.library, web3.account, amount)}
-          >
-            Confirm
-          </Button>
+            text="Confirm"
+            send={() => depositTokens(web3.library, web3.account, amount)}
+            finalAction={cancel}
+          />
         </Col>
       </Row>
     </div>
@@ -103,6 +105,7 @@ function Deposit(props) {
 Deposit.propTypes = {
   balance: PropTypes.string.isRequired,
   cancel: PropTypes.func.isRequired,
+  user: PropTypes.string.isRequired,
 };
 
 export default Deposit;

@@ -7,29 +7,46 @@
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
   background-clip: border-box;
-  border: 0 solid rgba(0, 0, 0, 0.125);
+  border: 0;
   border-radius: 0.25rem;
+  height: 300px;
 }
 
 .identity__title {
-  font-size: 19px;
-  font-weight: 100;
-  margin-left: -20px;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.72;
+}
+
+.identity__help {
+  font-size: 2rem;
   opacity: 0.72;
 }
 
 .identity__hydro-id {
-  font-size: 21px;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
 .identity__ein {
-
+  font-size: 1rem;
+  margin: 0;
 }
 
 .identity__linked-wallets {
+  font-size: 1rem;
+  margin: 0;
+}
 
+.identity__user-image {
+  margin: 0;
+  text-align: center;
+}
+
+.identity__link {
+  color: #2452fe;
+  font-size: 4rem;
 }
 
 .status {
@@ -37,14 +54,14 @@
   border-radius: 10px;
   padding: 15px;
   min-height:50px;
-  width: 100%;
-  position: relative;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 .status__title {
   font-size: 16px;
   color: #fff;
-  font-weight: 200;
+  font-weight: 400;
   text-align: left;
   margin-bottom: 0px;
 }
@@ -54,6 +71,8 @@
   color: #fff;
   font-weight: 200;
   text-align: left;
+  opacity: 0.7;
+  margin: 0;
 }
 
 .status__edit {
@@ -68,4 +87,55 @@
   color: #fff;
   border: none;
   font-size: 13px;
+}
+
+.link {
+  background-color: $snow-light-gray;
+  border: none;
+  color: #3C3C3C;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 0;
+  border-radius: 0.25rem;
+  height: 300px;
+}
+
+.link__title {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.72;
+}
+
+.link__help {
+  font-size: 2rem;
+  opacity: 0.72;
+  color: #2d59fe;
+}
+
+.link__input {
+  border: 0;
+}
+
+.link__input::placeholder {
+  color: #2d59fe;
+}
+
+.linked-address {
+  background-color: $snow-light-gray;
+  border: none;
+}
+
+.linked-address__icon {
+  color: #2d59fe;
+  font-size: 3rem;
+}
+
+.linked-address__date {
+  opacity: 0.7;
+  font-size: 0.8rem;
+  margin: 0;
 }

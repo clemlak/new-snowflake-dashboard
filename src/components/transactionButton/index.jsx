@@ -1,3 +1,8 @@
+/**
+ * Handles a transaction and displays the result
+ * TODO: This component needs to be polished
+ */
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -10,6 +15,7 @@ function TransactionButton(props) {
     text,
     send,
     finalAction,
+    color,
   } = props;
 
   const [status, setStatus] = useState('');
@@ -60,7 +66,7 @@ function TransactionButton(props) {
 
   return (
     <Button
-      color="primary"
+      color={color}
       onClick={
         status === 'confirmed' ? (
           () => finalAction()
@@ -77,12 +83,14 @@ TransactionButton.propTypes = {
   text: PropTypes.string.isRequired,
   send: PropTypes.func.isRequired,
   finalAction: PropTypes.func,
+  color: PropTypes.string,
 };
 
 TransactionButton.defaultProps = {
   finalAction: () => {
     console.log('Done');
   },
+  color: 'primary',
 };
 
 export default TransactionButton;

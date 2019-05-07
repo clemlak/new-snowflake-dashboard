@@ -109,7 +109,7 @@ function DepositWithdraw() {
         </Col>
         <Col sm="2" className="text-right">
           <IoIosHelpCircleOutline
-            className="wallet__help"
+            className="wallet__help help"
           />
         </Col>
       </Row>

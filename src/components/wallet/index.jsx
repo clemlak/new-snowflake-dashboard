@@ -43,7 +43,7 @@ function Wallet() {
               </Col>
               <Col sm="2" className="text-right">
                 <IoIosHelpCircleOutline
-                  className="buy__help"
+                  className="buy__help help"
                 />
               </Col>
             </Row>

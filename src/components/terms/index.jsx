@@ -40,8 +40,6 @@ const Terms = () => (
     <p>generator.lorem-ipsum.info</p>
     <p>1 Main St.</p>
     <p>Boston, MA, USA 01234</p>
-
-    <p>Ukraine</p>
     <p>contact@lorem-ipsum.info</p>
 
     <h2>11. PLACE OF PERFORMANCE</h2>

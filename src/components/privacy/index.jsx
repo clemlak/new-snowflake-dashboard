@@ -44,9 +44,9 @@ const Privacy = () => (
     <h2>Contacting Us</h2>
     <p>If there are any questions regarding this privacy policy you may contact us using the information below.</p>
     <p>generator.lorem-ipsum.info</p>
-    <p>126 Electricov St.</p>
-    <p>Kiev, Kiev 04176</p>
-    <p>Ukraine</p>
+    <p>1 Main St.</p>
+    <p>Boston, MA 04176</p>
+    <p>USA</p>
     <p>contact@lorem-ipsum.info</p>
   </>
 );

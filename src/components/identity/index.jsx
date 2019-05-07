@@ -9,12 +9,14 @@ import {
   Card,
   Button,
   Input,
+  FormText,
+  FormGroup,
 } from 'reactstrap';
 import {
   useWeb3Context,
 } from 'web3-react';
 import {
-  IoMdHelpCircleOutline,
+  IoIosHelpCircleOutline,
   IoMdLink,
 } from 'react-icons/io';
 
@@ -25,6 +27,9 @@ import {
 } from '../../services/utilities';
 
 import LinkedAddress from './linkedAddress';
+
+import userImg from '../../common/img/snowflake.gif';
+import ethLogo from '../../common/img/eth.png';
 
 const Identity = () => {
   const web3 = useWeb3Context();
@@ -58,13 +63,17 @@ const Identity = () => {
 
   return (
     <div>
-      <Row>
+      <Row className="pb-3">
         <Col>
-          <h1>Manage your identity</h1>
-          <p>Add/Remove Ethereum Wallet Addresses to your EIN</p>
+          <h3 className="title">
+            Manage your identity
+          </h3>
+          <h4 className="subtitle">
+            Add/Remove Ethereum Wallet Addresses to your EIN
+          </h4>
         </Col>
       </Row>
-      <Row>
+      <Row className="py-3 justify-content-center align-items-center">
         <Col>
           <Card className="identity">
             <Row className="p-3">
@@ -74,72 +83,91 @@ const Identity = () => {
                 </p>
               </Col>
               <Col className="text-right">
-                <IoMdHelpCircleOutline />
+                <IoIosHelpCircleOutline
+                  className="identity__help"
+                />
               </Col>
             </Row>
-            <Row>
-              <Col className="text-center">
-                <ul>
-                  <li className="identity__hydro-id">
-                    Hydro ID: {hydroId}
-                  </li>
-                  <li className="identity__ein">
-                    EIN: {ein}
-                  </li>
-                  <li className="identity__linked-wallets">
-                    Linked Wallet(s): 1
-                  </li>
-                </ul>
+            <Row className="justify-content-center align-items-center pb-4">
+              <Col xs="4">
+                <p className="identity__user-image">
+                  <img src={userImg} alt="user" />
+                </p>
               </Col>
-            </Row>
-            <Row>
               <Col>
-                <div className="status">
-                  <Row>
-                    <Col>
-                      <p className="status__title">
-                        My Status
-                      </p>
-                    </Col>
-                    <Col>
-                      <Button className="status__edit">
-                        Edit
-                      </Button>
-                    </Col>
-                  </Row>
-                  <p className="status__current">
-                    I'm having a great day!
-                  </p>
-                </div>
+                <p className="identity__hydro-id">
+                  Hydro ID:
+                  {' '}
+                  {hydroId}
+                </p>
+                <p className="identity__ein">
+                  EIN:
+                  {' '}
+                  {ein}
+                </p>
+                <p className="identity__linked-wallets">
+                  Linked Wallet(s): 1
+                </p>
+              </Col>
+            </Row>
+            <Row className="mb-4 no-gutters status">
+              <Col>
+                <Row>
+                  <Col>
+                    <p className="status__title">
+                      My Status:
+                    </p>
+                  </Col>
+                  <Col>
+                    <Button className="status__edit">
+                      Edit
+                    </Button>
+                  </Col>
+                </Row>
+                <p className="status__current">
+                  I'm having a great day!
+                </p>
               </Col>
             </Row>
           </Card>
         </Col>
         <Col sm="1">
-          <IoMdLink />
+          <IoMdLink
+            className="identity__link"
+          />
         </Col>
         <Col>
-          <Card className="grey-card">
-            <Row className="py-3">
+          <Card className="link">
+            <Row className="p-3">
               <Col>
-                <p>
+                <p className="link__title">
                   Link an Ethereum Wallet
                 </p>
               </Col>
               <Col className="text-right">
-                <IoMdHelpCircleOutline />
+                <IoIosHelpCircleOutline
+                  className="link__help"
+                />
               </Col>
             </Row>
-            <Row>
+            <Row className="justify-content-center align-items-center">
               <Col sm="2">
-                ETH
+                <img src={ethLogo} alt="Eth" />
               </Col>
               <Col>
-                <Input />
+                <FormGroup>
+                  <Input
+                    className="link__input"
+                    placeholder="Enter an Ethereum address..."
+                  />
+                  <FormText>
+                    You will need to transact from this address.
+                  </FormText>
+                </FormGroup>
               </Col>
             </Row>
-            <Row>
-              <Col>
+            <Row className="pt-3">
+              <Col className="text-center">
                 <Button color="primary">
                   Next
                 </Button>
@@ -148,11 +176,11 @@ const Identity = () => {
           </Card>
         </Col>
       </Row>
-      <Row>
+      <Row className="py-3">
         <Col>
-          <h1>
+          <h3 className="title">
             Ethereum Wallets Connected To Your Snowflake (EIN)
-          </h1>
+          </h3>
         </Col>
       </Row>
       <Row>

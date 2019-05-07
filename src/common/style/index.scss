@@ -26,6 +26,12 @@ body {
   font-family: 'Open Sans';
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .navbar {
   z-index: 100000;
 }

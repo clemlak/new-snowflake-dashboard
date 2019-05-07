@@ -263,13 +263,48 @@ function getPastDeposits(lib, account) {
           amount: events[i].returnValues.amount,
           blocknumber: events[i].blockNumber,
           txHash: events[i].transactionHash,
-          event: events[i].event,
+          event: 'deposit',
         };
 
         deposits.push(deposit);
       }
 
       return deposits;
+    })
+    .catch(err => err);
+}
+
+function getPastWithdrawals(lib, account) {
+  const snowflakeContract = new lib.eth.Contract(
+    snowflake.abi,
+    snowflake.address,
+  );
+
+  const withdrawals = [];
+
+  return getAccountEin(lib, account)
+    .then(ein => snowflakeContract.getPastEvents(
+      'SnowflakeWithdraw', {
+        filter: {
+          einFrom: ein,
+        },
+        fromBlock: 0,
+        toBlock: 'latest',
+      },
+    ))
+    .then((events) => {
+      for (let i = 0; i < events.length; i += 1) {
+        const withdrawal = {
+          amount: events[i].returnValues.amount,
+          blocknumber: events[i].blockNumber,
+          txHash: events[i].transactionHash,
+          event: 'withdrawal',
+        };
+
+        withdrawals.push(withdrawal);
+      }
+
+      return withdrawals;
     })
     .catch(err => err);
 }
@@ -299,7 +334,7 @@ function getPastPurchases(lib, account) {
           withdrawAllowance: events[i].returnValues.withdrawAllowance,
           blocknumber: events[i].blockNumber,
           txHash: events[i].transactionHash,
-          event: events[i].event,
+          event: 'purchase',
         };
 
         purchases.push(deposit);
@@ -337,4 +372,5 @@ export {
   getPastDeposits,
   getBlockTimestamp,
   getPastPurchases,
+  getPastWithdrawals,
 };

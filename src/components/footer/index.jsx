@@ -49,7 +49,7 @@ const Footer = () => (
           </Nav>
         </Col>
         <Col xs="12" sm="3" className="text-right">
-          <p className="mb-0">
+          <p className="mb-0 footer__powered-by">
             Maintained and hosted on
             {' '}
             <IoLogoGithub />

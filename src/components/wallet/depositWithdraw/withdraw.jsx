@@ -1,3 +1,7 @@
+/**
+ * Displays a form to withdraw tokens from the current Snowflake balance
+ */
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -24,7 +28,8 @@ import TransactionButton from '../../transactionButton';
 function Withdraw(props) {
   const {
     user,
-    balance,
+    hydroBalance,
+    snowflakeBalance,
     cancel,
   } = props;
 
@@ -56,11 +61,18 @@ function Withdraw(props) {
                 className="dw__input"
                 placeholder="0"
                 onChange={e => setAmount(e.target.value)}
+                value={amount}
               />
               <FormText
                 className="dw__form-text"
               >
                 dApp Store Wallet
+                <Button
+                  size="sm"
+                  onClick={() => setAmount(snowflakeBalance)}
+                >
+                  Max
+                </Button>
               </FormText>
             </FormGroup>
           </div>
@@ -71,7 +83,7 @@ function Withdraw(props) {
         <Col sm="5">
           <div className="dw__to">
             <p className="dw__balance">
-              {0}
+              {hydroBalance.substring(0, 5)}
             </p>
             <p className="dw__to-small-text">
               {user}
@@ -99,7 +111,8 @@ function Withdraw(props) {
 }
 
 Withdraw.propTypes = {
-  balance: PropTypes.string.isRequired,
+  hydroBalance: PropTypes.string.isRequired,
+  snowflakeBalance: PropTypes.string.isRequired,
   cancel: PropTypes.func.isRequired,
   user: PropTypes.string.isRequired,
 };

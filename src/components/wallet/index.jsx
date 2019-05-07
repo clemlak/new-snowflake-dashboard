@@ -1,3 +1,7 @@
+/**
+ * Displays the Wallet page
+ */
+
 import React from 'react';
 import {
   Container,
@@ -50,6 +54,9 @@ function Wallet() {
                   <span className="buy__hydro">
                     Hydro
                   </span>
+                </p>
+                <p className="buy-hydro__test-tokens">
+                  Get free Hydro test tokens
                 </p>
               </Col>
             </Row>

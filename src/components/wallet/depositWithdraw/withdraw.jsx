@@ -1,5 +1,6 @@
 /**
  * Displays a form to withdraw tokens from the current Snowflake balance
+ * TODO: Fix Max button
  */
 
 import React, { useState } from 'react';

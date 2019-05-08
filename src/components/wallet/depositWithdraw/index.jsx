@@ -119,7 +119,7 @@ function DepositWithdraw() {
         <Col sm="2" className="text-right">
           <div className="text-center" ref={walletHelpRef}>
             <IoIosHelpCircleOutline
-              className="wallet__help"
+              className="wallet__help help"
             />
           </div>
           {walletHelpRef.current && (

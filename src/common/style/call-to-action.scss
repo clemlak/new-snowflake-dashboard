@@ -1,16 +1,19 @@
 .call-to-action {
-  background-color: $snow-light-blue;
+  background-color: #e9ecef;
+  padding: 80px 30px 80px 30px;
 
 }
 
 .call-to-action__title {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
   font-weight: 500;
-  color: $snow-classic-blue;
+  line-height: 1.2;
+  color: #000;
 }
 
 .call-to-action__subtitle {
-  color: $snow-light-dark;
+  color: #6c757d;
   font-size: 1.2rem;
   font-weight: 400;
 }

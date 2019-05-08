@@ -21,6 +21,7 @@
 @import './qa.scss';
 @import './faq.scss';
 @import './transaction.scss';
+@import './footer.scss';
 
 body {
   font-family: 'Open Sans';
@@ -30,6 +31,26 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+h4 {
+  font-size: 12px;
+  margin-bottom: 15px;
 }
 
 .navbar {
@@ -43,8 +64,8 @@ input[type=number]::-webkit-outer-spin-button {
 .title {
   margin-bottom: 0;
   text-align: left;
-  font-size: 35px;
-  font-weight: 300;
+  font-size: 24px;
+  font-weight: 400;
 }
 
 .subtitle {
@@ -98,6 +119,12 @@ input[type=number]::-webkit-outer-spin-button {
 /**
  * Buttons
  */
+
+.btn {
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 .btn-white {
   color: #395fff;
   background-color: $snow-white;
@@ -144,4 +171,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .bg-white {
   background-color: $snow-white;
+}
+
+.help {
+  cursor: pointer;
 }

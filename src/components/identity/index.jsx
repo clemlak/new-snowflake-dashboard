@@ -84,7 +84,7 @@ const Identity = () => {
               </Col>
               <Col className="text-right">
                 <IoIosHelpCircleOutline
-                  className="identity__help"
+                  className="identity__help help"
                 />
               </Col>
             </Row>
@@ -146,7 +146,7 @@ const Identity = () => {
               </Col>
               <Col className="text-right">
                 <IoIosHelpCircleOutline
-                  className="link__help"
+                  className="link__help help"
                 />
               </Col>
             </Row>

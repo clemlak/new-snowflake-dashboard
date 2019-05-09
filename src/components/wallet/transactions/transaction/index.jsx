@@ -17,6 +17,7 @@ import {
 
 function Transaction(props) {
   const {
+    resolver,
     type,
     date,
     amount,
@@ -57,7 +58,7 @@ function Transaction(props) {
           className="transaction__icon"
         />
         <p className="transaction__type">
-          Purchased Hydro
+          {`Purchased ${resolver}`}
         </p>
       </div>
     );
@@ -94,6 +95,11 @@ Transaction.propTypes = {
   type: PropTypes.string.isRequired,
   date: PropTypes.number.isRequired,
   amount: PropTypes.string.isRequired,
+  resolver: PropTypes.string,
+};
+
+Transaction.defaultProps = {
+  resolver: 'Default',
 };
 
 export default Transaction;

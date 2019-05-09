@@ -1,6 +1,6 @@
 /**
  * Displays the transactions linked to the current account
- * TODO: It is not clear if the "purchases" must be linked to Hydro tokens or dApps?
+ * TODO: purchasedDapps must display the name of the resolver instead of the address of the contract
  */
 
 import React, { useState } from 'react';
@@ -150,6 +150,7 @@ function Transactions() {
                   type={purchase.event}
                   date={Date.now()}
                   amount={purchase.withdrawAllowance}
+                  resolver={purchase.resolver}
                 />
               ))}
             </TabPane>

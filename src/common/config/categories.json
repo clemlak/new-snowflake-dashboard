@@ -1,3 +1,30 @@
-{
-  "categories": ["Entertainment", "Fintech", "Business", "Gaming", "Community", "Tools", "Others"]
-}
+[
+  {
+    "name": "Entertainment",
+    "icon": "IoIosFilm"
+  },
+  {
+    "name": "Fintech",
+    "icon": "IoMdCard"
+  },
+  {
+    "name": "Business",
+    "icon": "IoIosGlobe"
+  },
+  {
+    "name": "Gaming",
+    "icon": "IoLogoGameControllerA"
+  },
+  {
+    "name": "Community",
+    "icon": "IoIosPeople"
+  },
+  {
+    "name": "Tools",
+    "icon": "IoIosCalculator"
+  },
+  {
+    "name": "Others",
+    "icon": "IoIosCog"
+  }
+]

@@ -309,7 +309,7 @@ function getPastWithdrawals(lib, account) {
     .catch(err => err);
 }
 
-function getPastPurchases(lib, account) {
+function getPastPurchasedDapps(lib, account) {
   const snowflakeContract = new lib.eth.Contract(
     snowflake.abi,
     snowflake.address,
@@ -371,6 +371,6 @@ export {
   removeResolver,
   getPastDeposits,
   getBlockTimestamp,
-  getPastPurchases,
+  getPastPurchasedDapps,
   getPastWithdrawals,
 };

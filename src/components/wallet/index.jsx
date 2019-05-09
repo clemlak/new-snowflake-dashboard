@@ -63,8 +63,9 @@ function Wallet() {
             <Row className="justify-content-center py-5">
               <Col className="text-center">
                 <TransactionButton
-                  text="Get Hydro tokens"
-                  send={() => getHydroTestTokens(web3.library, web3.account)}
+                  initialText="Get Hydro tokens"
+                  sendAction={() => getHydroTestTokens(web3.library, web3.account)}
+                  displayModal
                 />
               </Col>
             </Row>

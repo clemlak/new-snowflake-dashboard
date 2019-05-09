@@ -101,9 +101,9 @@ function Withdraw(props) {
         <Col className="text-right">
           <TransactionButton
             color="success"
-            text="Confirm"
-            send={() => withdrawSnowflakeBalance(web3.library, web3.account, amount)}
-            finalAction={cancel}
+            initialText="Confirm"
+            sendAction={() => withdrawSnowflakeBalance(web3.library, web3.account, amount)}
+            afterConfirmationAction={cancel}
           />
         </Col>
       </Row>

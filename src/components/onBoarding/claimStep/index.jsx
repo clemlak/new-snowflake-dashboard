@@ -50,9 +50,9 @@ function ClaimStep(props) {
       <Row className="justify-content-center py-3">
         <Col xs="12" sm="10" className="text-center">
           <TransactionButton
-            text="Claim"
-            send={() => createIdentity(web3.library, hydroId, timestamp, signature)}
-            finalAction={toggle}
+            initialText="Claim"
+            sendAction={() => createIdentity(web3.library, hydroId, timestamp, signature)}
+            afterConfirmationAction={toggle}
           />
         </Col>
       </Row>

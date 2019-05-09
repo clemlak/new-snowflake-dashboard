@@ -8,7 +8,6 @@ import {
   Row,
   Col,
   Alert,
-  Button,
   Modal,
   ModalHeader,
   ModalBody,
@@ -20,6 +19,8 @@ import {
 import {
   removeResolver,
 } from '../../services/utilities';
+
+import TransactionButton from '../transactionButton';
 
 function Remove(props) {
   const web3 = useWeb3Context();
@@ -57,18 +58,19 @@ function Remove(props) {
         </Row>
         <Row>
           <Col>
-            <Button
+            <TransactionButton
               color="danger"
-              block
-              onClick={() => removeResolver(
+              initialText="Remove"
+              confirmedText="dApp removed!"
+              sendAction={() => removeResolver(
                 web3.library,
                 web3.account,
                 id,
                 '1',
               )}
-            >
-              Remove
-            </Button>
+              afterConfirmationAction={toggle}
+              block
+            />
           </Col>
         </Row>
       </ModalBody>

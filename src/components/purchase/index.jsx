@@ -9,7 +9,6 @@ import {
   Row,
   Col,
   Alert,
-  Button,
   Modal,
   ModalHeader,
   ModalBody,
@@ -21,6 +20,8 @@ import {
 import {
   addResolver,
 } from '../../services/utilities';
+
+import TransactionButton from '../transactionButton';
 
 function Purchase(props) {
   const web3 = useWeb3Context();
@@ -60,18 +61,18 @@ function Purchase(props) {
         </Row>
         <Row>
           <Col>
-            <Button
-              color="primary"
-              block
-              onClick={() => addResolver(
+            <TransactionButton
+              initialText="Purchase"
+              confirmedText="Purchase confirmed!"
+              sendAction={() => addResolver(
                 web3.library,
                 web3.account,
                 id,
                 '1',
               )}
-            >
-              Purchase
-            </Button>
+              afterConfirmationAction={toggle}
+              block
+            />
           </Col>
         </Row>
       </ModalBody>

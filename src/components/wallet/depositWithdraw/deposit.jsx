@@ -92,9 +92,9 @@ function Deposit(props) {
         <Col className="text-right">
           <TransactionButton
             color="success"
-            text="Confirm"
-            send={() => depositTokens(web3.library, web3.account, amount)}
-            finalAction={cancel}
+            initialText="Confirm"
+            sendAction={() => depositTokens(web3.library, web3.account, amount)}
+            afterConfirmationAction={cancel}
           />
         </Col>
       </Row>

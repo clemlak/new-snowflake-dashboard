@@ -92,9 +92,6 @@ function DappPreview(props) {
                 </Button>
               )}
             </Col>
-            <Col className="dapp-preview__purchases">
-              In-dApp Purchases
-            </Col>
           </Row>
         </CardBody>
       </Card>

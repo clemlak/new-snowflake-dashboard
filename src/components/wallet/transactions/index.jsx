@@ -102,7 +102,7 @@ function Transactions() {
             <NavItem className="filters__nav-item">
               <NavLink
                 onClick={() => setTab('purchasedDapps')}
-                className={tab === 'purchases' ? (
+                className={tab === 'purchasedDapps' ? (
                   'filters__link--active'
                 ) : (
                   'filters__link'

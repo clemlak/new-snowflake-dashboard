@@ -28,6 +28,7 @@ import Terms from '../terms';
 import Wallet from '../wallet';
 import Submit from '../submit';
 import Category from '../category';
+import Slider from '../slider';
 
 import DappDetails from '../dappDetails';
 
@@ -43,6 +44,7 @@ const App = () => {
     <BrowserRouter>
       <div>
         <Header />
+        <Slider />
         <Container fluid className="app">
           <Row>
             <Col xs="12" sm="3">

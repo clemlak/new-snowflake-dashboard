@@ -2,19 +2,13 @@
  * Displays the card with the Deposit and Withdraw components
  */
 
-import React, {
-  useState,
-  useRef,
-} from 'react';
+import React, { useState } from 'react';
 import {
   Row,
   Col,
   Button,
   Card,
 } from 'reactstrap';
-import {
-  IoIosHelpCircleOutline,
-} from 'react-icons/io';
 import {
   useWeb3Context,
 } from 'web3-react';
@@ -26,7 +20,8 @@ import {
 
 import Deposit from './deposit';
 import Withdraw from './withdraw';
-import Tooltip from '../../tooltip';
+
+import HelpButton from '../../helpButton';
 
 import tooltips from '../../../common/config/tooltips.json';
 
@@ -34,11 +29,8 @@ function DepositWithdraw() {
   const [snowflakeBalance, setSnowflakeBalance] = useState('0');
   const [hydroBalance, setHydroBalance] = useState('0');
   const [tab, setTab] = useState('none');
-  const [isTooltipOpen, setIsTooltipOpen] = useState(true);
 
   const web3 = useWeb3Context();
-
-  const walletHelpRef = useRef();
 
   if (web3.active) {
     getSnowflakeBalance(web3.library, web3.account)
@@ -117,19 +109,9 @@ function DepositWithdraw() {
           </p>
         </Col>
         <Col sm="2" className="text-right">
-          <div className="text-center" ref={walletHelpRef}>
-            <IoIosHelpCircleOutline
-              className="wallet__help help"
-            />
-          </div>
-          {walletHelpRef.current && (
-            <Tooltip
-              target={walletHelpRef}
-              content={tooltips.walletHelp}
-              isOpen={isTooltipOpen}
-              toggle={() => setIsTooltipOpen(!isTooltipOpen)}
-            />
-          )}
+          <HelpButton
+            content={tooltips.walletHelp}
+          />
         </Col>
       </Row>
       {displayTab()}

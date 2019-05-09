@@ -19,7 +19,7 @@ import {
 
 import {
   getPastDeposits,
-  getPastPurchases,
+  getPastPurchasedDapps,
   getPastWithdrawals,
 } from '../../../services/utilities';
 
@@ -29,11 +29,16 @@ function Transactions() {
   const [tab, setTab] = useState('all');
   const [deposits, setDeposits] = useState([]);
   const [withdrawals, setWithdrawals] = useState([]);
-  const [purchases, setPurchases] = useState([]);
+  const [purchasedDapps, setPurchasedDapps] = useState([]);
 
   const web3 = useWeb3Context();
 
-  if (web3.active && deposits.length === 0 && withdrawals.length === 0 && purchases.length === 0) {
+  if (
+    web3.active
+    && deposits.length === 0
+    && withdrawals.length === 0
+    && purchasedDapps.length === 0
+  ) {
     getPastDeposits(web3.library, web3.account)
       .then((res) => {
         setDeposits(res);
@@ -43,10 +48,10 @@ function Transactions() {
       .then((res) => {
         setWithdrawals(res);
 
-        return getPastPurchases(web3.library, web3.account);
+        return getPastPurchasedDapps(web3.library, web3.account);
       })
       .then((res) => {
-        setPurchases(res);
+        setPurchasedDapps(res);
       })
       .catch((err) => {
         console.log(err);
@@ -96,20 +101,20 @@ function Transactions() {
             </NavItem>
             <NavItem className="filters__nav-item">
               <NavLink
-                onClick={() => setTab('purchases')}
+                onClick={() => setTab('purchasedDapps')}
                 className={tab === 'purchases' ? (
                   'filters__link--active'
                 ) : (
                   'filters__link'
                 )}
               >
-                Purchases
+                Purchased dApps
               </NavLink>
             </NavItem>
           </Nav>
           <TabContent activeTab={tab}>
             <TabPane tabId="all">
-              {purchases.concat(deposits.concat(withdrawals)).map(tx => (
+              {purchasedDapps.concat(deposits.concat(withdrawals)).map(tx => (
                 <Transaction
                   key={tx.txHash}
                   type={tx.event}
@@ -138,8 +143,8 @@ function Transactions() {
                 />
               ))}
             </TabPane>
-            <TabPane tabId="purchases">
-              {purchases.map(purchase => (
+            <TabPane tabId="purchasedDapps">
+              {purchasedDapps.map(purchase => (
                 <Transaction
                   key={purchase.txHash}
                   type={purchase.event}

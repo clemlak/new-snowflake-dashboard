@@ -1,0 +1,22 @@
+.slider {
+  background-color: #e9ecef;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.slider__test-slide {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 150px;
+  width: 420px;
+  height: 230px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 2px;
+  padding-right: 2px;
+  border-radius: 10px;
+  vertical-align: middle;
+  text-align: center;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+}

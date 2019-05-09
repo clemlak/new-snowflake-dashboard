@@ -39,7 +39,7 @@ function Manage() {
 
   return (
     <div>
-      <Row>
+      <Row className="pb-3">
         <Col>
           <h1 className="title">
             dApps You Added
@@ -51,7 +51,7 @@ function Manage() {
           </h4>
         </Col>
       </Row>
-      <Row>
+      <Row className="py-3">
         <Col>
           <CardDeck>
             {resolvers.length > 0 ? (

@@ -19,7 +19,9 @@
     "react-icons": "^3.6.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-slick": "^0.24.0",
     "reactstrap": "^8.0.0",
+    "slick-carousel": "^1.8.1",
     "web3": "1.0.0-beta.36",
     "web3-react": "4.0.3"
   },

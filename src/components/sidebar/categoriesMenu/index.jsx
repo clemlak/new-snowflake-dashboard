@@ -8,26 +8,29 @@ import {
   NavLink as RouterNavLink,
 } from 'react-router-dom';
 
-import { IoIosAlbums } from 'react-icons/io';
+import {
+  IoIosFolder,
+  IoIosFilm,
+  IoMdCard,
+  IoIosGlobe,
+  IoLogoGameControllerA,
+  IoIosPeople,
+  IoIosCalculator,
+  IoIosCog,
+} from 'react-icons/io';
 
 import categoriesJson from '../../../common/config/categories.json';
 
-const CategoriesMenu = () => {
-  const { categories } = categoriesJson;
-
-  const categoriesLinks = [];
-
-  for (let i = 0; i < categories.length; i += 1) {
-    categoriesLinks.push(
-      <NavItem key={i}>
-        <NavLink tag={RouterNavLink} exact to={`/category/${categories[i]}`} className="sidebar__link" activeClassName="sidebar__link--active">
-          <IoIosAlbums />
-          {' '}
-          {categories[i]}
-        </NavLink>
-      </NavItem>,
-    );
-  }
+function CategoriesMenu() {
+  const Components = {
+    IoIosFilm,
+    IoMdCard,
+    IoIosGlobe,
+    IoLogoGameControllerA,
+    IoIosPeople,
+    IoIosCalculator,
+    IoIosCog,
+  };
 
   return (
     <div className="categories-menu">
@@ -35,10 +38,29 @@ const CategoriesMenu = () => {
         Categories
       </h2>
       <Nav vertical>
-        {categoriesLinks}
+        <NavItem key="all">
+          <NavLink tag={RouterNavLink} exact to="/category/all" className="sidebar__link" activeClassName="sidebar__link--active">
+            <IoIosFolder
+              className="sidebar__icon"
+            />
+            {' '}
+            All Categories
+          </NavLink>
+        </NavItem>
+        {categoriesJson.map(Categorie => (
+          <NavItem key={Categorie.name}>
+            <NavLink tag={RouterNavLink} exact to={`/category/${Categorie.name}`} className="sidebar__link" activeClassName="sidebar__link--active">
+              {React.createElement(Components[Categorie.icon], {
+                className: 'sidebar__icon',
+              })}
+              {' '}
+              {Categorie.name}
+            </NavLink>
+          </NavItem>
+        ))}
       </Nav>
     </div>
   );
-};
+}
 
 export default CategoriesMenu;

@@ -15,7 +15,6 @@ function Tooltip(props) {
 
   return (
     <Popover
-      className="on-top"
       target={target}
       trigger="hover"
       placement="top"

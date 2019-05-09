@@ -8,28 +8,49 @@ import PropTypes from 'prop-types';
 import {
   Button,
   Spinner,
+  Modal,
+  ModalBody,
+  Row,
+  Col,
 } from 'reactstrap';
+import {
+  IoIosCheckmarkCircle,
+  IoIosCloseCircle,
+} from 'react-icons/io';
 
 function TransactionButton(props) {
   const {
-    text,
-    send,
-    finalAction,
+    displayModal,
+    initialText,
+    waitingForUserConfirmationText,
+    waitingForConfirmationText,
+    confirmedText,
+    sendAction,
+    afterConfirmationAction,
+    onConfirmationAction,
+    className,
     color,
+    block,
   } = props;
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [status, setStatus] = useState('');
+  const [hash, setHash] = useState('');
 
   function sendTransaction() {
     setStatus('waiting');
+    setIsModalOpen(true);
 
-    send()
-      .on('transactionHash', (hash) => {
-        console.log(hash);
-        setStatus('loading');
+    sendAction()
+      .on('transactionHash', (res) => {
+        console.log(res);
+        setHash(res);
+        setStatus('pending');
       })
       .on('receipt', (receipt) => {
         console.log(receipt);
+
+        onConfirmationAction();
         setStatus('confirmed');
       })
       .on('error', (error) => {
@@ -38,59 +59,186 @@ function TransactionButton(props) {
       });
   }
 
-  function showContent() {
+  function showButtonContent() {
     if (status === 'waiting') {
       return (
         <div>
           <Spinner />
           {' '}
-          Waiting...
+          {waitingForUserConfirmationText}
         </div>
       );
     }
 
-    if (status === 'loading') {
-      return 'Loading...';
+    if (status === 'pending') {
+      return waitingForConfirmationText;
     }
 
     if (status === 'confirmed') {
-      return 'Confirmed';
+      return confirmedText;
     }
 
     if (status === 'error') {
-      return 'error';
+      return 'Error...';
     }
 
-    return text;
+    return initialText;
+  }
+
+  function showModalContent() {
+    if (status === 'pending') {
+      return (
+        <div>
+          <Row className="text-center pb-3">
+            <Col>
+              <Spinner className="transaction-button-modal__icon" />
+            </Col>
+          </Row>
+          <Row className="text-center">
+            <Col>
+              <p className="transaction-button-modal__title">
+                Transaction pending
+              </p>
+              <p className="transaction-button-modal__subtitle mb-0">
+                Please wait
+              </p>
+            </Col>
+          </Row>
+        </div>
+      );
+    }
+
+    if (status === 'confirmed') {
+      return (
+        <div>
+          <Row className="text-center">
+            <Col>
+              <IoIosCheckmarkCircle className="transaction-button-modal__success-icon" />
+            </Col>
+          </Row>
+          <Row className="text-center">
+            <Col>
+              <p className="transaction-button-modal__title text-success">
+                Success
+              </p>
+              <p className="transaction-button-modal__subtitle">
+                Your transaction is successful!
+              </p>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="text-center">
+              <a href={`https://rinkeby.etherscan.io/tx/${hash}`}>
+                View Transaction
+              </a>
+            </Col>
+          </Row>
+        </div>
+      );
+    }
+
+    if (status === 'error') {
+      return (
+        <div>
+          <div>
+            <Row className="text-center">
+              <Col>
+                <IoIosCloseCircle className="transaction-button-modal__error-icon" />
+              </Col>
+            </Row>
+            <Row className="text-center">
+              <Col>
+                <p className="transaction-button-modal__title text-danger">
+                  Error
+                </p>
+                <p className="transaction-button-modal__subtitle mb-0">
+                  An error occured...
+                </p>
+              </Col>
+            </Row>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <div>
+          <Row className="text-center pb-3">
+            <Col>
+              <Spinner />
+            </Col>
+          </Row>
+          <Row className="text-center">
+            <Col>
+              <p className="transaction-button-modal__title">
+                Waiting for user confirmation
+              </p>
+              <p className="transaction-button-modal__subtitle mb-0">
+                Please wait confirmation
+              </p>
+            </Col>
+          </Row>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <Button
-      color={color}
-      onClick={
-        status === 'confirmed' ? (
-          () => finalAction()
-        ) : (
-          () => sendTransaction()
-        )}
-    >
-      {showContent()}
-    </Button>
+    <div>
+      {displayModal && (
+        <Modal
+          isOpen={isModalOpen}
+          toggle={() => setIsModalOpen(!isModalOpen)}
+          size="sm"
+        >
+          <ModalBody>
+            {showModalContent()}
+          </ModalBody>
+        </Modal>
+      )}
+      <Button
+        color={color}
+        className={className}
+        block={block}
+        onClick={
+          status === 'confirmed' ? (
+            () => afterConfirmationAction()
+          ) : (
+            () => sendTransaction()
+          )}
+      >
+        {showButtonContent()}
+      </Button>
+    </div>
   );
 }
 
 TransactionButton.propTypes = {
-  text: PropTypes.string.isRequired,
-  send: PropTypes.func.isRequired,
-  finalAction: PropTypes.func,
+  displayModal: PropTypes.bool,
+  initialText: PropTypes.string,
+  waitingForUserConfirmationText: PropTypes.string,
+  waitingForConfirmationText: PropTypes.string,
+  confirmedText: PropTypes.string,
+  sendAction: PropTypes.func.isRequired,
+  afterConfirmationAction: PropTypes.func,
+  onConfirmationAction: PropTypes.func,
+  className: PropTypes.string,
   color: PropTypes.string,
+  block: PropTypes.bool,
 };
 
 TransactionButton.defaultProps = {
-  finalAction: () => {
-    console.log('Done');
-  },
+  displayModal: false,
+  initialText: 'Send',
+  waitingForUserConfirmationText: 'Waiting for user confirmation...',
+  waitingForConfirmationText: 'Waiting for confirmation...',
+  confirmedText: 'Transaction confirmed!',
+  afterConfirmationAction: () => console.log('You can leave now!'),
+  onConfirmationAction: () => console.log('Transaction confirmed!'),
+  className: '',
   color: 'primary',
+  block: false,
 };
 
 export default TransactionButton;

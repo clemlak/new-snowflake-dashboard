@@ -1,5 +1,7 @@
 /**
  * Displays a help button triggering a tooltip on hover
+ * TODO: Create a specific stylesheet for this component
+ * TODO: Add an active button design
  */
 
 import React, {
@@ -18,7 +20,7 @@ function HelpButton(props) {
     content,
   } = props;
 
-  const [isTooltipOpen, setIsTooltipOpen] = useState(true);
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
   const iconRef = useRef();
 

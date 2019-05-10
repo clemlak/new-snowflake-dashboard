@@ -166,69 +166,10 @@ export function linkify (type, data, display, variant) {
   )
 }
 
-export async function sendTransaction(library, address, method, handlers = {}, transactionOptions = {}) {
-  if (!isWeb3(library)) throw Error('Not Implemented: sendTransaction currently only works for web3.js')
-
-  // sanitize transactionOptions
-  const allowedOptions = ['gasPrice', 'gas', 'value']
-  if (!Object.keys(transactionOptions).every(option => allowedOptions.includes(option)))
-    throw Error(`Invalid option passed. Allowed options are: '${allowedOptions.join(`', '`)}'.`)
-
-  // sanitize handlers
-  const allowedHandlers = ['transactionHash', 'receipt', 'confirmation']
-  if (!Object.keys(handlers).every(handler => allowedHandlers.includes(handler)))
-    throw Error(`Invalid handler passed. Allowed handlers are: '${allowedHandlers.join(`', '`)}'.`)
-  for (let handler of allowedHandlers)
-    handlers[handler] = handlers[handler] || function () {}
-
-  // lets us throw specific errors
-  function wrapError(error, name) {
-    if (!TRANSACTION_ERROR_CODES.includes(name)) return Error(`Passed error name ${name} is not valid.`)
-    error.code = name
-    return error
-  }
-
-  // unwrap method if it's a function
-  const _method = typeof method === 'function' ? method() : method
-
-  // define promises for the variables we need to validate/send the transaction
-  async function gasPricePromise () {
-    if (transactionOptions.gasPrice) return transactionOptions.gasPrice
-
-    return library.eth.getGasPrice()
-      .catch((error) => {
-        throw wrapError(error, 'GAS_PRICE_UNAVAILABLE')
-      })
-  }
-
-  async function gasPromise () {
-    return _method.estimateGas({ from: address, gas: transactionOptions.gas, value: transactionOptions.value })
-      .catch((error) => {
-        throw wrapError(error, 'FAILING_TRANSACTION')
-      })
-  }
-
-  async function balanceWeiPromise () {
-    return getAccountBalance(library, address, 'wei')
-      .catch(error => {
-        throw wrapError(error, 'SENDING_BALANCE_UNAVAILABLE')
-      })
-  }
-
-  return Promise.all([gasPricePromise(), gasPromise(), balanceWeiPromise()])
-    .then(([gasPrice, gas, balanceWei]) => {
-      // ensure the sender has enough ether to pay gas
-      const safeGas = parseInt(`${Number(gas) * 1.1}`)
-      const requiredWei = ethers.utils.bigNumberify(gasPrice).mul(ethers.utils.bigNumberify(safeGas))
-      if (ethers.utils.bigNumberify(balanceWei).lt(requiredWei)) {
-        const requiredEth = toDecimal(requiredWei.toString(), 18)
-        const errorMessage = `Insufficient balance. Ensure you have at least ${requiredEth} ETH.`
-        throw wrapError(Error(errorMessage), 'INSUFFICIENT_BALANCE')
-      }
-
+async function sendTransaction(library, address, method, handlers = {}, transactionOptions = {}) {
       // send the transaction
-      return _method.send(
-        {from: address, gasPrice: gasPrice, gas: safeGas, value: transactionOptions.value}
+      return method().send(
+        {from: address, value: transactionOptions.value}
       )
         .on('transactionHash', (transactionHash) => {
           handlers['transactionHash'](transactionHash)
@@ -239,7 +180,6 @@ export async function sendTransaction(library, address, method, handlers = {}, t
         .on('confirmation', (confirmationNumber, receipt) => {
           handlers['confirmation'](confirmationNumber, receipt)
         })
-    })
 }
 
 export function toDecimal (number, decimals) {
@@ -298,3 +238,7 @@ export function titalizeText(str) {
 
   return titalizeText
 }
+
+export {
+  sendTransaction,
+};

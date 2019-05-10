@@ -1,6 +1,7 @@
 /**
  * Displays the transactions linked to the current account
  * TODO: purchasedDapps must display the name of the resolver instead of the address of the contract
+ * TODO: Fix same keys error
  */
 
 import React, { useState } from 'react';
@@ -116,7 +117,7 @@ function Transactions() {
             <TabPane tabId="all">
               {purchasedDapps.concat(deposits.concat(withdrawals)).map(tx => (
                 <Transaction
-                  key={tx.txHash}
+                  key={`_${tx.txHash}`}
                   type={tx.event}
                   date={Date.now()}
                   amount={tx.amount}

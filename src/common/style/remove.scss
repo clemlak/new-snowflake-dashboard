@@ -1,0 +1,35 @@
+.remove__body {
+  padding: 1.75rem 2.25rem 2.25rem 2.25rem;
+}
+
+.remove__header {
+  padding: 1.75rem 2.25rem 0 2.25rem
+}
+
+.remove__icon {
+  color: red;
+  font-size: 3.2rem;
+  margin-right: 15px;
+}
+
+.remove__title {
+  color: red;
+  font-weight: 600;
+}
+
+.remove__close-icon {
+  color: $primary;
+  font-size: 2rem;
+}
+
+.remove__preview {
+  background-color: #f2f4ff;
+  border-color: #d4dbff;
+  color: #333;
+  padding: 0.25rem;
+}
+
+.remove__logo {
+  height: 60px;
+  margin-right: 10px;
+}

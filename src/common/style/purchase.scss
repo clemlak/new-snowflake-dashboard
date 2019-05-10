@@ -1,0 +1,40 @@
+.purchase__body {
+  padding: 1.75rem 2.25rem 2.25rem 2.25rem;
+}
+
+.purchase__header {
+  padding: 1.75rem 2.25rem 0 2.25rem
+}
+
+.purchase__icon {
+  font-size: 2.5rem;
+  margin-right: 15px;
+}
+
+.purchase__title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.purchase__close-icon {
+  color: $primary;
+  font-size: 2rem;
+}
+
+.purchase__preview {
+  background-color: #f2f4ff;
+  border-color: #d4dbff;
+  color: #333;
+  padding: 0.25rem;
+}
+
+.purchase__logo {
+  height: 60px;
+  margin-right: 10px;
+}
+
+.purchase__price {
+  color: $primary;
+  margin: 0;
+  font-size: 600;
+}

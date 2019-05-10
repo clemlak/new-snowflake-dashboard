@@ -1,5 +1,5 @@
 /**
- * Remove the dapp from the providers of the current user
+ * Displays a modal  to remove a dApp
  */
 
 import React from 'react';
@@ -15,6 +15,10 @@ import {
 import {
   useWeb3Context,
 } from 'web3-react';
+import {
+  IoIosCloseCircle,
+  IoIosClose,
+} from 'react-icons/io';
 
 import {
   removeResolver,
@@ -32,31 +36,45 @@ function Remove(props) {
     toggle,
   } = props;
 
+  const closeIcon = <IoIosClose className="remove__close-icon" onClick={toggle} />;
+
   return (
     <Modal isOpen={isOpen} toggle={toggle}>
-      <ModalHeader toggle={toggle}>
-        Confirm Removal
+      <ModalHeader
+        toggle={toggle}
+        className="align-items-center remove__header"
+        close={closeIcon}
+      >
+        <IoIosCloseCircle className="remove__icon" />
+        <span className="remove__title">
+          Confirm Removal
+        </span>
       </ModalHeader>
-      <ModalBody>
+      <ModalBody className="remove__body">
         <Row>
           <Col>
-            <Alert color="primary">
+            <Alert className="remove__preview">
               <Row>
                 <Col>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/legacy/${id}/logo.png`}
+                    alt="logo"
+                    className="remove__logo"
+                  />
                   {title}
                 </Col>
               </Row>
             </Alert>
           </Col>
         </Row>
-        <Row>
+        <Row className="pb-4">
           <Col>
             <p>
               You are about to remove {title} from your EIN. Please confirm below. Your purchases are tied to your EIN. You can always add it for free in the future after you remove it.
             </p>
           </Col>
         </Row>
-        <Row>
+        <Row className="pb-1">
           <Col>
             <TransactionButton
               color="danger"

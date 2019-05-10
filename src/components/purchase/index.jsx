@@ -1,6 +1,5 @@
 /**
- * Adds the dapp to the providers of the current user
- * TODO: Use the TransactionButton component
+ * Displays a modal to buy a dApp
  */
 
 import React from 'react';
@@ -16,6 +15,10 @@ import {
 import {
   useWeb3Context,
 } from 'web3-react';
+import {
+  IoIosCart,
+  IoIosClose,
+} from 'react-icons/io';
 
 import {
   addResolver,
@@ -34,27 +37,43 @@ function Purchase(props) {
     toggle,
   } = props;
 
+  const closeIcon = <IoIosClose className="purchase__close-icon" onClick={toggle} />;
+
   return (
     <Modal isOpen={isOpen} toggle={toggle}>
-      <ModalHeader toggle={toggle}>
-        Confirm Purchase
+      <ModalHeader
+        toggle={toggle}
+        className="align-items-center purchase__header"
+        close={closeIcon}
+      >
+        <IoIosCart className="purchase__icon" />
+        <span className="purchase__title">
+          Confirm Purchase
+        </span>
       </ModalHeader>
-      <ModalBody>
+      <ModalBody className="purchase__body">
         <Row>
           <Col>
-            <Alert color="primary">
-              <Row>
+            <Alert className="purchase__preview">
+              <Row className="align-items-center">
                 <Col>
+                  <img
+                    src={`${process.env.PUBLIC_URL}/legacy/${id}/logo.png`}
+                    alt="logo"
+                    className="remove__logo"
+                  />
                   {title}
                 </Col>
-                <Col>
-                  {price}
+                <Col sm="2" className="text-center">
+                  <p className="purchase__price">
+                    {price}
+                  </p>
                 </Col>
               </Row>
             </Alert>
           </Col>
         </Row>
-        <Row>
+        <Row className="pb-4">
           <Col>
             This dApp costs {price} Hydro. Your dApp store wallet balance will be used. Please confirm the dApp title above and finalize purchase below. Refunds are not available. Be sure to check MetaMask for the prompt to continue.
           </Col>

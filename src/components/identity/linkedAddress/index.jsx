@@ -4,16 +4,27 @@ import {
   Row,
   Col,
   Alert,
-  Button,
 } from 'reactstrap';
 import {
   IoIosCheckmarkCircleOutline,
 } from 'react-icons/io';
+import {
+  useWeb3Context,
+} from 'web3-react';
+
+import {
+  removeLinkedAddress,
+} from '../../../services/utilities';
+
+import TransactionButton from '../../transactionButton';
 
 const LinkedAddress = (props) => {
   const {
     address,
+    notRemovable,
   } = props;
+
+  const web3 = useWeb3Context();
 
   const formattedDate = new Date(Date.now());
 
@@ -40,9 +51,13 @@ const LinkedAddress = (props) => {
           </p>
         </Col>
         <Col className="text-right">
-          <Button color="danger">
-            Remove Access
-          </Button>
+          {notRemovable && (
+            <TransactionButton
+              color="danger"
+              initialText="Remove Access"
+              sendAction={() => removeLinkedAddress(web3.library, web3.account)}
+            />
+          )}
         </Col>
       </Row>
     </Alert>
@@ -53,4 +68,9 @@ export default LinkedAddress;
 
 LinkedAddress.propTypes = {
   address: PropTypes.string.isRequired,
+  notRemovable: PropTypes.bool,
+};
+
+LinkedAddress.defaultProps = {
+  notRemovable: false,
 };

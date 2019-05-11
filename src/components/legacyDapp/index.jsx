@@ -83,11 +83,7 @@ function LegacyDapp(props) {
     );
   }
 
-  return (
-    <p>
-      Loading...
-    </p>
-  );
+  return null;
 }
 
 LegacyDapp.propTypes = {

@@ -351,6 +351,20 @@ function getBlockTimestamp(lib, blocknumber) {
     .catch(err => err);
 }
 
+function isResolverFor(lib, account, resolver) {
+  const identityRegistryContract = new lib.eth.Contract(
+    identityRegistry.abi,
+    identityRegistry.address,
+  );
+
+  return getAccountEin(lib, account)
+    .then(ein => identityRegistryContract.methods.isResolverFor(
+      ein,
+      resolver,
+    ).call())
+    .catch(err => err);
+}
+
 export {
   getAccountEthBalance,
   getAccountHydroBalance,
@@ -373,4 +387,5 @@ export {
   getBlockTimestamp,
   getPastPurchasedDapps,
   getPastWithdrawals,
+  isResolverFor,
 };

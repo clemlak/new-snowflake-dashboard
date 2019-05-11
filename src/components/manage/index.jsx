@@ -53,23 +53,21 @@ function Manage() {
       </Row>
       <Row className="py-3">
         <Col>
-          <CardDeck>
-            {resolvers.length > 0 ? (
-              <div>
-                {resolvers.map(resolver => (
-                  <DappPreview
-                    key={resolver}
-                    id={resolver}
-                    legacy
-                    added
-                  />
-                ))
-              }
-              </div>
-            ) : (
-              <p>No dapps yet! :( </p>
-            )}
-          </CardDeck>
+          {resolvers.length > 0 ? (
+            <CardDeck>
+              {resolvers.map(resolver => (
+                <DappPreview
+                  key={resolver}
+                  id={resolver}
+                  legacy
+                  added
+                />
+              ))
+            }
+            </CardDeck>
+          ) : (
+            <p>No dapps yet! :( </p>
+          )}
         </Col>
       </Row>
     </div>

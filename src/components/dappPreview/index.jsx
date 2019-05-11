@@ -36,12 +36,14 @@ function DappPreview(props) {
   const details = {
     title: 'Title',
     category: 'Category',
+    price: '0',
     logo: imgPlaceholder,
   };
 
   if (legacy) {
     details.title = resolversJson[id].title;
     details.category = resolversJson[id].category;
+    details.price = resolversJson[id].price;
     details.logo = `${process.env.PUBLIC_URL}/legacy/${id}/logo.png`;
   }
 
@@ -56,7 +58,7 @@ function DappPreview(props) {
       <Purchase
         id={id}
         title={details.title}
-        price={0}
+        price={details.price}
         isOpen={isPurchaseModalOpen}
         toggle={() => setIsPurchaseModalOpen(false)}
       />

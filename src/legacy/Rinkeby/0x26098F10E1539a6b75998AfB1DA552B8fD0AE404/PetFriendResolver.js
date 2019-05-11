@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import EditPetDialog from './EditPetDialog';
 import LostReportCardv2 from './LostReportCardv2';
 
-import { ABI } from './index'
+import ABI from './abi';
 import { useGenericContract, useAccountEffect } from 'common/hooks'
 import { useWeb3Context } from 'web3-react'
 

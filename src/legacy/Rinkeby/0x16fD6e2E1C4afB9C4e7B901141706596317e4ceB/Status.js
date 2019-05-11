@@ -5,7 +5,7 @@ import { useWeb3Context } from 'web3-react'
 import { useGenericContract, useNamedContract, useAccountEffect } from '../../common/hooks'
 import TransactionButton from '../../common/TransactionButton'
 
-import { ABI } from './index'
+import ABI from './abi';
 
 export default function Status ( props ) {
   const context = useWeb3Context()
@@ -52,7 +52,7 @@ return (
       <TransactionButton
         readyText='Set Status'
         method={() => statusContract.methods.setStatus(newStatus)}
-        
+
       />
 
       <hr style={{marginTop: 30, marginBottom: 30}} />

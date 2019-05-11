@@ -59,8 +59,6 @@ function LegacyDapp(props) {
   }
 
   function displayDapp() {
-    console.log(id);
-
     if (id === '0x26098F10E1539a6b75998AfB1DA552B8fD0AE404') {
       return <PetOwnerView ein={ein} />;
     }

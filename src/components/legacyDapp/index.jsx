@@ -1,5 +1,8 @@
 /**
- * Display a legacy dapp in a modal
+ * Displays a legacy dapp in a modal
+ * NOTE: Legacy dapps were created based on the previous front-end
+ * The goal is now to move dapps from the front-end to their own website
+ * Meanwhile, legacy dapps are still hosted here
  */
 
 import React, { useState } from 'react';

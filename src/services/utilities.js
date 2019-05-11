@@ -365,6 +365,17 @@ function isResolverFor(lib, account, resolver) {
     .catch(err => err);
 }
 
+function removeLinkedAddress(lib, account) {
+  const identityRegistryContract = new lib.eth.Contract(
+    identityRegistry.abi,
+    identityRegistry.address,
+  );
+
+  return identityRegistryContract.methods.removeAssociatedAddress().send({
+    from: account,
+  });
+}
+
 export {
   getAccountEthBalance,
   getAccountHydroBalance,
@@ -388,4 +399,5 @@ export {
   getPastPurchasedDapps,
   getPastWithdrawals,
   isResolverFor,
+  removeLinkedAddress,
 };

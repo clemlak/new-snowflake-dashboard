@@ -37,6 +37,12 @@ function Purchase(props) {
     toggle,
   } = props;
 
+  let normalizedPrice = '';
+
+  if (web3.active) {
+    normalizedPrice = web3.library.utils.fromWei(price);
+  }
+
   const closeIcon = <IoIosClose className="purchase__close-icon" onClick={toggle} />;
 
   return (
@@ -66,7 +72,7 @@ function Purchase(props) {
                 </Col>
                 <Col sm="2" className="text-center">
                   <p className="purchase__price">
-                    {price}
+                    {normalizedPrice.substring(0, 5)}
                   </p>
                 </Col>
               </Row>
@@ -75,7 +81,7 @@ function Purchase(props) {
         </Row>
         <Row className="pb-4">
           <Col>
-            This dApp costs {price} Hydro. Your dApp store wallet balance will be used. Please confirm the dApp title above and finalize purchase below. Refunds are not available. Be sure to check MetaMask for the prompt to continue.
+            This dApp costs {normalizedPrice} Hydro. Your dApp store wallet balance will be used. Please confirm the dApp title above and finalize purchase below. Refunds are not available. Be sure to check MetaMask for the prompt to continue.
           </Col>
         </Row>
         <Row>
@@ -87,10 +93,11 @@ function Purchase(props) {
                 web3.library,
                 web3.account,
                 id,
-                '1',
+                price,
               )}
               afterConfirmationAction={toggle}
               block
+              displayModal
             />
           </Col>
         </Row>
@@ -102,7 +109,7 @@ function Purchase(props) {
 Purchase.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
 };

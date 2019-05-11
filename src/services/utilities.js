@@ -219,7 +219,7 @@ function addResolver(lib, account, resolver, amount) {
     resolver,
     true,
     lib.utils.toWei(amount),
-    '0x00',
+    lib.eth.abi.encodeParameters(['string', 'string'], ['', '']),
   ).send({
     from: account,
   });

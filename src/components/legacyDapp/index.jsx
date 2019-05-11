@@ -24,6 +24,14 @@ import {
   Status,
 } from '../../legacy/Rinkeby/0x16fD6e2E1C4afB9C4e7B901141706596317e4ceB/index';
 
+import {
+  PetOwnerView,
+} from '../../legacy/Rinkeby/0x26098F10E1539a6b75998AfB1DA552B8fD0AE404/index';
+
+import {
+  Oxide,
+} from '../../legacy/Rinkeby/0x2930Cf9EE8E03C3E06Fa1828cCD8E371323Fde0f/index';
+
 function LegacyDapp(props) {
   const web3 = useWeb3Context();
 
@@ -50,6 +58,20 @@ function LegacyDapp(props) {
       });
   }
 
+  function displayDapp() {
+    console.log(id);
+
+    if (id === '0x26098F10E1539a6b75998AfB1DA552B8fD0AE404') {
+      return <PetOwnerView ein={ein} />;
+    }
+
+    if (id === '0x2930Cf9EE8E03C3E06Fa1828cCD8E371323Fde0f') {
+      return <Oxide ein={ein} />;
+    }
+
+    return <Status ein={ein} />;
+  }
+
   if (!loading) {
     return (
       <Modal isOpen={isOpen} toggle={toggle} size="lg">
@@ -57,7 +79,7 @@ function LegacyDapp(props) {
           {title}
         </ModalHeader>
         <ModalBody>
-          <Status ein={ein} />
+          {displayDapp()}
         </ModalBody>
       </Modal>
     );

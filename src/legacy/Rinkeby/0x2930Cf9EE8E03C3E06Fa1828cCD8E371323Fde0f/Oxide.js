@@ -29,11 +29,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 import { useWeb3Context } from 'web3-react'
-import { toDecimal, fromDecimal } from 'common/utilities'
-import { useSnowflakeBalance, useGenericContract, useAccountEffect } from 'common/hooks'
-import TransactionButton from 'components/common/TransactionButton'
+import { toDecimal, fromDecimal } from '../../common/utilities'
+import { useSnowflakeBalance, useGenericContract, useAccountEffect } from '../../common/hooks'
+import TransactionButton from '../../common/TransactionButton'
 
-import { ABI } from './index'
+import ABI from './abi';
 
 import './Oxide.css'
 

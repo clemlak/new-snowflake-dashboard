@@ -16,19 +16,19 @@ const circularProgressStyle = {
     marginTop: -12,
     marginLeft: -12,
   };
-  
+
 export default class ReportHistoryTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {events:[],
 			petId:props.petId,
 			loading:true
-					
-			
+
+
 		}
 	}
-	
-	
+
+
 	formatTimestamp(timestamp){
 		var date = new Date(parseInt(timestamp)*1000);
 		var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -37,28 +37,28 @@ export default class ReportHistoryTable extends React.Component {
 		var day = ('0' + date.getDate() ).substr(-2);
 		var hour = date.getHours();
 		var min = ('0' + date.getMinutes() ).substr(-2);
-		var sec = ('0' + date.getSeconds() ).substr(-2); 
+		var sec = ('0' + date.getSeconds() ).substr(-2);
 		var time = month + ' ' + day + ' ' + year + ', ' + hour + ':' + min + ':' + sec ;
 		return time;
 	}
-	
-	
-	
+
+
+
 	componentDidMount() {
-	
+
 		var _this = this;
 		//var shaPetId = this.props.w3w.web3js.utils.sha3(this.state.petId);
 		//var shaPetId = this.props.w3w.web3js.utils.sha3(this.props.w3w.web3js.eth.abi.encodeParameter("string",this.state.petId));
-		this.props.resolverContract.getPastEvents('LostReportChanged', 
+		this.props.resolverContract.getPastEvents('LostReportChanged',
 			{
 				filter: {petId:this.state.petId},
-				fromBlock: 0, 
+				fromBlock: 0,
 				toBlock: 'latest'
 				//topics: [null,shaPetId]
 				//topics:[this.state.petId]
-			}, 
+			},
 			function(e,l){
-				
+
 				_this.setState({
 					events: l,
 					loading:false
@@ -94,7 +94,7 @@ export default class ReportHistoryTable extends React.Component {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{this.state.events.map( ev => 
+								{this.state.events.map( ev =>
 									<TableRow key={this.props.petId+'_'+ev.returnValues.date}>
 										<TableCell>{this.formatTimestamp(ev.returnValues[2])}</TableCell>
 										<TableCell>{this.props.getStatusTxt(ev.returnValues[3])}</TableCell>
@@ -118,4 +118,3 @@ export default class ReportHistoryTable extends React.Component {
 		)
 	}
 }
-

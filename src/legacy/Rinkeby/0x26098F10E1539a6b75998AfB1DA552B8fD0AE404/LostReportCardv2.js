@@ -19,7 +19,7 @@ import yellow from '@material-ui/core/colors/yellow';
 
 import ClaimReportDialog from './ClaimReportDialog';
 import Tooltip from '@material-ui/core/Tooltip';
-import TransactionButton from 'components/common/TransactionButton';
+import TransactionButton from '../../common/TransactionButton';
 
 
 

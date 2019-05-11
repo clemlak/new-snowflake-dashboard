@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
-import TransactionButton from 'components/common/TransactionButton';
+import TransactionButton from '../../common/TransactionButton';
 import Info from '@material-ui/icons/Info';
 import AboutDialog from './AboutDialog';
 

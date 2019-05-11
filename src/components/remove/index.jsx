@@ -1,5 +1,6 @@
 /**
  * Displays a modal  to remove a dApp
+ * TODO: Confirmation of the pending transaction is never catched
  */
 
 import React from 'react';
@@ -84,10 +85,10 @@ function Remove(props) {
                 web3.library,
                 web3.account,
                 id,
-                '1',
               )}
               afterConfirmationAction={toggle}
               block
+              displayModal
             />
           </Col>
         </Row>

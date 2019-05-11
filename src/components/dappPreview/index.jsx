@@ -14,24 +14,36 @@ import {
   CardBody,
   Button,
 } from 'reactstrap';
+import {
+  useWeb3Context,
+} from 'web3-react';
 
 import Purchase from '../purchase';
 import Remove from '../remove';
 import LegacyDapp from '../legacyDapp';
 
+import {
+  isResolverFor,
+} from '../../services/utilities';
+
 import imgPlaceholder from '../../common/img/placeholders/dapp.gif';
 import resolversJson from '../../legacy/resolvers.json';
 
 function DappPreview(props) {
-  const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
-  const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
-  const [isDappModalOpen, setIsDappModalOpen] = useState(false);
-
   const {
     id,
     legacy,
     added,
   } = props;
+
+  const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
+  const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
+  const [isDappModalOpen, setIsDappModalOpen] = useState(false);
+
+  const [isAddedChecked, setIsAddedChecked] = useState(false);
+  const [isAdded, setIsAdded] = useState(added);
+
+  const web3 = useWeb3Context();
 
   const details = {
     title: 'Title',
@@ -45,6 +57,20 @@ function DappPreview(props) {
     details.category = resolversJson[id].category;
     details.price = resolversJson[id].price;
     details.logo = `${process.env.PUBLIC_URL}/legacy/${id}/logo.png`;
+  }
+
+  if (web3.active && !added && !isAddedChecked) {
+    isResolverFor(web3.library, web3.account, id)
+      .then((res) => {
+        if (added !== res) {
+          setIsAdded(res);
+        }
+
+        setIsAddedChecked(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -79,7 +105,7 @@ function DappPreview(props) {
           </h5>
           <Row className="justify-content-center align-items-center">
             <Col>
-              {added ? (
+              {isAdded ? (
                 <div>
                   <Button color="success" size="sm" onClick={() => setIsDappModalOpen(true)}>
                     Open

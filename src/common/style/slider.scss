@@ -21,3 +21,19 @@
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
   cursor: pointer;
 }
+
+.slick-next {
+  position: absolute;
+  opacity: 1;
+  color: white;
+  right: 0;
+  margin-top: -10px;
+  font-size: 30px;
+  margin-right: 40px;
+  color: transparent;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 35px;
+    color: #cecece;
+}

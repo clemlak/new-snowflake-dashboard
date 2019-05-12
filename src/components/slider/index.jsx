@@ -15,10 +15,10 @@ const settings = {
   speed: 500,
   autoPlay: true,
   autoPlaySpeed: 2000,
-  slidesToShow: 5,
+  slidesToShow: 4,
   slidesToScroll: 1,
   adaptiveHeight: true,
-  variableWidth: false,
+  variableWidth: true,
   className: 'slider',
   pauseOnHover: false,
 };

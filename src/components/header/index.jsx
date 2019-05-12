@@ -29,6 +29,12 @@ class Header extends React.Component {
     this.state = {
       isOpen: false,
     };
+
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  handleScroll() {
+      this.setState({scroll: window.scrollY});
   }
 
   toggle() {
@@ -41,6 +47,18 @@ class Header extends React.Component {
     });
   }
 
+  componentDidMount() {
+        const el = document.querySelector('nav');
+        this.setState({top: el.offsetTop, height: el.offsetHeight});
+        window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentDidUpdate() {
+        this.state.scroll > this.state.top ?
+            document.body.style.paddingTop = `${this.state.height}px` :
+            document.body.style.paddingTop = 0;
+  }
+
   render() {
     const {
       isOpen,
@@ -48,7 +66,7 @@ class Header extends React.Component {
 
     return (
       <div>
-        <Navbar color="light" light expand="md" className="bg-white">
+        <Navbar color="light" light expand="md" className="bg-white" className={this.state.scroll > this.state.top ? "fixed-nav" : ""}>
           <NavbarBrand tag={RouterNavLink} exact to="/">
             <h2 className="header__title">
               Snowflake

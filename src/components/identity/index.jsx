@@ -66,7 +66,7 @@ const Identity = () => {
       <Row className="pb-3">
         <Col>
           <h3 className="title">
-            Manage your identity
+            Manage your Identity
           </h3>
           <h4 className="subtitle">
             Add/Remove Ethereum Wallet Addresses to your EIN

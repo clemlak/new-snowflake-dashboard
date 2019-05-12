@@ -31,6 +31,13 @@ function Wallet() {
     <Container>
       <Row>
         <Col>
+          <h1 className="title">
+            Your Wallet
+          </h1>
+        </Col>
+      </Row>
+      <Row className="wallet__row">
+        <Col>
           <DepositWithdraw />
         </Col>
         <Col>

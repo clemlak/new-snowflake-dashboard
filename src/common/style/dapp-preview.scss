@@ -5,8 +5,8 @@
 
 .dapp-preview__image {
   border-radius: 10px;
-  width: 235px;
-  height: 235px;
+  width: 200px;
+  height: 200px;
   background-color: #f7f7f7;
   background-position: center center;
   background-size: cover;
@@ -69,7 +69,11 @@
 }
 
 .dapp-preview__body button:hover {
-    color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d;
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.card-deck .card {
+  margin-right: -5px;
 }

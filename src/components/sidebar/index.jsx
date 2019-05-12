@@ -62,7 +62,7 @@ function Sidebar() {
               </NavItem>
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/manage" className="sidebar__link" activeClassName="sidebar__link--active">
-                  Added dApps
+                  Your dApps
                 </NavLink>
               </NavItem>
               <NavItem>

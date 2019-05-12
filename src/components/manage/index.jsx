@@ -42,7 +42,7 @@ function Manage() {
       <Row className="pb-3">
         <Col>
           <h1 className="title">
-            Added dApps
+            Your dApps
             {' '}
             {resolvers.length}
           </h1>

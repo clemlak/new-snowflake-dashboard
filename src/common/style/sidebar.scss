@@ -1,8 +1,12 @@
 .sidebar {
   background-color: $snow-light-gray;
+  max-width: 320px;
   padding-left: 0;
   padding-right: 0;
-  max-width: 320px;
+  position: absolute;
+  top: 0;
+  bottom: -60px;
+  width: 100%;
 }
 
 .sidebar__link {

@@ -52,7 +52,7 @@ function Sidebar() {
             <div>
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/wallet" className="sidebar__link" activeClassName="sidebar__link--active">
-                  dApp Store Wallet
+                  Your Wallet
                 </NavLink>
               </NavItem>
               <NavItem>

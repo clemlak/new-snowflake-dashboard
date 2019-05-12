@@ -34,6 +34,10 @@
 }
 
 .slick-prev:before, .slick-next:before {
-    font-size: 35px;
-    color: #cecece;
+  font-size: 35px;
+  color: #cecece;
+}
+
+.slick-track {
+  left: 30px;
 }

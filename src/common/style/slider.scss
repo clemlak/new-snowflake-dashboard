@@ -32,11 +32,23 @@
   font-size: 30px;
   margin-right: 40px;
   color: transparent;
+  z-index: 9;
+}
+
+.slick-prev {
+  left: 30px;
+  position: absolute;
+  opacity: 1;
+  color: white;
+  margin-top: -10px;
+  font-size: 30px;
+  color: transparent;
+  z-index: 9;
 }
 
 .slick-prev:before, .slick-next:before {
   font-size: 35px;
-  color: #cecece;
+  color: #fff;
 }
 
 .slick-track {

@@ -20,9 +20,12 @@ const settings = {
   adaptiveHeight: true,
   variableWidth: true,
   className: 'slider',
-  pauseOnHover: false,
   draggable: true,
-  touchThreshold: 1000
+  touchThreshold: 1000,
+  pauseOnHover: true,
+  pauseOnFocus: true,
+  pauseOnDotsHover: false,
+  cssEase: 'linear'
 };
 
 function Carousel() {

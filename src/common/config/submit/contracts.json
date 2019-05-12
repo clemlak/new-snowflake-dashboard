@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Snowflake",
+    "description": "Snowflake is an ERC-1484 Provider that provides on-/off-chain identity management.",
+    "icon": "",
+    "link": ""
+  },
+  {
+    "title": "Charging Interest",
+    "description": "Smart contract to power charging interest in savings, lending, credit, and mortgage dApps.",
+    "icon": "",
+    "link": ""
+  },
+  {
+    "title": "Randomized Lottery Dynamics",
+    "description": "Allows randomly selected Snowflake IDs to distribute a defined or accruing amount of $hydro.",
+    "icon": "",
+    "link": ""
+  },
+  {
+    "title": "Gift Cards",
+    "description": "Allows a business to create gift cards for their services and for a user to redeem these gift cards, with unique characteristics.",
+    "icon": "",
+    "link": ""
+  },
+  {
+    "title": "Product Orders",
+    "description": "Allows a business to create SKUs and inventory management on goods to be sold to customers.",
+    "icon": "",
+    "link": ""
+  },
+  {
+    "title": "Product Orders",
+    "description": "Allows a business to invoice another business or consumer for a specific amount, on a specified date, and in a certain amount of Hydro.",
+    "icon": "",
+    "link": ""
+  }
+]

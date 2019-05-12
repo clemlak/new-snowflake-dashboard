@@ -21,6 +21,8 @@ const settings = {
   variableWidth: true,
   className: 'slider',
   pauseOnHover: false,
+  draggable: true,
+  touchThreshold: 1000
 };
 
 function Carousel() {

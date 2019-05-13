@@ -85,7 +85,7 @@ function Sidebar() {
           )}
           <NavItem>
             <NavLink tag={RouterNavLink} exact to="/submit" className="sidebar__link" activeClassName="sidebar__link--active">
-              Submit your dApp
+              Submit A dApp
             </NavLink>
           </NavItem>
         </Nav>

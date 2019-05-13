@@ -25,7 +25,9 @@ import {
 
 import LinkedAddress from './linkedAddress';
 import LinkAddressCard from './linkAddressCard';
+import HelpButton from '../helpButton';
 
+import tooltips from '../../common/config/tooltips.json';
 import userImg from '../../common/img/snowflake.gif';
 
 const Identity = () => {
@@ -81,8 +83,8 @@ const Identity = () => {
                 </p>
               </Col>
               <Col className="text-right">
-                <IoIosHelpCircleOutline
-                  className="identity__help help"
+                <HelpButton
+                  content={tooltips.getHydroHelp}
                 />
               </Col>
             </Row>

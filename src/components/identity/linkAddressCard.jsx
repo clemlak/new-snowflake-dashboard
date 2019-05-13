@@ -22,6 +22,9 @@ import {
 
 import SignatureButton from '../signatureButton';
 import TransactionButton from '../transactionButton';
+import HelpButton from '../helpButton';
+
+import tooltips from '../../common/config/tooltips.json';
 
 import {
   createSignedMessageToLinkAddress,
@@ -109,8 +112,8 @@ function LinkAddressCard() {
             </p>
           </Col>
           <Col className="text-right">
-            <IoIosHelpCircleOutline
-              className="link__help help"
+            <HelpButton
+              content={tooltips.getHydroHelp}
             />
           </Col>
         </Row>

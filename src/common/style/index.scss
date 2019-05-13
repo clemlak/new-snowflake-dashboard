@@ -188,3 +188,52 @@ h4 {
 .modal {
   top: 75px;
 }
+
+.submit_card {
+  max-width: 300px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 30px;
+  background-color: #f7f7f7;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.submit_card .card-header {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.submit_card .card-footer {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.submit_card .card-body {
+  text-align: center;
+  min-height: 180px;
+}
+
+.submit_card .card-footer {
+  text-align: center;
+  padding: 15px;
+}
+
+.submit_card button {
+  color: #fff;
+  background-color: #a9a9a9;
+  border-color: #a9a9a9;
+}
+
+.submitDapp p {
+  padding-bottom: 20px;
+}
+
+.submitDapp h1 {
+  margin-bottom: 10px;
+}
+
+.submitDapp h3 {
+  font-size: 20px;
+  margin-top: 25px;
+}

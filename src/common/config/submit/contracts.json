@@ -1,6 +1,6 @@
 [
   {
-    "title": "Snowflake",
+    "title": "Hydro Snowflake",
     "description": "Snowflake is an ERC-1484 Provider that provides on-/off-chain identity management.",
     "icon": "",
     "link": ""
@@ -26,12 +26,6 @@
   {
     "title": "Product Orders",
     "description": "Allows a business to create SKUs and inventory management on goods to be sold to customers.",
-    "icon": "",
-    "link": ""
-  },
-  {
-    "title": "Product Orders",
-    "description": "Allows a business to invoice another business or consumer for a specific amount, on a specified date, and in a certain amount of Hydro.",
     "icon": "",
     "link": ""
   }

@@ -46,9 +46,6 @@ function Manage() {
             {' '}
             {resolvers.length}
           </h1>
-          <h4 className="subtitle">
-            View dApp Detail Page To Remove
-          </h4>
         </Col>
       </Row>
       <Row className="py-3">

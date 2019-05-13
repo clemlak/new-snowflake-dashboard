@@ -54,6 +54,12 @@
 }
 
 .sidebar__badge {
-  margin-left: 10px;
   background-color: #bbb;
+  margin: 0;
+  float: right;
+  padding: 11px;
+  margin-top: -5px;
+  font-size: 14px;
+  margin-right: 5px;
+  color: #333;
 }

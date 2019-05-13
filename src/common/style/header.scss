@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.navbar-brand {
+  padding-left: 15px;
+}
+
 .header__title {
   color: #333;
   font-size: 20px;
@@ -20,7 +24,7 @@
   font-size: 12px;
   font-weight: 600;
   color: #8c8c8c;
-  padding: 5px 0 0 27px;
+  padding: 5px 0 0 0px;
 }
 
 .header__hydro {
@@ -44,4 +48,9 @@
   font-weight: 600;
   color: #8c8c8c;
   text-transform: uppercase;
+}
+
+.fixed-nav {
+  position: fixed;
+  top: 0;
 }

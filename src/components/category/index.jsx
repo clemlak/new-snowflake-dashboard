@@ -8,9 +8,9 @@ function Category({
   return (
     <div>
       {match.params.name ? (
-        <p>
-          {`Displaying the category ${name}`}
-        </p>
+        <h1 className="title">
+          {`${name} dApps`}
+        </h1>
       ) : (
         <p>
           No param in query string, displaying default category

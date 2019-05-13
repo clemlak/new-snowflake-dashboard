@@ -19,4 +19,38 @@
   vertical-align: middle;
   text-align: center;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  cursor: pointer;
+  margin-right: 22px;
+}
+
+.slick-next {
+  position: absolute;
+  opacity: 1;
+  color: white;
+  right: 0;
+  margin-top: -10px;
+  font-size: 30px;
+  margin-right: 40px;
+  color: transparent;
+  z-index: 9;
+}
+
+.slick-prev {
+  left: 30px;
+  position: absolute;
+  opacity: 1;
+  color: white;
+  margin-top: -10px;
+  font-size: 30px;
+  color: transparent;
+  z-index: 9;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 35px;
+  color: #fff;
+}
+
+.slick-track {
+  left: 22px;
 }

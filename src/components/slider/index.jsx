@@ -18,9 +18,14 @@ const settings = {
   slidesToShow: 3,
   slidesToScroll: 1,
   adaptiveHeight: true,
-  variableWidth: false,
+  variableWidth: true,
   className: 'slider',
-  pauseOnHover: false,
+  draggable: true,
+  touchThreshold: 1000,
+  pauseOnHover: true,
+  pauseOnFocus: true,
+  pauseOnDotsHover: false,
+  cssEase: 'linear'
 };
 
 function Carousel() {

@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Building Your First dApp",
+    "description": "Are you new to creating a dApp for Snowflake? Read this first.",
+    "category": "how-to",
+    "icon": "",
+    "link": ""
+  },
+  {
+    "title": "Snowflake dApp Best Practices",
+    "description": "Best practices for designing and architecting your dApp.",
+    "category": "how-to",
+    "icon": "",
+    "link": ""
+  },
+  {
+    "title": "Submitting Your First dApp",
+    "description": "Everything you need to know to get your idea submitted to the dApp store.",
+    "category": "how-to",
+    "icon": "",
+    "link": ""
+  },
+  {
+    "title": "ERC-1484",
+    "description": "Smart contract to power charging interest in savings, lending, credit, and mortgage dApps.",
+    "category": "resource",
+    "icon": "",
+    "link": ""
+  },
+]

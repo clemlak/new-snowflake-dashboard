@@ -102,12 +102,14 @@
   border: 0;
   border-radius: 0.25rem;
   height: 300px;
+  padding-left: 25px;
 }
 
 .link__title {
   font-size: 1rem;
   font-weight: 400;
   opacity: 0.72;
+  margin-left: -11px;
 }
 
 .link__help {
@@ -118,6 +120,8 @@
 
 .link__input {
   border: 0;
+  height: 50px;
+  padding: 15px;
 }
 
 .link__input::placeholder {

@@ -51,13 +51,18 @@ function Sidebar() {
           {hasEin ? (
             <div>
               <NavItem>
+                <NavLink tag={RouterNavLink} exact to="/" className="sidebar__link" activeClassName="sidebar__link--active">
+                  Snowflake Store
+                </NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/wallet" className="sidebar__link" activeClassName="sidebar__link--active">
-                  dApp Store Wallet
+                  Your Wallet
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/manage" className="sidebar__link" activeClassName="sidebar__link--active">
-                  dapps You Added
+                  Your dApps
                 </NavLink>
               </NavItem>
               <NavItem>
@@ -80,7 +85,7 @@ function Sidebar() {
           )}
           <NavItem>
             <NavLink tag={RouterNavLink} exact to="/submit" className="sidebar__link" activeClassName="sidebar__link--active">
-              Submit your dApp
+              Submit A dApp
             </NavLink>
           </NavItem>
         </Nav>

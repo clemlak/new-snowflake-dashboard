@@ -104,6 +104,22 @@ function createSignedMessage(lib, address, timestamp) {
   return signature;
 }
 
+function createSignedMessageToLinkAddress(lib, account, newAddress, timestamp) {
+  return getAccountEin(lib, account)
+    .then((ein) => {
+      const signature = lib.utils.soliditySha3(
+        '0x19', '0x00', identityRegistry.address,
+        'I authorize adding this address to my Identity.',
+        ein,
+        newAddress,
+        timestamp,
+      );
+
+      return signature;
+    })
+    .catch(err => err);
+}
+
 function signPersonal(lib, address, message) {
   return new Promise((resolve, reject) => {
     lib.currentProvider.sendAsync({
@@ -376,6 +392,24 @@ function removeLinkedAddress(lib, account) {
   });
 }
 
+function addLinkedAddress(lib, account, newAddress, signature, timestamp) {
+  const identityRegistryContract = new lib.eth.Contract(
+    identityRegistry.abi,
+    identityRegistry.address,
+  );
+
+  return identityRegistryContract.methods.addAssociatedAddress(
+    account,
+    newAddress,
+    signature.v,
+    signature.r,
+    signature.s,
+    timestamp,
+  ).send({
+    from: account,
+  });
+}
+
 export {
   getAccountEthBalance,
   getAccountHydroBalance,
@@ -400,4 +434,6 @@ export {
   getPastWithdrawals,
   isResolverFor,
   removeLinkedAddress,
+  createSignedMessageToLinkAddress,
+  addLinkedAddress,
 };

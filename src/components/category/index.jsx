@@ -9,7 +9,7 @@ function Category({
     <div>
       {match.params.name ? (
         <h1 className="title">
-          {`${name}`}
+          {`${name} dApps`}
         </h1>
       ) : (
         <p>

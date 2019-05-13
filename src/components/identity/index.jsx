@@ -8,9 +8,6 @@ import {
   Col,
   Card,
   Button,
-  Input,
-  FormText,
-  FormGroup,
 } from 'reactstrap';
 import {
   useWeb3Context,
@@ -27,9 +24,9 @@ import {
 } from '../../services/utilities';
 
 import LinkedAddress from './linkedAddress';
+import LinkAddressCard from './linkAddressCard';
 
 import userImg from '../../common/img/snowflake.gif';
-import ethLogo from '../../common/img/eth.png';
 
 const Identity = () => {
   const web3 = useWeb3Context();
@@ -54,6 +51,7 @@ const Identity = () => {
       })
       .then((identity) => {
         setAddresses(identity.associatedAddresses);
+
         setLoading(false);
       })
       .catch((err) => {
@@ -106,7 +104,7 @@ const Identity = () => {
                   {ein}
                 </p>
                 <p className="identity__linked-wallets">
-                  Linked Wallet(s): 1
+                  Linked Wallet(s): {addresses.length}
                 </p>
               </Col>
             </Row>
@@ -137,43 +135,7 @@ const Identity = () => {
           />
         </Col>
         <Col>
-          <Card className="link">
-            <Row className="p-3">
-              <Col>
-                <p className="link__title">
-                  Link an Ethereum Wallet
-                </p>
-              </Col>
-              <Col className="text-right">
-                <IoIosHelpCircleOutline
-                  className="link__help help"
-                />
-              </Col>
-            </Row>
-            <Row className="justify-content-center align-items-center">
-              <Col sm="2">
-                <img src={ethLogo} alt="Eth" />
-              </Col>
-              <Col>
-                <FormGroup>
-                  <Input
-                    className="link__input"
-                    placeholder="Enter an Ethereum address..."
-                  />
-                  <FormText>
-                    You will need to transact from this address.
-                  </FormText>
-                </FormGroup>
-              </Col>
-            </Row>
-            <Row className="pt-3">
-              <Col className="text-center">
-                <Button color="primary">
-                  Next
-                </Button>
-              </Col>
-            </Row>
-          </Card>
+          <LinkAddressCard />
         </Col>
       </Row>
       <Row className="py-3">
@@ -189,6 +151,7 @@ const Identity = () => {
             <LinkedAddress
               key={address}
               address={address}
+              notRemovable={address === web3.account}
             />
           ))}
         </Col>

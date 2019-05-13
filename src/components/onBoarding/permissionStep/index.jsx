@@ -26,8 +26,6 @@ function PermissionStep(props) {
 
   const web3 = useWeb3Context();
 
-  console.log(timestamp);
-
   const signedMessage = createSignedMessage(
     web3.library,
     web3.account,

@@ -143,3 +143,16 @@
   font-size: 0.8rem;
   margin: 0;
 }
+
+
+.link-address-card__new-address {
+  color: #2d59fe;
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.link-address-card__text {
+  font-size: 0.85rem;
+}

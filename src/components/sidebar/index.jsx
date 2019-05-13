@@ -1,9 +1,14 @@
+/**
+ * Displays the sidebar
+ */
+
 import React, { useState } from 'react';
 import {
   Nav,
   NavItem,
   NavLink,
   Button,
+  Badge,
 } from 'reactstrap';
 import {
   NavLink as RouterNavLink,
@@ -17,12 +22,18 @@ import CategoriesMenu from './categoriesMenu';
 
 import {
   getAccountEin,
+  getSnowflakeBalance,
+  getIdentity,
 } from '../../services/utilities';
+
+const raindropContractAddress = '0x387Ce3020e13B0a334Bb3EB25DdCb73c133f1D7A';
 
 function Sidebar() {
   const [hasProvider, setHasProvider] = useState(false);
   const [hasEin, setHasEin] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [balance, setBalance] = useState('');
+  const [addedDapps, setAddedDapps] = useState(0);
 
   const web3 = useWeb3Context();
 
@@ -36,7 +47,17 @@ function Sidebar() {
         .then((res) => {
           if (res !== '') {
             setHasEin(true);
+
+            return getSnowflakeBalance(web3.library, web3.account);
           }
+        })
+        .then((res) => {
+          setBalance(web3.library.utils.fromWei(res));
+
+          return getIdentity(web3.library, web3.account);
+        })
+        .then((res) => {
+          setAddedDapps(res.resolvers.filter(resolver => resolver !== raindropContractAddress));
         })
         .catch((err) => {
           console.log(err);
@@ -58,11 +79,17 @@ function Sidebar() {
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/wallet" className="sidebar__link" activeClassName="sidebar__link--active">
                   Your Wallet
+                  <Badge className="sidebar__badge" color="secondary" pill>
+                    {balance.substring(0, 5)}
+                  </Badge>
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/manage" className="sidebar__link" activeClassName="sidebar__link--active">
                   Your dApps
+                  <Badge className="sidebar__badge" color="secondary" pill>
+                    {addedDapps.length}
+                  </Badge>
                 </NavLink>
               </NavItem>
               <NavItem>
@@ -77,6 +104,7 @@ function Sidebar() {
                 step={hasProvider ? 'provider' : 'hydroId'}
                 isOpen={isModalOpen}
                 toggle={() => setIsModalOpen(false)}
+                hasProvider={hasProvider}
               />
               <Button color="primary" onClick={() => setIsModalOpen(!isModalOpen)}>
                 Create Account

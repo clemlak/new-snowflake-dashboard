@@ -80,7 +80,7 @@ function Sidebar() {
                 <NavLink tag={RouterNavLink} exact to="/wallet" className="sidebar__link" activeClassName="sidebar__link--active">
                   Your Wallet
                   <Badge className="sidebar__badge" color="secondary" pill>
-                    {balance.substring(0, 5)}
+                    {balance.substring(0, 5)}k
                   </Badge>
                 </NavLink>
               </NavItem>

@@ -42,6 +42,10 @@
   margin-bottom: 10px;
 }
 
+.sidebar__link--active .sidebar__badge {
+  background-color: #496fff;
+}
+
 .sidebar__link--active:hover {
   color: $snow-white;
   background-color: $snow-classic-blue;

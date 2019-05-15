@@ -81,7 +81,9 @@ function Purchase(props) {
         </Row>
         <Row className="pb-4">
           <Col>
-            This dApp costs {normalizedPrice} Hydro. Your dApp store wallet balance will be used. Please confirm the dApp title above and finalize purchase below. Refunds are not available. Be sure to check MetaMask for the prompt to continue.
+            <p>
+            This dApp costs <strong>{normalizedPrice}</strong> Hydro. Your dApp store wallet balance will be used. Please confirm the dApp title above and finalize purchase below. Refunds are not available. Be sure to check MetaMask for the prompt to continue.
+            </p>
           </Col>
         </Row>
         <Row>

@@ -7,18 +7,20 @@
 }
 
 .remove__icon {
-  color: red;
+  color: #ec4141;
   font-size: 3.2rem;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .remove__title {
-  color: red;
-  font-weight: 600;
+  font-family: 'Nunito-Bold', sans-serif;
+  color: #ec4141;
+  font-size: 17px;
 }
 
 .remove__close-icon {
-  color: $primary;
+  color: #1f4eff;
   font-size: 2rem;
 }
 
@@ -32,4 +34,10 @@
 .remove__logo {
   height: 60px;
   margin-right: 10px;
+}
+
+.remove__body p {
+  font-family: 'Nunito-SemiBold', sans-serif;
+  color: #636363;
+  font-size: 15px;
 }

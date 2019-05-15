@@ -109,7 +109,13 @@
 
 .dapp-preview__overlay-wrapper button {
   visibility: hidden;
+  padding: 5px 25px 5px 25px;
+  font-size: 15px;
+  background-color: #fff;
+  color: #333;
+  font-family: "Nunito-SemiBold", san-serif;
 }
+
 .dapp-preview__overlay-wrapper:hover button {
   visibility: visible;
   text-align: center;

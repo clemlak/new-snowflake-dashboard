@@ -34,8 +34,8 @@
 }
 
 .dapp-preview__body button {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
   text-transform: uppercase;
   border-radius: 20px;
   width: 90px;
@@ -46,10 +46,12 @@
 
 .dapp-preview__body .btn-success {
   background-color: $success;
+  border: 1px solid $success;
   color: #fff;
 }
 
 .dapp-preview__body .btn-danger {
+  border: 1px solid $danger;
   background-color: $danger;
   color: #fff;
 }
@@ -106,4 +108,14 @@
   margin-left: 0;
   margin-right: 0;
   margin-left: 30px;
+}
+
+.dapp-preview .btn-outlined {
+  border: 1px solid #1d4cff;
+}
+
+.dapp-preview .btn-outlined:hover {
+  border: 1px solid #1d4cff;
+  background-color: #1d4cff;
+  color: #fff;
 }

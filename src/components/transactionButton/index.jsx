@@ -110,7 +110,7 @@ function TransactionButton(props) {
 
     if (status === 'confirmed') {
       return (
-        <div>
+        <div className="confirmationWrapper">
           <Row className="text-center">
             <Col>
               <IoIosCheckmarkCircle className="transaction-button-modal__success-icon" />

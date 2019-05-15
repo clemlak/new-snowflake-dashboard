@@ -143,6 +143,10 @@ h4 {
   background-color: #ec4141;
 }
 
+.btn-danger:focus, .btn-danger.focus {
+    box-shadow: none;
+}
+
 .btn-outlined {
   color: #395fff;
   background: none;
@@ -245,4 +249,14 @@ h4 {
 .submitDapp h3 {
   font-size: 20px;
   margin-top: 25px;
+}
+
+.spinner-border {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+}
+
+.confirmationWrapper {
+  
 }

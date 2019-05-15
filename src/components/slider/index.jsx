@@ -6,6 +6,7 @@
 
 import React from 'react';
 import Slider from 'react-slick';
+import { Button } from 'reactstrap';
 
 import slidesJson from '../../common/config/slides.json';
 
@@ -38,8 +39,11 @@ function Carousel() {
           <div
             className="slider__test-slide"
             style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/${slide.image})` }}
-          />
-        </div>
+            />
+            <div className="dapp-preview__overlay-wrapper">
+              <Button>Details</Button>
+            </div>
+          </div>
       ))}
     </Slider>
   );

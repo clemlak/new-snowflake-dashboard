@@ -20,6 +20,7 @@ import {
 } from 'react-icons/io';
 
 import HeaderAccount from './headerAccount';
+import headerLogo from '../../common/img/hydro_dapp_store_logo.png';
 
 class Header extends React.Component {
   constructor(props) {
@@ -69,15 +70,8 @@ class Header extends React.Component {
         <Navbar color="light" light expand="md" className="bg-white" className={this.state.scroll > this.state.top ? "fixed-nav" : ""}>
           <NavbarBrand tag={RouterNavLink} exact to="/">
             <h2 className="header__title">
-              Snowflake
+            <img src={headerLogo} alt="Powered by Hydro" className="header__logo" />
             </h2>
-            <p className="header__subtitle">
-              powered by
-              {' '}
-              <span className="header__hydro">
-                Hydro
-              </span>
-            </p>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>

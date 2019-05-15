@@ -5,6 +5,28 @@
   height: 300px;
 }
 
+.wallet .btn-secondary {
+  background-color: #3c65fe;
+  border-color: #3c65fe;
+  box-shadow: none;
+}
+
+.wallet .btn-white {
+  background-color: #fff;
+  border-color: #fff;
+  box-shadow: none;
+}
+
+.wallet .btn-white:hover {
+  background-color: #3c65fe;
+  border-color: #3c65fe;
+  box-shadow: none;
+}
+
+.wallet .btn-success {
+  box-shadow: none;
+}
+
 .wallet__title {
   font-size: 1rem;
   font-weight: 100;
@@ -17,7 +39,12 @@
 }
 
 .wallet__balance {
+  font-family: "Nunito-SemiBold", sans-serif;
   font-size: 55px;
+}
+
+.buy__amount {
+  font-family: "Nunito-SemiBold", sans-serif;
 }
 
 .wallet__hydro {
@@ -115,4 +142,8 @@
 
 .dw__button {
   margin-top: 35px;
+}
+
+.buy-hydro__test-tokens, .wallet__usd {
+  font-size: 13px;
 }

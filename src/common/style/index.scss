@@ -85,6 +85,11 @@ h4 {
   color: #9c9c9c;
 }
 
+.form-control:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
 /**
  * Header
  */
@@ -129,7 +134,7 @@ h4 {
  */
 
 .btn {
-  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  box-shadow: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -139,10 +144,19 @@ h4 {
   border-color: $snow-white;
 }
 
+.btn-danger {
+  background-color: #ec4141;
+}
+
+.btn-danger:focus, .btn-danger.focus {
+    box-shadow: none;
+}
+
 .btn-outlined {
   color: #395fff;
   background: none;
   border-color: #395fff;
+  border-width: 2px;
 }
 
 .btn-outlined:hover {
@@ -150,6 +164,11 @@ h4 {
   background-color: #395fff;
   border-color: #395fff;
 }
+
+.btn-outlined:focus, .btn-primary:focus, .btn-danger:focus, .btn-success:focus, .btn-secondary:focus {
+  box-shadow: none;
+}
+
 
 /**
  * Footer
@@ -187,4 +206,64 @@ h4 {
 
 .modal {
   top: 75px;
+}
+
+.submit_card {
+  max-width: 300px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 30px;
+  background-color: #f7f7f7;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.submit_card .card-header {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.submit_card .card-footer {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.submit_card .card-body {
+  text-align: center;
+  min-height: 140px;
+  font-size: 14px;
+}
+
+.submit_card .card-footer {
+  text-align: center;
+  padding: 15px;
+}
+
+.submit_card button {
+  color: #fff;
+  background-color: #a9a9a9;
+  border-color: #a9a9a9;
+}
+
+.submitDapp p {
+  padding-bottom: 20px;
+}
+
+.submitDapp h1 {
+  margin-bottom: 10px;
+}
+
+.submitDapp h3 {
+  font-size: 20px;
+  margin-top: 25px;
+}
+
+.spinner-border {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+}
+
+.confirmationWrapper {
+
 }

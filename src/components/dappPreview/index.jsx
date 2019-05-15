@@ -135,7 +135,9 @@ function DappPreview(props) {
                   </Button>
                 </div>
               ) : (
-                returnPriceButton()
+                <Button color="outlined" size="sm" onClick={() => setIsPurchaseModalOpen(true)}>
+                  Get
+                </Button>
               )}
             </Col>
           </Row>

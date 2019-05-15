@@ -7,18 +7,21 @@
 }
 
 .purchase__icon {
-  font-size: 2.5rem;
+  color: #626262;
+  font-size: 3.2rem;
   margin-right: 15px;
 }
 
 .purchase__title {
-  font-weight: 600;
-  font-size: 1rem;
+  font-family: 'Nunito-Bold', sans-serif;
+  color: #626262;
+  font-size: 17px;
 }
 
 .purchase__close-icon {
-  color: $primary;
+  color: #1e4eff;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .purchase__preview {
@@ -34,7 +37,13 @@
 }
 
 .purchase__price {
-  color: $primary;
+  color: #626262;
   margin: 0;
   font-size: 600;
+}
+
+.purchase__body p {
+  font-family: 'Nunito-Regular', sans-serif;
+  color: #636363;
+  font-size: 15px;
 }

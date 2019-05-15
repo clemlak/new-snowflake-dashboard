@@ -71,7 +71,7 @@ function Remove(props) {
         <Row className="pb-4">
           <Col>
             <p>
-              You are about to remove {title} from your EIN. Please confirm below. Your purchases are tied to your EIN. You can always add it for free in the future after you remove it.
+              You are about to remove <strong>{title}</strong> from your EIN. Please confirm below. Your purchases are tied to your EIN. You can always add it for free in the future after you remove it.
             </p>
           </Col>
         </Row>

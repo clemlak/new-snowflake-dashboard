@@ -19,6 +19,9 @@ import {
 import Transactions from './transactions';
 import TransactionButton from '../transactionButton';
 import DepositWithdraw from './depositWithdraw';
+import HelpButton from '../helpButton';
+
+import tooltips from '../../common/config/tooltips.json';
 
 import {
   getHydroTestTokens,
@@ -49,9 +52,9 @@ function Wallet() {
                 </p>
               </Col>
               <Col sm="2" className="text-right">
-                <IoIosHelpCircleOutline
-                  className="buy__help help"
-                />
+              <HelpButton
+                content={tooltips.getHydroHelp}
+              />
               </Col>
             </Row>
             <Row>
@@ -70,7 +73,7 @@ function Wallet() {
             <Row className="justify-content-center py-5">
               <Col className="text-center">
                 <TransactionButton
-                  initialText="Get Hydro tokens"
+                  initialText="Get Hydro Tokens"
                   sendAction={() => getHydroTestTokens(web3.library, web3.account)}
                   displayModal
                 />

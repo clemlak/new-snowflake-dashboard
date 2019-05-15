@@ -160,7 +160,7 @@ h4 {
   border-color: #395fff;
 }
 
-.btn-outlined:focus, .btn-primary:focus, .btn-danger:focus, .btn-success:focus {
+.btn-outlined:focus, .btn-primary:focus, .btn-danger:focus, .btn-success:focus, .btn-secondary:focus {
   box-shadow: none;
 }
 
@@ -225,7 +225,8 @@ h4 {
 
 .submit_card .card-body {
   text-align: center;
-  min-height: 180px;
+  min-height: 140px;
+  font-size: 14px;
 }
 
 .submit_card .card-footer {

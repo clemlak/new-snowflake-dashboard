@@ -176,7 +176,7 @@ function LinkAddressCard() {
               placeholder="Enter an Ethereum address..."
               onChange={e => setNewAddress(e.target.value)}
             />
-            <FormText>
+            <FormText className="link-address__helper-text">
               You will need to transact from this address.
             </FormText>
           </FormGroup>

@@ -9,10 +9,25 @@
   min-height: 850px;
 }
 
+.app__content h1 {
+    font-family: 'Nunito-Regular', sans-serif;
+    font-size: 27.12px;
+}
+
 .app__content h2 {
   font-weight: 600;
 }
 
 .app__content .container {
   margin-left: 0;
+}
+
+.additional-help h4 {
+  font-size: 23.63px;
+  padding-bottom: 5px;
+}
+
+.additional-help__subtitle {
+  color: #474747;
+  font-size: 19px;
 }

@@ -142,7 +142,7 @@ const Identity = () => {
       </Row>
       <Row className="py-3">
         <Col>
-          <h3 className="title">
+          <h3 className="identity__connected-wallet-title">
             Ethereum Wallets Connected To Your Snowflake (EIN)
           </h3>
         </Col>

@@ -10,7 +10,6 @@
   color: #ec4141;
   font-size: 3.2rem;
   margin-right: 15px;
-  cursor: pointer;
 }
 
 .remove__title {
@@ -22,6 +21,7 @@
 .remove__close-icon {
   color: #1f4eff;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .remove__preview {
@@ -37,7 +37,7 @@
 }
 
 .remove__body p {
-  font-family: 'Nunito-SemiBold', sans-serif;
+  font-family: 'Nunito-Regular', sans-serif;
   color: #636363;
   font-size: 15px;
 }

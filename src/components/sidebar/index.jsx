@@ -74,7 +74,7 @@ function Sidebar() {
             <div>
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/" className="sidebar__link" activeClassName="sidebar__link--active">
-                  Snowflake Store
+                  Hydro dApp Store
                 </NavLink>
               </NavItem>
               <NavItem>

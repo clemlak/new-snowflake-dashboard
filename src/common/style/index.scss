@@ -85,6 +85,11 @@ h4 {
   color: #9c9c9c;
 }
 
+.form-control:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
 /**
  * Header
  */

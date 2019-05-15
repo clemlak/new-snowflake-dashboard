@@ -3,7 +3,14 @@
   color: $snow-grey-dark;
 }
 
+.transaction__header svg {
+  margin-top: -5px;
+}
+
 .transaction__type {
+  font-family: "Nunito-SemiBold", sans-serif;
+  font-size: 16px;
+  color: #6b6b6b;
   padding-left: 10px;
   margin: 0;
 }
@@ -14,13 +21,16 @@
 }
 
 .transaction__date {
+  font-family: "Nunito-Regular", sans-serif;
+  font-size: 12px;
+  color: #6b6b6b;
   opacity: 0.7;
-  font-size: 0.8rem;
   margin: 0;
-  color: $snow-grey-dark;
 }
 
 .transaction__amount {
+  font-family: "Nunito-SemiBold", sans-serif;
+  font-size: 20px;
   margin: 0;
   color: $snow-classic-blue;
   text-align: right;

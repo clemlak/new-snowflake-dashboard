@@ -11,7 +11,6 @@ import {
 } from 'reactstrap';
 
 import QA from './qa';
-
 import faqJson from '../../common/config/faq.json';
 
 const Faq = () => (
@@ -31,9 +30,7 @@ const Faq = () => (
               answer={qa.answer}
             />
           ))}
-
         </div>
-
       </Col>
     </Row>
     <Row className="mt-5">

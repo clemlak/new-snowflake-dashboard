@@ -11,7 +11,7 @@
 }
 
 .sidebar__link {
-  color: $snow-light-dark;
+  color: #626262;
   font-size: 15px;
   padding: 10px 0 10px 30px;
   margin-bottom: 10px;
@@ -54,11 +54,11 @@
 
 .sidebar__badge {
   background-color: #c8c8cb;
+  color: #fff;
   font-size: 14px;
+  font-weight: normal;
   float: right;
   padding: 6px 10px 6px 10px;
   margin-top: -2px;
   margin-right: 8px;
-  color: #fff;
-  font-weight: normal;
 }

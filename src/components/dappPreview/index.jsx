@@ -73,6 +73,22 @@ function DappPreview(props) {
       });
   }
 
+  function returnPriceButton() {
+    if (details.price === 0) {
+      return (
+        <Button color="primary" size="sm" onClick={() => setIsPurchaseModalOpen(true)}>
+          Get
+        </Button>
+      );
+    }
+
+    return (
+      <Button color="primary" size="sm" onClick={() => setIsPurchaseModalOpen(true)}>
+        {details.price}
+      </Button>
+    );
+  }
+
   return (
     <div>
       <LegacyDapp

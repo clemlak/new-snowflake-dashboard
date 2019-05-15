@@ -5,6 +5,28 @@
   height: 300px;
 }
 
+.wallet .btn-secondary {
+  background-color: #3c65fe;
+  border-color: #3c65fe;
+  box-shadow: none;
+}
+
+.wallet .btn-white {
+  background-color: #fff;
+  border-color: #fff;
+  box-shadow: none;
+}
+
+.wallet .btn-white:hover {
+  background-color: #3c65fe;
+  border-color: #3c65fe;
+  box-shadow: none;
+}
+
+.wallet .btn-success {
+  box-shadow: none;
+}
+
 .wallet__title {
   font-size: 1rem;
   font-weight: 100;

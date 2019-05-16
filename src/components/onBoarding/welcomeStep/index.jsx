@@ -30,7 +30,7 @@ function WelcomeStep(props) {
       <Row className="justify-content-center py-3">
         <Col xs="12" sm="8" className="text-center">
           <p className="text-white">
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+            Before you access the Hydro decentralized app store, we must create your Snowflake or <span className="underline">Ethereum Identification Number (EIN)</span>. This will be used across the app store to interact with the decentralized apps and other blockchains. You can think of it like an ID card or drivers license. Snowflake will be linked to your Ethereum wallet address.
           </p>
         </Col>
       </Row>
@@ -44,7 +44,7 @@ function WelcomeStep(props) {
       <Row className="justify-content-center py-3">
         <Col xs="12" sm="10" className="text-center">
           <p className="text-white">
-            Already have an existing EIN? Link it to your address
+            Already have an existing EIN? <a href="#">Link it to your address</a>
           </p>
         </Col>
       </Row>

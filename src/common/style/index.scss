@@ -129,6 +129,15 @@ h4 {
   color: #8caffb;
 }
 
+.modal-footer__link:hover {
+    color: #fff;
+}
+
+@media (min-width: 992px) {}
+.modal-lg, .modal-xl {
+    max-width: 1200px;
+}
+
 /**
  * Buttons
  */

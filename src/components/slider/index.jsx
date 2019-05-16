@@ -1,7 +1,6 @@
 /**
  * Displays a slider
  * TODO: The images should be imported from the src folder not the public one
- * TODO: Fix autoplay
  */
 
 import React from 'react';

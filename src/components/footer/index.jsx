@@ -14,7 +14,7 @@ import { IoLogoGithub } from 'react-icons/io';
 
 import CallToAction from '../callToAction';
 
-import footerLogo from '../../common/img/footerLogo.png';
+import footerLogo from '../../common/img/ethereum_built_on_wide_color.png';
 
 const Footer = () => (
   <div>
@@ -22,7 +22,7 @@ const Footer = () => (
     <Container fluid className="py-4">
       <Row>
         <Col xs="12" sm="3" className="text-left">
-          <img src={footerLogo} alt="Powered by Hydro" />
+          <a href="https://ethereum.org/" target="_blank"><img src={footerLogo} className="builtOnEthereum" alt="Powered by Ethereum" /></a>
         </Col>
         <Col xs="12" sm="6" className="text-center">
           <Nav className="footer__menu">
@@ -52,7 +52,7 @@ const Footer = () => (
           <p className="mb-0 footer__powered-by">
             Maintained and hosted on
             {' '}
-            <IoLogoGithub />
+            <a href="https://github.com" className="maintainedAndHostedOn" target="_blank"><IoLogoGithub /></a>
           </p>
         </Col>
       </Row>

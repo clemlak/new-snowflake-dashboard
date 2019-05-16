@@ -28,7 +28,7 @@
   opacity: 1;
   color: white;
   right: 0;
-  margin-top: -10px;
+  margin-top: -20px;
   font-size: 30px;
   margin-right: 40px;
   color: transparent;
@@ -49,6 +49,7 @@
 .slick-prev:before, .slick-next:before {
   font-size: 35px;
   color: #fff;
+  opacity: 1;
 }
 
 .slick-track {
@@ -92,4 +93,8 @@
   margin-top: 75px;
   margin-left: 0;
   margin-right: 0;
+}
+
+.slick-next:before {
+  content: url('../../common/img/right_arrow.png')
 }

@@ -5,15 +5,17 @@
 }
 
 .call-to-action__title {
-  font-size: 2.5rem;
+  font-family: "Nunito", sans-serif;
+  font-size: 33.63px;
+  color: #345efa;
   margin-bottom: 0.5rem;
-  font-weight: 500;
   line-height: 1.2;
-  color: #000;
 }
 
 .call-to-action__subtitle {
-  color: #6c757d;
-  font-size: 1.2rem;
-  font-weight: 400;
+  font-family: "Nunito-Regular", sans-serif;
+  font-size: 27.12px;
+  color: #585858;
+  margin-bottom: 30px;
+  line-height: 1.2;
 }

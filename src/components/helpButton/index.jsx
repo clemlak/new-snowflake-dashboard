@@ -26,7 +26,7 @@ function HelpButton(props) {
 
   return (
     <div>
-      <div className="text-center" ref={iconRef}>
+      <div ref={iconRef}>
         <IoIosHelpCircleOutline
           className="wallet__help help"
         />

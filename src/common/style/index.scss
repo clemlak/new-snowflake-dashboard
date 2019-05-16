@@ -152,6 +152,41 @@ h4 {
   color: #fff;
 }
 
+.modal-title .btn-secondary {
+  background-color: #3c85fc;
+  border: none;
+}
+
+.modal-content .input__hydro-id {
+  border: 1px solid #fff;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 30px;
+  height: 51px;
+  background-color: transparent;
+  color: #fff !important;
+}
+
+.modal-content .input__hydro-id::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+  opacity: 1; /* Firefox */
+}
+
+.modal-content .button__hydro-id {
+  margin-top: -77px;
+  margin-right: -240px;
+  padding: 11px 43px;
+  opacity: 1;
+  color: #1c72ff;
+  background-color: #fff;
+  border: none;
+}
+
+.onboarding__modal {
+  background-color: #276ef1;
+}
+
 @media (min-width: 992px) {}
 .modal-lg, .modal-xl {
     max-width: 1200px;

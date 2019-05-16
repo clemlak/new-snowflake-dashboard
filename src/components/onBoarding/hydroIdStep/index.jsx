@@ -78,9 +78,10 @@ function HydroIdStep(props) {
             required
             valid={isHydroIdValidated}
             invalid={!isHydroIdValidated}
+            className="input__hydro-id"
           />
           <Button
-            className="btn-white"
+            className="btn-white button__hydro-id"
             onClick={confirm}
             disabled={!isHydroIdValidated}
           >

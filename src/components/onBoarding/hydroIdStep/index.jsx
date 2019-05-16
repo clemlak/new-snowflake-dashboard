@@ -64,7 +64,7 @@ function HydroIdStep(props) {
       <Row className="justify-content-center py-3">
         <Col xs="12" sm="8" className="text-center">
           <p className="text-white">
-            Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+            Enter your Hydro ID below. This is a public, on-chain identifier that will be linked to and identify your account while using any Hydro product. Think of it like a user ID. You can either make this up or use the ID assigned to you in the Hydro mobile app. We recommend using the mobile app as it empowers the entire Hydro ecosystem.
           </p>
         </Col>
       </Row>
@@ -78,16 +78,17 @@ function HydroIdStep(props) {
             required
             valid={isHydroIdValidated}
             invalid={!isHydroIdValidated}
+            className="input__hydro-id"
           />
           <Button
-            className="btn-white"
+            className="btn-white button__hydro-id"
             onClick={confirm}
             disabled={!isHydroIdValidated}
           >
             Continue
           </Button>
           {thisHydroId !== '' && (
-            <div>
+            <div className="hydroId_valid">
               {isHydroIdValidated ? 'Hydro is valid' : 'Hydro is not valid'}
             </div>
           )}

@@ -40,9 +40,6 @@ function Carousel() {
             className="slider__test-slide"
             style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/${slide.image})` }}
             />
-            <div className="dapp-preview__overlay-wrapper">
-              <Button>Details</Button>
-            </div>
           </div>
       ))}
     </Slider>

@@ -100,7 +100,7 @@ function Sidebar() {
               </NavItem>
             </div>
           ) : (
-            <div>
+            <div className="onboardingButton">
               <Onboarding
                 step={hasProvider ? 'provider' : 'hydroId'}
                 isOpen={isModalOpen}

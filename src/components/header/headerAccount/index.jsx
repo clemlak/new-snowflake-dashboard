@@ -73,7 +73,7 @@ function HeaderAccount() {
   }
 
   return (
-    <div>
+    <div className="onboardingButton">
       <Onboarding
         hasProvider={hasProvider}
         isOpen={isModalOpen}

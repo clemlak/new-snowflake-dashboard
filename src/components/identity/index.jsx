@@ -23,6 +23,8 @@ import {
   getIdentity,
 } from '../../services/utilities';
 
+import BlockiesIdenticon from './blockiesIdenticon';
+
 import LinkedAddress from './linkedAddress';
 import LinkAddressCard from './linkAddressCard';
 import HelpButton from '../helpButton';
@@ -91,7 +93,9 @@ const Identity = () => {
             <Row className="justify-content-center align-items-center pb-4">
               <Col xs="4">
                 <p className="identity__user-image">
-                  <img src={userImg} alt="user" />
+                  {web3.active && (
+                    <BlockiesIdenticon seed={web3.account} />
+                  )}
                 </p>
               </Col>
               <Col>

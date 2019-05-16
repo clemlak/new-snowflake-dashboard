@@ -52,6 +52,10 @@
   opacity: 1;
 }
 
+.slick-prev:before {
+  display: none;
+}
+
 .slick-track {
   left: 22px;
 }

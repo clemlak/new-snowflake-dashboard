@@ -377,12 +377,19 @@ h4 {
   display: none;
 }
 
+@include media-breakpoint-only(xs) {
+  .card-deck {
+    display: inline-grid;
+    width: 100%;
+  }
+}
+
 @include media-breakpoint-between(xs, sm) {
   .dapp-preview__image {
     width: 100%;
     min-height: 200px;
   }
-  
+
   .dapp-preview__body {
     padding-bottom: 55px;
   }

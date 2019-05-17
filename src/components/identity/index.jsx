@@ -1,5 +1,6 @@
 /**
  * Displays tools to manage the identity of the current user
+ * TODO: Fix the col width and center the elements
  */
 
 import React, { useState } from 'react';
@@ -27,6 +28,7 @@ import BlockiesIdenticon from './blockiesIdenticon';
 import LinkedAddress from './linkedAddress';
 import LinkAddressCard from './linkAddressCard';
 import HelpButton from '../helpButton';
+import StatusWidget from './statusWidget';
 
 import tooltips from '../../common/config/tooltips.json';
 
@@ -82,7 +84,7 @@ const Identity = () => {
                   Your Snowflake (EIN)
                 </p>
               </Col>
-              <Col className="text-right">
+              <Col xs="4" className="text-right">
                 <HelpButton
                   content={tooltips.getHydroHelp}
                 />
@@ -108,29 +110,11 @@ const Identity = () => {
                   {ein}
                 </p>
                 <p className="identity__linked-wallets">
-                  Linked Wallet(s): {addresses.length}
+                  {`Linked Wallet(s): ${addresses.length}`}
                 </p>
               </Col>
             </Row>
-            <Row className="mb-4 no-gutters status">
-              <Col>
-                <Row>
-                  <Col>
-                    <p className="status__title">
-                      My Status:
-                    </p>
-                  </Col>
-                  <Col>
-                    <Button className="status__edit">
-                      Edit
-                    </Button>
-                  </Col>
-                </Row>
-                <p className="status__current">
-                  I'm having a great day!
-                </p>
-              </Col>
-            </Row>
+            <StatusWidget />
           </Card>
         </Col>
         <Col sm="1">

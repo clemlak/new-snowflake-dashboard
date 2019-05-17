@@ -47,10 +47,10 @@ const App = () => {
         <Slider />
         <Container fluid className="app">
           <Row>
-            <Col xs="12" sm="12" md="12" lg="2" className="nopadding">
+            <Col xs="12" sm="12" md="4" lg="3" className="nopadding">
               <Sidebar />
             </Col>
-            <Col xs="12" sm="12" md="12" lg="10" className="app__content">
+            <Col xs="12" sm="12" md="8" lg="9" className="app__content">
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/faq" component={Faq} />

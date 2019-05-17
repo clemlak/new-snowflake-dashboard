@@ -376,3 +376,43 @@ h4 {
 .none {
   display: none;
 }
+
+@include media-breakpoint-between(xs, sm) {
+  .dapp-preview__image {
+    width: 100%;
+    min-height: 200px;
+  }
+  
+  .dapp-preview__body {
+    padding-bottom: 55px;
+  }
+}
+
+@include media-breakpoint-between(sm, md) {
+  .dapp-preview__image {
+    width: 100%;
+    min-height: 200px;
+  }
+}
+
+@include media-breakpoint-between(xs, md) {
+  .sidebar {
+    position: relative;
+    max-width: 100% !important;
+    padding-top: 0px;
+  }
+
+  .nopadding {
+   padding: 0 !important;
+ }
+
+ .app__content {
+   padding: 30px;
+   min-height: auto;
+   margin: 0 auto;
+ }
+
+ .filters {
+   display: none;
+ }
+}

@@ -32,20 +32,3 @@
   color: #474747;
   font-size: 19px;
 }
-
-@include media-breakpoint-only(md){
-  .sidebar {
-    position: relative;
-    max-width: 100%;
-  }
-
-  .nopadding {
-   padding: 0 !important;
- }
-
- .app__content {
-   padding: 30px;
-   min-height: auto;
-   margin: 0 auto;
- }
-}

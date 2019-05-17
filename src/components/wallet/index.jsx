@@ -10,9 +10,6 @@ import {
   Card,
 } from 'reactstrap';
 import {
-  IoIosHelpCircleOutline,
-} from 'react-icons/io';
-import {
   useWeb3Context,
 } from 'web3-react';
 

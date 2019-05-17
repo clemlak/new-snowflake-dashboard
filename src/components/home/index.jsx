@@ -85,7 +85,7 @@ function Home() {
           <Featured />
         </TabPane>
         <TabPane tabId="popular">
-          <p>Popular dapps</p>
+          <p>Popular dApps</p>
         </TabPane>
         <TabPane tabId="last">
           <p>Last releases</p>

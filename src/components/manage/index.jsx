@@ -42,7 +42,7 @@ function Manage() {
       <Row className="pb-3">
         <Col>
           <h1 className="title">
-            Your dApps
+            Your dApps:
             {' '}
             {resolvers.length}
           </h1>
@@ -63,7 +63,7 @@ function Manage() {
             }
             </CardDeck>
           ) : (
-            <p>No dapps yet! :( </p>
+            <p>You do not have any dApps. Add one from the dApp Store and it will show up here. </p>
           )}
         </Col>
       </Row>

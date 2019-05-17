@@ -72,6 +72,7 @@ class Header extends React.Component {
             <h2 className="header__title">
             <img src={headerLogo} alt="Powered by Hydro" className="header__logo" />
             </h2>
+            <p className="header__version">v0.1.0 BETA</p>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>

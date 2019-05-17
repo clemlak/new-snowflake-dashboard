@@ -35,6 +35,7 @@ const Submit = (props) => {
       <p>Looking to submit a dApp? Use the resources below to get started on bringing you idea to life.</p>
 
        <h3 class="">Resources</h3>
+       <p>Use the resources below to learn about best practices.</p>
 
        {resourcesJson.map(Resource => (
      	  <Card className="submit_card">
@@ -47,6 +48,7 @@ const Submit = (props) => {
         ))}
 
         <h3 class="">Smart Contracts</h3>
+        <p>The smart contracts below can speed up your dApp development time.</p>
 
         {contractsJson.map(Contract => (
           <Card className="submit_card">
@@ -59,7 +61,7 @@ const Submit = (props) => {
          ))}
 
          <h3 class="">FAQ</h3>
-
+        <p>Have a question about dApp development or submitting to the store, read below</p>
          <Row>
            <Col>
              <div className="accordion">

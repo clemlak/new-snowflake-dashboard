@@ -1,6 +1,5 @@
 /**
  * Displays a widget connected to the Status dApp
- * TODO: Identity - The Get / Edit bug is buggy, the center of the button doesn't seem clickable
  */
 
 import React, { useState } from 'react';

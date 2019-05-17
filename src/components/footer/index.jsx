@@ -19,12 +19,12 @@ import footerLogo from '../../common/img/ethereum_built_on_wide_color.png';
 const Footer = () => (
   <div>
     <CallToAction />
-    <Container fluid className="py-4">
+    <Container fluid className="py-4 footer">
       <Row>
-        <Col xs="12" sm="3" className="text-left">
+        <Col xs="12" sm="12" md="12" lg="3" className="footer__built-on">
           <a href="https://ethereum.org/" target="_blank"><img src={footerLogo} className="builtOnEthereum" alt="Powered by Ethereum" /></a>
         </Col>
-        <Col xs="12" sm="6" className="text-center">
+        <Col xs="12" sm="12" md="12" lg="6" className="text-center footer__nav-links">
           <Nav className="footer__menu">
             <NavItem>
               <NavLink tag={RouterNavLink} exact to="/privacy" className="footer__link">
@@ -48,7 +48,7 @@ const Footer = () => (
             </NavItem>
           </Nav>
         </Col>
-        <Col xs="12" sm="3" className="text-right">
+        <Col xs="12" sm="12" md="12" lg="3" className="text-right footer__powered">
           <p className="mb-0 footer__powered-by">
             Maintained and hosted on
             {' '}

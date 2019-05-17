@@ -393,12 +393,49 @@ h4 {
   .dapp-preview__body {
     padding-bottom: 55px;
   }
+
+  .app {
+    padding-bottom: 0px;
+  }
+
+  .app_content {
+    padding-bottom: 0px;
+  }
+
+  .submit_card {
+    max-width: 100%;
+    display: inline-block;
+  }
 }
 
 @include media-breakpoint-between(sm, md) {
   .dapp-preview__image {
     width: 100%;
     min-height: 200px;
+  }
+
+  .footer__powered-by {
+    text-align: center;
+  }
+
+  .footer__built-on {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+
+  .footer__powered {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .footer__powered-by svg {
+    margin-right: 0px;
+  }
+
+  .submit_card {
+    max-width: 100%;
+    width: 100%;
   }
 }
 

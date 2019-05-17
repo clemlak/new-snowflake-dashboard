@@ -75,7 +75,7 @@ const Identity = () => {
           </h4>
         </Col>
       </Row>
-      <Row className="py-3 justify-content-center align-items-center">
+      <Row className="py-3 justify-content-center align-items-center fadeit">
         <Col>
           <Card className="identity">
             <Row className="p-3">

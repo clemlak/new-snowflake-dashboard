@@ -63,7 +63,7 @@ function Transactions() {
     <div>
       <Row className="py-5">
         <Col>
-          <Nav className="filters">
+          <Nav className="filters fadeit">
             <NavItem className="filters__nav-item">
               <NavLink
                 onClick={() => setTab('all')}
@@ -113,7 +113,7 @@ function Transactions() {
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent activeTab={tab}>
+          <TabContent activeTab={tab} className="fadeit">
             <TabPane tabId="all">
               {purchasedDapps.concat(deposits.concat(withdrawals)).map(tx => (
                 <Transaction

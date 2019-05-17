@@ -34,7 +34,7 @@ function Carousel() {
   return (
     <Slider {...settings}>
       {slidesJson.map(slide => (
-        <div
+        <div className="fadeit"
           key={slide.link}
         >
           <div

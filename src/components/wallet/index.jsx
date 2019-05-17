@@ -36,9 +36,9 @@ function Wallet() {
           </h1>
         </Col>
       </Row>
-      <Row className="wallet__row">
+      <Row className="wallet__row fadeit">
         <Col>
-          <DepositWithdraw />
+          <DepositWithdraw/>
         </Col>
         <Col>
           <Card className="buy">

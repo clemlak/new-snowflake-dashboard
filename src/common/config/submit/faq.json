@@ -1,0 +1,18 @@
+[
+  {
+    "question": "I do not know any coding, can I build a dApp?",
+    "answer": "A DApp, or decentralized application is a computer application that runs on a distributed computing system. DApps have been mostly popularized by distributed ledger technologies, namely the Ethereum Blockchain, where dApps are often referred to as smart contracts."
+  },
+  {
+    "question": "Can I make money with dApps?",
+    "answer": "Ultrices sagittis orci a scelerisque purus semper eget duis at. Integer vitae justo eget magna fermentum iaculis eu non diam. Sodales ut eu sem integer."
+  },
+  {
+    "question": "How can I submit my dApp?",
+    "answer": "Fermentum odio eu feugiat pretium nibh ipsum. Phasellus egestas tellus rutrum tellus. A diam sollicitudin tempor id."
+  },
+  {
+    "question": "Are there reviews for dApps?",
+    "answer": "At imperdiet dui accumsan sit amet nulla. Suscipit tellus mauris a diam maecenas sed enim ut sem."
+  }
+]

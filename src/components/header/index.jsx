@@ -72,12 +72,13 @@ class Header extends React.Component {
             <h2 className="header__title">
             <img src={headerLogo} alt="Powered by Hydro" className="header__logo" />
             </h2>
+            <p className="header__version">v0.1.0 BETA</p>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto align-items-center" navbar>
               <NavItem>
-                <NavLink tag={RouterNavLink} exact to="/faq" activeClassName="active">
+                <NavLink tag={RouterNavLink} exact to="/faq" activeClassName="active" className="header__faq">
                   <IoMdHelpCircle className="header__icon" />
                 </NavLink>
               </NavItem>

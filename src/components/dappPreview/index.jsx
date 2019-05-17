@@ -3,6 +3,7 @@
  * This component can be used for any situation: buy / open / remove.
  * In Legacy, this component fetches the data from an imported JSON file,
  * but in V2, it will fetch data from an external API.
+ * TODO: When you click on the thumbnail image it should prompt you to open/get dApp
  */
 
 import React, { useState } from 'react';
@@ -112,7 +113,7 @@ function DappPreview(props) {
       />
       <Card className="dapp-preview">
         <div className="dapp-preview__image" style={{ backgroundImage: 'url(' + details.logo + ')' }}>
-          <div className="dapp-preview__overlay-wrapper">
+          <div className="dapp-preview__overlay-wrapper none">
             <Button>Details</Button>
           </div>
         </div>

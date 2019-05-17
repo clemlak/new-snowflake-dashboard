@@ -63,7 +63,7 @@ function HeaderAccount() {
     return (
       <div className="header__account">
         <p className="header__welcome">
-          {`Welcome ${hydroId}`}
+          {`Welcome, ${hydroId}`}
         </p>
         <p className="header__ein">
           {`Ein: ${ein}`}

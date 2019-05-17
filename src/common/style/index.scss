@@ -238,7 +238,6 @@ h4 {
   box-shadow: none;
 }
 
-
 /**
  * Footer
  */
@@ -283,18 +282,18 @@ h4 {
   margin-bottom: 15px;
   margin-right: 30px;
   background-color: #f7f7f7;
-  border-radius: 15px;
+  border-radius: 10px;
   display: inline-block;
 }
 
 .submit_card .card-header {
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .submit_card .card-footer {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .submit_card .card-body {
@@ -309,9 +308,9 @@ h4 {
 }
 
 .submit_card button {
+  background-color: #1d4cff;
+  border: 1px solid #1d4cff;
   color: #fff;
-  background-color: #a9a9a9;
-  border-color: #a9a9a9;
 }
 
 .submitDapp p {
@@ -325,6 +324,9 @@ h4 {
 .submitDapp h3 {
   font-size: 20px;
   margin-top: 25px;
+  background-color: #eaeaea;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .spinner-border {
@@ -333,6 +335,6 @@ h4 {
   margin-right: 6px;
 }
 
-.confirmationWrapper {
-
+.none {
+  display: none;
 }

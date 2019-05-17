@@ -111,7 +111,7 @@ function DappPreview(props) {
         toggle={() => setIsRemoveModalOpen(false)}
       />
       <Card className="dapp-preview">
-        <div className="dapp-preview__image" style={{backgroundImage: "url(" + details.logo + ")"}}>
+        <div className="dapp-preview__image" style={{ backgroundImage: 'url(' + details.logo + ')' }}>
           <div className="dapp-preview__overlay-wrapper">
             <Button>Details</Button>
           </div>

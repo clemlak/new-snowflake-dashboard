@@ -1,15 +1,19 @@
 [
   {
+    "image": "submitdapp.png",
+    "link": "submitdapp"
+  },
+  {
+    "image": "hydropay.jpg",
+    "link": "hydropay"
+  },
+  {
     "image": "cryptokitties_logo.jpg",
     "link": "cryptokitties"
   },
   {
     "image": "angry_birds_logo.jpg",
     "link": "angrybirds"
-  },
-  {
-    "image": "hydropay.jpg",
-    "link": "hydropay"
   },
   {
     "image": "bingo_logo.jpg",

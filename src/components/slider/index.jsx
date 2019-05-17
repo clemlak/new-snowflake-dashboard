@@ -1,7 +1,6 @@
 /**
  * Displays a slider
  * TODO: The images should be imported from the src folder not the public one
- * TODO: Fix autoplay
  */
 
 import React from 'react';
@@ -14,8 +13,8 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  autoPlay: true,
-  autoPlaySpeed: 2000,
+  autoplay: true,
+  autoplaySpeed: 5000,
   slidesToShow: 3,
   slidesToScroll: 1,
   adaptiveHeight: true,

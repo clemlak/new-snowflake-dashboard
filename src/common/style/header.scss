@@ -55,8 +55,9 @@
 }
 
 .header__ein {
-  font-size: 12px;
-  font-weight: 600;
+  font-family: "Nunito-Bold", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
   color: #d0d0d0;
   text-transform: uppercase;
 }
@@ -64,6 +65,11 @@
 .fixed-nav {
   position: fixed;
   top: 0;
+}
+
+.navbar-light .navbar-toggler {
+  margin-right: 30px;
+  margin-top: -12px;
 }
 
 .navbar .onboardingButton {

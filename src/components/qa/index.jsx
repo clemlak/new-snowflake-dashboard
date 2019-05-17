@@ -1,5 +1,6 @@
 /**
  * Displays a QA
+ * TODO: QA - Make chevron clickable to toggle row.
  */
 
 import React, { useState } from 'react';

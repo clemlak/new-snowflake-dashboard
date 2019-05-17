@@ -111,9 +111,13 @@ function Purchase(props) {
 Purchase.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.string,
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
+};
+
+Purchase.defaultProps = {
+  price: '',
 };
 
 export default Purchase;

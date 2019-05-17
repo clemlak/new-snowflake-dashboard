@@ -3,10 +3,6 @@
   min-width: 245px;
 }
 
-.dapp-preview__image:hover {
-  opacity: 1;
-}
-
 .dapp-preview__body {
   padding-left: 0;
   padding-right: 0;
@@ -95,15 +91,21 @@
 }
 
 .dapp-preview__image {
-  border-radius: 10px;
+  border-radius: 5px;
   width: 223px;
   height: 175px;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;
+  box-shadow: 5px 5px 12px rgba(57, 63, 72, 0.1);
+  background-color: #fff;
+}
+
+.dapp-preview__image:hover {
   box-shadow: 5px 5px 12px rgba(57, 63, 72, 0.2);
 }
+
 
 .dapp-preview__overlay-wrapper {
   margin: 0 auto !important;

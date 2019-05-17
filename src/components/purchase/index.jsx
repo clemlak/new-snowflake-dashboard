@@ -27,6 +27,7 @@ import {
 } from '../../services/utilities';
 
 import TransactionButton from '../transactionButton';
+import hydroIcon from '../../common/img/hydro_blue_drop.png';
 
 function Purchase(props) {
   const web3 = useWeb3Context();
@@ -60,7 +61,7 @@ function Purchase(props) {
         return normalizedPrice.substring(0, 5);
       }
 
-      return '< 1 HYDRO';
+      return '< 1 ';
     }
 
     return '0';
@@ -91,9 +92,9 @@ function Purchase(props) {
                   />
                   {title}
                 </Col>
-                <Col sm="2" className="text-center">
+                <Col sm="3" className="text-right">
                   <p className="purchase__price">
-                    {getReadablePrice()}
+                    {getReadablePrice()} <img src={hydroIcon} width="16" className="purchase__hydro-icon" />
                   </p>
                 </Col>
               </Row>

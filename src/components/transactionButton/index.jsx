@@ -1,6 +1,5 @@
 /**
  * Handles a transaction and displays the result
- * TODO: This component needs to be polished
  */
 
 import React, { useState } from 'react';
@@ -31,6 +30,7 @@ function TransactionButton(props) {
     className,
     color,
     block,
+    onConfirmationModalText,
   } = props;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -122,7 +122,7 @@ function TransactionButton(props) {
                 Success
               </p>
               <p className="transaction-button-modal__subtitle">
-                Your transaction is successful!
+                {onConfirmationModalText}
               </p>
             </Col>
           </Row>
@@ -226,6 +226,7 @@ TransactionButton.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
   block: PropTypes.bool,
+  onConfirmationModalText: PropTypes.string,
 };
 
 TransactionButton.defaultProps = {
@@ -239,6 +240,7 @@ TransactionButton.defaultProps = {
   className: '',
   color: 'primary',
   block: false,
+  onConfirmationModalText: 'Your transaction is successful!',
 };
 
 export default TransactionButton;

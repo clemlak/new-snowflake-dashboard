@@ -1,7 +1,7 @@
 /**
  * Displays the transactions linked to the current account
- * TODO: purchasedDapps must display the name of the resolver instead of the address of the contract
- * TODO: Fix same keys error
+ * TODO: Wallet - purchasedDapps must display the name of the resolver instead of the address of the contract
+ * TODO: Wallet - Fix same keys error
  */
 
 import React, { useState } from 'react';

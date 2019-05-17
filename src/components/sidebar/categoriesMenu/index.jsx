@@ -39,7 +39,7 @@ function CategoriesMenu() {
       </h2>
       <Nav vertical>
         <NavItem key="all">
-          <NavLink tag={RouterNavLink} exact to="/category/all" className="sidebar__link" activeClassName="sidebar__link--active">
+          <NavLink tag={RouterNavLink} exact to="/category/All" className="sidebar__link" activeClassName="sidebar__link--active">
             <IoIosFolder
               className="sidebar__icon"
             />

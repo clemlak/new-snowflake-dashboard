@@ -1,7 +1,3 @@
-/**
-NOTE: Added FAQ and QA components here, it might be redundant now
-*/
-
 import React from 'react';
 import {
   Row,

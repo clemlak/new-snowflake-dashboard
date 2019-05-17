@@ -6,8 +6,10 @@ import React, { useState, useEffect } from 'react';
 import {
   Row,
   Col,
+  Button,
   CardDeck,
 } from 'reactstrap';
+
 import {
   useWeb3Context,
 } from 'web3-react';
@@ -63,7 +65,21 @@ function Manage() {
             }
             </CardDeck>
           ) : (
-            <p>You do not have any dApps. Add one from the dApp Store and it will show up here. </p>
+            <Row className="mt-5">
+              <Col>
+                <Row className="additional-help align-items-center">
+                  <Col>
+                    <h4 className="additional-help__title">Add A aApp</h4>
+                    <p className="additional-help__subtitle">You do not have any dApps. Add one from the dApp Store and it will show up here.</p>
+                  </Col>
+                  <Col sm="4" className="text-right">
+                    <Button className="btn-outlined">
+                      Submit dApp
+                    </Button>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
           )}
         </Col>
       </Row>

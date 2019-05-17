@@ -17,6 +17,8 @@ import {
   getAccountDetails,
 } from '../../../services/utilities';
 
+import BlockiesIdenticon from '../../identity/blockiesIdenticon';
+
 function HeaderAccount() {
   const web3 = useWeb3Context();
 
@@ -62,12 +64,19 @@ function HeaderAccount() {
   if (hasEin) {
     return (
       <div className="header__account">
-        <p className="header__welcome">
-          {`Welcome, ${hydroId}`}
-        </p>
-        <p className="header__ein">
-          {`Ein: ${ein}`}
-        </p>
+      <div className="header__account-info-wrapper">
+          <p className="header__welcome">
+            {`Welcome, ${hydroId}`}
+          </p>
+          <p className="header__ein">
+            {`Ein: ${ein}`}
+          </p>
+        </div>
+        <div className="header__identicon-wrapper">
+          {web3.active && (
+            <BlockiesIdenticon seed={web3.account} className="header__identicon" />
+          )}
+        </div>
       </div>
     );
   }

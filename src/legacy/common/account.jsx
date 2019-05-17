@@ -6,7 +6,7 @@ import { Chip, Avatar, SvgIcon } from '@material-ui/core';
 import { useHydroBalance, useEtherscanLink, useNamedContract } from './hooks'
 
 // Get users hydro balance from wallet.
-// TODO: This can be made more generic by adding parameters to change the button class, color and target.
+// TODO: Legacy - This can be made more generic by adding parameters to change the button class, color and target.
 export function GetUsersHydroBalanceFromWallet() {
   const context = useWeb3Context()
   const hydroBalance = useHydroBalance()
@@ -34,8 +34,8 @@ export function GetUsersHydroBalanceFromWallet() {
 }
 
 // Get users hydro balance from wallet.
-// TODO: This can be made more generic by adding parameters to change the button class, color and target.
-// TODO: Currently hardcoded.
+// TODO: Legacy - This can be made more generic by adding parameters to change the button class, color and target.
+// TODO: Legacy - Currently hardcoded.
 export function GetUsersAddedDAppTotal() {
   const dappTotal = "10"
 

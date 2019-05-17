@@ -1,6 +1,7 @@
 /**
  * Displays an Identicon
- * TODO: Convert this class to a hook
+ * TODO: Identity - Convert this class to a hook
+ * BUG: Identity - Investigate why this is not looking like the other identicons in other applications. Newer version?
  */
 
 import React, { Component } from 'react';

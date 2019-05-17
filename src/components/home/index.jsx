@@ -52,7 +52,7 @@ function Home() {
               'filters__link'
             )}
           >
-            Most popular
+            Most Popular
           </NavLink>
         </NavItem>
         <NavItem className="filters__nav-item">
@@ -85,10 +85,16 @@ function Home() {
           <Featured />
         </TabPane>
         <TabPane tabId="popular">
-          <p>Popular dApps</p>
+        <h1>
+          Popular dApps
+        </h1>
+        <p>dApps that are trending</p>
         </TabPane>
         <TabPane tabId="last">
-          <p>Last Releases</p>
+        <h1>
+          Latest dApps
+        </h1>
+        <p>Recently Added dApps</p>
         </TabPane>
       </TabContent>
     </div>

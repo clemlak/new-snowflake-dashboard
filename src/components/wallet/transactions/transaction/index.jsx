@@ -1,5 +1,8 @@
 /**
  * Displays a transaction
+ * BUG: Wallet - Dates are all the same
+ * BUG: Wallet - Remove blank rows
+ * NOTE: Wallet Pagination on this page would be nice
  */
 
 import React from 'react';

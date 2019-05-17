@@ -94,7 +94,7 @@ function Deposit(props) {
             color="success"
             initialText="Confirm"
             sendAction={() => depositTokens(web3.library, web3.account, amount)}
-            afterConfirmationAction={cancel}
+            onConfirmationAction={cancel}
           />
         </Col>
       </Row>

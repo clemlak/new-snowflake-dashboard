@@ -112,7 +112,7 @@ function DappPreview(props) {
       />
       <Card className="dapp-preview">
         <div className="dapp-preview__image" style={{ backgroundImage: 'url(' + details.logo + ')' }}>
-          <div className="dapp-preview__overlay-wrapper">
+          <div className="dapp-preview__overlay-wrapper none">
             <Button>Details</Button>
           </div>
         </div>

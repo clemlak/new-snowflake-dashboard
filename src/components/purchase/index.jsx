@@ -45,6 +45,25 @@ function Purchase(props) {
 
   const closeIcon = <IoIosClose className="purchase__close-icon" onClick={toggle} />;
 
+  function getReadablePrice() {
+    if (web3.active) {
+      if (normalizedPrice === '0') {
+        return '0';
+      }
+
+      const unit = web3.library.utils.toWei('1');
+      const unitBn = web3.library.utils.toBN(unit);
+
+      if (web3.library.utils.toBN(price).gt(unitBn)) {
+        return normalizedPrice.substring(0, 5);
+      }
+
+      return '< 1 HYDRO';
+    }
+
+    return '0';
+  }
+
   return (
     <Modal isOpen={isOpen} toggle={toggle}>
       <ModalHeader
@@ -72,7 +91,7 @@ function Purchase(props) {
                 </Col>
                 <Col sm="2" className="text-center">
                   <p className="purchase__price">
-                    {normalizedPrice.substring(0, 5)}
+                    {getReadablePrice()}
                   </p>
                 </Col>
               </Row>

@@ -49,9 +49,9 @@ function Wallet() {
                 </p>
               </Col>
               <Col sm="2" className="text-right">
-              <HelpButton
-                content={tooltips.getHydroHelp}
-              />
+                <HelpButton
+                  content={tooltips.getHydroHelp}
+                />
               </Col>
             </Row>
             <Row>

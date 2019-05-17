@@ -33,7 +33,7 @@ function Category({
         <Row className="additional-help align-items-center">
           <Col>
             <h4 className="additional-help__title">Be The First</h4>
-            <p className="additional-help__subtitle">Submit your dApp to this category and earn a bounty!</p>
+            <p className="additional-help__subtitle">Submit your dApp to this category and earn a Hydro bounty!</p>
           </Col>
           <Col sm="4" className="text-right">
             <Button className="btn-outlined">

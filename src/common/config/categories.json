@@ -1,17 +1,17 @@
 [
   {
     "name": "Entertainment",
-    "description": "",
+    "description": "Lorum ipsum dolor sit amet.",
     "icon": "IoIosFilm"
   },
   {
     "name": "Fintech",
-    "description": "",
+    "description": "Lorum ipsum dolor sit amet.",
     "icon": "IoMdCard"
   },
   {
     "name": "Business",
-    "description": "",
+    "description": "Lorum ipsum dolor sit amet.",
     "icon": "IoIosGlobe"
   },
   {
@@ -21,17 +21,17 @@
   },
   {
     "name": "Community",
-    "description": "",
+    "description": "Lorum ipsum dolor sit amet.",
     "icon": "IoIosPeople"
   },
   {
     "name": "Tools",
-    "description": "",
+    "description": "Lorum ipsum dolor sit amet.",
     "icon": "IoIosCalculator"
   },
   {
     "name": "Other",
-    "description": "",
+    "description": "Lorum ipsum dolor sit amet.",
     "icon": "IoIosCog"
   }
 ]

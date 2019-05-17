@@ -1,7 +1,6 @@
 /**
  * Displays a modal to buy a dApp
- * TODO: Add the Hydro logo next to the price
- * NOTE: Minimum displayed price is currently 1 HYDRO
+ * NOTE: Purchase - Minimum displayed price is currently 1 HYDRO
  */
 
 import React from 'react';

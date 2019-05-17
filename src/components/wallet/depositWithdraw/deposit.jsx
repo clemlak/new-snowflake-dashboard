@@ -1,7 +1,7 @@
 /**
  * Displays a form to deposit tokens to the current Snowflake balance
- * BUG: Double check decimals and value. 15k tokens at present value is ~$25 USD and shows $255 USD
- 
+ * BUG: Wallet - Double check decimals and value. 15k tokens at present value is ~$25 USD and shows $255 USD
+
  */
 
 import React, { useState } from 'react';

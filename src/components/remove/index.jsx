@@ -1,6 +1,6 @@
 /**
  * Displays a modal  to remove a dApp
- * TODO: Confirmation of the pending transaction is never catched
+ * TODO: Remove - Confirmation of the pending transaction is never catched
  */
 
 import React from 'react';

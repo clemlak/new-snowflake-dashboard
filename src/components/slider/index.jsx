@@ -1,6 +1,6 @@
 /**
  * Displays a slider
- * TODO: The images should be imported from the src folder not the public one
+ * TODO: Slider - The images should be imported from the src folder not the public one
  */
 
 import React from 'react';

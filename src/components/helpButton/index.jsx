@@ -1,7 +1,7 @@
 /**
  * Displays a help button triggering a tooltip on hover
- * TODO: Create a specific stylesheet for this component
- * TODO: Add an active button design
+ * TODO: Help Button - Create a specific stylesheet for this component
+ * TODO: Help Button - Add an active button design
  */
 
 import React, {

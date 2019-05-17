@@ -1,6 +1,6 @@
 /**
  * Displays tools to manage the identity of the current user
- * TODO: Fix the col width and center the elements
+ * TODO: Identity - Fix the col width and center the elements
  */
 
 import React, { useState } from 'react';

@@ -3,6 +3,7 @@ import identityRegistry from './contracts/identityRegistry';
 import clientRaindrop from './contracts/clientRaindrop';
 import oldClientRaindrop from './contracts/oldClientRaindrop';
 import snowflake from './contracts/snowflake';
+import statusAbi from '../legacy/Rinkeby/0x16fD6e2E1C4afB9C4e7B901141706596317e4ceB/abi';
 
 function getAccountEthBalance(lib, address) {
   return lib.eth.getBalance(address)
@@ -410,6 +411,17 @@ function addLinkedAddress(lib, account, newAddress, signature, timestamp) {
   });
 }
 
+function getStatus(lib, account) {
+  const statusContract = new lib.eth.Contract(
+    statusAbi,
+    '0x16fD6e2E1C4afB9C4e7B901141706596317e4ceB',
+  );
+
+  return getAccountEin(lib, account)
+    .then(ein => statusContract.methods.getStatus(ein).call())
+    .catch(err => err);
+}
+
 export {
   getAccountEthBalance,
   getAccountHydroBalance,
@@ -436,4 +448,5 @@ export {
   removeLinkedAddress,
   createSignedMessageToLinkAddress,
   addLinkedAddress,
+  getStatus,
 };

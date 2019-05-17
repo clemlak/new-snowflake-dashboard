@@ -17,6 +17,9 @@ import {
   getSnowflakeBalance,
   getAccountHydroBalance,
 } from '../../../services/utilities';
+import {
+  getBalanceUsd,
+} from '../../../services/hydroPrice';
 
 import Deposit from './deposit';
 import Withdraw from './withdraw';
@@ -27,6 +30,7 @@ import tooltips from '../../../common/config/tooltips.json';
 
 function DepositWithdraw() {
   const [snowflakeBalance, setSnowflakeBalance] = useState('0');
+  const [usdValue, setUsdValue] = useState(0);
   const [hydroBalance, setHydroBalance] = useState('0');
   const [tab, setTab] = useState('none');
 
@@ -41,6 +45,11 @@ function DepositWithdraw() {
       })
       .then((res) => {
         setHydroBalance(res);
+
+        return getBalanceUsd(web3.library, snowflakeBalance);
+      })
+      .then((res) => {
+        setUsdValue(res);
       })
       .catch((err) => {
         console.log(err);
@@ -80,7 +89,7 @@ function DepositWithdraw() {
               </span>
             </p>
             <p className="wallet__usd small">
-              USD $340.00
+              {`${usdValue.toString().substring(0, 5)} USD`}
             </p>
           </Col>
         </Row>

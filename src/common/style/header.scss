@@ -42,16 +42,22 @@
 }
 
 .header__welcome {
-  color: #333;
-  font-size: 20px;
-  font-weight: 600;
+  font-family: "Nunito-Bold", sans-serif;
+  color: #5f5f5f;
+  font-size: 15px;
+  font-weight: 300;
   margin-bottom: 0;
+  margin-left: 30px;
+}
+
+.header__faq {
+  margin-top: -15px;
 }
 
 .header__ein {
   font-size: 12px;
   font-weight: 600;
-  color: #8c8c8c;
+  color: #d0d0d0;
   text-transform: uppercase;
 }
 

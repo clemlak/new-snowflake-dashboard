@@ -1,5 +1,7 @@
 /**
  * Displays a modal to buy a dApp
+ * TODO: Add the Hydro logo next to the price
+ * NOTE: Minimum displayed price is currently 1 HYDRO
  */
 
 import React from 'react';
@@ -51,10 +53,10 @@ function Purchase(props) {
         return '0';
       }
 
-      const unit = web3.library.utils.toWei('1');
-      const unitBn = web3.library.utils.toBN(unit);
+      const minimum = web3.library.utils.toWei('1');
+      const minimumBn = web3.library.utils.toBN(minimum);
 
-      if (web3.library.utils.toBN(price).gt(unitBn)) {
+      if (web3.library.utils.toBN(price).gt(minimumBn)) {
         return normalizedPrice.substring(0, 5);
       }
 

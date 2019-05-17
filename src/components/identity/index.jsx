@@ -13,7 +13,6 @@ import {
   useWeb3Context,
 } from 'web3-react';
 import {
-  IoIosHelpCircleOutline,
   IoMdLink,
 } from 'react-icons/io';
 
@@ -30,7 +29,6 @@ import LinkAddressCard from './linkAddressCard';
 import HelpButton from '../helpButton';
 
 import tooltips from '../../common/config/tooltips.json';
-import userImg from '../../common/img/snowflake.gif';
 
 const Identity = () => {
   const web3 = useWeb3Context();

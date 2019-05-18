@@ -403,6 +403,14 @@ h4 {
 
 }
 
+
+@include media-breakpoint-between(xs, lg) {
+  .filters__nav-item {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 @include media-breakpoint-between(xs, md) {
   .sidebar {
     position: relative;

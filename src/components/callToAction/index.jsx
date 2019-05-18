@@ -9,7 +9,7 @@ import {
 const CallToAction = () => (
   <Container fluid>
     <Row className="call-to-action justify-content-center">
-      <Col xs="12" sm="6" className="text-center">
+      <Col xs="12" sm="10" className="text-center">
         <h1 className="call-to-action__title">Get Involved</h1>
         <p className="call-to-action__subtitle">
           Are you a developer? Do you have a dApp idea?

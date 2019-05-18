@@ -71,6 +71,7 @@ function Withdraw(props) {
                 <Button
                   size="sm"
                   onClick={() => setAmount(snowflakeBalance)}
+                  className="wallet__max-button"
                 >
                   Max
                 </Button>

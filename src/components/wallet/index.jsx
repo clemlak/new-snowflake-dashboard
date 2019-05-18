@@ -48,7 +48,7 @@ function Wallet() {
                   Buy and Deposit to dApp wallet
                 </p>
               </Col>
-              <Col sm="2" className="text-right">
+              <Col xs="2" sm="2" className="text-right">
                 <HelpButton
                   content={tooltips.getHydroHelp}
                 />

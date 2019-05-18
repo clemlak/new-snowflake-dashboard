@@ -94,13 +94,13 @@ function DepositWithdraw() {
           </Col>
         </Row>
         <Row className="justify-content-center align-items-center py-5">
-          <Col className="text-right" sm="6" xs="12">
-            <Button className="btn-white" onClick={() => setTab('deposit')}>
+          <Col className="text-right center" sm="12" xs="12">
+            <Button className="btn-white wallet__deposit-button" onClick={() => setTab('deposit')}>
               Deposit
             </Button>
           </Col>
-          <Col className="text-left" sm="6" xs="12">
-            <Button color="success" onClick={() => setTab('withdraw')}>
+          <Col className="text-left center" sm="12" xs="12">
+            <Button color="success wallet_withdraw-button" onClick={() => setTab('withdraw')}>
               Withdraw
             </Button>
           </Col>
@@ -112,12 +112,12 @@ function DepositWithdraw() {
   return (
     <Card className="wallet">
       <Row className="p-3">
-        <Col>
+        <Col xs="10">
           <p className="wallet__title">
             Your dApp Store Wallet
           </p>
         </Col>
-        <Col sm="2" className="text-right">
+        <Col xs="2" sm="2" className="text-right">
           <HelpButton
             content={tooltips.walletHelp}
           />

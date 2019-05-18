@@ -43,12 +43,12 @@ function Wallet() {
         <Col>
           <Card className="buy">
             <Row className="p-3">
-              <Col>
+              <Col xs="8" sm="8" med="8" lg="8" xl="8">
                 <p className="buy__title">
                   Buy and Deposit to dApp wallet
                 </p>
               </Col>
-              <Col xs="2" sm="2" className="text-right">
+              <Col xs="4" sm="4" med="4" lg="4" xl="4" className="text-right">
                 <HelpButton
                   content={tooltips.getHydroHelp}
                 />

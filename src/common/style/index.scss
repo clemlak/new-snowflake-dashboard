@@ -377,22 +377,18 @@ h4 {
   display: none;
 }
 
+.wallet {
+  padding-bottom: 30px;
+}
+
 @include media-breakpoint-only(xs) {
   .card-deck {
     display: inline-grid;
     width: 100%;
   }
 
-  .center {
-    text-align: center !important;
-  }
-
   .wallet__deposit-button {
     margin-bottom: 30px;
-  }
-
-  .wallet {
-    padding-bottom: 30px;
   }
 
   .wallet__max-button {
@@ -464,16 +460,18 @@ h4 {
     max-width: 100%;
   }
 
-  /*
-  .container-fluid {
-    padding-right: 0px;
-    padding-left: 0px;
+  .center {
+    text-align: center !important;
+  }
+
+  .wallet__deposit-button {
+    margin-bottom: 30px;
   }
 
   .row {
     margin: 0 !important;
   }
-  */
+
 }
 
 @include media-breakpoint-between(xs, md) {

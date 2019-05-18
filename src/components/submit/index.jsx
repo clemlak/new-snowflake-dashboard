@@ -59,7 +59,7 @@ const Submit = (props) => {
          <h3 class="">FAQ</h3>
         <p>Have a question about dApp development or submitting to the store, read below</p>
          <Row>
-           <Col>
+           <Col className="nopadding">
              <div className="accordion">
                {faqJson.map(qa => (
                  <QA
@@ -72,13 +72,13 @@ const Submit = (props) => {
            </Col>
          </Row>
          <Row className="mt-5">
-           <Col>
+           <Col className="nopadding">
              <Row className="additional-help align-items-center">
-               <Col>
+               <Col sm="12" md="12" lg="8">
                  <h4 className="additional-help__title">Need Additional Help?</h4>
                  <p className="additional-help__subtitle">Send us a message via projecthydro.org</p>
                </Col>
-               <Col sm="4" className="text-right">
+               <Col sm="12" md="12" lg="4" className="text-right">
                  <Button className="btn-outlined">
                    Get Assistance
                  </Button>

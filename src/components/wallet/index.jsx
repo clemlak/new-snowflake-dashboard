@@ -80,7 +80,7 @@ function Wallet() {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className="nopadding">
           <Transactions />
         </Col>
       </Row>

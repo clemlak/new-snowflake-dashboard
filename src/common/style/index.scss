@@ -376,6 +376,11 @@ h4 {
     max-width: 100%;
     display: inline-block;
   }
+
+
+    .app__content {
+      padding: 30px 0 0 0 !important;
+    }
 }
 
 @include media-breakpoint-between(sm, md) {
@@ -404,6 +409,13 @@ h4 {
   .row {
     margin: 0 !important;
   }
+
+  .app__content h1 {
+    font-family: 'Nunito-Regular', sans-serif;
+    font-size: 27.12px;
+    padding-bottom: 30px;
+  }
+
 
 }
 

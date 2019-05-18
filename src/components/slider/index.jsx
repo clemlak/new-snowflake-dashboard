@@ -1,6 +1,8 @@
 /**
  * Displays a slider
  * TODO: Slider - The images should be imported from the src folder not the public one
+ * TODO: Slider - Hoverstate class
+ * TODO: Slider - Hoverstate data pull in (Title, Link Category etc..)
  */
 
 import React from 'react';
@@ -32,7 +34,7 @@ function Carousel() {
   return (
     <Slider {...settings}>
       {slidesJson.map(slide => (
-        <div
+        <div className="fadeit"
           key={slide.link}
         >
           <div

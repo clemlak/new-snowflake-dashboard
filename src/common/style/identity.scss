@@ -10,7 +10,7 @@
   background-clip: border-box;
   border: 0;
   border-radius: 0.25rem;
-  height: 300px;
+  min-height: 300px;
 }
 
 .identity__title {
@@ -82,11 +82,18 @@
   border-radius: 10px;
   padding: 5px;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 7px;
+  top: -8px;
   color: #fff;
   border: none;
   font-size: 13px;
+}
+
+.status .btn-secondary:hover,
+.status .btn-secondary:active,
+.status .btn-secondary:focus  {
+  background-color: #1d4cff;
+  border-color: #1d4cff;
 }
 
 .link {

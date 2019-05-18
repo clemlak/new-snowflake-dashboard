@@ -36,19 +36,19 @@ function Wallet() {
           </h1>
         </Col>
       </Row>
-      <Row className="wallet__row">
-        <Col>
-          <DepositWithdraw />
+      <Row className="wallet__row fadeit">
+        <Col sm="12" md="12" lg="12" xl="6">
+          <DepositWithdraw/>
         </Col>
         <Col>
           <Card className="buy">
             <Row className="p-3">
-              <Col>
+              <Col xs="8" sm="8" med="8" lg="8" xl="8">
                 <p className="buy__title">
                   Buy and Deposit to dApp wallet
                 </p>
               </Col>
-              <Col sm="2" className="text-right">
+              <Col xs="4" sm="4" med="4" lg="4" xl="4" className="text-right">
                 <HelpButton
                   content={tooltips.getHydroHelp}
                 />

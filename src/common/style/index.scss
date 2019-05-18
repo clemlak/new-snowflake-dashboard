@@ -441,6 +441,16 @@ h4 {
   .container {
     max-width: 100%;
   }
+  /*
+  .container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .row {
+    margin: 0 !important;
+  }
+  */
 }
 
 @include media-breakpoint-between(xs, md) {
@@ -462,5 +472,9 @@ h4 {
 
  .filters {
    display: none;
+ }
+
+ .wallet {
+   min-height: auto !important;
  }
 }

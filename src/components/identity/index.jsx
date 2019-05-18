@@ -76,7 +76,7 @@ const Identity = () => {
         </Col>
       </Row>
       <Row className="py-3 justify-content-center align-items-center fadeit">
-        <Col>
+        <Col sm="12" md="12" lg="12" xl="5">
           <Card className="identity">
             <Row className="p-3">
               <Col>
@@ -117,12 +117,12 @@ const Identity = () => {
             <StatusWidget />
           </Card>
         </Col>
-        <Col sm="1">
+        <Col sm="12" md="12" lg="12" xl="1" className="text-center">
           <IoMdLink
             className="identity__link"
           />
         </Col>
-        <Col>
+        <Col sm="12" md="12" lg="12" xl="5">
           <LinkAddressCard />
         </Col>
       </Row>
@@ -134,7 +134,7 @@ const Identity = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col sm="12" md="12" lg="12" xl="12">
           {addresses.map(address => (
             <LinkedAddress
               key={address}

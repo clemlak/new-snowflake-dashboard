@@ -380,25 +380,6 @@ h4 {
     min-height: 200px;
   }
 
-  .footer__powered-by {
-    text-align: center;
-  }
-
-  .footer__built-on {
-    text-align: center;
-    margin-bottom: 30px;
-    margin-top: 30px;
-  }
-
-  .footer__powered {
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-
-  .footer__powered-by svg {
-    margin-right: 0px;
-  }
-
   .submit_card {
     max-width: 100%;
     width: 100%;
@@ -439,6 +420,29 @@ h4 {
    margin: 0 auto;
  }
 
+ .footer__powered-by {
+   text-align: center;
+ }
+
+ .footer__built-on {
+   text-align: center;
+   margin-bottom: 30px;
+   margin-top: 30px;
+ }
+
+ .footer__built-on img {
+   margin-left: 0px;
+ }
+
+ .footer__powered {
+   margin-top: 30px;
+   margin-bottom: 30px;
+ }
+
+ .footer__powered-by svg {
+   margin-right: 0px;
+ }
+
  .filters {
    display: none;
  }
@@ -450,4 +454,9 @@ h4 {
  .buy {
    height: auto;
  }
+
+ .container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
 }

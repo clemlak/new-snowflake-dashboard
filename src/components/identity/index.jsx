@@ -94,7 +94,7 @@ const Identity = () => {
               <Col xs="4">
                 <p className="identity__user-image">
                   {web3.active && (
-                    <BlockiesIdenticon seed={web3.account} />
+                    <BlockiesIdenticon seed={ein} />
                   )}
                 </p>
               </Col>

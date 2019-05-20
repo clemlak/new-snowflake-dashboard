@@ -75,7 +75,7 @@ function HeaderAccount() {
         </div>
         <div className="header__identicon-wrapper">
           {web3.active && (
-            <BlockiesIdenticon seed={web3.account} className="header__identicon" />
+            <BlockiesIdenticon seed={ein} className="header__identicon" />
           )}
         </div>
       </div>

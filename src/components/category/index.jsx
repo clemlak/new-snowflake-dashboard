@@ -1,18 +1,40 @@
-/**
-* TODO: Category - Add logic to the call to action at the bottom, only show if no dapps in category exist.
-*/
-
 import React from 'react';
 import {
   Row,
   Col,
   Button,
 } from 'reactstrap';
+import DappPreview from '../dappPreview';
+import resolversJson from '../../legacy/resolvers.json';
 
 function Category({
   match,
 }) {
   const { name } = match.params;
+  const dappsToDisplay = [];
+
+  Object.keys(resolversJson).forEach((key) => {
+    if (resolversJson[key].category === name) {
+      dappsToDisplay.push(key);
+    }
+  });
+
+  function displayDapps() {
+    const dappsPreviews = [];
+
+    for (let i = 0; i < dappsToDisplay.length; i += 1) {
+      dappsPreviews.push(
+        <DappPreview
+          key={dappsToDisplay[i]}
+          id={dappsToDisplay[i]}
+          legacy
+          added={false}
+        />,
+      );
+    }
+
+    return dappsPreviews;
+  }
 
   return (
     <div>
@@ -21,6 +43,8 @@ function Category({
           {`${name} dApps`}
         </h1>
       </div>
+
+      {displayDapps()}
 
       <Row className="mt-5">
         <Col>

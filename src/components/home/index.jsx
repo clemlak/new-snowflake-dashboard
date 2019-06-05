@@ -85,16 +85,16 @@ function Home() {
           <Featured />
         </TabPane>
         <TabPane tabId="popular">
-        <h1>
-          Popular dApps
-        </h1>
-        <p>dApps that are trending</p>
+          <h1>
+            Popular dApps
+          </h1>
+          <p>dApps that are trending</p>
         </TabPane>
         <TabPane tabId="last">
-        <h1>
-          Latest dApps
-        </h1>
-        <p>Recently Added dApps</p>
+          <h1>
+            Latest dApps
+          </h1>
+          <p>Recently Added dApps</p>
         </TabPane>
       </TabContent>
     </div>

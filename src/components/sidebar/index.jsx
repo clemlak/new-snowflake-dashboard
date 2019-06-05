@@ -16,6 +16,7 @@ import {
 import {
   useWeb3Context,
 } from 'web3-react';
+import numeral from 'numeral';
 
 import Onboarding from '../onboarding';
 import CategoriesMenu from './categoriesMenu';
@@ -81,7 +82,9 @@ function Sidebar() {
                 <NavLink tag={RouterNavLink} exact to="/wallet" className="sidebar__link" activeClassName="sidebar__link--active">
                   Your Wallet
                   <Badge className="sidebar__badge" color="secondary" pill>
-                    {balance.substring(0, 5)}k <img src={whiteHydroDrop} alt="Hydro Drop" className="sidebar__hydro-drop" />
+                    {numeral(balance).format('0 a')}
+                    {' '}
+                    <img src={whiteHydroDrop} alt="Hydro Drop" className="sidebar__hydro-drop" />
                   </Badge>
                 </NavLink>
               </NavItem>

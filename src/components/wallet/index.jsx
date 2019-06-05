@@ -38,7 +38,7 @@ function Wallet() {
       </Row>
       <Row className="wallet__row fadeit">
         <Col sm="12" md="12" lg="12" xl="6">
-          <DepositWithdraw/>
+          <DepositWithdraw />
         </Col>
         <Col>
           <Card className="buy">

@@ -12,6 +12,7 @@ import {
 import {
   useWeb3Context,
 } from 'web3-react';
+import numeral from 'numeral';
 
 import {
   getSnowflakeBalance,
@@ -83,7 +84,7 @@ function DepositWithdraw() {
         <Row>
           <Col className="text-center">
             <p className="wallet__balance mb-0">
-              {snowflakeBalance.substring(0, 5)}
+              {numeral(snowflakeBalance).format('0,0')}
               <span className="wallet__hydro">
                 Hydro
               </span>

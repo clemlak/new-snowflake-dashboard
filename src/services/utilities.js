@@ -348,7 +348,7 @@ function getPastPurchasedDapps(lib, account) {
       for (let i = 0; i < events.length; i += 1) {
         const deposit = {
           resolver: events[i].returnValues.resolver,
-          withdrawAllowance: events[i].returnValues.withdrawAllowance,
+          amount: events[i].returnValues.withdrawAllowance,
           blocknumber: events[i].blockNumber,
           txHash: events[i].transactionHash,
           event: 'purchase',

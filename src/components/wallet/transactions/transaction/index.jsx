@@ -1,11 +1,10 @@
 /**
  * Displays a transaction
- * BUG: Wallet - Dates are all the same
- * BUG: Wallet - Remove blank rows
- * NOTE: Wallet - Pagination on this page would be nice
+ * TODO: Wallet - Pagination on this page would be nice
+ * TODO: Wallet - Wrong color for withdrawal and purchase amounts
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -17,16 +16,31 @@ import {
   IoIosArrowRoundBack,
   IoIosArrowRoundForward,
 } from 'react-icons/io';
+import {
+  useWeb3Context,
+} from 'web3-react';
 
 function Transaction(props) {
   const {
     resolver,
     type,
-    date,
     amount,
+    blocknumber,
   } = props;
 
-  const formattedDate = new Date(date);
+  const [date, setDate] = useState(0);
+  const web3 = useWeb3Context();
+  const displayedAmount = web3.library.utils.fromWei(amount);
+
+  if (web3.active && date === 0) {
+    web3.library.eth.getBlock(blocknumber)
+      .then((block) => {
+        setDate(block.timestamp * 1000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   function displayTransactionType() {
     if (type === 'deposit') {
@@ -73,7 +87,7 @@ function Transaction(props) {
         <Col>
           {displayTransactionType()}
           <p className="transaction__date">
-            {formattedDate.toLocaleString('en-US', {
+            {new Date(date).toLocaleString('en-US', {
               year: 'numeric',
               month: 'short',
               day: 'numeric',
@@ -84,9 +98,13 @@ function Transaction(props) {
         </Col>
         <Col>
           <p className="transaction__amount">
-            {type === 'withdraw' ? ('-') : ('+')}
+            {type === 'withdrawal' || type === 'purchase' ? ('-') : ('+')}
             {' '}
-            {amount}
+            {parseInt(displayedAmount, 10) > 1 ? (
+              displayedAmount
+            ) : (
+              '< 1'
+            )}
           </p>
         </Col>
       </Row>
@@ -96,7 +114,7 @@ function Transaction(props) {
 
 Transaction.propTypes = {
   type: PropTypes.string.isRequired,
-  date: PropTypes.number.isRequired,
+  blocknumber: PropTypes.number.isRequired,
   amount: PropTypes.string.isRequired,
   resolver: PropTypes.string,
 };

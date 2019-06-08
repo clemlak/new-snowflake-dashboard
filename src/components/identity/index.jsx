@@ -8,7 +8,6 @@ import {
   Row,
   Col,
   Card,
-  Button,
 } from 'reactstrap';
 import {
   useWeb3Context,
@@ -23,7 +22,7 @@ import {
   getIdentity,
 } from '../../services/utilities';
 
-import BlockiesIdenticon from './blockiesIdenticon';
+import Identicon from '../identicon';
 
 import LinkedAddress from './linkedAddress';
 import LinkAddressCard from './linkAddressCard';
@@ -94,7 +93,7 @@ const Identity = () => {
               <Col xs="4">
                 <p className="identity__user-image">
                   {web3.active && (
-                    <BlockiesIdenticon seed={ein} />
+                    <Identicon seed={ein} />
                   )}
                 </p>
               </Col>

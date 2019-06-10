@@ -38,6 +38,10 @@
   text-align: right;
 }
 
+.transaction__amount--withdrawal {
+  color: red;
+}
+
 .transaction {
   background-color: $snow-light-gray;
   border: none;

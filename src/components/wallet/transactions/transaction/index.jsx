@@ -97,7 +97,9 @@ function Transaction(props) {
           </p>
         </Col>
         <Col>
-          <p className="transaction__amount">
+          <p className={
+              type === 'withdrawal' || type === 'purchase' ? 'transaction__amount transaction__amount--withdrawal' : 'transaction__amount'}
+          >
             {type === 'withdrawal' || type === 'purchase' ? ('-') : ('+')}
             {' '}
             {parseInt(displayedAmount, 10) > 1 ? (

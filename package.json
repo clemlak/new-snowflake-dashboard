@@ -27,6 +27,7 @@
     "slick-carousel": "^1.8.1",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
+    "stylelint-selector-bem-pattern": "^2.1.0",
     "web3": "1.0.0-beta.36",
     "web3-react": "4.0.3"
   },

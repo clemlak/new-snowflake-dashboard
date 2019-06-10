@@ -2,11 +2,20 @@
 
 ## Introduction
 
-*This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).*
+This repository contains the new version of the Snowflake Dashboard. This version is still a **work-in-progress** and **is not live yet**.
+
+## Rules and convention
+
+In order to keep the maintainability of the code, it is mandatory to respect the rules chosen for this project:
+
+- Airbnb Javascript styleguide
+- BEM naming convention
+
+Plugins such as ESLint or Stylelint can be installed in your IDE to help you out with these rules.
 
 ## Available Scripts
 
-In the project directory, you can run:
+This project was bootstrapped using `create-react-app`, all of the scripts are still available. However, we recommend you to use only the two following:
 
 ### `npm start`
 

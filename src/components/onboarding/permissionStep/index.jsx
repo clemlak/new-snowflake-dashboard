@@ -32,6 +32,11 @@ function PermissionStep(props) {
     timestamp,
   );
 
+  function setSignatureAndSetNextStep(signature) {
+    setSignature(signature);
+    setNextStep();
+  }
+
   return (
     <div>
       <Row className="justify-content-center">
@@ -58,7 +63,7 @@ function PermissionStep(props) {
           <SignatureButton
             text="Accept"
             initialAction={() => signPersonal(web3.library, web3.account, signedMessage)}
-            callbackAction={setSignature}
+            callbackAction={signature => setSignatureAndSetNextStep(signature)}
             finalAction={setNextStep}
           />
         </Col>

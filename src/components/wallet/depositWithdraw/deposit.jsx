@@ -1,7 +1,5 @@
 /**
  * Displays a form to deposit tokens to the current Snowflake balance
- * BUG: Wallet - Double check decimals and value. 15k tokens at present value is ~$25 USD and shows $255 USD
-
  */
 
 import React, { useState } from 'react';
@@ -30,7 +28,8 @@ import TransactionButton from '../../transactionButton';
 function Deposit(props) {
   const {
     user,
-    balance,
+    hydroBalance,
+    snowflakeBalance,
     cancel,
   } = props;
 
@@ -62,11 +61,19 @@ function Deposit(props) {
                 className="dw__input"
                 placeholder="0"
                 onChange={e => setAmount(e.target.value)}
+                value={amount}
               />
               <FormText
                 className="dw__form-text"
               >
-                {user}
+                {user.substring(0, 2)}
+                <Button
+                  size="sm"
+                  onClick={() => setAmount(hydroBalance)}
+                  className="wallet__max-button"
+                >
+                  Max
+                </Button>
               </FormText>
             </FormGroup>
           </div>
@@ -77,7 +84,7 @@ function Deposit(props) {
         <Col sm="5">
           <div className="dw__to">
             <p className="dw__balance">
-              {balance.substring(0, 5)}
+              {snowflakeBalance.substring(0, 5)}
             </p>
             <p className="dw__to-small-text">
               dApp Store Wallet
@@ -105,7 +112,8 @@ function Deposit(props) {
 }
 
 Deposit.propTypes = {
-  balance: PropTypes.string.isRequired,
+  snowflakeBalance: PropTypes.string.isRequired,
+  hydroBalance: PropTypes.string.isRequired,
   cancel: PropTypes.func.isRequired,
   user: PropTypes.string.isRequired,
 };

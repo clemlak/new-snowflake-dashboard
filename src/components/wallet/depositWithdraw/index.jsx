@@ -61,7 +61,8 @@ function DepositWithdraw() {
     if (tab === 'deposit') {
       return (
         <Deposit
-          balance={snowflakeBalance}
+          snowflakeBalance={snowflakeBalance}
+          hydroBalance={hydroBalance}
           cancel={() => setTab('none')}
           user={web3.account}
         />

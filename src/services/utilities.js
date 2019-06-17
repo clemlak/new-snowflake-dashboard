@@ -354,7 +354,9 @@ function getPastPurchasedDapps(lib, account) {
           event: 'purchase',
         };
 
-        purchases.push(deposit);
+        if (events[i].returnValues.resolver !== '0x387Ce3020e13B0a334Bb3EB25DdCb73c133f1D7A') {
+          purchases.push(deposit);
+        }
       }
 
       return purchases;

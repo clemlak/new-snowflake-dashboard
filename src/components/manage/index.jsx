@@ -9,7 +9,9 @@ import {
   Button,
   CardDeck,
 } from 'reactstrap';
-
+import {
+  NavLink as RouterNavLink,
+} from 'react-router-dom';
 import {
   useWeb3Context,
 } from 'web3-react';
@@ -73,8 +75,8 @@ function Manage() {
                     <p className="additional-help__subtitle">You do not have any dApps. Add one from the dApp Store and it will show up here.</p>
                   </Col>
                   <Col sm="4" className="text-right">
-                    <Button className="btn-outlined">
-                      Submit dApp
+                    <Button tag={RouterNavLink} to="/" className="btn-outlined">
+                      Explore
                     </Button>
                   </Col>
                 </Row>

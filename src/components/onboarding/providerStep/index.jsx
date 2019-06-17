@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Row,
   Col,
-  Button,
 } from 'reactstrap';
 
 import MetaMaskFox from '../../../common/img/metamask-fox.svg';
@@ -25,7 +24,7 @@ function ProviderStep() {
       <Row className="justify-content-center">
         <Col xs="12" sm="10" className="text-center">
           <a href="https://metamask.io" target="_blank" rel="noopener noreferrer" className="btn btn-white">
-            Let's get started
+            Let&apos;s get started
           </a>
         </Col>
       </Row>

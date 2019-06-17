@@ -31,7 +31,7 @@ function Onboarding(props) {
   const [currentStep, setCurrentStep] = useState(1);
   const [signature, setSignature] = useState('');
   const [hydroId, setHydroId] = useState('');
-  const [timestamp, setTimestamp] = useState(Math.round(new Date() / 1000) - 120);
+  const [timestamp] = useState(Math.round(new Date() / 1000) - 120);
 
   function displayStep() {
     if (!hasProvider) {

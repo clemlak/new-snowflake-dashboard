@@ -22,7 +22,9 @@ const Footer = () => (
     <Container fluid className="py-4 footer">
       <Row>
         <Col xs="12" sm="12" md="12" lg="3" className="footer__built-on center">
-          <a href="https://ethereum.org/" target="_blank"><img src={footerLogo} className="builtOnEthereum" alt="Powered by Ethereum" /></a>
+          <a href="https://ethereum.org/" target="_blank" rel="noopener noreferrer">
+            <img src={footerLogo} className="builtOnEthereum" alt="Powered by Ethereum" />
+          </a>
         </Col>
         <Col xs="12" sm="12" md="12" lg="6" className="text-center center footer__nav-links">
           <Nav className="footer__menu">
@@ -52,7 +54,9 @@ const Footer = () => (
           <p className="mb-0 footer__powered-by center">
             Maintained and hosted on
             {' '}
-            <a href="https://github.com" className="maintainedAndHostedOn" target="_blank"><IoLogoGithub /></a>
+            <a href="https://github.com" className="maintainedAndHostedOn" target="_blank" rel="noopener noreferrer">
+              <IoLogoGithub />
+            </a>
           </p>
         </Col>
       </Row>

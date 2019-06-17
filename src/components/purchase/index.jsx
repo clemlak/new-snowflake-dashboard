@@ -93,7 +93,8 @@ function Purchase(props) {
                 </Col>
                 <Col sm="3" className="text-right">
                   <p className="purchase__price">
-                    {getReadablePrice()} <img src={hydroIcon} width="16" className="purchase__hydro-icon" />
+                    {getReadablePrice()}
+                    <img src={hydroIcon} width="16" className="purchase__hydro-icon" alt="preview" />
                   </p>
                 </Col>
               </Row>

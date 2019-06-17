@@ -21,7 +21,7 @@ function Identicon(props) {
   }
 
   return (
-    <div className="identity__identicon" ref={iconRef} />
+    <div ref={iconRef} />
   );
 }
 

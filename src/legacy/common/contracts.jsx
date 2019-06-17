@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* Contract definitions for the dAppStore */
 
 export default {

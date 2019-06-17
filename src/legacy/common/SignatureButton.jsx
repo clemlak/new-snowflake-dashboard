@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Button used when transacting. Can be used in multiple places where signing transations, but currently is generic. Has states for ready, sending, error and success.
 
 import React from 'react';

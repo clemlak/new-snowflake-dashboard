@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react'
 import { ethers } from 'ethers'
 import { isWeb3 } from 'web3-react'

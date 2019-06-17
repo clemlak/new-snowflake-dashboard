@@ -1,3 +1,4 @@
+/* eslint-disable */
 // General functions for dealthing with user account information.
 
 import React from 'react'

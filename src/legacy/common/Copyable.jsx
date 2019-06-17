@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Utility for click to copy functionality, currently used on hover of the users EIN, SnowflakeID and Hydro total.
 
 import React, { Component, Fragment } from 'react';

@@ -37,14 +37,14 @@ function WelcomeStep(props) {
       <Row className="justify-content-center py-3">
         <Col xs="12" sm="10" className="text-center">
           <Button className="btn-white" onClick={setNextStep}>
-            Let's get started
+            Let&apos;s get started
           </Button>
         </Col>
       </Row>
       <Row className="justify-content-center py-3">
         <Col xs="12" sm="10" className="text-center">
           <p className="text-white">
-            Already have an existing EIN? <a href="#">Link it to your address</a>
+            Already have an existing EIN? Link it to your address
           </p>
         </Col>
       </Row>

@@ -1,3 +1,6 @@
+/* eslint-disable */
+/* This file contains code from the "legacy" era, it needs to be re-written */
+
 import { lazy } from 'react'
 
 export default lazy(() => import('./HelloWorld'))

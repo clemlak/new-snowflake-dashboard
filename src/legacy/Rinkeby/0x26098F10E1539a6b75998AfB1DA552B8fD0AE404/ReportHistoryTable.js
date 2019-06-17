@@ -1,3 +1,6 @@
+/* eslint-disable */
+/* This file contains code from the "legacy" era, it needs to be re-written */
+
 import React from 'react';
 import { Table, TableHead, TableBody, TableRow, TableCell } from '@material-ui/core';
 import MoneyIcon from '@material-ui/icons/AttachMoney';

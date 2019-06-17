@@ -1,3 +1,6 @@
+/* eslint-disable */
+/* This file contains code from the "legacy" era, it needs to be re-written */
+
 import React, { Component } from 'react';
 
 import Typography from '@material-ui/core/Typography';
@@ -37,10 +40,10 @@ export default class PetCard extends Component {
 			reportSceneDescription:'',
 			reportReward:'',
 			reportClaimerHydroId:''  ,
-			chipId:''			
+			chipId:''
 		};
 	}
-	
+
 	getStatusColor() {
 		if(this.state.reportStatus ==="1")
 			return {backgroundColor: red[500]}
@@ -49,21 +52,21 @@ export default class PetCard extends Component {
 		else
 			return {backgroundColor: green[500]};
 	}
-	
+
 	componentDidMount() {
 		//this.props.reportStatus = props.reportStatus;
 		this.getPet();
 		this.getActiveReport();
 	}
-	
+
 	UNSAFE_componentWillReceiveProps(){
 		this.getPet();
 		this.getActiveReport();
   }
-  
-  
 
-	
+
+
+
 	getPet(){
 		//let aPet = this.props.resolverContract.methods.getPet('jzafra2').call()
 		this.props.resolverContract.methods.getPet(this.props.petId).call()
@@ -90,9 +93,9 @@ export default class PetCard extends Component {
 		reportStatusTxt: this.props.getStatusTxt(aReport.status),
 		reportReward: aReport.reward,
         reportClaimerHydroId: aReport.claimerHydroId});
-		
+
     })
-  
+
    }
 
 	formatTimestamp(timestamp){
@@ -107,15 +110,15 @@ export default class PetCard extends Component {
 		var time = month + ' ' + day + ' ' + year + ', ' + hour + ':' + min + ':' + sec ;
 		return time;
 	}
-	
+
 	handleClickOpenEdit = () => {
 		this.setState({ openEdit: true });
 	};
-	
+
 	handleClickOpenReport = () => {
 		this.setState({ openReport: true });
 	};
-	
+
 	handleClickOpenHistory = () => {
 		this.setState({ openHistory: true });
 	};
@@ -124,21 +127,21 @@ export default class PetCard extends Component {
 	this.setState({ openEdit: false });
 	//callback for refreshing pet data
 	this.props.refreshPets();
-    
+
   };
-  
+
    handleCloseReport = () => {
 	this.setState({ openReport: false });
 	//callback for refreshing active report data
 	//this.props.getActiveReport();
 	this.props.refreshPets();
-    
+
   };
 
 	handleCloseHistory = () => {
 		this.setState({ openHistory: false });
 	};
-  
+
 	render() {
 
 		return(
@@ -172,7 +175,7 @@ export default class PetCard extends Component {
 					<Button size="small" color="primary" onClick={this.handleClickOpenEdit}>
 						Edit
 					</Button>
-					<EditPetDialog 
+					<EditPetDialog
 						hydroId={this.props.hydroId}
 						petId={this.props.petId}
 						chipId={this.state.chipId}
@@ -191,7 +194,7 @@ export default class PetCard extends Component {
 					<Button size="small" color="primary" onClick={this.handleClickOpenReport}>
 						Report
 					</Button>
-					<EditReportDialog 
+					<EditReportDialog
 						hydroId={this.props.hydroId}
 						petId={this.props.petId}
 						chipId={this.state.chipId}
@@ -209,8 +212,8 @@ export default class PetCard extends Component {
 					<Button size="small" color="primary" onClick={this.handleClickOpenHistory}>
 						History
 					</Button>
-					{this.state.openHistory?( 
-						<ReportHistoryTable 
+					{this.state.openHistory?(
+						<ReportHistoryTable
 							key={'history_'+this.props.petId}
 							hydroId={this.props.hydroId}
 							petId={this.props.petId}
@@ -221,7 +224,7 @@ export default class PetCard extends Component {
 							handleClose={this.handleCloseHistory}
 							getStatusTxt ={this.props.getStatusTxt}
 							w3w = {this.props.w3w}
-								
+
 						/>
 					):''}
 				</CardActions>
@@ -230,4 +233,3 @@ export default class PetCard extends Component {
     )
   }
 }
-

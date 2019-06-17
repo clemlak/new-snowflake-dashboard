@@ -1,3 +1,6 @@
+/* eslint-disable */
+/* This file contains code from the "legacy" era, it needs to be re-written */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -22,7 +25,7 @@ const styles = {
 };
 
 class AboutDialog extends React.Component {
-  
+
 render() {
 	return(
 	<div>
@@ -36,8 +39,8 @@ render() {
 			<DialogTitle id="alert-dialog-title">{"About..."}</DialogTitle>
 			<DialogContent>
 				<DialogContentText id="alert-dialog-description">
-This is a PoC of Snowflake Resolver, a DApp made for Snowflake Dashboard. This DApp allow to register several pets of your own, 
-make a report in case of pet lost, and helping others finding their pets, contributing to Community of Friend of Pets, and 
+This is a PoC of Snowflake Resolver, a DApp made for Snowflake Dashboard. This DApp allow to register several pets of your own,
+make a report in case of pet lost, and helping others finding their pets, contributing to Community of Friend of Pets, and
 earning a symbolic reward by the way! Please give me feedback at jzafradelpozo@gmail.com.
 				</DialogContentText>
 			</DialogContent>

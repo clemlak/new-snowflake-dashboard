@@ -7,7 +7,6 @@
 
 import React from 'react';
 import Slider from 'react-slick';
-import { Button } from 'reactstrap';
 
 import slidesJson from '../../common/config/slides.json';
 

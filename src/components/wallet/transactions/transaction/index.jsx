@@ -1,7 +1,5 @@
 /**
  * Displays a transaction
- * TODO: Wallet - Pagination on this page would be nice
- * TODO: Wallet - Wrong color for withdrawal and purchase amounts
  */
 
 import React, { useState } from 'react';
@@ -19,6 +17,8 @@ import {
 import {
   useWeb3Context,
 } from 'web3-react';
+
+import resolvers from '../../../../legacy/resolvers.json';
 
 function Transaction(props) {
   const {
@@ -75,7 +75,7 @@ function Transaction(props) {
           className="transaction__icon"
         />
         <p className="transaction__type">
-          {`Purchased ${resolver}`}
+          {`Purchased ${resolvers[resolver].title}`}
         </p>
       </div>
     );

@@ -7,13 +7,8 @@ import {
   CardHeader,
   CardFooter,
   CardBody,
-  CardTitle,
-  CardText
+  CardText,
 } from 'reactstrap';
-
-import {
-  NavLink as RouterNavLink,
-} from 'react-router-dom';
 
 import contractsJson from '../../common/config/submit/contracts.json';
 import resourcesJson from '../../common/config/submit/resources.json';
@@ -21,8 +16,7 @@ import resourcesJson from '../../common/config/submit/resources.json';
 import QA from '../qa';
 import faqJson from '../../common/config/submit/faq.json';
 
-const Submit = (props) => {
-
+const Submit = () => {
   return (
     <div>
     <Row className="submitDapp">

@@ -75,7 +75,7 @@ function HeaderAccount() {
         </div>
         <div className="header__identicon-wrapper">
           {web3.active && (
-            <Identicon seed={ein} size={100} className="header__identicon" />
+            <Identicon seed={ein} size={50} className="header__identicon" />
           )}
         </div>
       </div>

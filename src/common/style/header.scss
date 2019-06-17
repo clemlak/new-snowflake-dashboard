@@ -1,3 +1,6 @@
+/* @define header */
+/* TODO: Clean this stylesheet, too many classes are here */
+
 .navbar {
   padding: 0px;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
@@ -39,7 +42,6 @@
 .header__account {
   text-align: right;
   margin-right: 35px;
-  min-width: 260px;
   cursor: pointer;
 }
 

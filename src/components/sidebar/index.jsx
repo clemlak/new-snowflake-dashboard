@@ -26,6 +26,7 @@ import {
   getAccountEin,
   getSnowflakeBalance,
   getIdentity,
+  subscribeToDeposits,
 } from '../../services/utilities';
 
 const raindropContractAddress = '0x387Ce3020e13B0a334Bb3EB25DdCb73c133f1D7A';
@@ -64,6 +65,16 @@ function Sidebar() {
         .catch((err) => {
           console.log(err);
         });
+
+      subscribeToDeposits(web3.library, web3.account, () => {
+        getSnowflakeBalance(web3.library, web3.account)
+          .then((res) => {
+            setBalance(web3.library.utils.fromWei(res));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
     }
   }
 

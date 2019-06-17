@@ -1,7 +1,7 @@
 /**
  * Displays the transactions linked to the current account
- * TODO: Wallet - purchasedDapps must display the name of the resolver instead of the address of the contract
  * TODO: Wallet - The "all" tab should mix all the tx
+ * TODO: Wallet - Pagination on this page would be nice
  */
 
 import React, { useState } from 'react';

@@ -1,5 +1,6 @@
 /**
  * TODO: Header - Make version dynamic and pull in settings file
+ * FIX: The event listeners may cause a memory leak
  */
 
 import React from 'react';
@@ -34,8 +35,31 @@ class Header extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
   }
 
+  componentDidMount() {
+    const el = document.querySelector('nav');
+
+    this.setState({
+      top: el.offsetTop,
+      height: el.offsetHeight,
+    });
+
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentDidUpdate() {
+    const {
+      scroll,
+      top,
+      height,
+    } = this.state;
+
+    scroll > top ? document.body.style.paddingTop = `${height}px` : document.body.style.paddingTop = 0;
+  }
+
   handleScroll() {
-      this.setState({scroll: window.scrollY});
+    this.setState({
+      scroll: window.scrollY,
+    });
   }
 
   toggle() {
@@ -48,29 +72,19 @@ class Header extends React.Component {
     });
   }
 
-  componentDidMount() {
-        const el = document.querySelector('nav');
-        this.setState({top: el.offsetTop, height: el.offsetHeight});
-        window.addEventListener('scroll', this.handleScroll);
-  }
-
-  componentDidUpdate() {
-        this.state.scroll > this.state.top ?
-            document.body.style.paddingTop = `${this.state.height}px` :
-            document.body.style.paddingTop = 0;
-  }
-
   render() {
     const {
       isOpen,
+      scroll,
+      top,
     } = this.state;
 
     return (
       <div>
-        <Navbar color="light" light expand="md" className="bg-white" className={this.state.scroll > this.state.top ? "fixed-nav" : ""}>
+        <Navbar color="light" light expand="md" className={scroll > top ? 'fixed-nav bg-white' : 'bg-white'}>
           <NavbarBrand tag={RouterNavLink} exact to="/">
             <h2 className="header__title">
-            <img src={headerLogo} alt="Powered by Hydro" className="header__logo" />
+              <img src={headerLogo} alt="Powered by Hydro" className="header__logo" />
             </h2>
             <p className="header__version">v0.1.0 BETA</p>
           </NavbarBrand>

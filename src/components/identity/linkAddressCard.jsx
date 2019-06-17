@@ -39,7 +39,7 @@ function LinkAddressCard() {
   const [newAddress, setNewAddress] = useState('');
   const [signedMessage, setSignedMessage] = useState('');
   const [signature, setSignature] = useState('');
-  const [timestamp, setTimestamp] = useState(Math.round(new Date() / 1000) - 120);
+  const [timestamp] = useState(Math.round(new Date() / 1000) - 120);
 
   const web3 = useWeb3Context();
 

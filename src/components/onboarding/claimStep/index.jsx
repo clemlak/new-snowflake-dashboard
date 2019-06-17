@@ -52,7 +52,7 @@ function ClaimStep(props) {
           <TransactionButton
             initialText="Claim"
             sendAction={() => createIdentity(web3.library, hydroId, timestamp, signature)}
-            afterConfirmationAction={toggle}
+            onConfirmationAction={toggle}
           />
         </Col>
       </Row>

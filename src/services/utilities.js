@@ -5,6 +5,23 @@ import oldClientRaindrop from './contracts/oldClientRaindrop';
 import snowflake from './contracts/snowflake';
 import statusAbi from '../legacy/Rinkeby/0x16fD6e2E1C4afB9C4e7B901141706596317e4ceB/abi';
 
+
+function subscribeToDeposits(lib, address, callback) {
+  const snowflakeContract = new lib.eth.Contract(
+    snowflake.abi,
+    snowflake.address,
+  );
+
+  return snowflakeContract.events.SnowflakeDeposit({
+    filter: {
+      from: address,
+    },
+    fromBlock: 0,
+  }, (error, event) => {
+    callback();
+  });
+}
+
 function getAccountEthBalance(lib, address) {
   return lib.eth.getBalance(address)
     .then(balance => lib.utils.fromWei(balance))
@@ -451,4 +468,5 @@ export {
   createSignedMessageToLinkAddress,
   addLinkedAddress,
   getStatus,
+  subscribeToDeposits,
 };

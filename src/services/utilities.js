@@ -16,8 +16,7 @@ function subscribeToDeposits(lib, address, callback) {
     filter: {
       from: address,
     },
-    fromBlock: 0,
-  }, (error, event) => {
+  }, () => {
     callback();
   });
 }

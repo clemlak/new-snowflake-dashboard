@@ -21,7 +21,7 @@ import {
   IoMdHelpCircle,
 } from 'react-icons/io';
 
-import HeaderAccount from './headerAccount';
+import HeaderAccount from './components/headerAccount';
 import headerLogo from '../../common/img/hydro_dapp_store_logo.png';
 
 class Header extends React.Component {

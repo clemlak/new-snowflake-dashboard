@@ -11,14 +11,14 @@ import {
   useWeb3Context,
 } from 'web3-react';
 
-import Onboarding from '../../onboarding';
+import Onboarding from '../../../onboarding';
 
 import {
   getAccountEin,
   getAccountDetails,
-} from '../../../services/utilities';
+} from '../../../../services/utilities';
 
-import Identicon from '../../identicon';
+import Identicon from '../../../identicon';
 
 function HeaderAccount() {
   const web3 = useWeb3Context();

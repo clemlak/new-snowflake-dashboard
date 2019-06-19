@@ -6,6 +6,8 @@ import {
   Button,
 } from 'reactstrap';
 
+import './index.scss';
+
 const CallToAction = () => (
   <Container fluid>
     <Row className="call-to-action justify-content-center">

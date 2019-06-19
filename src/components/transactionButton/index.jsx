@@ -17,6 +17,8 @@ import {
   IoIosCloseCircle,
 } from 'react-icons/io';
 
+import './index.scss';
+
 function TransactionButton(props) {
   const {
     displayModal,

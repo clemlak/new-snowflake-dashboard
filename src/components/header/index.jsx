@@ -1,6 +1,7 @@
 /**
  * TODO: Header - Make version dynamic and pull in settings file
- * FIX: The event listeners may cause a memory leak
+ * FIXME: The event listeners may cause a memory leak
+ * FIXME: Scrolling up / down is triggering an update
  */
 
 import React from 'react';

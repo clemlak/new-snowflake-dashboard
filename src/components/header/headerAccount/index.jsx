@@ -73,9 +73,9 @@ function HeaderAccount() {
             {`Ein: ${ein}`}
           </p>
         </div>
-        <div className="header__identicon-wrapper">
+        <div>
           {web3.active && (
-            <Identicon seed={ein} size={50} className="header__identicon" />
+            <Identicon seed={ein} size={50} />
           )}
         </div>
       </div>

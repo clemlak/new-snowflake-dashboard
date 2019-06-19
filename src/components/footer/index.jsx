@@ -16,6 +16,8 @@ import CallToAction from '../callToAction';
 
 import footerLogo from '../../common/img/ethereum_built_on_wide_color.png';
 
+import './index.scss';
+
 const Footer = () => (
   <div>
     <CallToAction />

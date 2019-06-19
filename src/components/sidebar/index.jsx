@@ -29,6 +29,8 @@ import {
   subscribeToDeposits,
 } from '../../services/utilities';
 
+import './index.scss';
+
 const raindropContractAddress = '0x387Ce3020e13B0a334Bb3EB25DdCb73c133f1D7A';
 
 function Sidebar() {

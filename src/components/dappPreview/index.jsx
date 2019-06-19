@@ -30,6 +30,8 @@ import {
 import imgPlaceholder from '../../common/img/placeholders/dapp.gif';
 import resolversJson from '../../legacy/resolvers.json';
 
+import './index.scss';
+
 function DappPreview(props) {
   const {
     id,

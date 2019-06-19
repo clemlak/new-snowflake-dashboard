@@ -16,7 +16,7 @@ import {
   useWeb3Context,
 } from 'web3-react';
 
-import DappPreview from '../dappPreview';
+import DappPreview from '../../components/dappPreview';
 
 import {
   getIdentity,

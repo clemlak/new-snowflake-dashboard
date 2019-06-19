@@ -31,6 +31,8 @@ import LinkedAddress from './components/linkedAddress';
 import LinkAddressCard from './components/linkAddressCard';
 import StatusWidget from './components/statusWidget';
 
+import './index.scss';
+
 const Identity = () => {
   const web3 = useWeb3Context();
   const [ein, setEin] = useState('');

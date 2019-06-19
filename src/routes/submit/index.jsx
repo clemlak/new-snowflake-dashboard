@@ -13,7 +13,7 @@ import {
 import contractsJson from '../../common/config/submit/contracts.json';
 import resourcesJson from '../../common/config/submit/resources.json';
 
-import QA from '../qa';
+import QA from '../../components/qa';
 import faqJson from '../../common/config/submit/faq.json';
 
 const Submit = () => {

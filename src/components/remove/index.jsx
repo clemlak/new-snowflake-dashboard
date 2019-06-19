@@ -27,6 +27,8 @@ import {
 
 import TransactionButton from '../transactionButton';
 
+import './index.scss';
+
 function Remove(props) {
   const web3 = useWeb3Context();
 

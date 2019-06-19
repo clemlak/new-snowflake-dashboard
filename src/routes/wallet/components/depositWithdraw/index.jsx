@@ -17,17 +17,17 @@ import numeral from 'numeral';
 import {
   getSnowflakeBalance,
   getAccountHydroBalance,
-} from '../../../services/utilities';
+} from '../../../../services/utilities';
 import {
   getBalanceUsd,
-} from '../../../services/hydroPrice';
+} from '../../../../services/hydroPrice';
 
-import Deposit from './deposit';
-import Withdraw from './withdraw';
+import Deposit from '../deposit';
+import Withdraw from '../withdraw';
 
-import HelpButton from '../../helpButton';
+import HelpButton from '../../../../components/helpButton';
 
-import tooltips from '../../../common/config/tooltips.json';
+import tooltips from '../../../../common/config/tooltips.json';
 
 function DepositWithdraw() {
   const [snowflakeBalance, setSnowflakeBalance] = useState('0');

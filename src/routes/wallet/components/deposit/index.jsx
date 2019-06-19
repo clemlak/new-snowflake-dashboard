@@ -21,9 +21,9 @@ import {
 
 import {
   depositTokens,
-} from '../../../services/utilities';
+} from '../../../../services/utilities';
 
-import TransactionButton from '../../transactionButton';
+import TransactionButton from '../../../../components/transactionButton';
 
 function Deposit(props) {
   const {

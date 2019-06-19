@@ -22,9 +22,9 @@ import {
   getPastDeposits,
   getPastPurchasedDapps,
   getPastWithdrawals,
-} from '../../../services/utilities';
+} from '../../../../services/utilities';
 
-import Transaction from './transaction';
+import Transaction from '../transaction';
 
 function Transactions() {
   const [tab, setTab] = useState('all');

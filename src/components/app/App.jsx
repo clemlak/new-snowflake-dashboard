@@ -16,12 +16,9 @@ import {
 import Header from '../header';
 import Footer from '../footer';
 import Sidebar from '../sidebar';
-
-import Wallet from '../wallet';
-
-
 import Slider from '../slider';
 
+import Wallet from '../../routes/wallet';
 import Home from '../../routes/home';
 import Faq from '../../routes/faq';
 import Contact from '../../routes/contact/contact';

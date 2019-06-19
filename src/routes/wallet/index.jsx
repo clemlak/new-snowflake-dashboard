@@ -13,12 +13,13 @@ import {
   useWeb3Context,
 } from 'web3-react';
 
-import Transactions from './transactions';
-import TransactionButton from '../transactionButton';
-import DepositWithdraw from './depositWithdraw';
-import HelpButton from '../helpButton';
-
 import tooltips from '../../common/config/tooltips.json';
+
+import TransactionButton from '../../components/transactionButton';
+import HelpButton from '../../components/helpButton';
+
+import Transactions from './components/transactions';
+import DepositWithdraw from './components/depositWithdraw';
 
 import {
   getHydroTestTokens,

@@ -21,7 +21,7 @@ import Home from '../home';
 import Faq from '../faq';
 import Contact from '../contact/contact';
 import identity from '../identity';
-import About from '../about';
+import About from '../../routes/about';
 import Manage from '../manage';
 import Privacy from '../privacy';
 import Terms from '../terms';

@@ -10,6 +10,8 @@ import Slider from 'react-slick';
 
 import slidesJson from '../../common/config/slides.json';
 
+import './index.scss';
+
 const settings = {
   dots: false,
   infinite: true,
@@ -26,14 +28,15 @@ const settings = {
   pauseOnHover: true,
   pauseOnFocus: true,
   pauseOnDotsHover: false,
-  cssEase: 'linear'
+  cssEase: 'linear',
 };
 
 function Carousel() {
   return (
     <Slider {...settings}>
       {slidesJson.map(slide => (
-        <div className="fadeit"
+        <div
+          className="fadeit"
           key={slide.link}
         >
           <div

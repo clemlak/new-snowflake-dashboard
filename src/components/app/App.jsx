@@ -19,7 +19,7 @@ import Sidebar from '../sidebar';
 
 import Terms from '../terms';
 import Wallet from '../wallet';
-import Submit from '../submit';
+
 
 import Slider from '../slider';
 
@@ -31,6 +31,7 @@ import About from '../../routes/about';
 import Category from '../../routes/category';
 import Manage from '../../routes/manage';
 import Privacy from '../../routes/privacy';
+import Submit from '../../routes/submit';
 
 const App = () => {
   const web3 = useWeb3Context();

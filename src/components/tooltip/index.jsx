@@ -5,6 +5,8 @@ import {
   PopoverBody,
 } from 'reactstrap';
 
+import './index.scss';
+
 function Tooltip(props) {
   const {
     isOpen,

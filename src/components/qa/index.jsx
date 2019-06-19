@@ -17,6 +17,8 @@ import {
   IoIosArrowDown,
 } from 'react-icons/io';
 
+import './index.scss';
+
 function QA(props) {
   const {
     question,

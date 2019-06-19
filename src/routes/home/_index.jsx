@@ -12,8 +12,8 @@ import {
   CardDeck,
 } from 'reactstrap';
 
-import Featured from '../featured';
-import DappPreview from '../dappPreview';
+import Featured from '../../components/featured';
+import DappPreview from '../../components/dappPreview';
 
 import resolversJson from '../../legacy/resolvers.json';
 

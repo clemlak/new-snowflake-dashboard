@@ -10,7 +10,7 @@ import {
   Button,
 } from 'reactstrap';
 
-import QA from '../qa';
+import QA from '../../components/qa';
 import faqJson from '../../common/config/faq.json';
 
 const Faq = () => (

@@ -24,6 +24,8 @@ import {
 import HeaderAccount from './components/headerAccount';
 import headerLogo from '../../common/img/hydro_dapp_store_logo.png';
 
+import './index.scss';
+
 class Header extends React.Component {
   constructor(props) {
     super(props);

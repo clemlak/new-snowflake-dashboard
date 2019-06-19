@@ -21,14 +21,18 @@ import Home from '../home';
 import Faq from '../faq';
 import Contact from '../contact/contact';
 import identity from '../identity';
-import About from '../../routes/about';
+
 import Manage from '../manage';
 import Privacy from '../privacy';
 import Terms from '../terms';
 import Wallet from '../wallet';
 import Submit from '../submit';
-import Category from '../category';
+
 import Slider from '../slider';
+
+
+import About from '../../routes/about';
+import Category from '../../routes/category';
 
 const App = () => {
   const web3 = useWeb3Context();

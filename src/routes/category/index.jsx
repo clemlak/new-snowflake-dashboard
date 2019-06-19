@@ -5,7 +5,7 @@ import {
   Button,
   CardDeck,
 } from 'reactstrap';
-import DappPreview from '../dappPreview';
+import DappPreview from '../../components/dappPreview';
 import resolversJson from '../../legacy/resolvers.json';
 
 function Category({

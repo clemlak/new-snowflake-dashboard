@@ -20,6 +20,8 @@ import {
 
 import resolvers from '../../../../legacy/resolvers.json';
 
+import './index.scss';
+
 function Transaction(props) {
   const {
     resolver,

@@ -17,7 +17,6 @@ import Header from '../header';
 import Footer from '../footer';
 import Sidebar from '../sidebar';
 
-import Terms from '../terms';
 import Wallet from '../wallet';
 
 
@@ -32,6 +31,7 @@ import Category from '../../routes/category';
 import Manage from '../../routes/manage';
 import Privacy from '../../routes/privacy';
 import Submit from '../../routes/submit';
+import Terms from '../../routes/terms';
 
 const App = () => {
   const web3 = useWeb3Context();

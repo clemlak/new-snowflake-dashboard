@@ -25,6 +25,8 @@ import {
   getHydroTestTokens,
 } from '../../services/utilities';
 
+import './index.scss';
+
 function Wallet() {
   const web3 = useWeb3Context();
 

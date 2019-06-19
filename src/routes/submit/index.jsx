@@ -16,6 +16,8 @@ import resourcesJson from '../../common/config/submit/resources.json';
 import QA from '../../components/qa';
 import faqJson from '../../common/config/submit/faq.json';
 
+import './index.scss';
+
 const Submit = () => {
   return (
     <div>

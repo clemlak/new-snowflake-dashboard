@@ -19,7 +19,7 @@ import {
 import numeral from 'numeral';
 
 import Onboarding from '../onboarding';
-import CategoriesMenu from './categoriesMenu';
+import CategoriesMenu from './components/categoriesMenu';
 import whiteHydroDrop from '../../common/img/hydro_white_drop.png';
 
 import {

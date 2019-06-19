@@ -19,7 +19,9 @@ import {
   IoIosCog,
 } from 'react-icons/io';
 
-import categoriesJson from '../../../common/config/categories.json';
+import categoriesJson from '../../../../common/config/categories.json';
+
+import './index.scss';
 
 function CategoriesMenu() {
   const Components = {

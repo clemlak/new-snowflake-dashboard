@@ -17,11 +17,6 @@ import Header from '../header';
 import Footer from '../footer';
 import Sidebar from '../sidebar';
 
-import Home from '../home';
-import Faq from '../faq';
-import Contact from '../contact/contact';
-import identity from '../identity';
-
 import Manage from '../manage';
 import Privacy from '../privacy';
 import Terms from '../terms';
@@ -30,7 +25,10 @@ import Submit from '../submit';
 
 import Slider from '../slider';
 
-
+import Home from '../../routes/home';
+import Faq from '../../routes/faq';
+import Contact from '../../routes/contact/contact';
+import identity from '../../routes/identity';
 import About from '../../routes/about';
 import Category from '../../routes/category';
 

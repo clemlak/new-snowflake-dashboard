@@ -14,9 +14,9 @@ import {
 
 import {
   removeLinkedAddress,
-} from '../../../services/utilities';
+} from '../../../../services/utilities';
 
-import TransactionButton from '../../transactionButton';
+import TransactionButton from '../../../../components/transactionButton';
 
 const LinkedAddress = (props) => {
   const {

@@ -12,13 +12,13 @@ import {
   Button,
 } from 'reactstrap';
 
-import Purchase from '../purchase';
-import LegacyDapp from '../legacyDapp';
+import Purchase from '../../../../components/purchase';
+import LegacyDapp from '../../../../components/legacyDapp';
 
 import {
   getStatus,
   isResolverFor,
-} from '../../services/utilities';
+} from '../../../../services/utilities';
 
 function StatusWidget() {
   const [status, setStatus] = useState('');

@@ -22,14 +22,14 @@ import {
   getIdentity,
 } from '../../services/utilities';
 
-import Identicon from '../identicon';
-
-import LinkedAddress from './linkedAddress';
-import LinkAddressCard from './linkAddressCard';
-import HelpButton from '../helpButton';
-import StatusWidget from './statusWidget';
+import Identicon from '../../components/identicon';
+import HelpButton from '../../components/helpButton';
 
 import tooltips from '../../common/config/tooltips.json';
+
+import LinkedAddress from './components/linkedAddress';
+import LinkAddressCard from './components/linkAddressCard';
+import StatusWidget from './components/statusWidget';
 
 const Identity = () => {
   const web3 = useWeb3Context();

@@ -20,19 +20,19 @@ import {
   IoIosCheckmarkCircle,
 } from 'react-icons/io';
 
-import SignatureButton from '../signatureButton';
-import TransactionButton from '../transactionButton';
-import HelpButton from '../helpButton';
+import SignatureButton from '../../../../components/signatureButton';
+import TransactionButton from '../../../../components/transactionButton';
+import HelpButton from '../../../../components/helpButton';
 
-import tooltips from '../../common/config/tooltips.json';
+import tooltips from '../../../../common/config/tooltips.json';
 
 import {
   createSignedMessageToLinkAddress,
   signPersonal,
   addLinkedAddress,
-} from '../../services/utilities';
+} from '../../../../services/utilities';
 
-import ethLogo from '../../common/img/eth.png';
+import ethLogo from '../../../../common/img/eth.png';
 
 function LinkAddressCard() {
   const [step, setStep] = useState(0);

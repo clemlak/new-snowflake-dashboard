@@ -3,13 +3,10 @@
  */
 
 @import './variables.scss';
-@import '../../../node_modules/bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
-
-// All the stylesheets of our components
 @import './fonts.scss';
-@import './filters.scss';
 
 // Fade In/Out Animations
 @keyframes fadein {

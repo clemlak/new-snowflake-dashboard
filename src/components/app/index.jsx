@@ -36,7 +36,6 @@ const App = () => {
   const web3 = useWeb3Context();
 
   if (!web3.error && !web3.active) {
-    console.log('Activating MetaMask...');
     web3.setConnector('MetaMask');
   }
 

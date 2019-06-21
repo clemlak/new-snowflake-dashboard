@@ -3,9 +3,14 @@
  * TODO: Header - Style dynamic data dropdown
  */
 
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useRef,
+} from 'react';
 import {
   Button,
+  Col,
+  Row,
 } from 'reactstrap';
 import {
   useWeb3Context,
@@ -19,6 +24,7 @@ import {
 } from '../../../../services/utilities';
 
 import Identicon from '../../../identicon';
+import HeaderDropdown from '../headerDropdown';
 
 function HeaderAccount() {
   const web3 = useWeb3Context();
@@ -28,6 +34,9 @@ function HeaderAccount() {
   const [hydroId, setHydroId] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasProvider, setHasProvider] = useState(false);
+
+  const [isHeaderDropdownOpen, setIsHeaderDropdownOpen] = useState(false);
+  const identiconRef = useRef();
 
   if (web3.active) {
     if (!hasProvider) {
@@ -65,19 +74,30 @@ function HeaderAccount() {
   if (hasEin) {
     return (
       <div className="header__account">
-        <div className="header__account-info-wrapper">
-          <p className="header__welcome">
-            {`Welcome, ${hydroId}`}
-          </p>
-          <p className="header__ein">
-            {`Ein: ${ein}`}
-          </p>
-        </div>
-        <div>
-          {web3.active && (
-            <Identicon seed={ein} size={50} />
-          )}
-        </div>
+        <Row className="justify-content-center align-items-center">
+          <Col>
+            <p className="header__welcome mb-0">
+              {`Welcome, ${hydroId}`}
+            </p>
+            <p className="header__ein mb-0">
+              {`Ein: ${ein}`}
+            </p>
+          </Col>
+          <Col>
+            {identiconRef.current && (
+              <HeaderDropdown
+                target={identiconRef}
+                isOpen={isHeaderDropdownOpen}
+                toggle={() => setIsHeaderDropdownOpen(!isHeaderDropdownOpen)}
+              />
+            )}
+            {web3.active && (
+              <div ref={identiconRef}>
+                <Identicon seed={ein} size={50} id="identicon" />
+              </div>
+            )}
+          </Col>
+        </Row>
       </div>
     );
   }

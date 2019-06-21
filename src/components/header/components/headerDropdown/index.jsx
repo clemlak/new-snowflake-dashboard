@@ -20,9 +20,9 @@ function HeaderDropdown(props) {
 
   return (
     <div>
-      <Popover placement="bottom" isOpen={isOpen} target={target} toggle={toggle}>
+      <Popover placement="bottom" isOpen={isOpen} target={target} toggle={toggle} className="header-dropdown">
         <PopoverHeader>
-          {address}
+          {address.substring(0, 7)}...
         </PopoverHeader>
         <PopoverBody>
           <p>External Balances:</p>

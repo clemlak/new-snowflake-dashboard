@@ -21,6 +21,9 @@ import Onboarding from '../../../onboarding';
 import {
   getAccountEin,
   getAccountDetails,
+  getSnowflakeBalance,
+  getAccountHydroBalance,
+  getAccountEthBalance,
 } from '../../../../services/utilities';
 
 import Identicon from '../../../identicon';
@@ -37,6 +40,10 @@ function HeaderAccount() {
 
   const [isHeaderDropdownOpen, setIsHeaderDropdownOpen] = useState(false);
   const identiconRef = useRef();
+
+  const [ethBalance, setEthBalance] = useState('0');
+  const [hydroBalance, setHydroBalance] = useState('0');
+  const [snowflakeBalance, setSnowflakeBalance] = useState('0');
 
   if (web3.active) {
     if (!hasProvider) {
@@ -60,6 +67,21 @@ function HeaderAccount() {
       getAccountDetails(web3.library, ein)
         .then((details) => {
           setHydroId(details.casedHydroID);
+
+          return getAccountEthBalance(web3.library, web3.account);
+        })
+        .then((res) => {
+          setEthBalance(res);
+
+          return getSnowflakeBalance(web3.library, web3.account);
+        })
+        .then((res) => {
+          setSnowflakeBalance(web3.library.utils.fromWei(res));
+
+          return getAccountHydroBalance(web3.library, web3.account);
+        })
+        .then((res) => {
+          setHydroBalance(web3.library.utils.fromWei(res));
         })
         .catch((err) => {
           console.log(err);
@@ -84,11 +106,15 @@ function HeaderAccount() {
             </p>
           </Col>
           <Col>
-            {identiconRef.current && (
+            {identiconRef.current && web3.active && (
               <HeaderDropdown
                 target={identiconRef}
                 isOpen={isHeaderDropdownOpen}
                 toggle={() => setIsHeaderDropdownOpen(!isHeaderDropdownOpen)}
+                address={web3.account}
+                ethBalance={ethBalance}
+                snowflakeBalance={snowflakeBalance}
+                hydroBalance={hydroBalance}
               />
             )}
             {web3.active && (

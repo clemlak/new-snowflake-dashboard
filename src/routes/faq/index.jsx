@@ -13,8 +13,6 @@ import {
 import QA from '../../components/qa';
 import faqJson from '../../common/config/faq.json';
 
-import './index.scss';
-
 const Faq = () => (
   <div>
     <Row className="pb-4">

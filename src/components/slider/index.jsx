@@ -10,8 +10,6 @@ import Slider from 'react-slick';
 
 import slidesJson from '../../common/config/slides.json';
 
-import './index.scss';
-
 const settings = {
   dots: false,
   infinite: true,

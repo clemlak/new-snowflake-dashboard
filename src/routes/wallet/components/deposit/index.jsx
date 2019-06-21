@@ -41,36 +41,36 @@ function Deposit(props) {
     <div>
       <Row className="mx-4 justify-content-center align-items-center no-gutters">
         <Col sm="5">
-          <p className="dw__subtitle">
+          <p className="deposit__subtitle">
             From
           </p>
         </Col>
         <Col sm="2" />
         <Col sm="5">
-          <p className="dw__subtitle">
+          <p className="deposit__subtitle">
             To
           </p>
         </Col>
       </Row>
       <Row className="mx-4 justify-content-center align-items-center no-gutters">
         <Col sm="5">
-          <div className="dw__from">
-            <FormGroup className="dw__form-group">
+          <div className="deposit__from">
+            <FormGroup className="deposit__form-group">
               <Input
                 type="number"
-                className="dw__input"
+                className="deposit__input"
                 placeholder="0"
                 onChange={e => setAmount(e.target.value)}
                 value={amount}
               />
               <FormText
-                className="dw__form-text"
+                className="deposit__form-text"
               >
                 {user.substring(0, 2)}
                 <Button
                   size="sm"
                   onClick={() => setAmount(hydroBalance)}
-                  className="wallet__max-button"
+                  className="deposit__max-button"
                 >
                   Max
                 </Button>
@@ -79,14 +79,14 @@ function Deposit(props) {
           </div>
         </Col>
         <Col sm="2" className="text-center">
-          <IoIosArrowRoundForward className="dw__arrow" />
+          <IoIosArrowRoundForward className="deposit__arrow" />
         </Col>
         <Col sm="5">
-          <div className="dw__to">
-            <p className="dw__balance">
+          <div className="deposit__to">
+            <p className="deposit__balance">
               {snowflakeBalance.substring(0, 5)}
             </p>
-            <p className="dw__to-small-text">
+            <p className="deposit__to-small-text">
               dApp Store Wallet
             </p>
           </div>

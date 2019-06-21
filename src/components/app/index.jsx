@@ -30,8 +30,6 @@ import Privacy from '../../routes/privacy';
 import Submit from '../../routes/submit';
 import Terms from '../../routes/terms';
 
-import './index.scss';
-
 const App = () => {
   const web3 = useWeb3Context();
 

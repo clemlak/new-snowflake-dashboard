@@ -1,6 +1,9 @@
 /* @define transaction */
 
-@import '../../../../common/style/index.scss';
+.transaction {
+  background-color: $snow-light-gray;
+  border: none;
+}
 
 .transaction__header {
   display: -webkit-box;
@@ -42,9 +45,4 @@
 
 .transaction__amount--withdrawal {
   color: red;
-}
-
-.transaction {
-  background-color: $snow-light-gray;
-  border: none;
 }

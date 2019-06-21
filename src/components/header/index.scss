@@ -1,7 +1,5 @@
 /* @define header */
 
-@import '../../common/style/index.scss';
-
 .navbar {
   padding: 0px;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
@@ -37,7 +35,7 @@
 }
 
 .header__hydro {
-  color: #1d4cff;
+  color: $primary;
 }
 
 .header__account {

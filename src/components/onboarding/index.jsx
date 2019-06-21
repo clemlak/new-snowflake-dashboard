@@ -21,8 +21,6 @@ import HydroIdStep from './hydroIdStep';
 import PermissionStep from './permissionStep';
 import ClaimStep from './claimStep';
 
-import './index.scss';
-
 function Onboarding(props) {
   const {
     isOpen,

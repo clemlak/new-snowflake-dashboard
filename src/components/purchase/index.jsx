@@ -28,8 +28,6 @@ import {
 import TransactionButton from '../transactionButton';
 import hydroIcon from '../../common/img/hydro_blue_drop.png';
 
-import './index.scss';
-
 function Purchase(props) {
   const web3 = useWeb3Context();
 

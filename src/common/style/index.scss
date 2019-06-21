@@ -8,11 +8,14 @@
 @import '~slick-carousel/slick/slick-theme.css';
 @import './fonts.scss';
 @import './filters.scss';
+
+// Common components
 @import '../../components/app/index.scss';
 @import '../../components/callToAction/index.scss';
 @import '../../components/dappPreview/index.scss';
 @import '../../components/footer/index.scss';
 @import '../../components/header/index.scss';
+@import '../../components/header/components/headerDropdown/index.scss';
 @import '../../components/onboarding/index.scss';
 @import '../../components/purchase/index.scss';
 @import '../../components/qa/index.scss';
@@ -22,6 +25,8 @@
 @import '../../components/slider/index.scss';
 @import '../../components/tooltip/index.scss';
 @import '../../components/transactionButton/index.scss';
+
+// Routes (and their components)
 @import '../../routes/faq/index.scss';
 @import '../../routes/identity/index.scss';
 @import '../../routes/submit/index.scss';
@@ -29,8 +34,6 @@
 @import '../../routes/wallet/buy.scss';
 @import '../../routes/wallet/components/deposit/index.scss';
 @import '../../routes/wallet/components/transaction/index.scss';
-
-
 
 // Fade In/Out Animations
 @keyframes fadein {

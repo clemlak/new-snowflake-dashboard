@@ -12,6 +12,8 @@ function subscribeToDeposits(lib, address, callback) {
     snowflake.address,
   );
 
+  lib.currentProvider.setMaxListeners(300);
+
   return snowflakeContract.events.SnowflakeDeposit({
     filter: {
       from: address,
@@ -279,6 +281,8 @@ function getPastDeposits(lib, account) {
     snowflake.address,
   );
 
+  lib.currentProvider.setMaxListeners(300);
+
   const deposits = [];
 
   return snowflakeContract.getPastEvents(
@@ -312,6 +316,8 @@ function getPastWithdrawals(lib, account) {
     snowflake.abi,
     snowflake.address,
   );
+
+  lib.currentProvider.setMaxListeners(300);
 
   const withdrawals = [];
 
@@ -349,6 +355,8 @@ function getPastPurchasedDapps(lib, account) {
   );
 
   const purchases = [];
+
+  lib.currentProvider.setMaxListeners(300);
 
   return getAccountEin(lib, account)
     .then(ein => snowflakeContract.getPastEvents(

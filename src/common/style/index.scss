@@ -353,13 +353,23 @@ h4 {
     margin-bottom: 30px;
   }
 
-  .wallet__max-button {
+  .deposit__max-button {
     position: absolute;
     right: 10px;
     top: 10px;
   }
 
-  .dw__subtitle {
+  .withdraw__max-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  .deposit__subtitle {
+    display: none;
+  }
+
+  .withdraw__subtitle {
     display: none;
   }
 }

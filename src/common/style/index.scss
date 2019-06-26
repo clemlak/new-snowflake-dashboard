@@ -26,15 +26,18 @@
 @import '../../components/slider/index.scss';
 @import '../../components/tooltip/index.scss';
 @import '../../components/transactionButton/index.scss';
+@import '../../components/helpButton/index.scss';
 
 // Routes (and their components)
 @import '../../routes/faq/index.scss';
 @import '../../routes/identity/index.scss';
 @import '../../routes/submit/index.scss';
 @import '../../routes/wallet/index.scss';
-@import '../../routes/wallet/buy.scss';
+@import '../../routes/wallet/components/buy/index.scss';
 @import '../../routes/wallet/components/deposit/index.scss';
 @import '../../routes/wallet/components/transaction/index.scss';
+@import '../../routes/wallet/components/depositWithdraw/index.scss';
+@import '../../routes/wallet/components/withdraw/index.scss';
 
 // Fade In/Out Animations
 @keyframes fadein {
@@ -308,10 +311,6 @@ h4 {
 
 .bg-white {
   background-color: $snow-white;
-}
-
-.help {
-  cursor: pointer;
 }
 
 .modal {

@@ -6,17 +6,14 @@ import React, { useState, useEffect } from 'react';
 import {
   Row,
   Col,
-  Button,
   CardDeck,
 } from 'reactstrap';
-import {
-  NavLink as RouterNavLink,
-} from 'react-router-dom';
 import {
   useWeb3Context,
 } from 'web3-react';
 
 import DappPreview from '../../components/dappPreview';
+import AdditionalHelp from '../../components/additionalHelp';
 
 import {
   getIdentity,
@@ -67,21 +64,7 @@ function Manage() {
             }
             </CardDeck>
           ) : (
-            <Row className="mt-5">
-              <Col>
-                <Row className="additional-help align-items-center">
-                  <Col>
-                    <h4 className="additional-help__title">Add A aApp</h4>
-                    <p className="additional-help__subtitle">You do not have any dApps. Add one from the dApp Store and it will show up here.</p>
-                  </Col>
-                  <Col sm="4" className="text-right">
-                    <Button tag={RouterNavLink} to="/" className="btn-outlined">
-                      Explore
-                    </Button>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
+            <AdditionalHelp />
           )}
         </Col>
       </Row>

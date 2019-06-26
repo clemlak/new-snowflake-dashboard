@@ -27,6 +27,7 @@
 @import '../../components/tooltip/index.scss';
 @import '../../components/transactionButton/index.scss';
 @import '../../components/helpButton/index.scss';
+@import '../../components/additionalHelp/index.scss';
 
 // Routes (and their components)
 @import '../../routes/faq/index.scss';
@@ -335,9 +336,7 @@ h4 {
   max-width: 100%;
 }
 
-.additional-help__subtitle {
-  padding-bottom: 30px;
-}
+
 
 .accordion {
   margin-bottom: 30px;

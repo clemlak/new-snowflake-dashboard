@@ -7,27 +7,13 @@ import {
   Container,
   Row,
   Col,
-  Card,
 } from 'reactstrap';
-import {
-  useWeb3Context,
-} from 'web3-react';
-
-import tooltips from '../../common/config/tooltips.json';
-
-import TransactionButton from '../../components/transactionButton';
-import HelpButton from '../../components/helpButton';
 
 import Transactions from './components/transactions';
 import DepositWithdraw from './components/depositWithdraw';
-
-import {
-  getHydroTestTokens,
-} from '../../services/utilities';
+import Buy from './components/buy';
 
 function Wallet() {
-  const web3 = useWeb3Context();
-
   return (
     <Container>
       <Row>
@@ -42,42 +28,7 @@ function Wallet() {
           <DepositWithdraw />
         </Col>
         <Col>
-          <Card className="buy">
-            <Row className="p-3">
-              <Col xs="8" sm="8" med="8" lg="8" xl="8">
-                <p className="buy__title">
-                  Buy and Deposit to dApp wallet
-                </p>
-              </Col>
-              <Col xs="4" sm="4" med="4" lg="4" xl="4" className="text-right">
-                <HelpButton
-                  content={tooltips.getHydroHelp}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col className="text-center">
-                <p className="buy__amount">
-                  10 000
-                  <span className="buy__hydro">
-                    Hydro
-                  </span>
-                </p>
-                <p className="buy-hydro__test-tokens">
-                  Get free Hydro test tokens
-                </p>
-              </Col>
-            </Row>
-            <Row className="justify-content-center py-5">
-              <Col className="text-center">
-                <TransactionButton
-                  initialText="Get Hydro Tokens"
-                  sendAction={() => getHydroTestTokens(web3.library, web3.account)}
-                  displayModal
-                />
-              </Col>
-            </Row>
-          </Card>
+          <Buy />
         </Col>
       </Row>
       <Row>

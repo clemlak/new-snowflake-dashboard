@@ -84,13 +84,13 @@ function DepositWithdraw() {
       <div>
         <Row>
           <Col className="text-center">
-            <p className="wallet__balance mb-0">
+            <p className="deposit-withdraw__balance mb-0">
               {numeral(snowflakeBalance).format('0,0')}
-              <span className="wallet__hydro">
+              <span className="deposit-withdraw__hydro">
                 Hydro
               </span>
             </p>
-            <p className="wallet__usd small">
+            <p className="deposit-withdraw__usd small">
               {`${usdValue.toString().substring(0, 5)} USD`}
             </p>
           </Col>
@@ -112,10 +112,10 @@ function DepositWithdraw() {
   }
 
   return (
-    <Card className="wallet">
-      <Row className="p-3">
+    <Card className="deposit-withdraw">
+      <Row className="deposit-withdraw__header">
         <Col xs="10">
-          <p className="wallet__title">
+          <p className="deposit-withdraw__title mb-0">
             Your dApp Store Wallet
           </p>
         </Col>

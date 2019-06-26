@@ -42,36 +42,36 @@ function Withdraw(props) {
     <div>
       <Row className="mx-4 justify-content-center align-items-center no-gutters">
         <Col sm="5">
-          <p className="dw__subtitle">
+          <p className="withdraw__subtitle">
             From
           </p>
         </Col>
         <Col sm="2" />
         <Col sm="5">
-          <p className="dw__subtitle">
+          <p className="withdraw__subtitle">
             To
           </p>
         </Col>
       </Row>
       <Row className="mx-4 justify-content-center align-items-center no-gutters">
         <Col sm="5">
-          <div className="dw__from">
-            <FormGroup className="dw__form-group">
+          <div className="withdraw__from">
+            <FormGroup className="withdraw__form-group">
               <Input
                 type="number"
-                className="dw__input"
+                className="withdraw__input"
                 placeholder="0"
                 onChange={e => setAmount(e.target.value)}
                 value={amount}
               />
               <FormText
-                className="dw__form-text"
+                className="withdraw__form-text"
               >
                 dApp Store Wallet
                 <Button
                   size="sm"
                   onClick={() => setAmount(snowflakeBalance)}
-                  className="wallet__max-button"
+                  className="withdraw__max-button"
                 >
                   Max
                 </Button>
@@ -80,14 +80,14 @@ function Withdraw(props) {
           </div>
         </Col>
         <Col sm="2" className="text-center">
-          <IoIosArrowRoundForward className="dw__arrow" />
+          <IoIosArrowRoundForward className="withdraw__arrow" />
         </Col>
         <Col sm="5">
-          <div className="dw__to">
-            <p className="dw__balance">
+          <div className="withdraw__to">
+            <p className="withdraw__balance">
               {hydroBalance.substring(0, 5)}
             </p>
-            <p className="dw__to-small-text">
+            <p className="withdraw__to-small-text">
               {user}
             </p>
           </div>

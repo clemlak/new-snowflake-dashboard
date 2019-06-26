@@ -21,19 +21,43 @@ function HeaderDropdown(props) {
   return (
     <div>
       <Popover placement="bottom" isOpen={isOpen} target={target} toggle={toggle} className="header-dropdown">
-        <PopoverHeader>
-          {address.substring(0, 7)}...
+        <PopoverHeader className="header-dropdown__header text-center">
+          <span className="header-dropdown__address-prefix">
+            0x
+          </span>
+          {' '}
+          <span className="header-dropdown__address">
+            {`${address.substring(2, 15)}...`}
+          </span>
         </PopoverHeader>
-        <PopoverBody>
-          <p>External Balances:</p>
-          <p>{ethBalance} ETH</p>
-          <p>{hydroBalance} Hydro</p>
-          <p>dApp Store Balance:</p>
-          <p>{snowflakeBalance}</p>
+        <PopoverBody className="header-dropdown__body">
+          <p className="header-dropdown__title mb-0">
+            External Balances:
+          </p>
+          <p className="mb-0">
+            E
+            {' '}
+            {ethBalance}
+          </p>
+          <p>
+            H
+            {' '}
+            {hydroBalance}
+          </p>
+          <p className="header-dropdown__title mb-0">
+            dApp Store Balance:
+          </p>
+          <p className="mb-0">
+            H
+            {' '}
+            {snowflakeBalance}
+          </p>
+        </PopoverBody>
+        <div className="header-dropdown__footer">
           <Button color="primary">
             Get more Hydro
           </Button>
-        </PopoverBody>
+        </div>
       </Popover>
     </div>
   );

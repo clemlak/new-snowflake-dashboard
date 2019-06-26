@@ -6,6 +6,9 @@ import {
   PopoverHeader,
   PopoverBody,
 } from 'reactstrap';
+import {
+  NavLink,
+} from 'react-router-dom';
 
 function HeaderDropdown(props) {
   const {
@@ -54,7 +57,7 @@ function HeaderDropdown(props) {
           </p>
         </PopoverBody>
         <div className="header-dropdown__footer">
-          <Button color="primary">
+          <Button tag={NavLink} color="primary" exact to="/wallet">
             Get more Hydro
           </Button>
         </div>

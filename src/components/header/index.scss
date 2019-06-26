@@ -1,7 +1,6 @@
 /* @define header */
 
 .navbar {
-  padding: 0px;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
   padding: 10px 0 0 20px;
   margin: 0;
@@ -38,36 +37,10 @@
   color: $primary;
 }
 
-.header__account {
-  text-align: right;
-  margin-right: 35px;
-  cursor: pointer;
-}
 
-.header__welcome {
-  font-family: "Nunito-Bold", sans-serif;
-  color: #5f5f5f;
-  font-size: 15px;
-  font-weight: 300;
-  margin-bottom: 0;
-  margin-left: 30px;
-}
 
 .header__faq {
   margin-top: -15px;
-}
-
-.header__ein {
-  font-family: "Nunito-Bold", sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  color: #d0d0d0;
-  text-transform: uppercase;
-}
-
-.header__account-info-wrapper {
-  display: inline-flex;
-
 }
 
 .fixed-nav {

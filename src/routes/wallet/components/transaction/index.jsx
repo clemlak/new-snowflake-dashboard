@@ -20,7 +20,6 @@ import {
 
 import resolvers from '../../../../legacy/resolvers.json';
 
-
 function Transaction(props) {
   const {
     resolver,

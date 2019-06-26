@@ -31,7 +31,8 @@ function Tooltip(props) {
 Tooltip.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
-  target: PropTypes.string.isRequired,
+  /* eslint-disable-next-line react/forbid-prop-types */
+  target: PropTypes.object.isRequired,
   content: PropTypes.string.isRequired,
 };
 

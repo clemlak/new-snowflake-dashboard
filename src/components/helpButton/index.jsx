@@ -25,12 +25,8 @@ function HelpButton(props) {
   const iconRef = useRef();
 
   return (
-    <div>
-      <div ref={iconRef}>
-        <IoIosHelpCircleOutline
-          className="wallet__help help"
-        />
-      </div>
+    <div className="help-button" ref={iconRef}>
+      <IoIosHelpCircleOutline />
       {iconRef.current && (
         <Tooltip
           target={iconRef}

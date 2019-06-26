@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './common/style/index.scss';
-import i18n from './common/languages/i18n';
+import './common/languages/i18n';
 
 import Web3Wrapper from './components/web3Wrapper/Web3Wrapper';
 

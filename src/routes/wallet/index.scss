@@ -1,5 +1,12 @@
 /* @define wallet */
 
+.wallet__row {
+  margin-top: 30px;
+}
+
+/**
+ * TODO: Check to see if it's safe to delete these classes
+
 .wallet .btn-secondary {
   background-color: #3c65fe;
   border-color: #3c65fe;
@@ -21,7 +28,4 @@
 .wallet .btn-success {
   box-shadow: none;
 }
-
-.wallet__row {
-  margin-top: 30px;
-}
+*/

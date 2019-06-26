@@ -97,12 +97,12 @@ function DepositWithdraw() {
         </Row>
         <Row className="justify-content-center align-items-center py-5">
           <Col className="text-right center" sm="12" xs="12" med="6" lg="6" xl="6">
-            <Button className="btn-white wallet__deposit-button" onClick={() => setTab('deposit')}>
+            <Button className="btn-white deposit-withdraw__deposit-button" onClick={() => setTab('deposit')}>
               Deposit
             </Button>
           </Col>
           <Col className="text-left center" sm="12" xs="12" med="6" lg="6" xl="6">
-            <Button color="success wallet_withdraw-button" onClick={() => setTab('withdraw')}>
+            <Button color="success deposit-withdraw__withdraw-button" onClick={() => setTab('withdraw')}>
               Withdraw
             </Button>
           </Col>

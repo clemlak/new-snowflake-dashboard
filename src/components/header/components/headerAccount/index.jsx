@@ -95,36 +95,37 @@ function HeaderAccount() {
 
   if (hasEin) {
     return (
-      <div className="header__account">
-        <Row className="justify-content-center align-items-center">
-          <Col>
-            <p className="header__welcome mb-0">
+      <Row className="justify-content-center align-items-center">
+        <Col className="col-md-auto">
+          <div className="header-account__wrapper">
+            <span className="header-account__welcome">
               {`Welcome, ${hydroId}`}
-            </p>
-            <p className="header__ein mb-0">
+            </span>
+            <br />
+            <span className="header-account__ein">
               {`Ein: ${ein}`}
-            </p>
-          </Col>
-          <Col>
-            {identiconRef.current && web3.active && (
-              <HeaderDropdown
-                target={identiconRef}
-                isOpen={isHeaderDropdownOpen}
-                toggle={() => setIsHeaderDropdownOpen(!isHeaderDropdownOpen)}
-                address={web3.account}
-                ethBalance={ethBalance}
-                snowflakeBalance={snowflakeBalance}
-                hydroBalance={hydroBalance}
-              />
-            )}
-            {web3.active && (
-              <div ref={identiconRef}>
-                <Identicon seed={ein} size={50} id="identicon" />
-              </div>
-            )}
-          </Col>
-        </Row>
-      </div>
+            </span>
+          </div>
+        </Col>
+        <Col>
+          {identiconRef.current && web3.active && (
+            <HeaderDropdown
+              target={identiconRef}
+              isOpen={isHeaderDropdownOpen}
+              toggle={() => setIsHeaderDropdownOpen(!isHeaderDropdownOpen)}
+              address={web3.account}
+              ethBalance={ethBalance}
+              snowflakeBalance={snowflakeBalance}
+              hydroBalance={hydroBalance}
+            />
+          )}
+          {web3.active && (
+            <div ref={identiconRef}>
+              <Identicon seed={ein} size={50} id="identicon" />
+            </div>
+          )}
+        </Col>
+      </Row>
     );
   }
 

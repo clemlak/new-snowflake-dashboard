@@ -1,10 +1,15 @@
+/**
+ * Displays the privacy terms
+ * TODO: Maybe use a JSON for this content?
+ */
+
 import React from 'react';
 
 const Privacy = () => (
-  <>
+  <div>
     <h1>Online Privacy Policy</h1>
     <h2>What information do we collect?</h2>
-    <p>Google, as a third party vendor, uses cookies to serve ads on your site. Google's use of the DART cookie enables it to serve ads to your users based on their visit to your sites and other sites on the Internet. Users may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy..</p>
+    <p>Google, as a third party vendor, uses cookies to serve ads on your site. Google&apos;s use of the DART cookie enables it to serve ads to your users based on their visit to your sites and other sites on the Internet. Users may opt out of the use of the DART cookie by visiting the Google ad and content network privacy policy..</p>
 
     <h2>What do we use your information for?</h2>
     <p>Any of the information we collect from you may be used in one of the following ways:</p>
@@ -48,7 +53,7 @@ const Privacy = () => (
     <p>Boston, MA 04176</p>
     <p>USA</p>
     <p>contact@lorem-ipsum.info</p>
-  </>
+  </div>
 );
 
 export default Privacy;

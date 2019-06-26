@@ -67,7 +67,8 @@ function HeaderDropdown(props) {
 }
 
 HeaderDropdown.propTypes = {
-  target: PropTypes.string.isRequired,
+  /* eslint-disable-next-line react/forbid-prop-types */
+  target: PropTypes.object.isRequired,
   isOpen: PropTypes.bool,
   toggle: PropTypes.func.isRequired,
   address: PropTypes.string,

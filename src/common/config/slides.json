@@ -1,7 +1,7 @@
 [
   {
     "image": "hydrovault-top-slider.jpg",
-    "link": "submitdapp"
+    "link": "hydrovault"
   },
   {
     "image": "hydropay-top-slider.jpg",
@@ -9,62 +9,14 @@
   },
   {
     "image": "hydrox-top-slider.jpg",
-    "link": "cryptokitties"
+    "link": "hydrox"
   },
   {
     "image": "july-contest.jpg",
-    "link": "angrybirds"
+    "link": "july-contest"
   },
   {
     "image": "july-contest2.jpg",
-    "link": "bingo"
-  },
-  {
-    "image": "bitcoin_cards_logo.jpg",
-    "link": "bitcoincards"
-  },
-  {
-    "image": "dex_logo.png",
-    "link": "dex"
-  },
-  {
-    "image": "firefox_logo.png",
-    "link": "firefox_logo"
-  },
-  {
-    "image": "bitcoin_wallet_logo.png",
-    "link": "bitcoin"
-  },
-  {
-    "image": "mood_path_logo.jpg",
-    "link": "moodpath"
-  },
-  {
-    "image": "paypal_logo.jpg",
-    "link": "paypal"
-  },
-  {
-    "image": "quickbooks_logo.jpeg",
-    "link": "quickbooks"
-  },
-  {
-    "image": "robinhood_logo.png",
-    "link": "robinhood"
-  },
-  {
-    "image": "subway_surfers_logo.png",
-    "link": "subwaysurfers"
-  },
-  {
-    "image": "temple_run_logo.png",
-    "link": "templerun"
-  },
-  {
-    "image": "uber_logo.jpg",
-    "link": "uber"
-  },
-  {
-    "image": "extreme_city_logo.jpg",
-    "link": "extremecity"
+    "link": "july-contest2"
   }
 ]

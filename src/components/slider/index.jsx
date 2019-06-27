@@ -40,8 +40,8 @@ function Carousel() {
           <div
             className="slider__test-slide"
             style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/img/${slide.image})` }}
-            />
-          </div>
+          />
+        </div>
       ))}
     </Slider>
   );

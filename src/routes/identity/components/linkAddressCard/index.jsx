@@ -74,10 +74,10 @@ function LinkAddressCard() {
             <img src={ethLogo} alt="Eth" />
           </Col>
           <Col sm="10">
-            <p className="link-address-card__new-address">
+            <p className="link__new-address">
               <IoIosCheckmarkCircle /> {newAddress}
             </p>
-            <p className="link-address-card__text">
+            <p className="link__text">
               The next step is for you to give us permission to link this address to your Identity. This requires your signature of a hashed
                permission string. Be sure to check MetaMask to confirm.
             </p>
@@ -176,7 +176,7 @@ function LinkAddressCard() {
               placeholder="Enter an Ethereum address..."
               onChange={e => setNewAddress(e.target.value)}
             />
-            <FormText className="link-address__helper-text">
+            <FormText className="link__helper-text">
               You will need to transact from this address.
             </FormText>
           </FormGroup>

@@ -37,7 +37,7 @@ const LinkedAddress = (props) => {
           />
         </Col>
         <Col>
-          <p className="mb-0 identity__linked-wallet-address">
+          <p className="mb-0 linked-address__linked-wallet-address">
             {address}
           </p>
           <p className="linked-address__date">

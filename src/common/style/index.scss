@@ -32,6 +32,9 @@
 // Routes (and their components)
 @import '../../routes/faq/index.scss';
 @import '../../routes/identity/index.scss';
+@import '../../routes/identity/components/statusWidget/index.scss';
+@import '../../routes/identity/components/linkedAddress/index.scss';
+@import '../../routes/identity/components/linkAddressCard/index.scss';
 @import '../../routes/submit/index.scss';
 @import '../../routes/wallet/index.scss';
 @import '../../routes/wallet/components/buy/index.scss';

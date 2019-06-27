@@ -58,14 +58,14 @@ function LinkAddressCard() {
     return (
       <Card className="link">
         <Row className="p-3">
-          <Col>
-            <p className="link__title">
+          <Col xs="10">
+            <p className="link__title mb-0">
               Link an Ethereum Wallet
             </p>
           </Col>
-          <Col className="text-right">
-            <IoIosHelpCircleOutline
-              className="link__help help"
+          <Col xs="2" sm="2" className="text-right">
+            <HelpButton
+              content="Help"
             />
           </Col>
         </Row>

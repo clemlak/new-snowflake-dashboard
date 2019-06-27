@@ -7,10 +7,11 @@ import React from 'react';
 import {
   Row,
   Col,
-  Button,
 } from 'reactstrap';
 
 import QA from '../../components/qa';
+import AdditionalHelp from '../../components/additionalHelp';
+
 import faqJson from '../../common/config/faq.json';
 
 const Faq = () => (
@@ -35,17 +36,7 @@ const Faq = () => (
     </Row>
     <Row className="mt-5">
       <Col>
-        <Row className="additional-help align-items-center">
-          <Col sm="12" md="12" lg="8">
-            <h4 className="additional-help__title">Need Additional Help?</h4>
-            <p className="additional-help__subtitle">Send us a message via projecthydro.org</p>
-          </Col>
-          <Col sm="12" md="12" lg="4" className="text-right">
-            <Button className="btn-outlined">
-              Get Assistance
-            </Button>
-          </Col>
-        </Row>
+        <AdditionalHelp />
       </Col>
     </Row>
   </div>

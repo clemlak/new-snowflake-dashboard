@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Row,
   Col,
-  Button,
   CardDeck,
 } from 'reactstrap';
 import DappPreview from '../../components/dappPreview';
@@ -64,9 +64,14 @@ function Category({
                 <p className="additional-help__subtitle">Submit your dApp to this category and earn a Hydro bounty!</p>
               </Col>
               <Col sm="4" className="text-right">
-                <Button className="btn-outlined">
+                <a
+                  href="https://projecthydro.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outlined btn-md"
+                >
                   Submit dApp
-                </Button>
+                </a>
               </Col>
             </Row>
           </Col>
@@ -75,5 +80,10 @@ function Category({
     </div>
   );
 }
+
+Category.propTypes = {
+  /* eslint-disable-next-line react/forbid-prop-types */
+  match: PropTypes.object.isRequired,
+};
 
 export default Category;

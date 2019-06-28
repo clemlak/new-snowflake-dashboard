@@ -52,35 +52,44 @@ function Deposit(props) {
           </p>
         </Col>
       </Row>
+
       <Row className="mx-4 justify-content-center align-items-center no-gutters">
-        <Col sm="5">
-          <div className="deposit__from">
-            <FormGroup className="deposit__form-group">
-              <Input
-                type="number"
-                className="deposit__input"
-                placeholder="0"
-                onChange={e => setAmount(e.target.value)}
-                value={amount}
-              />
-              <FormText
-                className="deposit__form-text"
+        <Col sm="5" className="deposit__from">
+          <Row className="justify-content-center align-items-center">
+            <Col xs="8">
+              <div>
+                <FormGroup className="deposit__form-group">
+                  <Input
+                    type="number"
+                    className="deposit__input"
+                    placeholder="0"
+                    onChange={e => setAmount(e.target.value)}
+                    value={amount}
+                  />
+                  <FormText
+                    className="deposit__form-text"
+                  >
+                    {`${user.substring(0, 12)}...`}
+                  </FormText>
+                </FormGroup>
+              </div>
+            </Col>
+            <Col className="text-center" xs="4">
+              <Button
+                size="sm"
+                onClick={() => setAmount(hydroBalance)}
+                className="deposit__max-button"
               >
-                {user.substring(0, 2)}
-                <Button
-                  size="sm"
-                  onClick={() => setAmount(hydroBalance)}
-                  className="deposit__max-button"
-                >
-                  Max
-                </Button>
-              </FormText>
-            </FormGroup>
-          </div>
+                Max
+              </Button>
+            </Col>
+          </Row>
         </Col>
+
         <Col sm="2" className="text-center">
           <IoIosArrowRoundForward className="deposit__arrow" />
         </Col>
+
         <Col sm="5">
           <div className="deposit__to">
             <p className="deposit__balance">
@@ -92,6 +101,7 @@ function Deposit(props) {
           </div>
         </Col>
       </Row>
+
       <Row className="pt-5 mx-4 justify-content-center align-items-center no-gutters">
         <Col className="text-left">
           <Button onClick={cancel}>
@@ -102,7 +112,11 @@ function Deposit(props) {
           <TransactionButton
             color="success"
             initialText="Confirm"
-            sendAction={() => depositTokens(web3.library, web3.account, amount)}
+            sendAction={() => depositTokens(
+              web3.library,
+              web3.account,
+              amount.toString(),
+            )}
             onConfirmationAction={cancel}
           />
         </Col>

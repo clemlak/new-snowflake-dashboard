@@ -54,41 +54,49 @@ function Withdraw(props) {
         </Col>
       </Row>
       <Row className="mx-4 justify-content-center align-items-center no-gutters">
-        <Col sm="5">
-          <div className="withdraw__from">
-            <FormGroup className="withdraw__form-group">
-              <Input
-                type="number"
-                className="withdraw__input"
-                placeholder="0"
-                onChange={e => setAmount(e.target.value)}
-                value={amount}
-              />
-              <FormText
-                className="withdraw__form-text"
+        <Col sm="5" className="withdraw__from">
+          <Row className="justify-content-center align-items-center">
+            <Col xs="8">
+              <div>
+                <FormGroup className="withdraw__form-group">
+                  <Input
+                    type="number"
+                    className="withdraw__input"
+                    placeholder="0"
+                    onChange={e => setAmount(e.target.value)}
+                    value={amount}
+                  />
+                  <FormText
+                    className="withdraw__form-text"
+                  >
+                    dApp Store Wallet
+                  </FormText>
+                </FormGroup>
+              </div>
+            </Col>
+            <Col className="text-center" xs="4">
+              <Button
+                size="sm"
+                onClick={() => setAmount(snowflakeBalance)}
+                className="withdraw__max-button"
               >
-                dApp Store Wallet
-                <Button
-                  size="sm"
-                  onClick={() => setAmount(snowflakeBalance)}
-                  className="withdraw__max-button"
-                >
-                  Max
-                </Button>
-              </FormText>
-            </FormGroup>
-          </div>
+                Max
+              </Button>
+            </Col>
+          </Row>
         </Col>
+
         <Col sm="2" className="text-center">
           <IoIosArrowRoundForward className="withdraw__arrow" />
         </Col>
+
         <Col sm="5">
           <div className="withdraw__to">
             <p className="withdraw__balance">
               {hydroBalance.substring(0, 5)}
             </p>
             <p className="withdraw__to-small-text">
-              {user}
+              {`${user.substring(0, 12)}...`}
             </p>
           </div>
         </Col>
@@ -103,7 +111,11 @@ function Withdraw(props) {
           <TransactionButton
             color="success"
             initialText="Confirm"
-            sendAction={() => withdrawSnowflakeBalance(web3.library, web3.account, amount)}
+            sendAction={() => withdrawSnowflakeBalance(
+              web3.library,
+              web3.account,
+              amount.toString(),
+            )}
             afterConfirmationAction={cancel}
           />
         </Col>

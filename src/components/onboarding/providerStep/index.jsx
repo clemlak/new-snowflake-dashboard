@@ -9,8 +9,6 @@ import {
 
 import MetaMaskLogo from 'metamask-logo';
 
-import MetaMaskFox from '../../../common/img/metamask-fox.svg';
-
 function ProviderStep() {
   const [isLogoPresent, setIsLogoPresent] = useState(false);
 

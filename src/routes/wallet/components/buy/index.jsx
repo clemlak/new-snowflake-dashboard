@@ -41,7 +41,7 @@ function Buy() {
       <Row>
         <Col className="text-center">
           <p className="buy__amount">
-            10 000
+            10,000
             <span className="buy__hydro">
               Hydro
             </span>

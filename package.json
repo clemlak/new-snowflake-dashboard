@@ -12,6 +12,7 @@
     "i18next": "^15.0.9",
     "i18next-browser-languagedetector": "^3.0.1",
     "jquery": "^3.4.0",
+    "metamask-logo": "^2.2.0",
     "node-sass": "^4.12.0",
     "numeral": "^2.0.6",
     "owl.carousel": "^2.3.4",

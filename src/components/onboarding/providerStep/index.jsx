@@ -1,17 +1,44 @@
-import React from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 import {
   Row,
   Col,
 } from 'reactstrap';
 
+import MetaMaskLogo from 'metamask-logo';
+
 import MetaMaskFox from '../../../common/img/metamask-fox.svg';
 
 function ProviderStep() {
+  const [isLogoPresent, setIsLogoPresent] = useState(false);
+
+  function renderLogo() {
+    const viewer = MetaMaskLogo({
+      pxNotRatio: true,
+      width: 500,
+      height: 400,
+      followMouse: true,
+      slowDrift: false,
+    });
+
+    const container = document.getElementById('logo-container');
+    container.appendChild(viewer.container);
+  }
+
+  useEffect(() => {
+    if (!isLogoPresent) {
+      renderLogo();
+      setIsLogoPresent(true);
+    }
+  });
+
   return (
     <div>
       <Row className="justify-content-center">
         <Col xs="12" sm="4" className="text-center">
-          <img src={MetaMaskFox} alt="MetaMask Logo" />
+          <div id="logo-container" />
         </Col>
       </Row>
       <Row className="justify-content-center py-3">

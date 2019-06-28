@@ -20,12 +20,14 @@ import WelcomeStep from './welcomeStep';
 import HydroIdStep from './hydroIdStep';
 import PermissionStep from './permissionStep';
 import ClaimStep from './claimStep';
+import WrongNetworkStep from './wrongNetworkStep';
 
 function Onboarding(props) {
   const {
     isOpen,
     toggle,
     hasProvider,
+    networkId,
   } = props;
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -36,6 +38,12 @@ function Onboarding(props) {
   function displayStep() {
     if (!hasProvider) {
       return <ProviderStep />;
+    }
+
+    if (networkId !== '4') {
+      return (
+        <WrongNetworkStep />
+      );
     }
 
     if (currentStep === 2) {
@@ -124,7 +132,12 @@ function Onboarding(props) {
 Onboarding.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
+  networkId: PropTypes.string,
   hasProvider: PropTypes.bool.isRequired,
+};
+
+Onboarding.defaultProps = {
+  networkId: '',
 };
 
 export default Onboarding;

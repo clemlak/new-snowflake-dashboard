@@ -4,7 +4,7 @@ import {
 
 const { InjectedConnector } = Connectors;
 
-const MetaMask = new InjectedConnector({ supportedNetworks: [4] });
+const MetaMask = new InjectedConnector({ supportedNetworks: [1, 3, 4] });
 
 const connectors = { MetaMask };
 

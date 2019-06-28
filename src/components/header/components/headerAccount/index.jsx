@@ -37,6 +37,7 @@ function HeaderAccount() {
   const [hydroId, setHydroId] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasProvider, setHasProvider] = useState(false);
+  const [networkId, setNetworkId] = useState(null);
 
   const [isHeaderDropdownOpen, setIsHeaderDropdownOpen] = useState(false);
   const identiconRef = useRef();
@@ -48,6 +49,18 @@ function HeaderAccount() {
   if (web3.active) {
     if (!hasProvider) {
       setHasProvider(true);
+
+      console.log('set provider');
+      if (networkId === null) {
+        web3.eth.getChainId()
+          .then((id) => {
+            console.log('Network id:', id);
+            setNetworkId(id);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     }
 
     if (!hasEin) {
@@ -134,6 +147,7 @@ function HeaderAccount() {
     <div className="onboardingButton">
       <Onboarding
         hasProvider={hasProvider}
+        networkId={networkId}
         isOpen={isModalOpen}
         toggle={() => toggle()}
       />

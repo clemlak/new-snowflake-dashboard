@@ -32,35 +32,6 @@ class Header extends React.Component {
     this.state = {
       isOpen: false,
     };
-
-    this.handleScroll = this.handleScroll.bind(this);
-  }
-
-  componentDidMount() {
-    const el = document.querySelector('nav');
-
-    this.setState({
-      top: el.offsetTop,
-      height: el.offsetHeight,
-    });
-
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  componentDidUpdate() {
-    const {
-      scroll,
-      top,
-      height,
-    } = this.state;
-
-    scroll > top ? document.body.style.paddingTop = `${height}px` : document.body.style.paddingTop = 0;
-  }
-
-  handleScroll() {
-    this.setState({
-      scroll: window.scrollY,
-    });
   }
 
   toggle() {
@@ -76,13 +47,11 @@ class Header extends React.Component {
   render() {
     const {
       isOpen,
-      scroll,
-      top,
     } = this.state;
 
     return (
       <div>
-        <Navbar color="light" light expand="md" className={scroll > top ? 'fixed-nav bg-white' : 'bg-white'}>
+        <Navbar color="light" light expand="md" className="bg-white">
           <NavbarBrand tag={RouterNavLink} exact to="/">
             <h2 className="header__title">
               <img src={headerLogo} alt="Powered by Hydro" className="header__logo" />

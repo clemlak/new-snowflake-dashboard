@@ -81,7 +81,8 @@ function HeaderAccount() {
           return getAccountHydroBalance(web3.library, web3.account);
         })
         .then((res) => {
-          setHydroBalance(web3.library.utils.fromWei(res));
+          const short = res.split('.');
+          setHydroBalance(short[0]);
         })
         .catch((err) => {
           console.log(err);

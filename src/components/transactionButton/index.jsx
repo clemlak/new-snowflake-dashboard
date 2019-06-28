@@ -2,7 +2,9 @@
  * Handles a transaction and displays the result
  */
 
-import React, { useState } from 'react';
+import React, {
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -41,20 +43,29 @@ function TransactionButton(props) {
     setStatus('waiting');
     setIsModalOpen(true);
 
+    let timer;
+
     sendAction()
       .on('transactionHash', (res) => {
         console.log(res);
         setHash(res);
         setStatus('pending');
+
+        timer = setTimeout(() => {
+          console.log('Timer called');
+          onConfirmationAction();
+          setStatus('confirmed');
+        }, 10000);
       })
       .on('receipt', (receipt) => {
         console.log(receipt);
-
+        clearTimeout(timer);
         onConfirmationAction();
         setStatus('confirmed');
       })
       .on('error', (error) => {
         console.log(error);
+        clearTimeout(timer);
         setStatus('error');
       });
   }

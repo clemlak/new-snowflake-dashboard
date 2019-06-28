@@ -16,7 +16,6 @@ import {
   useWeb3Context,
 } from 'web3-react';
 import {
-  IoIosHelpCircleOutline,
   IoIosCheckmarkCircle,
 } from 'react-icons/io';
 

@@ -3,7 +3,6 @@ import {
   Container,
   Row,
   Col,
-  Button,
 } from 'reactstrap';
 
 const CallToAction = () => (
@@ -15,9 +14,14 @@ const CallToAction = () => (
           Are you a developer? Do you have a dApp idea?
           Would you like to patner with us?
         </p>
-        <Button className="btn-outlined" size="md">
+        <a
+          href="https://projecthydro.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-outlined btn-md"
+        >
           Let Us Know
-        </Button>
+        </a>
       </Col>
     </Row>
   </Container>

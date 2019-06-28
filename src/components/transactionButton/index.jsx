@@ -186,7 +186,7 @@ function TransactionButton(props) {
                 Waiting for user confirmation
               </p>
               <p className="transaction-button-modal__subtitle mb-0">
-                Please wait confirmation
+                Please wait open MetaMask
               </p>
             </Col>
           </Row>
@@ -243,15 +243,15 @@ TransactionButton.propTypes = {
 TransactionButton.defaultProps = {
   displayModal: false,
   initialText: 'Send',
-  waitingForUserConfirmationText: 'Waiting for user confirmation...',
-  waitingForConfirmationText: 'Waiting for confirmation...',
+  waitingForUserConfirmationText: 'Check MetaMask...',
+  waitingForConfirmationText: 'Tx is pending...',
   confirmedText: 'Transaction confirmed!',
   afterConfirmationAction: () => console.log('You can leave now!'),
   onConfirmationAction: () => console.log('Transaction confirmed!'),
   className: '',
   color: 'primary',
   block: false,
-  onConfirmationModalText: 'Your transaction is successful!',
+  onConfirmationModalText: 'Success!',
 };
 
 export default TransactionButton;

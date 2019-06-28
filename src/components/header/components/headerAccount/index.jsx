@@ -95,7 +95,7 @@ function HeaderAccount() {
 
   if (hasEin) {
     return (
-      <Row className="justify-content-center align-items-center">
+      <Row className="justify-content-center align-items-center no-gutters">
         <Col className="col-md-auto">
           <div className="header-account__wrapper">
             <span className="header-account__welcome">
@@ -120,7 +120,7 @@ function HeaderAccount() {
             />
           )}
           {web3.active && (
-            <div ref={identiconRef}>
+            <div ref={identiconRef} className="header-account__identicon">
               <Identicon seed={ein} size={50} id="identicon" />
             </div>
           )}

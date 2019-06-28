@@ -56,21 +56,21 @@ export default function PetOwnerView ({ ein }) {
 
 	function handleRefreshOwnerData(){
 		//nothing to do
-		context.forceAccountReRender();
+		// context.forceAccountReRender();
 	}
 
 	function handleModifyPet(){
 		//nothing to do
-		context.forceAccountReRender();
+		// context.forceAccountReRender();
 	}
 
 	function refreshPets(){
 		//no nothing at the moment
-		context.forceAccountReRender();
+		// context.forceAccountReRender();
 	}
 
 	function refreshReports(){
-		context.forceAccountReRender();
+		// context.forceAccountReRender();
 	}
 
     return (

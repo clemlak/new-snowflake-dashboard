@@ -38,16 +38,6 @@ const Footer = () => (
                 Terms
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink tag={RouterNavLink} exact to="/about" className="footer__link">
-                About
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={RouterNavLink} exact to="/contact" className="footer__link">
-                Contact
-              </NavLink>
-            </NavItem>
           </Nav>
         </Col>
         <Col xs="12" sm="12" md="12" lg="3" className="center footer__powered">

@@ -77,27 +77,27 @@ const Identity = () => {
       <Row className="py-3 justify-content-center align-items-center fadeit">
         <Col sm="12" md="12" lg="12" xl="5">
           <Card className="identity">
-            <Row className="p-3">
-              <Col>
+            <Row className="p-3 justify-content-center align-items-center ">
+              <Col xs="10">
                 <p className="identity__title">
                   Your Snowflake (EIN)
                 </p>
               </Col>
-              <Col xs="4" className="text-right">
+              <Col xs="2" className="text-right">
                 <HelpButton
                   content={tooltips.getHydroHelp}
                 />
               </Col>
             </Row>
             <Row className="justify-content-center align-items-center pb-4">
-              <Col xs="4">
+              <Col xs="6">
                 <p className="identity__user-image">
                   {web3.active && (
                     <Identicon seed={ein} />
                   )}
                 </p>
               </Col>
-              <Col>
+              <Col xs="6">
                 <p className="identity__hydro-id">
                   Hydro ID:
                   {' '}

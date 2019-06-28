@@ -63,9 +63,9 @@ function LinkAddressCard() {
               Link an Ethereum Wallet
             </p>
           </Col>
-          <Col xs="2" sm="2" className="text-right">
+          <Col xs="2" className="text-right">
             <HelpButton
-              content="Help"
+              content={tooltips.getHydroHelp}
             />
           </Col>
         </Row>
@@ -152,23 +152,23 @@ function LinkAddressCard() {
 
   return (
     <Card className="link">
-      <Row className="p-3">
-        <Col>
+      <Row className="p-3 justify-content-center align-items-center">
+        <Col xs="10">
           <p className="link__title">
             Link an Ethereum Wallet
           </p>
         </Col>
-        <Col className="text-right">
-          <IoIosHelpCircleOutline
-            className="link__help help"
+        <Col xs="2" className="text-right">
+          <HelpButton
+            content={tooltips.getHydroHelp}
           />
         </Col>
       </Row>
       <Row className="justify-content-center align-items-center">
-        <Col sm="2">
+        <Col sm="3" className="text-center">
           <img src={ethLogo} alt="Eth" />
         </Col>
-        <Col>
+        <Col xs="9">
           <FormGroup>
             <Input
               value={newAddress}
@@ -184,7 +184,7 @@ function LinkAddressCard() {
       </Row>
       <Row className="pt-3">
         <Col className="text-center">
-          <Button color="primary" onClick={() => setStep(1)}>
+          <Button color="primary" disabled>
             Next
           </Button>
         </Col>

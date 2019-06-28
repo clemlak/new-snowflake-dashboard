@@ -35,7 +35,6 @@ function getAccountHydroBalance(lib, address) {
 
   return hydroContract.methods.balanceOf(address).call()
     .then((balance) => {
-      console.log('Balance fetched');
       return lib.utils.fromWei(balance);
     })
     .catch(err => err);

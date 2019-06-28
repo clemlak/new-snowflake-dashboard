@@ -12,7 +12,7 @@ function subscribeToDeposits(lib, address, callback) {
     snowflake.address,
   );
 
-  lib.currentProvider.setMaxListeners(300);
+  lib.currentProvider.setMaxListeners(350);
 
   return snowflakeContract.events.SnowflakeDeposit({
     filter: {
@@ -20,7 +20,8 @@ function subscribeToDeposits(lib, address, callback) {
     },
   }, () => {
     callback();
-  });
+  })
+    .on('error', console.error);
 }
 
 function getAccountEthBalance(lib, address) {
@@ -33,7 +34,10 @@ function getAccountHydroBalance(lib, address) {
   const hydroContract = new lib.eth.Contract(hydro.abi, hydro.address);
 
   return hydroContract.methods.balanceOf(address).call()
-    .then(balance => lib.utils.fromWei(balance))
+    .then((balance) => {
+      console.log('Balance fetched');
+      return lib.utils.fromWei(balance);
+    })
     .catch(err => err);
 }
 
@@ -281,7 +285,7 @@ function getPastDeposits(lib, account) {
     snowflake.address,
   );
 
-  lib.currentProvider.setMaxListeners(300);
+  lib.currentProvider.setMaxListeners(350);
 
   const deposits = [];
 
@@ -317,7 +321,7 @@ function getPastWithdrawals(lib, account) {
     snowflake.address,
   );
 
-  lib.currentProvider.setMaxListeners(300);
+  lib.currentProvider.setMaxListeners(350);
 
   const withdrawals = [];
 
@@ -356,7 +360,7 @@ function getPastPurchasedDapps(lib, account) {
 
   const purchases = [];
 
-  lib.currentProvider.setMaxListeners(300);
+  lib.currentProvider.setMaxListeners(350);
 
   return getAccountEin(lib, account)
     .then(ein => snowflakeContract.getPastEvents(

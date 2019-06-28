@@ -47,18 +47,15 @@ function TransactionButton(props) {
 
     sendAction()
       .on('transactionHash', (res) => {
-        console.log(res);
         setHash(res);
         setStatus('pending');
 
         timer = setTimeout(() => {
-          console.log('Timer called');
           onConfirmationAction();
           setStatus('confirmed');
-        }, 10000);
+        }, 30000);
       })
-      .on('receipt', (receipt) => {
-        console.log(receipt);
+      .on('receipt', () => {
         clearTimeout(timer);
         onConfirmationAction();
         setStatus('confirmed');
@@ -108,7 +105,7 @@ function TransactionButton(props) {
           <Row className="text-center">
             <Col>
               <p className="transaction-button-modal__title">
-                Transaction pending
+                Transaction is pending
               </p>
               <p className="transaction-button-modal__subtitle mb-0">
                 Please wait
@@ -186,7 +183,7 @@ function TransactionButton(props) {
                 Waiting for user confirmation
               </p>
               <p className="transaction-button-modal__subtitle mb-0">
-                Please wait open MetaMask
+                Please open MetaMask
               </p>
             </Col>
           </Row>
@@ -245,8 +242,8 @@ TransactionButton.defaultProps = {
   initialText: 'Send',
   waitingForUserConfirmationText: 'Check MetaMask...',
   waitingForConfirmationText: 'Tx is pending...',
-  confirmedText: 'Transaction confirmed!',
-  afterConfirmationAction: () => console.log('You can leave now!'),
+  confirmedText: 'Tx confirmed!',
+  afterConfirmationAction: () => console.log(''),
   onConfirmationAction: () => console.log('Transaction confirmed!'),
   className: '',
   color: 'primary',

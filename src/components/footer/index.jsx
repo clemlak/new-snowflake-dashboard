@@ -44,7 +44,7 @@ const Footer = () => (
           <p className="mb-0 footer__powered-by center">
             Maintained and hosted on
             {' '}
-            <a href="https://github.com" className="maintainedAndHostedOn" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/HydroBlockchain" className="maintainedAndHostedOn" target="_blank" rel="noopener noreferrer">
               <IoLogoGithub />
             </a>
           </p>

@@ -49,7 +49,6 @@ function HeaderAccount() {
   if (web3.active) {
     if (!hasProvider) {
       setHasProvider(true);
-      }
     }
 
     if (!hasEin) {

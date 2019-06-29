@@ -49,17 +49,6 @@ function HeaderAccount() {
   if (web3.active) {
     if (!hasProvider) {
       setHasProvider(true);
-
-      console.log('set provider');
-      if (networkId === null) {
-        web3.eth.getChainId()
-          .then((id) => {
-            console.log('Network id:', id);
-            setNetworkId(id);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
       }
     }
 

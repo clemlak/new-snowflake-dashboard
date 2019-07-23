@@ -40,12 +40,6 @@ function Onboarding(props) {
       return <ProviderStep />;
     }
 
-    if (networkId !== '4') {
-      return (
-        <WrongNetworkStep />
-      );
-    }
-
     if (currentStep === 2) {
       return (
         <HydroIdStep

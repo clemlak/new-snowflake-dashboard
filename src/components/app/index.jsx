@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useEffect,
+} from 'react';
 import {
   BrowserRouter,
   Route,
@@ -33,9 +35,13 @@ import Terms from '../../routes/terms';
 const App = () => {
   const web3 = useWeb3Context();
 
-  if (!web3.error && !web3.active) {
-    web3.setConnector('MetaMask');
-  }
+  useEffect(() => {
+    if (!web3.error && !web3.active) {
+      web3.setFirstValidConnector(['MetaMask']);
+    } else {
+      console.log(web3.account);
+    }
+  }, [web3]);
 
   return (
     <BrowserRouter>

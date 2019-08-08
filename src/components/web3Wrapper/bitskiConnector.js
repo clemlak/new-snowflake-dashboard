@@ -12,7 +12,7 @@ const {
 class BitskiConnector extends Connector {
   constructor(clientId) {
     super();
-    this.bitski = new Bitski(clientId, '/callback.html');
+    this.bitski = new Bitski(clientId, 'http://localhost:3000/callback.html');
   }
 
   async onActivation() {
@@ -20,7 +20,7 @@ class BitskiConnector extends Connector {
   }
 
   getProvider() {
-    return this.bitski.getProvider();
+    return this.bitski.getProvider({ networkName: 'rinkeby' });
   }
 }
 

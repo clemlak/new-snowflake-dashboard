@@ -15,7 +15,7 @@ function ProviderStep() {
   function renderLogo() {
     const viewer = MetaMaskLogo({
       pxNotRatio: true,
-      width: 500,
+      width: '100%',
       height: 400,
       followMouse: true,
       slowDrift: false,

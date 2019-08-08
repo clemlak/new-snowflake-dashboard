@@ -37,6 +37,8 @@ function PermissionStep(props) {
     setNextStep();
   }
 
+  console.log('Signing using the address:', web3.account);
+
   return (
     <div>
       <Row className="justify-content-center">

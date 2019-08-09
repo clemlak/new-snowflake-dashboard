@@ -38,8 +38,8 @@ const App = () => {
   useEffect(() => {
     if (!web3.error && !web3.active) {
       web3.setFirstValidConnector(['MetaMask']);
-    } else {
-      console.log(web3.account);
+    } else if (web3.error) {
+      console.log(web3.error);
     }
   }, [web3]);
 

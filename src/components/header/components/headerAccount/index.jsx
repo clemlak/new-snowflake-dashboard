@@ -6,6 +6,7 @@
 import React, {
   useState,
   useRef,
+  useEffect,
 } from 'react';
 import {
   Button,
@@ -32,70 +33,55 @@ import HeaderDropdown from '../headerDropdown';
 function HeaderAccount() {
   const web3 = useWeb3Context();
 
-  const [hasEin, setHasEin] = useState(false);
   const [ein, setEin] = useState('');
   const [hydroId, setHydroId] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hasProvider, setHasProvider] = useState(false);
-  const [networkId, setNetworkId] = useState(null);
+  const [isModalOpen, toggleModal] = useState(false);
+  const [hasProvider, setProvider] = useState(false);
+  const [networkId, setNetworkId] = useState();
 
-  const [isHeaderDropdownOpen, setIsHeaderDropdownOpen] = useState(false);
+  const [isHeaderDropdownOpen, toggleHeaderDropdown] = useState(false);
   const identiconRef = useRef();
 
   const [ethBalance, setEthBalance] = useState('0');
   const [hydroBalance, setHydroBalance] = useState('0');
   const [snowflakeBalance, setSnowflakeBalance] = useState('0');
 
-  if (web3.active) {
-    if (!hasProvider) {
-      setHasProvider(true);
-    }
+  useEffect(() => {
+    async function fetchData() {
+      if (web3.active) {
+        setNetworkId(web3.networkId);
 
-    if (!hasEin) {
-      getAccountEin(web3.library, web3.account)
-        .then((res) => {
-          if (res !== '') {
-            setHasEin(true);
-            setEin(res);
+        console.log('Web3 is active');
+
+        if (ein === '' && web3.networkId === 4) {
+          const fetchEin = await getAccountEin(web3.library, web3.account);
+
+          if (fetchEin !== '') {
+            setEin(fetchEin);
+
+            const details = await getAccountDetails(web3.library, fetchEin);
+            setHydroId(details.casedHydroID);
+
+            const ethBalanceReq = await getAccountEthBalance(web3.library, web3.account);
+            setEthBalance(ethBalanceReq);
+
+            const snowflakeBalanceReq = await getSnowflakeBalance(web3.library, web3.account);
+            setSnowflakeBalance(snowflakeBalanceReq);
+
+            const hydroBalanceReq = await getAccountHydroBalance(web3.library, web3.account);
+            const short = hydroBalanceReq.split('.');
+            setHydroBalance(short[0]);
+          } else {
+            console.log('No ein');
           }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        }
+      }
     }
 
-    if (hasEin) {
-      getAccountDetails(web3.library, ein)
-        .then((details) => {
-          setHydroId(details.casedHydroID);
+    fetchData();
+  }, [web3]);
 
-          return getAccountEthBalance(web3.library, web3.account);
-        })
-        .then((res) => {
-          setEthBalance(res);
-
-          return getSnowflakeBalance(web3.library, web3.account);
-        })
-        .then((res) => {
-          setSnowflakeBalance(web3.library.utils.fromWei(res));
-
-          return getAccountHydroBalance(web3.library, web3.account);
-        })
-        .then((res) => {
-          const short = res.split('.');
-          setHydroBalance(short[0]);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }
-
-  function toggle() {
-    setIsModalOpen(!isModalOpen);
-  }
-
-  if (hasEin) {
+  if (ein !== '') {
     return (
       <Row className="justify-content-center align-items-center no-gutters">
         <Col className="col-md-auto">
@@ -114,7 +100,7 @@ function HeaderAccount() {
             <HeaderDropdown
               target={identiconRef}
               isOpen={isHeaderDropdownOpen}
-              toggle={() => setIsHeaderDropdownOpen(!isHeaderDropdownOpen)}
+              toggle={() => toggleHeaderDropdown(!isHeaderDropdownOpen)}
               address={web3.account}
               ethBalance={ethBalance}
               snowflakeBalance={snowflakeBalance}
@@ -131,15 +117,25 @@ function HeaderAccount() {
     );
   }
 
+  if (networkId !== 4) {
+    return (
+      <div className="onboardingButton">
+        <Button color="warning">
+          Wrong network
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className="onboardingButton">
       <Onboarding
         hasProvider={hasProvider}
         networkId={networkId}
         isOpen={isModalOpen}
-        toggle={() => toggle()}
+        toggle={() => toggleModal(!isModalOpen)}
       />
-      <Button color="primary" onClick={() => toggle()}>
+      <Button color="primary" onClick={() => toggleModal(!isModalOpen)}>
         Create Account
       </Button>
     </div>

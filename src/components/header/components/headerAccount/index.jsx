@@ -51,8 +51,6 @@ function HeaderAccount() {
       if (web3.active) {
         setNetworkId(web3.networkId);
 
-        console.log('Web3 is active');
-
         if (ein === '' && web3.networkId === 4) {
           const fetchEin = await getAccountEin(web3.library, web3.account);
 
@@ -63,14 +61,14 @@ function HeaderAccount() {
             setHydroId(details.casedHydroID);
 
             const ethBalanceReq = await getAccountEthBalance(web3.library, web3.account);
-            setEthBalance(ethBalanceReq);
+            setEthBalance(web3.library.utils.fromWei(ethBalanceReq));
 
             const snowflakeBalanceReq = await getSnowflakeBalance(web3.library, web3.account);
-            setSnowflakeBalance(snowflakeBalanceReq);
+            setSnowflakeBalance(web3.library.utils.fromWei(snowflakeBalanceReq));
 
             const hydroBalanceReq = await getAccountHydroBalance(web3.library, web3.account);
-            const short = hydroBalanceReq.split('.');
-            setHydroBalance(short[0]);
+            console.log(hydroBalanceReq);
+            setHydroBalance(web3.library.utils.fromWei(hydroBalanceReq));
           } else {
             console.log('No ein');
           }
@@ -117,7 +115,7 @@ function HeaderAccount() {
     );
   }
 
-  if (networkId !== 4) {
+  if (web3.active && networkId !== 4) {
     return (
       <div className="onboardingButton">
         <Button color="warning">

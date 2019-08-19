@@ -2,7 +2,10 @@
  * Displays the sidebar
  */
 
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useEffect,
+} from 'react';
 import {
   Nav,
   NavItem,
@@ -34,55 +37,53 @@ const raindropContractAddress = '0x387Ce3020e13B0a334Bb3EB25DdCb73c133f1D7A';
 function Sidebar() {
   const [hasProvider, setHasProvider] = useState(false);
   const [hasEin, setHasEin] = useState(false);
+  const [ein, setEin] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [balance, setBalance] = useState('');
   const [addedDapps, setAddedDapps] = useState(0);
+  const [networkId, setNetworkId] = useState();
 
   const web3 = useWeb3Context();
 
-  if (web3.active) {
-    if (!hasProvider) {
-      setHasProvider(true);
-    }
+  useEffect(() => {
+    async function fetchData() {
+      if (web3.active) {
+        setNetworkId(web3.networkId);
 
-    if (!hasEin) {
-      getAccountEin(web3.library, web3.account)
-        .then((res) => {
-          if (res !== '') {
-            setHasEin(true);
+        if (ein === '' && web3.networkId === 4) {
+          const fetchEin = await getAccountEin(web3.library, web3.account);
 
-            return getSnowflakeBalance(web3.library, web3.account);
+          if (fetchEin !== '') {
+            setEin(fetchEin);
+
+            const snowflakeBalanceReq = await getSnowflakeBalance(web3.library, web3.account);
+            setBalance(web3.library.utils.fromWei(snowflakeBalanceReq));
+
+            const identity = await getIdentity(web3.library, web3.account);
+            setAddedDapps(identity.resolvers.filter(resolver => resolver !== raindropContractAddress));
+
+            subscribeToDeposits(web3.library, web3.account, () => {
+              getSnowflakeBalance(web3.library, web3.account)
+                .then((res) => {
+                  setBalance(web3.library.utils.fromWei(res));
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            });
           }
-        })
-        .then((res) => {
-          setBalance(web3.library.utils.fromWei(res));
-
-          return getIdentity(web3.library, web3.account);
-        })
-        .then((res) => {
-          setAddedDapps(res.resolvers.filter(resolver => resolver !== raindropContractAddress));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-
-      subscribeToDeposits(web3.library, web3.account, () => {
-        getSnowflakeBalance(web3.library, web3.account)
-          .then((res) => {
-            setBalance(web3.library.utils.fromWei(res));
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      });
+        }
+      }
     }
-  }
+
+    fetchData();
+  }, [web3]);
 
   return (
     <div className="sidebar">
       <div className="py-4">
         <Nav vertical>
-          {hasEin ? (
+          {ein !== '' ? (
             <div>
               <NavItem>
                 <NavLink tag={RouterNavLink} exact to="/" className="sidebar__link" activeClassName="sidebar__link--active">
@@ -116,10 +117,11 @@ function Sidebar() {
           ) : (
             <div className="onboardingButton">
               <Onboarding
-                step={hasProvider ? 'provider' : 'hydroId'}
+                step={web3.active ? 'hydroId' : 'provider'}
                 isOpen={isModalOpen}
                 toggle={() => setIsModalOpen(false)}
-                hasProvider={hasProvider}
+                hasProvider={web3.active}
+                networkId={networkId}
               />
               <Button color="primary" onClick={() => setIsModalOpen(!isModalOpen)}>
                 Create Account

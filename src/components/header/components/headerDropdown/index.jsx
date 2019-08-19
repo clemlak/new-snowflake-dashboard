@@ -9,6 +9,10 @@ import {
 import {
   NavLink,
 } from 'react-router-dom';
+import numeral from 'numeral';
+
+import HydroIcon from '../../../../common/img/hydro_grey_drop.png';
+import EthIcon from '../../../../common/img/eth_grey.png';
 
 function HeaderDropdown(props) {
   const {
@@ -38,22 +42,22 @@ function HeaderDropdown(props) {
             External Balances:
           </p>
           <p className="mb-0">
-            E
+            <img src={EthIcon} alt="Eth" width={16} />
             {' '}
-            {ethBalance}
+            {numeral(ethBalance).format('0,0')}
           </p>
           <p>
-            H
+            <img src={HydroIcon} alt="Hydro" width={16} />
             {' '}
-            {hydroBalance}
+            {numeral(hydroBalance).format('0,0')}
           </p>
           <p className="header-dropdown__title mb-0">
             dApp Store Balance:
           </p>
           <p className="mb-0">
-            H
+            <img src={HydroIcon} alt="Hydro" width={16} />
             {' '}
-            {snowflakeBalance}
+            {numeral(snowflakeBalance).format('0,0')}
           </p>
         </PopoverBody>
         <div className="header-dropdown__footer">

@@ -26,7 +26,7 @@ function subscribeToDeposits(lib, address, callback) {
 
 function getAccountEthBalance(lib, address) {
   return lib.eth.getBalance(address)
-    .then(balance => lib.utils.fromWei(balance))
+    .then(balance => balance)
     .catch(err => err);
 }
 

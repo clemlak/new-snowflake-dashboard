@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.1",
+    "@uniswap/sdk": "^1.0.0-beta.4",
     "axios": "^0.18.0",
     "bitcore-lib": "^8.3.4",
     "bitski": "^0.10.0",

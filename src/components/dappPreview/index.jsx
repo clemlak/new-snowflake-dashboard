@@ -6,7 +6,10 @@
  * TODO: dApp Preview - When you click on the thumbnail image it should prompt you to open/get dApp
  */
 
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useContext,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -18,6 +21,7 @@ import {
 import {
   useWeb3Context,
 } from 'web3-react';
+import SnowflakeContext from '../../contexts/snowflakeContext';
 
 import Purchase from '../purchase';
 import Remove from '../remove';
@@ -33,16 +37,16 @@ import resolversJson from '../../legacy/resolvers.json';
 function DappPreview(props) {
   const {
     id,
+    hasIdentity,
     legacy,
-    added,
+    isAdded,
   } = props;
+
+  const snowflakeContext = useContext(SnowflakeContext);
 
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
   const [isDappModalOpen, setIsDappModalOpen] = useState(false);
-
-  const [isAddedChecked, setIsAddedChecked] = useState(false);
-  const [isAdded, setIsAdded] = useState(added);
 
   const web3 = useWeb3Context();
 
@@ -60,18 +64,29 @@ function DappPreview(props) {
     details.logo = `${process.env.PUBLIC_URL}/legacy/${id}/logo.png`;
   }
 
-  if (web3.active && !added && !isAddedChecked) {
-    isResolverFor(web3.library, web3.account, id)
-      .then((res) => {
-        if (added !== res) {
-          setIsAdded(res);
-        }
+  function displayButton() {
+    if (!hasIdentity) {
+      return (<></>);
+    }
 
-        setIsAddedChecked(true);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (!isAdded) {
+      return (
+        <Button color="outlined" size="sm" onClick={() => setIsPurchaseModalOpen(true)}>
+          Get
+        </Button>
+      );
+    }
+
+    return (
+      <>
+        <Button color="success" size="sm" onClick={() => setIsDappModalOpen(true)}>
+          Open
+        </Button>
+        <Button color="danger" size="sm" onClick={() => setIsRemoveModalOpen(true)}>
+          Remove
+        </Button>
+      </>
+    );
   }
 
   return (
@@ -116,20 +131,7 @@ function DappPreview(props) {
           </h5>
           <Row className="justify-content-center align-items-center">
             <Col>
-              {isAdded ? (
-                <div>
-                  <Button color="success" size="sm" onClick={() => setIsDappModalOpen(true)}>
-                    Open
-                  </Button>
-                  <Button color="danger" size="sm" onClick={() => setIsRemoveModalOpen(true)}>
-                    Remove
-                  </Button>
-                </div>
-              ) : (
-                <Button color="outlined" size="sm" onClick={() => setIsPurchaseModalOpen(true)}>
-                  Get
-                </Button>
-              )}
+              {displayButton()}
             </Col>
           </Row>
         </CardBody>
@@ -143,5 +145,11 @@ export default DappPreview;
 DappPreview.propTypes = {
   id: PropTypes.string.isRequired,
   legacy: PropTypes.bool.isRequired,
-  added: PropTypes.bool.isRequired,
+  isAdded: PropTypes.bool,
+  hasIdentity: PropTypes.bool,
+};
+
+DappPreview.defaultProps = {
+  hasIdentity: false,
+  added: false,
 };

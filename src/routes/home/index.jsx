@@ -2,16 +2,27 @@
  * Displays a simplified version of the homepage
  */
 
-import React from 'react';
+import React, {
+  useContext,
+} from 'react';
 import {
   CardDeck,
 } from 'reactstrap';
+
+import SnowflakeContext from '../../contexts/snowflakeContext';
 
 import DappPreview from '../../components/dappPreview';
 
 import resolversJson from '../../legacy/resolvers.json';
 
 function Home() {
+  const snowflakeContext = useContext(SnowflakeContext);
+
+  const {
+    dapps,
+    ein,
+  } = snowflakeContext;
+
   return (
     <div>
       <CardDeck>
@@ -19,7 +30,8 @@ function Home() {
           <DappPreview
             key={resolver}
             id={resolver}
-            added={false}
+            isAdded={dapps.includes(resolver)}
+            hasIdentity={ein !== ''}
             legacy
           />
         ))}

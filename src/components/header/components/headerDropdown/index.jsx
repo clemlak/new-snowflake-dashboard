@@ -44,7 +44,7 @@ function HeaderDropdown(props) {
           <p className="mb-0">
             <img src={EthIcon} alt="Eth" width={16} />
             {' '}
-            {numeral(ethBalance).format('0,0')}
+            {numeral(ethBalance).format('0,0.0000')}
           </p>
           <p>
             <img src={HydroIcon} alt="Hydro" width={16} />

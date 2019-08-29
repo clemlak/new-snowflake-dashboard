@@ -34,9 +34,7 @@ function getAccountHydroBalance(lib, address) {
   const hydroContract = new lib.eth.Contract(hydro.abi, hydro.address);
 
   return hydroContract.methods.balanceOf(address).call()
-    .then((balance) => {
-      return lib.utils.fromWei(balance);
-    })
+    .then(balance => balance)
     .catch(err => err);
 }
 

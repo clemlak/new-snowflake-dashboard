@@ -2,25 +2,19 @@
  * Displays the card with the Deposit and Withdraw components
  */
 
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useContext,
+} from 'react';
 import {
   Row,
   Col,
   Button,
   Card,
 } from 'reactstrap';
-import {
-  useWeb3Context,
-} from 'web3-react';
 import numeral from 'numeral';
 
-import {
-  getSnowflakeBalance,
-  getAccountHydroBalance,
-} from '../../../../services/utilities';
-import {
-  getBalanceUsd,
-} from '../../../../services/hydroPrice';
+import SnowflakeContext from '../../../../contexts/snowflakeContext';
 
 import Deposit from '../deposit';
 import Withdraw from '../withdraw';
@@ -30,32 +24,16 @@ import HelpButton from '../../../../components/helpButton';
 import tooltips from '../../../../common/config/tooltips.json';
 
 function DepositWithdraw() {
-  const [snowflakeBalance, setSnowflakeBalance] = useState('0');
-  const [usdValue, setUsdValue] = useState(0);
-  const [hydroBalance, setHydroBalance] = useState('0');
   const [tab, setTab] = useState('none');
 
-  const web3 = useWeb3Context();
+  const snowflakeContext = useContext(SnowflakeContext);
 
-  if (web3.active) {
-    getSnowflakeBalance(web3.library, web3.account)
-      .then((res) => {
-        setSnowflakeBalance(web3.library.utils.fromWei(res));
-
-        return getAccountHydroBalance(web3.library, web3.account);
-      })
-      .then((res) => {
-        setHydroBalance(res);
-
-        return getBalanceUsd(web3.library, snowflakeBalance);
-      })
-      .then((res) => {
-        setUsdValue(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  const {
+    ethAddress,
+    snowflakeBalance,
+    hydroBalance,
+    usdBalance,
+  } = snowflakeContext;
 
   function displayTab() {
     if (tab === 'deposit') {
@@ -64,7 +42,7 @@ function DepositWithdraw() {
           snowflakeBalance={snowflakeBalance}
           hydroBalance={hydroBalance}
           cancel={() => setTab('none')}
-          user={web3.account}
+          user={ethAddress}
         />
       );
     }
@@ -75,7 +53,7 @@ function DepositWithdraw() {
           snowflakeBalance={snowflakeBalance}
           hydroBalance={hydroBalance}
           cancel={() => setTab('none')}
-          user={web3.account}
+          user={ethAddress}
         />
       );
     }
@@ -91,7 +69,7 @@ function DepositWithdraw() {
               </span>
             </p>
             <p className="deposit-withdraw__usd small">
-              {`${usdValue.toString().substring(0, 5)} USD`}
+              {`${usdBalance.toString().substring(0, 5)} USD`}
             </p>
           </Col>
         </Row>

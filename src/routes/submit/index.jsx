@@ -27,7 +27,7 @@ const Submit = () => (
         <p>Use the resources below to learn about best practices.</p>
 
         {resourcesJson.map(Resource => (
-          <Card className="submit_card">
+          <Card className="submit_card" key={Resource.title}>
             <CardHeader>
               {Resource.title}
             </CardHeader>

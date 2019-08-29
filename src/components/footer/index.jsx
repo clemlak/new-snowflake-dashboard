@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useContext,
+} from 'react';
 import {
   Container,
   Row,
@@ -14,44 +16,52 @@ import { IoLogoGithub } from 'react-icons/io';
 
 import CallToAction from '../callToAction';
 
+import SnowflakeContext from '../../contexts/snowflakeContext';
+
 import footerLogo from '../../common/img/ethereum_built_on_wide_color.png';
 
-const Footer = () => (
-  <div>
-    <CallToAction />
-    <Container fluid className="py-4 footer">
-      <Row>
-        <Col xs="12" sm="12" md="12" lg="3" className="footer__built-on center">
-          <a href="https://ethereum.org/" target="_blank" rel="noopener noreferrer">
-            <img src={footerLogo} className="builtOnEthereum" alt="Powered by Ethereum" />
-          </a>
-        </Col>
-        <Col xs="12" sm="12" md="12" lg="6" className="text-center center footer__nav-links">
-          <Nav className="footer__menu">
-            <NavItem>
-              <NavLink tag={RouterNavLink} exact to="/privacy" className="footer__link">
-                Privacy
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink tag={RouterNavLink} exact to="/terms" className="footer__link">
-                Terms
-              </NavLink>
-            </NavItem>
-          </Nav>
-        </Col>
-        <Col xs="12" sm="12" md="12" lg="3" className="center footer__powered">
-          <p className="mb-0 footer__powered-by center">
-            Maintained and hosted on
-            {' '}
-            <a href="https://github.com/HydroBlockchain" className="maintainedAndHostedOn" target="_blank" rel="noopener noreferrer">
-              <IoLogoGithub />
+function Footer() {
+  const snowflakeContext = useContext(SnowflakeContext);
+
+  console.log(snowflakeContext);
+
+  return (
+    <div>
+      <CallToAction />
+      <Container fluid className="py-4 footer">
+        <Row>
+          <Col xs="12" sm="12" md="12" lg="3" className="footer__built-on center">
+            <a href="https://ethereum.org/" target="_blank" rel="noopener noreferrer">
+              <img src={footerLogo} className="builtOnEthereum" alt="Powered by Ethereum" />
             </a>
-          </p>
-        </Col>
-      </Row>
-    </Container>
-  </div>
-);
+          </Col>
+          <Col xs="12" sm="12" md="12" lg="6" className="text-center center footer__nav-links">
+            <Nav className="footer__menu">
+              <NavItem>
+                <NavLink tag={RouterNavLink} exact to="/privacy" className="footer__link">
+                  Privacy
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RouterNavLink} exact to="/terms" className="footer__link">
+                  Terms
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Col>
+          <Col xs="12" sm="12" md="12" lg="3" className="center footer__powered">
+            <p className="mb-0 footer__powered-by center">
+              Maintained and hosted on
+              {' '}
+              <a href="https://github.com/HydroBlockchain" className="maintainedAndHostedOn" target="_blank" rel="noopener noreferrer">
+                <IoLogoGithub />
+              </a>
+            </p>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+}
 
 export default Footer;

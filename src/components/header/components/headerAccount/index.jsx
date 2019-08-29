@@ -1,83 +1,38 @@
-/**
- * TODO: Header - Pull in dynamic data
- * TODO: Header - Style dynamic data dropdown
- */
-
 import React, {
   useState,
   useRef,
-  useEffect,
+  useContext,
 } from 'react';
 import {
   Button,
   Col,
   Row,
 } from 'reactstrap';
-import {
-  useWeb3Context,
-} from 'web3-react';
 
 import Onboarding from '../../../onboarding';
-
-import {
-  getAccountEin,
-  getAccountDetails,
-  getSnowflakeBalance,
-  getAccountHydroBalance,
-  getAccountEthBalance,
-} from '../../../../services/utilities';
 
 import Identicon from '../../../identicon';
 import HeaderDropdown from '../headerDropdown';
 
+import SnowflakeContext from '../../../../contexts/snowflakeContext';
+
 function HeaderAccount() {
-  const web3 = useWeb3Context();
+  const snowflakeContext = useContext(SnowflakeContext);
 
-  const [ein, setEin] = useState('');
-  const [hydroId, setHydroId] = useState('');
+  const {
+    hasProvider,
+    ethAddress,
+    ein,
+    hydroId,
+    ethBalance,
+    hydroBalance,
+    snowflakeBalance,
+    networkId,
+  } = snowflakeContext;
+
   const [isModalOpen, toggleModal] = useState(false);
-  const [hasProvider, setProvider] = useState(false);
-  const [networkId, setNetworkId] = useState();
-
   const [isHeaderDropdownOpen, toggleHeaderDropdown] = useState(false);
   const identiconRef = useRef();
-
-  const [ethBalance, setEthBalance] = useState('0');
-  const [hydroBalance, setHydroBalance] = useState('0');
-  const [snowflakeBalance, setSnowflakeBalance] = useState('0');
-
-  useEffect(() => {
-    async function fetchData() {
-      if (web3.active) {
-        setNetworkId(web3.networkId);
-
-        if (ein === '' && web3.networkId === 4) {
-          const fetchEin = await getAccountEin(web3.library, web3.account);
-
-          if (fetchEin !== '') {
-            setEin(fetchEin);
-
-            const details = await getAccountDetails(web3.library, fetchEin);
-            setHydroId(details.casedHydroID);
-
-            const ethBalanceReq = await getAccountEthBalance(web3.library, web3.account);
-            setEthBalance(web3.library.utils.fromWei(ethBalanceReq));
-
-            const snowflakeBalanceReq = await getSnowflakeBalance(web3.library, web3.account);
-            setSnowflakeBalance(web3.library.utils.fromWei(snowflakeBalanceReq));
-
-            const hydroBalanceReq = await getAccountHydroBalance(web3.library, web3.account);
-            console.log(hydroBalanceReq);
-            setHydroBalance(web3.library.utils.fromWei(hydroBalanceReq));
-          } else {
-            console.log('No ein');
-          }
-        }
-      }
-    }
-
-    fetchData();
-  }, [web3]);
 
   if (ein !== '') {
     return (
@@ -94,18 +49,18 @@ function HeaderAccount() {
           </div>
         </Col>
         <Col>
-          {identiconRef.current && web3.active && (
+          {identiconRef.current && (
             <HeaderDropdown
               target={identiconRef}
               isOpen={isHeaderDropdownOpen}
               toggle={() => toggleHeaderDropdown(!isHeaderDropdownOpen)}
-              address={web3.account}
+              address={ethAddress}
               ethBalance={ethBalance}
               snowflakeBalance={snowflakeBalance}
               hydroBalance={hydroBalance}
             />
           )}
-          {web3.active && (
+          {ein && (
             <div ref={identiconRef} className="header-account__identicon">
               <Identicon seed={ein} size={50} id="identicon" />
             </div>
@@ -115,7 +70,7 @@ function HeaderAccount() {
     );
   }
 
-  if (web3.active && networkId !== 4) {
+  if (hasProvider && networkId !== 4) {
     return (
       <div className="onboardingButton">
         <Button color="warning">

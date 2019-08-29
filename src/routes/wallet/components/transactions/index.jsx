@@ -4,7 +4,10 @@
  * TODO: Wallet - Pagination on this page would be nice
  */
 
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useEffect,
+} from 'react';
 import {
   Nav,
   NavItem,
@@ -34,30 +37,31 @@ function Transactions() {
 
   const web3 = useWeb3Context();
 
-  if (
-    web3.active
-    && deposits.length === 0
-    && withdrawals.length === 0
-    && purchasedDapps.length === 0
-  ) {
-    getPastDeposits(web3.library, web3.account)
-      .then((res) => {
-        setDeposits(res);
+  useEffect(() => {
+    async function fetchTransactions() {
+      if (web3.active) {
+        getPastDeposits(web3.library, web3.account)
+          .then((res) => {
+            setDeposits(res);
 
-        return getPastWithdrawals(web3.library, web3.account);
-      })
-      .then((res) => {
-        setWithdrawals(res);
+            return getPastWithdrawals(web3.library, web3.account);
+          })
+          .then((res) => {
+            setWithdrawals(res);
 
-        return getPastPurchasedDapps(web3.library, web3.account);
-      })
-      .then((res) => {
-        setPurchasedDapps(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+            return getPastPurchasedDapps(web3.library, web3.account);
+          })
+          .then((res) => {
+            setPurchasedDapps(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    }
+
+    fetchTransactions();
+  }, [web3.active]);
 
   return (
     <div>

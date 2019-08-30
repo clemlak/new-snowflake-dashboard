@@ -136,7 +136,6 @@ function Purchase(props) {
               )}
               afterConfirmationAction={toggle}
               block
-              displayModal
             />
           </Col>
         </Row>

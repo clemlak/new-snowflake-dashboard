@@ -88,7 +88,6 @@ function Remove(props) {
               )}
               afterConfirmationAction={toggle}
               block
-              displayModal
             />
           </Col>
         </Row>

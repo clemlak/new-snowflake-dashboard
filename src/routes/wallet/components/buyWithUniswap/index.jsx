@@ -2,11 +2,14 @@
  *  Displays the Buy Hydro component using Uniswap
  */
 
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 import {
   Row,
   Col,
   Card,
+  Input,
 } from 'reactstrap';
 import {
   useWeb3Context,
@@ -19,14 +22,29 @@ import HelpButton from '../../../../components/helpButton';
 
 import {
   buyWithUniswap,
-  getHydroReserve,
-  getHydroMarket,
-  tradeEthForHydro,
-  getHydroExchange,
+  getHydroTradeDetails,
 } from '../../../../services/uniswap';
+
+import {
+  toWei,
+  formatAmount,
+  fromWei,
+} from '../../../../services/format';
 
 function BuyWithUniswap() {
   const web3 = useWeb3Context();
+
+  const [amountToBuy, setAmountToBuy] = useState('');
+  const [requiredAmount, setRequiredAmount] = useState('0');
+  const [rate, setRate] = useState('0');
+
+  async function updateData(amount) {
+    setAmountToBuy(amount);
+
+    const details = await getHydroTradeDetails(toWei(amount));
+    setRequiredAmount(details.inputAmount.amount.toString());
+    setRate(details.executionRate.rate.toString());
+  }
 
   return (
     <Card className="buy">
@@ -44,26 +62,39 @@ function BuyWithUniswap() {
       </Row>
       <Row>
         <Col className="text-center">
-          <p className="buy-uniswap__amount">
-            10,000
+          <p>
+            <Input
+              type="number"
+              value={amountToBuy}
+              onChange={e => updateData(e.target.value)}
+              placeholder="0"
+              className="buy-uniswap__amount"
+            />
+            {' '}
             <span className="buy-uniswap__hydro">
               Hydro
             </span>
           </p>
-          <p className="buy-uniswap__test-tokens">
-            Get free Hydro test tokens
+          <p className="buy-uniswap__eth-required">
+            {`ETH Required: ${formatAmount(fromWei(requiredAmount))}`}
+            <br />
+            <span className="buy-uniswap__test-tokens">
+              {`@ ETH rate of ${formatAmount(rate)}`}
+            </span>
           </p>
+
         </Col>
       </Row>
-      <Row className="justify-content-center py-5">
+      <Row className="justify-content-center py-1">
         <Col className="text-center">
-          <button type="button" onClick={() => getHydroExchange(web3.library, web3.account, web3.library.utils.toWei('0.01'))}>
-            Get reserve
-          </button>
           <TransactionButton
-            initialText="Get Hydro Tokens"
-            sendAction={() => getHydroReserve()}
-            displayModal
+            initialText="Buy Hydro"
+            sendAction={() => buyWithUniswap(
+              web3.library,
+              web3.account,
+              toWei(amountToBuy),
+              requiredAmount,
+            )}
           />
         </Col>
       </Row>

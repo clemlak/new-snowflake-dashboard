@@ -2,6 +2,8 @@ import {
   getTokenReserves,
   getMarketDetails,
   tradeExactEthForTokens,
+  getTradeDetails,
+  TRADE_EXACT,
 } from '@uniswap/sdk';
 
 const factoryAddress = '0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36';
@@ -10,44 +12,32 @@ const exchangeAbi = [{"name": "TokenPurchase", "inputs": [{"type": "address", "n
 
 const hydroTokenAddress = '0x4959c7f62051d6b2ed6eaed3aaee1f961b145f20';
 
-function buyWithUniswap() {
+async function buyWithUniswap(lib, from, amount, requiredAmount) {
+  const factoryContract = new lib.eth.Contract(factoryAbi, factoryAddress);
 
-}
-
-async function getHydroExchange(web3, from, amount) {
-  const factoryContract = new web3.eth.Contract(factoryAbi, factoryAddress);
+  factoryContract.methods.getExchange(hydroTokenAddress).call()
   const exchangeAddress = await factoryContract.methods.getExchange(hydroTokenAddress).call();
-  const exchangeContract = new web3.eth.Contract(exchangeAbi, exchangeAddress);
+  const exchangeContract = new lib.eth.Contract(exchangeAbi, exchangeAddress);
 
-  const swap = await exchangeContract.methods.ethToTokenSwapInput(amount, 1572832225).send({
+  return exchangeContract.methods.ethToTokenTransferInput(amount, Date.now() * 2, from).send({
     from,
+    value: requiredAmount,
   });
-
-  console.log(swap);
 }
 
-async function getHydroReserve() {
-  const reserve = await getTokenReserves(hydroTokenAddress, 4);
-
-  console.log(reserve);
-}
-
-async function getHydroMarket() {
-  const reserve = await getTokenReserves(hydroTokenAddress, 4);
-  const market = getMarketDetails(undefined, reserve);
-  console.log(market);
+async function getHydroTradeDetails(amount) {
+  const reserves = await getTokenReserves(hydroTokenAddress, 4);
+  const marketDetails = getMarketDetails(undefined, reserves);
+  return getTradeDetails(TRADE_EXACT.OUTPUT, amount, marketDetails);
 }
 
 async function tradeEthForHydro(amount) {
   const details = await tradeExactEthForTokens(hydroTokenAddress, amount, 4);
 
-  console.log(details);
+  return details;
 }
 
 export {
   buyWithUniswap,
-  getHydroReserve,
-  getHydroMarket,
-  tradeEthForHydro,
-  getHydroExchange,
+  getHydroTradeDetails,
 };

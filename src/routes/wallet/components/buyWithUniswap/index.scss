@@ -24,15 +24,25 @@
     font-size: 55px;
     margin: 0;
     font-family: "Nunito-SemiBold", sans-serif;
+    margin: auto;
+    width: 50%;
+    border: none;
+    display: inline-block;
   }
 
   &__hydro {
     opacity: 0.5;
     font-size: 0.7rem;
+    vertical-align: bottom;
   }
 
   &__test-tokens {
     font-size: 0.7rem;
+    opacity: 0.7;
+  }
+
+  &__eth-required {
+    font-size: 1rem;
     opacity: 0.7;
   }
 }

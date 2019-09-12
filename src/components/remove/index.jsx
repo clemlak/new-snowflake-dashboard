@@ -3,7 +3,9 @@
  * TODO: Remove - Confirmation of the pending transaction is never catched
  */
 
-import React from 'react';
+import React, {
+  useContext,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -21,6 +23,8 @@ import {
   IoIosClose,
 } from 'react-icons/io';
 
+import SnowflakeContext from '../../contexts/snowflakeContext';
+
 import {
   removeResolver,
 } from '../../services/utilities';
@@ -30,6 +34,13 @@ import TransactionButton from '../transactionButton';
 function Remove(props) {
   const web3 = useWeb3Context();
 
+  const user = useContext(SnowflakeContext);
+
+  const {
+    dispatch,
+    dapps,
+  } = user;
+
   const {
     id,
     isOpen,
@@ -38,6 +49,16 @@ function Remove(props) {
   } = props;
 
   const closeIcon = <IoIosClose className="remove__close-icon" onClick={toggle} />;
+
+  function onConfirmation() {
+    dispatch({
+      type: 'set',
+      target: 'dapps',
+      value: dapps.filter(dapp => dapp !== id),
+    });
+
+    toggle();
+  }
 
   return (
     <Modal isOpen={isOpen} toggle={toggle}>
@@ -86,7 +107,7 @@ function Remove(props) {
                 web3.account,
                 id,
               )}
-              afterConfirmationAction={toggle}
+              onConfirmationAction={() => onConfirmation()}
               block
             />
           </Col>

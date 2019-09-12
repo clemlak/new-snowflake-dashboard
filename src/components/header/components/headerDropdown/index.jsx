@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useContext,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -14,15 +16,27 @@ import numeral from 'numeral';
 import HydroIcon from '../../../../common/img/hydro_grey_drop.png';
 import EthIcon from '../../../../common/img/eth_grey.png';
 
+import SnowflakeContext from '../../../../contexts/snowflakeContext';
+
+import {
+  fromWei,
+  formatAmount,
+} from '../../../../services/format';
+
 function HeaderDropdown(props) {
+  const user = useContext(SnowflakeContext);
+
+  const {
+    ethAddress,
+    ethBalance,
+    hydroBalance,
+    snowflakeBalance,
+  } = user;
+
   const {
     target,
     isOpen,
     toggle,
-    address,
-    snowflakeBalance,
-    hydroBalance,
-    ethBalance,
   } = props;
 
   return (
@@ -34,7 +48,7 @@ function HeaderDropdown(props) {
           </span>
           {' '}
           <span className="header-dropdown__address">
-            {`${address.substring(2, 15)}...`}
+            {`${ethAddress.substring(2, 15)}...`}
           </span>
         </PopoverHeader>
         <PopoverBody className="header-dropdown__body">
@@ -44,12 +58,12 @@ function HeaderDropdown(props) {
           <p className="mb-0">
             <img src={EthIcon} alt="Eth" width={16} />
             {' '}
-            {numeral(ethBalance).format('0,0.0000')}
+            {formatAmount(fromWei(ethBalance.toString()))}
           </p>
           <p>
             <img src={HydroIcon} alt="Hydro" width={16} />
             {' '}
-            {numeral(hydroBalance).format('0,0')}
+            {formatAmount(fromWei(hydroBalance.toString()))}
           </p>
           <p className="header-dropdown__title mb-0">
             dApp Store Balance:
@@ -57,7 +71,7 @@ function HeaderDropdown(props) {
           <p className="mb-0">
             <img src={HydroIcon} alt="Hydro" width={16} />
             {' '}
-            {numeral(snowflakeBalance).format('0,0')}
+            {formatAmount(fromWei(snowflakeBalance.toString()))}
           </p>
         </PopoverBody>
         <div className="header-dropdown__footer">
@@ -75,18 +89,10 @@ HeaderDropdown.propTypes = {
   target: PropTypes.object.isRequired,
   isOpen: PropTypes.bool,
   toggle: PropTypes.func.isRequired,
-  address: PropTypes.string,
-  snowflakeBalance: PropTypes.string,
-  hydroBalance: PropTypes.string,
-  ethBalance: PropTypes.string,
 };
 
 HeaderDropdown.defaultProps = {
   isOpen: false,
-  address: '0x...',
-  snowflakeBalance: '0',
-  hydroBalance: '0',
-  ethBalance: '0',
 };
 
 export default HeaderDropdown;

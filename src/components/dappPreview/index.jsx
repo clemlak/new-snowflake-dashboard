@@ -44,6 +44,11 @@ function DappPreview(props) {
 
   const snowflakeContext = useContext(SnowflakeContext);
 
+  const {
+    networkId,
+    ein,
+  } = snowflakeContext;
+
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
   const [isDappModalOpen, setIsDappModalOpen] = useState(false);
@@ -89,6 +94,16 @@ function DappPreview(props) {
     );
   }
 
+  function handleTap() {
+    if (networkId === 4 && ein !== '') {
+      if (isAdded) {
+        setIsDappModalOpen(true);
+      } else {
+        setIsPurchaseModalOpen(true);
+      }
+    }
+  }
+
   return (
     <div>
       <LegacyDapp
@@ -114,9 +129,7 @@ function DappPreview(props) {
         <div
           className="dapp-preview__image"
           style={{ backgroundImage: 'url(' + details.logo + ')' }}
-          onClick={() => {
-            isAdded ? setIsDappModalOpen(true) : setIsPurchaseModalOpen(true);
-          }}
+          onClick={() => handleTap()}
         >
           <div className="dapp-preview__overlay-wrapper none">
             <Button>Details</Button>

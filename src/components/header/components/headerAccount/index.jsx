@@ -16,17 +16,17 @@ import HeaderDropdown from '../headerDropdown';
 
 import SnowflakeContext from '../../../../contexts/snowflakeContext';
 
+import {
+  network,
+} from '../../../../common/config/network.json';
+
 function HeaderAccount() {
   const snowflakeContext = useContext(SnowflakeContext);
 
   const {
     hasProvider,
-    ethAddress,
     ein,
     hydroId,
-    ethBalance,
-    hydroBalance,
-    snowflakeBalance,
     networkId,
   } = snowflakeContext;
 
@@ -34,7 +34,7 @@ function HeaderAccount() {
   const [isHeaderDropdownOpen, toggleHeaderDropdown] = useState(false);
   const identiconRef = useRef();
 
-  if (ein !== '') {
+  if (ein) {
     return (
       <Row className="justify-content-center align-items-center no-gutters">
         <Col className="col-md-auto">
@@ -54,10 +54,6 @@ function HeaderAccount() {
               target={identiconRef}
               isOpen={isHeaderDropdownOpen}
               toggle={() => toggleHeaderDropdown(!isHeaderDropdownOpen)}
-              address={ethAddress}
-              ethBalance={ethBalance}
-              snowflakeBalance={snowflakeBalance}
-              hydroBalance={hydroBalance}
             />
           )}
           {ein && (
@@ -70,7 +66,7 @@ function HeaderAccount() {
     );
   }
 
-  if (hasProvider && networkId !== 4) {
+  if (hasProvider && networkId !== network) {
     return (
       <div className="onboardingButton">
         <Button color="warning">

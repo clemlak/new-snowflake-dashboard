@@ -26,7 +26,7 @@ function subscribeToDeposits(lib, address, callback) {
 
 function getAccountEthBalance(lib, address) {
   return lib.eth.getBalance(address)
-    .then(balance => balance)
+    .then(balance => lib.utils.toBN(balance))
     .catch(err => err);
 }
 
@@ -34,7 +34,7 @@ function getAccountHydroBalance(lib, address) {
   const hydroContract = new lib.eth.Contract(hydro.abi, hydro.address);
 
   return hydroContract.methods.balanceOf(address).call()
-    .then(balance => balance)
+    .then(balance => lib.utils.toBN(balance))
     .catch(err => err);
 }
 
@@ -196,13 +196,15 @@ function getHydroTestTokens(lib, account) {
   });
 }
 
-function getHydroBalance(lib, account) {
+async function getHydroBalance(lib, account) {
   const hydroContract = new lib.eth.Contract(
     hydro.abi,
     hydro.address,
   );
 
-  return hydroContract.methods.balanceOf(account).call();
+  const balance = await hydroContract.methods.balanceOf(account).call();
+
+  return lib.utils.toBN(balance);
 }
 
 function getSnowflakeBalance(lib, account) {
@@ -213,6 +215,7 @@ function getSnowflakeBalance(lib, account) {
 
   return getAccountEin(lib, account)
     .then(ein => snowflakeContract.methods.deposits(ein).call())
+    .then(balance => lib.utils.toBN(balance))
     .catch(err => err);
 }
 
@@ -224,7 +227,7 @@ function withdrawSnowflakeBalance(lib, account, amount) {
 
   return snowflakeContract.methods.withdrawSnowflakeBalance(
     account,
-    lib.utils.toWei(amount),
+    amount,
   ).send({
     from: account,
   });
@@ -238,7 +241,7 @@ function depositTokens(lib, account, amount) {
 
   return hydroContract.methods.approveAndCall(
     snowflake.address,
-    lib.utils.toWei(amount),
+    amount,
     '0x00',
   ).send({
     from: account,

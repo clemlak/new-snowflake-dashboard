@@ -21,7 +21,7 @@ import TransactionButton from '../../../../components/transactionButton';
 const LinkedAddress = (props) => {
   const {
     address,
-    notRemovable,
+    removable,
   } = props;
 
   const web3 = useWeb3Context();
@@ -51,7 +51,7 @@ const LinkedAddress = (props) => {
           </p>
         </Col>
         <Col className="text-right">
-          {notRemovable && (
+          {removable && (
             <TransactionButton
               color="danger"
               initialText="Remove Access"
@@ -68,9 +68,9 @@ export default LinkedAddress;
 
 LinkedAddress.propTypes = {
   address: PropTypes.string.isRequired,
-  notRemovable: PropTypes.bool,
+  removable: PropTypes.bool,
 };
 
 LinkedAddress.defaultProps = {
-  notRemovable: false,
+  removable: false,
 };

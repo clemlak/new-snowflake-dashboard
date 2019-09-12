@@ -1,6 +1,4 @@
-import React, {
-  useContext,
-} from 'react';
+import React from 'react';
 import {
   Container,
   Row,
@@ -16,15 +14,9 @@ import { IoLogoGithub } from 'react-icons/io';
 
 import CallToAction from '../callToAction';
 
-import SnowflakeContext from '../../contexts/snowflakeContext';
-
 import footerLogo from '../../common/img/ethereum_built_on_wide_color.png';
 
 function Footer() {
-  const snowflakeContext = useContext(SnowflakeContext);
-
-  console.log(snowflakeContext);
-
   return (
     <div>
       <CallToAction />

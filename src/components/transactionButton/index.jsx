@@ -37,14 +37,14 @@ function TransactionButton(props) {
         setStatus('pending');
 
         timer = setTimeout(() => {
-          onConfirmationAction();
           setStatus('confirmed');
+          onConfirmationAction();
         }, 30000);
       })
       .on('receipt', () => {
         clearTimeout(timer);
-        onConfirmationAction();
         setStatus('confirmed');
+        onConfirmationAction();
       })
       .on('error', (error) => {
         console.log(error);

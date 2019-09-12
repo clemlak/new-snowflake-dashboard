@@ -3,24 +3,19 @@
  * TODO: Identity - Fix the col width and center the elements
  */
 
-import React, { useState } from 'react';
+import React, {
+  useContext,
+} from 'react';
 import {
   Row,
   Col,
   Card,
 } from 'reactstrap';
 import {
-  useWeb3Context,
-} from 'web3-react';
-import {
   IoMdLink,
 } from 'react-icons/io';
 
-import {
-  getAccountEin,
-  getAccountDetails,
-  getIdentity,
-} from '../../services/utilities';
+import SnowflakeContext from '../../contexts/snowflakeContext';
 
 import Identicon from '../../components/identicon';
 import HelpButton from '../../components/helpButton';
@@ -32,35 +27,13 @@ import LinkAddressCard from './components/linkAddressCard';
 import StatusWidget from './components/statusWidget';
 
 const Identity = () => {
-  const web3 = useWeb3Context();
-  const [ein, setEin] = useState('');
-  const [hydroId, setHydroId] = useState('');
-  const [addresses, setAddresses] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const user = useContext(SnowflakeContext);
 
-  if (web3.active && loading) {
-    getAccountEin(web3.library, web3.account)
-      .then((res) => {
-        if (res !== '') {
-          setEin(res);
-        }
-
-        return getAccountDetails(web3.library, ein);
-      })
-      .then((details) => {
-        setHydroId(details.casedHydroID);
-
-        return getIdentity(web3.library, web3.account);
-      })
-      .then((identity) => {
-        setAddresses(identity.associatedAddresses);
-
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  const {
+    ein,
+    hydroId,
+    associatedAddresses,
+  } = user;
 
   return (
     <div>
@@ -92,7 +65,7 @@ const Identity = () => {
             <Row className="justify-content-center align-items-center pb-4">
               <Col xs="6">
                 <p className="identity__user-image">
-                  {web3.active && (
+                  {ein !== null && (
                     <Identicon seed={ein} />
                   )}
                 </p>
@@ -109,7 +82,7 @@ const Identity = () => {
                   {ein}
                 </p>
                 <p className="identity__linked-wallets">
-                  {`Linked Wallet(s): ${addresses.length}`}
+                  {`Linked Wallet(s): ${associatedAddresses.length}`}
                 </p>
               </Col>
             </Row>
@@ -134,11 +107,11 @@ const Identity = () => {
       </Row>
       <Row>
         <Col sm="12" md="12" lg="12" xl="12">
-          {addresses.map(address => (
+          {associatedAddresses.map(address => (
             <LinkedAddress
               key={address}
               address={address}
-              notRemovable={address === web3.account}
+              removable={associatedAddresses.length > 1}
             />
           ))}
         </Col>

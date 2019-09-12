@@ -1,9 +1,11 @@
 /**
  * Displays a form to withdraw tokens from the current Snowflake balance
- * TODO: Wallet - Fix Max button
  */
 
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useContext,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -20,23 +22,54 @@ import {
   useWeb3Context,
 } from 'web3-react';
 
+import SnowflakeContext from '../../../../contexts/snowflakeContext';
+
 import {
   withdrawSnowflakeBalance,
 } from '../../../../services/utilities';
 
 import TransactionButton from '../../../../components/transactionButton';
 
+import {
+  fromWei,
+  toBN,
+  formatAmount,
+  toWei,
+} from '../../../../services/format';
+
 function Withdraw(props) {
+  const user = useContext(SnowflakeContext);
+
   const {
-    user,
+    ethAddress,
     hydroBalance,
     snowflakeBalance,
+    dispatch,
+  } = user;
+
+  const {
     cancel,
   } = props;
 
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
 
   const web3 = useWeb3Context();
+
+  function onConfirmation() {
+    dispatch({
+      type: 'set',
+      target: 'hydroBalance',
+      value: hydroBalance.add(toBN(toWei(amount.toString()))),
+    });
+
+    dispatch({
+      type: 'set',
+      target: 'snowflakeBalance',
+      value: snowflakeBalance.sub(toBN(toWei(amount.toString()))),
+    });
+
+    cancel();
+  }
 
   return (
     <div>
@@ -77,7 +110,7 @@ function Withdraw(props) {
             <Col className="text-center" xs="4">
               <Button
                 size="sm"
-                onClick={() => setAmount(snowflakeBalance)}
+                onClick={() => setAmount(fromWei(snowflakeBalance.toString()))}
                 className="withdraw__max-button"
               >
                 Max
@@ -93,10 +126,10 @@ function Withdraw(props) {
         <Col sm="5">
           <div className="withdraw__to">
             <p className="withdraw__balance">
-              {hydroBalance.substring(0, 5)}
+              {formatAmount(fromWei(hydroBalance.toString()))}
             </p>
             <p className="withdraw__to-small-text">
-              {`${user.substring(0, 12)}...`}
+              {`${ethAddress.substring(0, 12)}...`}
             </p>
           </div>
         </Col>
@@ -114,9 +147,9 @@ function Withdraw(props) {
             sendAction={() => withdrawSnowflakeBalance(
               web3.library,
               web3.account,
-              amount.toString(),
+              toWei(amount.toString()),
             )}
-            afterConfirmationAction={cancel}
+            onConfirmationAction={onConfirmation}
           />
         </Col>
       </Row>
@@ -125,10 +158,7 @@ function Withdraw(props) {
 }
 
 Withdraw.propTypes = {
-  hydroBalance: PropTypes.string.isRequired,
-  snowflakeBalance: PropTypes.string.isRequired,
   cancel: PropTypes.func.isRequired,
-  user: PropTypes.string.isRequired,
 };
 
 export default Withdraw;

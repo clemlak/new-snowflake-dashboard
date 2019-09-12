@@ -31,7 +31,7 @@ function Home() {
             key={resolver}
             id={resolver}
             isAdded={dapps.includes(resolver)}
-            hasIdentity={ein !== ''}
+            hasIdentity={ein !== null}
             legacy
           />
         ))}

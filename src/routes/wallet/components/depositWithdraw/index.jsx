@@ -5,6 +5,7 @@
 import React, {
   useState,
   useContext,
+  useEffect,
 } from 'react';
 import {
   Row,
@@ -23,24 +24,41 @@ import HelpButton from '../../../../components/helpButton';
 
 import tooltips from '../../../../common/config/tooltips.json';
 
+import {
+  getBalanceUsd,
+} from '../../../../services/hydroPrice';
+
+import {
+  fromWei,
+  formatAmount,
+} from '../../../../services/format';
+
 function DepositWithdraw() {
   const [tab, setTab] = useState('none');
+  const [usdBalance, setUsdBalance] = useState('0');
 
   const snowflakeContext = useContext(SnowflakeContext);
 
   const {
     ethAddress,
     snowflakeBalance,
-    hydroBalance,
-    usdBalance,
   } = snowflakeContext;
+
+  useEffect(() => {
+    async function getUsdPrice() {
+      if (snowflakeBalance) {
+        const req = await getBalanceUsd(fromWei(snowflakeBalance.toString()));
+        setUsdBalance(req.toString().substring(0, 5));
+      }
+    }
+
+    getUsdPrice();
+  }, [snowflakeBalance]);
 
   function displayTab() {
     if (tab === 'deposit') {
       return (
         <Deposit
-          snowflakeBalance={snowflakeBalance}
-          hydroBalance={hydroBalance}
           cancel={() => setTab('none')}
           user={ethAddress}
         />
@@ -50,8 +68,6 @@ function DepositWithdraw() {
     if (tab === 'withdraw') {
       return (
         <Withdraw
-          snowflakeBalance={snowflakeBalance}
-          hydroBalance={hydroBalance}
           cancel={() => setTab('none')}
           user={ethAddress}
         />
@@ -63,13 +79,13 @@ function DepositWithdraw() {
         <Row>
           <Col className="text-center">
             <p className="deposit-withdraw__balance mb-0">
-              {numeral(snowflakeBalance).format('0,0')}
+              {formatAmount(fromWei(snowflakeBalance.toString()))}
               <span className="deposit-withdraw__hydro">
                 Hydro
               </span>
             </p>
             <p className="deposit-withdraw__usd small">
-              {`${usdBalance.toString().substring(0, 5)} USD`}
+              {`${usdBalance} USD`}
             </p>
           </Col>
         </Row>
@@ -99,7 +115,7 @@ function DepositWithdraw() {
         </Col>
         <Col xs="2" sm="2" className="text-right">
           <HelpButton
-            content={tooltips.walletHelp}
+            content={tooltips.getHydroHelp}
           />
         </Col>
       </Row>

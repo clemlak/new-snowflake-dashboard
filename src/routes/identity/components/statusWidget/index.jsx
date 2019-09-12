@@ -2,7 +2,11 @@
  * Displays a widget connected to the Status dApp
  */
 
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useContext,
+  useEffect,
+} from 'react';
 import {
   useWeb3Context,
 } from 'web3-react';
@@ -12,18 +16,24 @@ import {
   Button,
 } from 'reactstrap';
 
+import SnowflakeContext from '../../../../contexts/snowflakeContext';
+
 import Purchase from '../../../../components/purchase';
 import LegacyDapp from '../../../../components/legacyDapp';
 
 import {
   getStatus,
-  isResolverFor,
 } from '../../../../services/utilities';
 
 function StatusWidget() {
+  const user = useContext(SnowflakeContext);
+
+  const {
+    dapps,
+    ethAddress,
+  } = user;
+
   const [status, setStatus] = useState('');
-  const [isStatusAdded, setIsStatusAdded] = useState(false);
-  const [isAddedChecked, setIsAddedChecked] = useState(false);
 
   const [isPurchaseModalOpen, setIsPurchaseModalOpen] = useState(false);
   const [isDappModalOpen, setIsDappModalOpen] = useState(false);
@@ -31,21 +41,16 @@ function StatusWidget() {
   const statusAddress = '0x16fD6e2E1C4afB9C4e7B901141706596317e4ceB';
   const web3 = useWeb3Context();
 
-  if (web3.active && !isAddedChecked) {
-    getStatus(web3.library, web3.account)
-      .then((res) => {
-        setStatus(res);
+  useEffect(() => {
+    async function getCurrentStatus() {
+      if (dapps.includes(statusAddress)) {
+        const currentStatus = await getStatus(web3.library, ethAddress);
+        setStatus(currentStatus);
+      }
+    }
 
-        return isResolverFor(web3.library, web3.account, statusAddress);
-      })
-      .then((res) => {
-        setIsStatusAdded(res);
-        setIsAddedChecked(true);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+    getCurrentStatus();
+  }, [dapps]);
 
   return (
     <div>
@@ -70,7 +75,7 @@ function StatusWidget() {
               </p>
             </Col>
             <Col>
-              {isStatusAdded ? (
+              {dapps.includes(statusAddress) ? (
                 <Button className="status__edit" onClick={() => setIsDappModalOpen(true)}>
                   Edit
                 </Button>

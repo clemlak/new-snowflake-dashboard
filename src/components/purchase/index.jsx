@@ -3,7 +3,9 @@
  * NOTE: Purchase - Minimum displayed price is currently 1 HYDRO
  */
 
-import React from 'react';
+import React, {
+  useContext,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -28,8 +30,17 @@ import {
 import TransactionButton from '../transactionButton';
 import hydroIcon from '../../common/img/hydro_blue_drop.png';
 
+import SnowflakeContext from '../../contexts/snowflakeContext';
+
 function Purchase(props) {
   const web3 = useWeb3Context();
+
+  const user = useContext(SnowflakeContext);
+
+  const {
+    dapps,
+    dispatch,
+  } = user;
 
   const {
     id,
@@ -64,6 +75,16 @@ function Purchase(props) {
     }
 
     return '0';
+  }
+
+  function onConfirmation() {
+    dispatch({
+      type: 'set',
+      target: 'dapps',
+      value: dapps.concat([id]),
+    });
+
+    toggle();
   }
 
   return (
@@ -134,7 +155,7 @@ function Purchase(props) {
                 id,
                 price,
               )}
-              afterConfirmationAction={toggle}
+              onConfirmationAction={() => onConfirmation()}
               block
             />
           </Col>

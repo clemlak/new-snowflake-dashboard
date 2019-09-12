@@ -2,7 +2,7 @@
  * Displays a form to deposit tokens to the current Snowflake balance
  */
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -19,23 +19,54 @@ import {
   useWeb3Context,
 } from 'web3-react';
 
+import SnowflakeContext from '../../../../contexts/snowflakeContext';
+
 import {
   depositTokens,
 } from '../../../../services/utilities';
 
+import {
+  fromWei,
+  toWei,
+  toBN,
+  formatAmount,
+} from '../../../../services/format';
+
 import TransactionButton from '../../../../components/transactionButton';
 
 function Deposit(props) {
+  const user = useContext(SnowflakeContext);
+
   const {
-    user,
+    ethAddress,
     hydroBalance,
     snowflakeBalance,
+    dispatch,
+  } = user;
+
+  const {
     cancel,
   } = props;
 
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
 
   const web3 = useWeb3Context();
+
+  function onConfirmation() {
+    dispatch({
+      type: 'set',
+      target: 'snowflakeBalance',
+      value: snowflakeBalance.add(toBN(toWei(amount.toString()))),
+    });
+
+    dispatch({
+      type: 'set',
+      target: 'hydroBalance',
+      value: hydroBalance.sub(toBN(toWei(amount.toString()))),
+    });
+
+    cancel();
+  }
 
   return (
     <div>
@@ -69,7 +100,7 @@ function Deposit(props) {
                   <FormText
                     className="deposit__form-text"
                   >
-                    {`${user.substring(0, 12)}...`}
+                    {`${ethAddress.substring(0, 12)}...`}
                   </FormText>
                 </FormGroup>
               </div>
@@ -77,7 +108,7 @@ function Deposit(props) {
             <Col className="text-center" xs="4">
               <Button
                 size="sm"
-                onClick={() => setAmount(hydroBalance)}
+                onClick={() => setAmount(fromWei(hydroBalance.toString()))}
                 className="deposit__max-button"
               >
                 Max
@@ -93,7 +124,7 @@ function Deposit(props) {
         <Col sm="5">
           <div className="deposit__to">
             <p className="deposit__balance">
-              {snowflakeBalance.substring(0, 5)}
+              {formatAmount(fromWei(snowflakeBalance.toString()))}
             </p>
             <p className="deposit__to-small-text">
               dApp Store Wallet
@@ -115,9 +146,9 @@ function Deposit(props) {
             sendAction={() => depositTokens(
               web3.library,
               web3.account,
-              amount.toString(),
+              toWei(amount.toString()),
             )}
-            onConfirmationAction={cancel}
+            onConfirmationAction={onConfirmation}
           />
         </Col>
       </Row>
@@ -126,10 +157,7 @@ function Deposit(props) {
 }
 
 Deposit.propTypes = {
-  snowflakeBalance: PropTypes.string.isRequired,
-  hydroBalance: PropTypes.string.isRequired,
   cancel: PropTypes.func.isRequired,
-  user: PropTypes.string.isRequired,
 };
 
 export default Deposit;

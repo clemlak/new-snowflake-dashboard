@@ -24,6 +24,14 @@ import whiteHydroDrop from '../../common/img/hydro_white_drop.png';
 
 import SnowflakeContext from '../../contexts/snowflakeContext';
 
+import {
+  fromWei,
+} from '../../services/format';
+
+import {
+  network,
+} from '../../common/config/network.json';
+
 function Sidebar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -38,7 +46,7 @@ function Sidebar() {
   } = snowflakeContext;
 
   function displayButton() {
-    if (ein !== '') {
+    if (ein) {
       return (
         <div>
           <NavItem>
@@ -50,7 +58,7 @@ function Sidebar() {
             <NavLink tag={RouterNavLink} exact to="/wallet" className="sidebar__link" activeClassName="sidebar__link--active">
               Your Wallet
               <Badge className="sidebar__badge" color="secondary" pill>
-                {numeral(snowflakeBalance).format('0 a')}
+                {numeral(fromWei(snowflakeBalance.toString())).format('0 a')}
                 {' '}
                 <img src={whiteHydroDrop} alt="Hydro Drop" className="sidebar__hydro-drop" />
               </Badge>
@@ -73,7 +81,7 @@ function Sidebar() {
       );
     }
 
-    if (hasProvider && networkId !== 4) {
+    if (hasProvider && networkId !== network) {
       return (
         <div className="onboardingButton">
           <Button color="warning">

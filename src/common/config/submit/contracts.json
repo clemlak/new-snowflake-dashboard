@@ -27,7 +27,7 @@
     "title": "Product Orders",
     "description": "Allows a business to create SKUs and inventory management on goods to be sold to customers.",
     "icon": "",
-    "link": ""
+    "link": "https://github.com/merlox/ethereum-store"
   },
   {
     "title": "Marketplace Coupons",

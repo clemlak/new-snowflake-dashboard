@@ -12,6 +12,7 @@ import {
 
 import contractsJson from '../../common/config/submit/contracts.json';
 import resourcesJson from '../../common/config/submit/resources.json';
+import partnersJson from '../../common/config/submit/partners.json';
 
 import QA from '../../components/qa';
 import faqJson from '../../common/config/submit/faq.json';
@@ -23,6 +24,27 @@ const Submit = () => (
         <h1 className="title">Submit A dApp</h1>
         <p>Looking to submit a dApp? Use the resources below to get started on bringing you idea to life.</p>
 
+        <h3>3rd Party Partners</h3>
+        <p>The following resources are from our partners.</p>
+
+        {partnersJson.map(Partner => (
+          <Card className="submit_card" key={Partner.title}>
+            <CardHeader>{Partner.title}</CardHeader>
+            <CardBody>
+              <CardText>
+                {Partner.description}
+                <br /><br />
+                <img src={Partner.icon} alt={Partner.title} className="submit__partner-logo" width={100} />
+              </CardText>
+            </CardBody>
+            <CardFooter>
+              <Button onClick={() =>{window.open(Partner.link)}}>
+                View Partner
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+        
         <h3>Resources</h3>
         <p>Use the resources below to learn about best practices.</p>
 

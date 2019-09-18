@@ -37,7 +37,7 @@ const Submit = () => (
               </CardText>
             </CardBody>
             <CardFooter>
-              <Button>
+              <Button onClick={() =>{window.open(Resource.link)}}>
                 View Resource
               </Button>
             </CardFooter>
@@ -48,7 +48,7 @@ const Submit = () => (
         <p>The smart contracts below can speed up your dApp development time.</p>
 
         {contractsJson.map(Contract => (
-          <Card className="submit_card">
+          <Card className="submit_card" key={Contract.title}>
             <CardHeader>{Contract.title}</CardHeader>
             <CardBody>
               <CardText>
@@ -56,7 +56,7 @@ const Submit = () => (
               </CardText>
             </CardBody>
             <CardFooter>
-              <Button>
+              <Button onClick={() =>{window.open(Contract.link)}}>
                 View Contract
               </Button>
             </CardFooter>

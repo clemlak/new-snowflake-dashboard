@@ -65,8 +65,7 @@ function Category({
               </Col>
               <Col sm="4" className="text-right">
                 <a
-                  href="https://projecthydro.org/"
-                  target="_blank"
+                  href="/submit"
                   rel="noopener noreferrer"
                   className="btn btn-outlined btn-md"
                 >

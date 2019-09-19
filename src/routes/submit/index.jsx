@@ -38,14 +38,14 @@ const Submit = () => (
               </CardText>
             </CardBody>
             <CardFooter>
-              <Button onClick={() =>{window.open(Partner.link)}}>
+              <Button className="partner" onClick={() =>{window.open(Partner.link)}}>
                 View Partner
               </Button>
             </CardFooter>
           </Card>
         ))}
-        
-        <h3>Resources</h3>
+
+        <h3>Resources & Tutorials</h3>
         <p>Use the resources below to learn about best practices.</p>
 
         {resourcesJson.map(Resource => (
@@ -56,17 +56,19 @@ const Submit = () => (
             <CardBody>
               <CardText>
                 {Resource.description}
+                <br /><br />
+                <img src={Resource.icon} alt={Resource.title} className="submit__partner-logo" width={100} />
               </CardText>
             </CardBody>
             <CardFooter>
-              <Button onClick={() =>{window.open(Resource.link)}}>
+              <Button className="resource" onClick={() =>{window.open(Resource.link)}}>
                 View Resource
               </Button>
             </CardFooter>
           </Card>
         ))}
 
-        <h3>Smart Contracts</h3>
+        <h3>Hydro Smart Contracts</h3>
         <p>The smart contracts below can speed up your dApp development time.</p>
 
         {contractsJson.map(Contract => (
@@ -75,10 +77,12 @@ const Submit = () => (
             <CardBody>
               <CardText>
                 {Contract.description}
+                <br /><br />
+                <img src={Contract.icon} alt={Contract.title} className="submit__partner-logo" width={100} />
               </CardText>
             </CardBody>
             <CardFooter>
-              <Button onClick={() =>{window.open(Contract.link)}}>
+              <Button className="smart_contract" onClick={() =>{window.open(Contract.link)}}>
                 View Contract
               </Button>
             </CardFooter>

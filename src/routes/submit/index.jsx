@@ -46,6 +46,22 @@ const Submit = () => (
           </Card>
         ))}
 
+        <Card className="submit_card" key="Become a Partner">
+          <CardHeader>Become A Partner</CardHeader>
+          <CardBody>
+            <CardText>
+              Want to see your buttoned up dApp developer tools listed here? Join our growing curated list today!
+              <br /><br />
+              <img src="../../img/settings_icon.png" alt="Become A Partner" className="submit__partner-logo" width="100" />
+            </CardText>
+          </CardBody>
+          <CardFooter>
+            <Button className="become_partner" onClick={() => {window.open("mailto:da@projecthydro.org")}}>
+              Become A Partner
+            </Button>
+          </CardFooter>
+        </Card>
+
         <h3>Resources & Tutorials</h3>
         <p>Use the resources below to learn about best practices.</p>
 

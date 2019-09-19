@@ -13,6 +13,7 @@ import {
 import contractsJson from '../../common/config/submit/contracts.json';
 import resourcesJson from '../../common/config/submit/resources.json';
 import partnersJson from '../../common/config/submit/partners.json';
+import snippetsJson from '../../common/config/submit/snippets.json';
 
 import QA from '../../components/qa';
 import faqJson from '../../common/config/submit/faq.json';
@@ -63,6 +64,27 @@ const Submit = () => (
             <CardFooter>
               <Button className="resource" onClick={() =>{window.open(Resource.link)}}>
                 View Resource
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+
+        <h3>Code Snippets</h3>
+        <p>Below are some code snippets to get you started.</p>
+
+        {snippetsJson.map(Snippet => (
+          <Card className="submit_card" key={Snippet.title}>
+            <CardHeader>{Snippet.title}</CardHeader>
+            <CardBody>
+              <CardText>
+                {Snippet.description}
+                <br /><br />
+                <img src={Snippet.icon} alt={Snippet.title} className="submit__partner-logo" width={100} />
+              </CardText>
+            </CardBody>
+            <CardFooter>
+              <Button className="snippet" onClick={() =>{window.open(Snippet.link)}}>
+                View Code Snippet
               </Button>
             </CardFooter>
           </Card>

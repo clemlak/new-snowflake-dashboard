@@ -3,7 +3,7 @@
     "title": "Hydro Snowflake",
     "description": "Snowflake is an ERC-1484 Provider that provides on-/off-chain identity management.",
     "icon": "../../img/smart_contract_icon.png",
-    "link": "https://projecthydro.org/developers/hydro-snowflake/"
+    "link": "https://github.com/HydroBlockchain/smart-contracts/tree/master/snowflake"
   },
   {
     "title": "Charging Interest",

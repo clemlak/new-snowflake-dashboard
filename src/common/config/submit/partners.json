@@ -3,13 +3,23 @@
     "title": "3Box",
     "description": "Build secure, lightweight, interactive distributed applications with our APIs.",
     "category": "how-to",
+    "imageWidth": "150",
     "icon": "https://3box.io/static/media/ThreeBoxLogoBlack.4e0a0543.svg",
     "link": "https://docs.3box.io/"
+  },
+  {
+    "title": "Matic",
+    "description": "Matic Network is a sidechain based scaling solution for public blockchains.",
+    "category": "how-to",
+    "imageWidth": "100",
+    "icon": "../../img/matic.png",
+    "link": "https://docs.matic.network/"
   },
   {
     "title": "Uniswap",
     "description": "The Uniswap protocol provides an interface for seamless exchange of ERC20 tokens on Ethereum.",
     "category": "how-to",
+    "imageWidth": "100",
     "icon": "../../img/uniswap.png",
     "link": "https://docs.uniswap.io/"
   }

@@ -34,7 +34,7 @@ const Submit = () => (
               <CardText>
                 {Partner.description}
                 <br /><br />
-                <img src={Partner.icon} alt={Partner.title} className="submit__partner-logo" width={100} />
+                <img src={Partner.icon} alt={Partner.title} className="submit__partner-logo" width={Partner.imageWidth} />
               </CardText>
             </CardBody>
             <CardFooter>

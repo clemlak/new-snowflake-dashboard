@@ -13,5 +13,10 @@
 		"title": "Oxide",
 		"category": "Fintech",
 		"price": "0"
+	},
+	"0x33a99addb7eb68a31ad222a9d5cc0b7f741cefa4": {
+		"title": "Hello World",
+		"category": "Other",
+		"price": "0"
 	}
 }

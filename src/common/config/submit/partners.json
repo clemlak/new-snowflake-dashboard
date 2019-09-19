@@ -5,5 +5,12 @@
     "category": "how-to",
     "icon": "https://3box.io/static/media/ThreeBoxLogoBlack.4e0a0543.svg",
     "link": "https://docs.3box.io/"
+  },
+  {
+    "title": "Uniswap",
+    "description": "The Uniswap protocol provides an interface for seamless exchange of ERC20 tokens on Ethereum.",
+    "category": "how-to",
+    "icon": "../../img/uniswap.png",
+    "link": "https://docs.uniswap.io/"
   }
 ]

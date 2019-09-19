@@ -42,11 +42,11 @@
     "link": "https://projecthydro.org/building-your-first-dapp"
   },
   {
-    "title": "Snowflake dApp Best Practices",
+    "title": "Hydro dApp Best Practices",
     "description": "Best practices for designing and architecting your dApp.",
     "category": "how-to",
     "icon": "../../img/document_icon.png",
-    "link": "https://projecthydro.org/snowflake-dapp-best-practices"
+    "link": "https://projecthydro.org/blog/hydro-dapp-development-best-practices"
   },
   {
     "title": "Submitting Your First dApp",

@@ -19,9 +19,17 @@
     "title": "Matic",
     "description": "Matic Network brings massive scale to Ethereum using an adapted version of Plasma with PoS based side chains.",
     "category": "how-to",
-    "imageWidth": "100",
+    "imageWidth": "80",
     "icon": "../../img/matic.png",
     "link": "https://docs.matic.network/"
+  },
+  {
+    "title": "Totle",
+    "description": "Totle's API and Smart Contracts work together to compare prices and route orders across the world's leading decentralized exchanges.",
+    "category": "how-to",
+    "imageWidth": "150",
+    "icon": "../../img/totle.png",
+    "link": "https://developers.totle.com/docs/getting-started"
   },
   {
     "title": "Uniswap",

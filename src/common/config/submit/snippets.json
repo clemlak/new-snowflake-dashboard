@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Setting Up Your Resolver",
+    "description": "A few lines of code to connect your resolver to the code base of web3.",
+    "category": "snippet",
+    "icon": "../../img/code_icon.png",
+    "snippet": "SNIPPET 1",
+    "link": ""
+  },
+  {
+    "title": "Setting Your dApps Allowance",
+    "description": "Monetize your dApp by adding in this simple line of code.",
+    "category": "snippet",
+    "icon": "../../img/code_icon.png",
+    "snippet": "SNIPPET 2",
+    "link": ""
+  },
+  {
+    "title": "Use Material Imports",
+    "description": "Use a handful of basic UI elements to quickly get started with your interface.",
+    "category": "snippet",
+    "icon": "../../img/code_icon.png",
+    "snippet": "SNIPPET 3",
+    "link": ""
+  }
+]

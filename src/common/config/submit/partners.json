@@ -1,0 +1,42 @@
+[
+  {
+    "title": "3Box",
+    "description": "3Box provides developers with an easy-to-use toolkit for quickly building production-ready applications capable of scaling with increased usage.",
+    "category": "how-to",
+    "imageWidth": "150",
+    "icon": "https://3box.io/static/media/ThreeBoxLogoBlack.4e0a0543.svg",
+    "link": "https://docs.3box.io/"
+  },
+  {
+    "title": "Enjin",
+    "description": "Empower your userbase with true ownership, prevent fraud, increase your revenue and explore the blockchain gaming frontier.",
+    "category": "how-to",
+    "imageWidth": "150",
+    "icon": "../../img/enjin.png",
+    "link": "https://assetstore.unity.com/packages/tools/utilities/blockchain-sdk-by-enjin-124133"
+  },
+  {
+    "title": "Matic",
+    "description": "Matic Network brings massive scale to Ethereum using an adapted version of Plasma with PoS based side chains.",
+    "category": "how-to",
+    "imageWidth": "80",
+    "icon": "../../img/matic.png",
+    "link": "https://docs.matic.network/"
+  },
+  {
+    "title": "Totle",
+    "description": "Totle's API and Smart Contracts work together to compare prices and route orders across the world's leading decentralized exchanges.",
+    "category": "how-to",
+    "imageWidth": "150",
+    "icon": "../../img/totle.png",
+    "link": "https://developers.totle.com/docs/getting-started"
+  },
+  {
+    "title": "Uniswap",
+    "description": "The Uniswap protocol provides an interface for seamless exchange of ERC20 tokens on Ethereum.",
+    "category": "how-to",
+    "imageWidth": "100",
+    "icon": "../../img/uniswap.png",
+    "link": "https://docs.uniswap.io/"
+  }
+]

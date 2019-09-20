@@ -11,7 +11,7 @@ import {
 function AdditionalHelp() {
   return (
     <div>
-      <Row className="mt-5">
+      <Row className="">
         <Col>
           <Row className="additional-help align-items-center">
             <Col>

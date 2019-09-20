@@ -64,7 +64,7 @@ function LinkAddressCard() {
           </Col>
           <Col xs="2" className="text-right">
             <HelpButton
-              content={tooltips.getHydroHelp}
+              content={tooltips.ethWalletHelp}
             />
           </Col>
         </Row>

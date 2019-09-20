@@ -1,37 +1,51 @@
 [
   {
-    "title": "Building Your First dApp",
-    "description": "Are you new to creating a dApp for Snowflake? Read this first.",
+    "title": "dApp Store Walkthrough",
+    "description": "Snowflake is an ERC-1484 Provider that provides on-/off-chain identity management.",
     "category": "how-to",
-    "icon": "",
-    "link": ""
+    "icon": "../../img/video_icon.png",
+    "link": "https://projecthydro.org"
   },
   {
-    "title": "Snowflake dApp Best Practices",
+    "title": "Getting Test Ethereum",
+    "description": "How to get test Ethereum on the Rinkeby network for interacting with the dApp Store.",
+    "category": "how-to",
+    "icon": "../../img/document_icon.png",
+    "link": "https://projecthydro.org/blog/how-to-get-test-ethereum/"
+  },
+  {
+    "title": "Getting Test Hydro",
+    "description": "How to get test Hydro on the Rinkeby network for interacting with the dApp Store.",
+    "category": "how-to",
+    "icon": "../../img/video_icon.png",
+    "link": "https://projecthydro.org/getting-test-hydro"
+  },
+  {
+    "title": "What is Hydro Snowflake?",
+    "description": "Snowflake is an Identity Protocol. We believe that by creating a modular, open framework...",
+    "category": "resource",
+    "icon": "../../img/document_icon.png",
+    "link": "https://projecthydro.org/developers/hydro-snowflake/"
+  },
+  {
+    "title": "The Anatomy of the dApp Store",
+    "description": "Learn how the dApp Store was built and get insight into the developers thought process on its architecture.",
+    "category": "how-to",
+    "icon": "../../img/document_icon.png",
+    "link": "https://projecthydro.org/anatomy-of-the-hydro-dappstore"
+  },
+  {
+    "title": "Hydro dApp Best Practices",
     "description": "Best practices for designing and architecting your dApp.",
     "category": "how-to",
-    "icon": "",
-    "link": ""
-  },
-  {
-    "title": "Submitting Your First dApp",
-    "description": "Everything you need to know to get your idea submitted to the dApp store.",
-    "category": "how-to",
-    "icon": "",
-    "link": ""
-  },
-  {
-    "title": "dApp Store Style Guide",
-    "description": "Learn about design and UI/UX best practices for your dApp.",
-    "category": "how-to",
-    "icon": "",
-    "link": ""
+    "icon": "../../img/document_icon.png",
+    "link": "https://projecthydro.org/blog/hydro-dapp-development-best-practices"
   },
   {
     "title": "ERC-1484",
     "description": "Smart contract to power charging interest in savings, lending, credit, and mortgage dApps.",
     "category": "resource",
-    "icon": "",
-    "link": ""
+    "icon": "../../img/document_icon.png",
+    "link": "https://github.com/ethereum/EIPs/issues/1495"
   }
 ]

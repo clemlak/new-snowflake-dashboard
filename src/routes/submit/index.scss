@@ -22,7 +22,7 @@
 
 .submit_card .card-body {
   text-align: center;
-  min-height: 140px;
+  min-height: 230px;
   font-size: 14px;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .submitDapp p {
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 
 .submitDapp h1 {
@@ -51,4 +51,29 @@
   background-color: #eaeaea;
   padding: 20px;
   border-radius: 5px;
+}
+
+button.partner {
+  background-color: #3ad15c;
+  border-color: #3ad15c;
+}
+
+button.resource {
+  background-color: #1f4dfe;
+  border-color: #1f4dfe;
+}
+
+button.smart_contract {
+  background-color: #262626;
+  border-color: #262626;
+}
+
+button.snippet {
+  background-color: #ff6434;
+  border-color: #ff6434;
+}
+
+button.become_partner {
+  background-color: #238639;
+  border-color: #238639;
 }

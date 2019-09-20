@@ -58,7 +58,7 @@ const Identity = () => {
               </Col>
               <Col xs="2" className="text-right">
                 <HelpButton
-                  content={tooltips.getHydroHelp}
+                  content={tooltips.identityHelp}
                 />
               </Col>
             </Row>

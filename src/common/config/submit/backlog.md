@@ -18,4 +18,12 @@
   "category": "how-to",
   "icon": "../../img/document_icon.png",
   "link": "https://projecthydro.org/dapp-store-style-guide"
+},
+{
+  "title": "Enjin",
+  "description": "Empower your userbase with true ownership, prevent fraud, increase your revenue and explore the blockchain gaming frontier.",
+  "category": "how-to",
+  "imageWidth": "150",
+  "icon": "../../img/enjin.png",
+  "link": "https://assetstore.unity.com/packages/tools/utilities/blockchain-sdk-by-enjin-124133"
 }

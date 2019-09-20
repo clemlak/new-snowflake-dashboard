@@ -8,14 +8,6 @@
     "link": "https://docs.3box.io/"
   },
   {
-    "title": "Enjin",
-    "description": "Empower your userbase with true ownership, prevent fraud, increase your revenue and explore the blockchain gaming frontier.",
-    "category": "how-to",
-    "imageWidth": "150",
-    "icon": "../../img/enjin.png",
-    "link": "https://assetstore.unity.com/packages/tools/utilities/blockchain-sdk-by-enjin-124133"
-  },
-  {
     "title": "Matic",
     "description": "Matic Network brings massive scale to Ethereum using an adapted version of Plasma with PoS based side chains.",
     "category": "how-to",

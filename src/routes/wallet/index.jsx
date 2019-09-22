@@ -11,7 +11,7 @@ import {
 
 import Transactions from './components/transactions';
 import DepositWithdraw from './components/depositWithdraw';
-import BuyWithUniswap from './components/buyWithUniswap';
+import Buy from './components/buy';
 
 function Wallet() {
   return (
@@ -28,7 +28,7 @@ function Wallet() {
           <DepositWithdraw />
         </Col>
         <Col>
-          <BuyWithUniswap />
+          <Buy />
         </Col>
       </Row>
       <Row>

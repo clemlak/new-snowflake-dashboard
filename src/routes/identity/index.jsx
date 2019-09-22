@@ -65,9 +65,7 @@ const Identity = () => {
             <Row className="justify-content-center align-items-center pb-4">
               <Col xs="6">
                 <p className="identity__user-image">
-                  {ein !== null && (
-                    <Identicon seed={ein} />
-                  )}
+                  <Identicon seed={ein} size={100} />
                 </p>
               </Col>
               <Col xs="6">

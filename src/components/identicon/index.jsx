@@ -1,4 +1,7 @@
-import React, { useRef } from 'react';
+import React, {
+  useRef,
+  useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import hydroIdenticon from '../../services/flakeGenerator.min';
 
@@ -10,15 +13,15 @@ function Identicon(props) {
 
   const iconRef = useRef();
 
-  const icon = hydroIdenticon.create({
-    seed,
-    size,
-  });
+  useEffect(() => {
+    const icon = hydroIdenticon.create({
+      seed,
+      size,
+    });
 
-  if (iconRef.current) {
     iconRef.current.innerHTML = '';
     iconRef.current.appendChild(icon);
-  }
+  }, [iconRef, seed]);
 
   return (
     <div ref={iconRef} />
@@ -32,7 +35,7 @@ Identicon.propTypes = {
 
 Identicon.defaultProps = {
   seed: 'test',
-  size: 100,
+  size: '100',
 };
 
 export default Identicon;
